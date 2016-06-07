@@ -1,3 +1,5 @@
+select * from member;
+
 drop table member;
 create table member(
 	no number primary key,
