@@ -2,7 +2,7 @@ package com.kosta.matna.domain.member;
 
 import java.util.Date;
 
-public class Member_order {
+public class Member_orderVO {
 	//no,giver, taker, item, cnt, orderDate, state
 	private int no;//상품 시퀀스
 	private int giver;//받는사람 no
@@ -12,11 +12,11 @@ public class Member_order {
 	private Date orderDate;//주문 날짜
 	private int state;//배송상태:0 배송완료:1
 	
-	public Member_order() {
+	public Member_orderVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member_order(int no, int giver, int taker, String item, int cnt, Date orderDate, int state) {
+	public Member_orderVO(int no, int giver, int taker, String item, int cnt, Date orderDate, int state) {
 		super();
 		this.no = no;
 		this.giver = giver;
