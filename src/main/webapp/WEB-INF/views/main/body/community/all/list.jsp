@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
-<script type="text/javascript" src="/resource/jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 
 </script>
@@ -25,7 +25,7 @@
 				<c:forEach var="free" items="${freeList}" varStatus="stat">
 					<tr height="1" align="center">
 						<td>${free.no}</td>
-						<td><a href="/community/listOne?no=${free.no}&type=free">${free.title }</a></td>
+						<td><a href="/matna/community/listOne?no=${free.no}&type=free">${free.title }</a></td>
 						<td>${free.writer}</td>
 						<td>${free.regdate }</td>
 						<td>${free.viewCnt}</td>
@@ -34,7 +34,7 @@
 		</table>
 
 		<div align="right" style="width: 90%;">
-			<button onclick="javascript:location.href='/community/write';">글등록</button>
+			<button onclick="javascript:location.href='/matna/community/write';">글등록</button>
 		</div>
 	<form name="s"
 		action="/Matna/community/free.do?action=freeList&&searchs=1&&page=1"

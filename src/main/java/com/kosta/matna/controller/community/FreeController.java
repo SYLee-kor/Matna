@@ -97,9 +97,10 @@ public class FreeController {
 		logger.info("delete POSTø‰√ª...");	
 		service.remove(no, new BoardTypeVO(type));
 		attr.addFlashAttribute("msg", "SUCCESS");
-		
 		return "redirect:/community/list";
 	}
+	
+	
 	
 	
 	

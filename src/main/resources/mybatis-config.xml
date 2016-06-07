@@ -3,6 +3,6 @@
 <configuration>
    <typeAliases>
    	<typeAlias type="com.kosta.matna.domain.item.ItemVO" alias="item"/>
-   <typeAlias type="com.kosta.matna.domain.community.boardVO" alias="board"/>
+   <typeAlias type="com.kosta.matna.domain.community.BoardVO" alias="board"/>
    </typeAliases>
 </configuration>

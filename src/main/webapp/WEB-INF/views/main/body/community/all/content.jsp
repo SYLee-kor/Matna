@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 보기</title>
-<script src="<c:url value="/resource/jquery/jquery-2.2.3.js"/>"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 function page_move(url) {
 	var f = document.frm;
@@ -44,11 +44,11 @@ function page_move(url) {
 				</tr>
 			</table>
 			<br> <input type=button value="목록으로"
-				onclick="javascript:location.href='/community/list';"> <input
+				onclick="javascript:location.href='/matna/community/list';"> <input
 				type=button value="수정"
-				onclick="javascript:page_move('/community/update');"> <input
+				onclick="javascript:page_move('/matna/community/update');"> <input
 				type=button value="삭제"
-				onclick="javascript:page_move('/community/delete');">
+				onclick="javascript:page_move('/matna/community/delete');">
 		</form>
 		<br> <br>
 	</center>

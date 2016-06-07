@@ -5,15 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>자유게시판</title>
-<script src="/resource/jquery/jquery-2.2.3.js"></script>
-<script src="/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"></script>
+<script src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript">
 	var oEditors = [];
 	$(function() {
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef : oEditors,
 			elPlaceHolder : "free_content",
-			sSkinURI : "/resource/SE2/SmartEditor2Skin.html",
+			sSkinURI : "/matna/resource/SE2/SmartEditor2Skin.html",
 			htParams : {
 				bUseToolbar : true,
 				bUseVerticalResizer : true,
@@ -39,7 +39,7 @@
 	<br>
 	<br>
 	<br>
-	<form id="frm" action="/community/modify" method="post">
+	<form id="frm" action="/matna/community/modify" method="post">
 		<input type="hidden" name="type" id="type" value="free"/>
 		<input type="hidden" name="no" id="no" value="${free.no }"/>
 		<table align="center" border="1">
@@ -56,7 +56,7 @@
 		</table>
 		<div style="width: 80%; margin: 20px;" align="right">
 			<button id="submmit">수정</button>
-			<button id="exit" onclick="javascript:location.href='/community/list';">취소</button>
+			<button id="exit" onclick="javascript:location.href='/matna/community/list';">취소</button>
 		</div>
 	</form>
 </body>
