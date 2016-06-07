@@ -11,12 +11,13 @@ public class ItemVO {
 	private int state;//new:1 hot:2
 	private Date regdate;//상품등록일
 	private String content;//상품설명
+	private String photo;//상품 사진 주소
 	
 	public ItemVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ItemVO(int no, String name, int price, int amount, int state, Date regdate, String content) {
+	public ItemVO(int no, String name, int price, int amount, int state, Date regdate, String content, String photo) {
 		super();
 		this.no = no;
 		this.name = name;
@@ -25,6 +26,7 @@ public class ItemVO {
 		this.state = state;
 		this.regdate = regdate;
 		this.content = content;
+		this.photo = photo;
 	}
 
 	public int getNo() {
@@ -81,5 +83,13 @@ public class ItemVO {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 }
