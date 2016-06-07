@@ -9,75 +9,56 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.kosta.matna.domain.community.Criteria;
-import com.kosta.matna.domain.community.boardVO;
+import com.kosta.matna.domain.community.BoardTypeVO;
+import com.kosta.matna.domain.community.BoardVO;
 
 @Repository
 public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Inject
 	private SqlSession session;
-	
+
 	public FreeBoardDAOImpl() {
 		System.out.println("생성자!!");
 	}
-	
+
+	public Map<String, Object> map(int no, BoardTypeVO type) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("no", no);
+		map.put("type", type.getType());
+
+		return map;
+	}
+
 	@Override
-	public void create(boardVO vo) throws Exception {
+	public void create(BoardVO vo) throws Exception {
 		session.insert("board.create", vo);
 	}
 
 	@Override
-	public boardVO read(int no) throws Exception {
-		return session.selectOne("board.read",no);
+	public BoardVO read(int no, BoardTypeVO type) throws Exception {
+		return session.selectOne("board.read", map(no, type));
 	}
 
 	@Override
-	public void update(boardVO vo) throws Exception {
+	public void update(BoardVO vo) throws Exception {
 		session.update("board.update", vo);
 	}
 
 	@Override
-	public void delete(int no, BoardTypeDAO type) throws Exception {
-		Map<String,Object> map = new HashMap<>(); 	
-		   map.put("no", no);
-		   map.put("type", type.getType());
-		session.delete("board.delete", map);
+	public void delete(int no, BoardTypeVO type) throws Exception {
+		session.delete("board.delete", map(no, type));
 	}
 
 	@Override
-	public List<boardVO> listAll(BoardTypeDAO type) throws Exception {
-		return session.selectList("board.listAll",type);
+	public List<BoardVO> listAll(BoardTypeVO type) throws Exception {
+		return session.selectList("board.listAll", type);
 	}
 
 	@Override
-	public List<boardVO> listCriteria(Criteria cri) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int countPaging() throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void updateReplyCnt(int no, int amount) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void updateViewCnt(int no) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<boardVO> testSelect() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateViewCnt(int no, BoardTypeVO type) throws Exception {
+		System.out.println("updateViewCnt실행");
+		session.update("board.updateViewCnt", map(no, type));
 	}
 
 }

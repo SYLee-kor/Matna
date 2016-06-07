@@ -9,6 +9,7 @@
          </when>
        </choose>
    </sql>
+   
 
    <!--  no,title,writer,content,viewcnt,replycnt,regdate -->
    <insert id="create">
@@ -24,21 +25,10 @@
       order by no desc
    </select>
    
-   <select id="listPage" resultType="board">
-      select bno, title, content, writer, regdate, viewcnt,replycnt
-      from board_spring
-      order by bno desc
-   </select>
-   
-   <select id="countPaging" resultType="int">
-      select count(*) from board_spring
-   </select>
-   
-   
-   <select id="read" parameterType="int" resultType="board">
-      select bno,title,content,writer
-      from board_spring
-      where bno=#{bno}
+   <select id="read" resultType="board">
+      select no,title,content,writer
+      from <include refid="type"/>
+      where no=#{no}
    </select>
    
    <delete id="delete">
@@ -52,74 +42,9 @@
    </update>
    
    <update id="updateViewCnt">
-   	update board_spring set viewcnt = viewcnt + 1
-   	where bno = #{bno}
-   </update>
-   
-   
-   
-   
-   <select id="testSelect" resultType="board">
-      select bno,title,content,writer,regdate,viewcnt
-      from board_spring
-      order by bno desc
-      <!-- select * from 
-       (select bno,title,content,writer,regdate,viewcnt, rownum rn
-         from board
-          order by bno desc)
-      where rn between 1 and 10 -->
-   </select>
-   
-   <sql id="search">
-      <!-- if(title이 null이 아니면){  -->
-     <if test="searchType != null">
-       <choose>
-         <when test="searchType=='t'.toString()">
-           and title like '%'||#{keyword}||'%'
-         </when>
-         <when test="searchType=='c'.toString()">
-           and content like '%'||#{keyword}||'%'
-         </when>
-         <when test="searchType=='w'.toString()">
-           and writer like '%'||#{keyword}||'%'
-         </when>
-         <when test="searchType=='tc'.toString()">
-           and (title like '%'||#{keyword}||'%'
-                or content like '%'||#{keyword}||'%')
-         </when>
-         <when test="searchType=='cw'.toString()">
-            and (content like '%'||#{keyword}||'%'
-                or writer like '%'||#{keyword}||'%')
-         </when>         
-         <when test="searchType=='tcw'.toString()">
-           and (title like '%'||#{keyword}||'%'
-                or content like '%'||#{keyword}||'%'
-                or writer like '%'||#{keyword}||'%')
-         </when>
-       </choose>       
-     </if>
-   </sql>
-   
-   
-   <select id="listSearch" resultType="board">
-      select bno,title,content,writer,regdate,viewcnt,replycnt
-      from board_spring
-      where bno>0     
-      <include refid="search"/>
-     order by bno desc     
-   </select>
-   
-   <select id="listSearchCount" resultType="int">
-      select count(*) from board_spring
-      where bno>0
-      <include refid="search"/>
-   </select>
-   
-   
-   <!-- 댓글카운트 수정 -->
-   <update id="updateReplyCnt">
-       update board_spring set replycnt = replycnt + #{amount}
-       where bno=#{bno}
+   	update <include refid="type"/>
+   	set viewcnt = viewcnt + 1
+   	where no = #{no}
    </update>
    
 </mapper>

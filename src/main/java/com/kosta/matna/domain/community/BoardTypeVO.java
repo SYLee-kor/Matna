@@ -1,9 +1,9 @@
-package com.kosta.matna.persistence.community;
+package com.kosta.matna.domain.community;
 
-public class BoardTypeDAO {
+public class BoardTypeVO {
 	private String type;
 
-	public BoardTypeDAO(String type) {
+	public BoardTypeVO(String type) {
 		this.type = type;
 	}
 

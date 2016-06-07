@@ -2,7 +2,7 @@ package com.kosta.matna.domain.community;
 
 import java.util.Date;
 
-public class boardVO {
+public class BoardVO {
 	private String type;
 	private int no;
 	private String title;
@@ -12,11 +12,11 @@ public class boardVO {
 	private int replyCnt;
 	private Date regdate;
 	
-	public boardVO() {
+	public BoardVO() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public boardVO(String type, int no, String title, String writer, String content, int viewCnt, int replyCnt, Date regdate) {
+	public BoardVO(String type, int no, String title, String writer, String content, int viewCnt, int replyCnt, Date regdate) {
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
@@ -88,6 +88,11 @@ public class boardVO {
 
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	
+	@Override
+	public String toString() {
+		return "[boardVO no : "+no+", type : "+type+", title : "+title+", content : "+ content+", writer : "+writer+"]";
 	}
 
 }

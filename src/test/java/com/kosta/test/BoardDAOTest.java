@@ -1,8 +1,6 @@
 package com.kosta.test;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.kosta.matna.domain.community.boardVO;
-import com.kosta.matna.persistence.community.BoardTypeDAO;
+import com.kosta.matna.domain.community.BoardTypeVO;
+import com.kosta.matna.domain.community.BoardVO;
 import com.kosta.matna.persistence.community.FreeBoardDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,17 +40,18 @@ public class BoardDAOTest {
 		dao.update(vo);
 	}*/
 	
-	@Test
-	public void testDelete() throws Exception{
-		   dao.delete(1, new BoardTypeDAO("free"));
-	}
+//	@Test
+//	public void testDelete() throws Exception{
+//		   dao.delete(1, new BoardTypeVO("free"));
+//	}
 
 	@Test
 	public void testSelect() throws Exception {
 		// List<BoardVO> list = dao.testSelect();
-		List<boardVO> list = dao.listAll(new BoardTypeDAO("free"));
+		List<BoardVO> list = dao.listAll(new BoardTypeVO("free"));
 		System.out.println("첫번째 데이터:" + list.get(0).getNo());
 		System.out.println("list의 사이즈:" + list.size());
+		System.out.println("1번의 본문:" + list.get(0).getContent());
 	}
 	
 	

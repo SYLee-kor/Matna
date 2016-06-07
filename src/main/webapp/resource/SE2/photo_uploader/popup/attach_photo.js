@@ -10,7 +10,7 @@
 	var nMaxTotalImageSize = 50*1024*1024;
 	var nMaxImageCount = 10;
 	var nImageFileCount = 0;
-	var bSupportDragAndDropAPI = false;
+	var bSupportDragAndDropAPI = true;
 	var oFileUploader;
 	var bAttachEvent = false;
 
@@ -39,9 +39,9 @@
 		try{
 			if( !oNavigator.ie ){
 				if(!!oNavigator.safari && oNavigator.version <= 5){
-					bSupportDragAndDropAPI = true;
-				}else{
 					bSupportDragAndDropAPI = false;
+				}else{
+					bSupportDragAndDropAPI = true;
 				}
 			} else {
 				bSupportDragAndDropAPI = false;

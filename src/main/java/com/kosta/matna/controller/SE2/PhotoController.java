@@ -25,6 +25,7 @@ public class PhotoController {
 	    String callback = vo.getCallback();
 	    String callback_func = vo.getCallback_func();
 	    String file_result = "";
+	    
 	    try {
 	        if(vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null && !vo.getFiledata().getOriginalFilename().equals("")){
 	            String original_name = vo.getFiledata().getOriginalFilename();
@@ -45,6 +46,9 @@ public class PhotoController {
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
+	    System.out.println("callback : " + callback);
+	    System.out.println("callback_func : " + callback_func);
+	    System.out.println("file result : " + file_result	);
 	    return "redirect:" + callback + "?callback_func="+callback_func+file_result;
 	}
 	
