@@ -1,4 +1,4 @@
-package com.kosta.matna;
+package com.kosta.matna.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
