@@ -1,0 +1,30 @@
+package com.kosta.matna.persistence.review;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
+
+import com.kosta.matna.domain.review.PreviewVO;
+import com.kosta.matna.domain.review.ReviewDTO;
+import com.kosta.matna.domain.review.ReviewVO;
+
+public interface ReviewDAO {
+	boolean insertReview(ReviewVO vo) throws Exception;
+	boolean insertPreview(PreviewVO vo) throws Exception;
+	
+	boolean updateReview(ReviewVO vo) throws Exception;
+	boolean updatePreview(PreviewVO vo)throws Exception;
+	boolean viewCntUp(int no) throws Exception;
+	boolean gbUp(int no, String gbKey)throws Exception;
+	
+	boolean deleteReview(int no) throws Exception;
+	boolean deletePreview(int no) throws Exception;
+	
+	int getTotalCount(String tabType) throws Exception;
+	
+	ReviewVO readReview(int no)throws Exception;
+	PreviewVO readPreview(int no)throws Exception;
+	
+	List<ReviewDTO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
+}

@@ -2,14 +2,59 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="review">
 	<!-- Insert -->
-	<insert id="insertReview">
-		insert into review values 
-		(review_seq.nextval,#{title},#{writer},#{content},#{cnt}
-		,#{good},#{bad},to_char(sysdate,'yyyy-mm-dd'),#{score},#{photo})
+	<insert id="insert">
+		insert into review values (no,title,content,writer,photo)
+		values (review_seq.nextval,#{title},#{content},#{writer},#{photo})
 	</insert>
 	
-	<insert id="insertPreview">
-		insert into preview values 
-		(#{no},#{addr},#{kind},#{price},#{parking},#{phone},#{taste},#{service},#{summary})
-	</insert>
+	<update id="update">
+		update review set title=#{title}, content=#{content}, photo=#{photo}, regdate = sysdate
+		where no = #{no}
+	</update>
+	
+	<update id="viewCntUp">
+		update review set viewCnt = viewCnt+1 
+		where no=#{no}
+	</update>
+	
+	<update id="gbUP">
+		update review 
+		<if test="gbKey=='good'">
+			set good=good+1
+		</if>
+		<if test="gbKey=='bad'">
+			set bad=bad+1
+		</if>
+		where no=#{no}
+	</update>
+	
+	<delete id="delete">
+		delete from review
+		where no=#{no}
+	</delete>
+	
+	<select id="totalCount">
+		select count(*) 
+		from review natural join preview
+		where type=#{tabType}
+	</select>
+	
+	<select id="selectOne" resultType="review">
+		select * from review where no=#{no}
+	</select>
+	
+	<select id="selectList" resultType="reviewDTO">
+		select no,title,writer,regdate,replycnt,viewcnt,photo,parking,recommend
+		from review natural join preview
+		where type=#{tabType}
+		<choose>
+			<when test="pageType=='review'">
+				order by no desc
+			</when>
+			<when test="pageType=='ranking'">
+				and regdate >= sysdate-7
+				order by good desc
+			</when>
+		</choose>
+	</select>
 </mapper>
