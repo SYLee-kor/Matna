@@ -19,7 +19,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	private SqlSession session;
 
 	public FreeBoardDAOImpl() {
-		System.out.println("持失切!!");
+		System.out.println("FreeBoardDAOImpl持失切!!");
 	}
 
 	public Map<String, Object> map(int no, BoardTypeVO type) {

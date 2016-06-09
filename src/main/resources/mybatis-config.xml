@@ -4,5 +4,8 @@
    <typeAliases>
    	<typeAlias type="com.kosta.matna.domain.item.ItemVO" alias="item"/>
    <typeAlias type="com.kosta.matna.domain.community.BoardVO" alias="board"/>
+   <typeAlias type="com.kosta.matna.domain.review.ReviewVO" alias="review"/>
+   <typeAlias type="com.kosta.matna.domain.review.PreviewVO" alias="preview"/>
+   <typeAlias type="com.kosta.matna.domain.review.ReviewDTO" alias="reviewDTO"/>
    </typeAliases>
 </configuration>

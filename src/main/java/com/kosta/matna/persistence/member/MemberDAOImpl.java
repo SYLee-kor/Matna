@@ -16,7 +16,7 @@ public class MemberDAOImpl implements MemberDAO{
 	private SqlSession session;
 
 	public MemberDAOImpl() {
-		System.out.println("持失切!!");
+		System.out.println("MemberDAOImpl持失切!!");
 	}
 	
 	@Override
