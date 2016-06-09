@@ -18,5 +18,7 @@ public interface ItemDAO {
 	
 	public boolean updatePoint(int no, int price)throws Exception ;//상품구입시 포인트 수정update
 	
-	public boolean insertOrder(int no1, int no2, String name, int cnt)throws Exception;//상품 구입시 주문창 생성 insert
+	public boolean insertOrder(Member_orderVO order)throws Exception;//상품 구입시 주문창 생성 insert
+
+	public List<ItemVO> itemSeach(String name)throws Exception;//검색상품 조회select name:상품명
 }

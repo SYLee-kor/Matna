@@ -59,9 +59,14 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public boolean insertOrder(int no1, int no2, String name, int cnt) throws Exception {
-		
+	public boolean insertOrder(Member_orderVO order) throws Exception {
+		session.insert("item.insertOrder",order);
 		return false;
+	}
+
+	@Override
+	public List<ItemVO> itemSeach(String name) throws Exception {
+		return session.selectList("item.itemSeach", name);
 	}
 
 }

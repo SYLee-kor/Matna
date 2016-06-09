@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kosta.matna.domain.item.ItemVO;
 import com.kosta.matna.domain.member.MemberVO;
+import com.kosta.matna.domain.member.Member_orderVO;
 
 public interface ItemService {
 	
@@ -16,4 +17,8 @@ public interface ItemService {
 	public MemberVO readMember(int no)throws Exception ;//로그인한 회원 읽기select
 	
 	public boolean updatePoint(int no, int price)throws Exception ;//상품구입시 포인트 수정update
+	
+	public boolean insertOrder(Member_orderVO order)throws Exception;//상품 구입시 주문창 생성 insert
+	
+	public List<ItemVO> itemSeach(String name)throws Exception;//검색상품 조회select name:상품명
 }

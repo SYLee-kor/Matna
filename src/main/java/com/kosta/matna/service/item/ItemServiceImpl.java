@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.item.ItemVO;
 import com.kosta.matna.domain.member.MemberVO;
+import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.persistence.item.ItemDAO;
 
 @Service
@@ -43,6 +44,17 @@ public class ItemServiceImpl implements ItemService {
 	public boolean updatePoint(int no, int price) throws Exception {
 		if(dao.updatePoint(no, price))return true;
 		return false;
+	}
+
+	@Override
+	public boolean insertOrder(Member_orderVO order) throws Exception {
+		if(dao.insertOrder(order))return true;
+		return false;
+	}
+
+	@Override
+	public List<ItemVO> itemSeach(String name) throws Exception {
+		return dao.itemSeach(name);
 	}
 
 }
