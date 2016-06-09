@@ -26,5 +26,8 @@ public interface ReviewDAO {
 	ReviewVO readReview(int no)throws Exception;
 	PreviewVO readPreview(int no)throws Exception;
 	
+	List<String> guList() throws Exception;
+	List<String> dongList(String gu) throws Exception;
+	
 	List<ReviewDTO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
 }

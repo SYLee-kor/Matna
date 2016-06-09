@@ -37,7 +37,7 @@ create table preview(
 	score number not null,
 	recommend varchar2(30),
 	map varchar2(30),
-	type varchar2(15) not null,
+	menu varchar2(15) not null,
 	gu varchar2(60) not null,
 	dong varchar2(60) not null
 );

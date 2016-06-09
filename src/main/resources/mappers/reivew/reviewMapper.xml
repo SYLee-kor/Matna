@@ -3,21 +3,28 @@
 <mapper namespace="review">
 	<!-- Insert -->
 	<insert id="insert">
-		insert into review values (no,title,content,writer,photo)
+	<![CDATA[
+		insert into review (no,title,content,writer,photo)
 		values (review_seq.nextval,#{title},#{content},#{writer},#{photo})
+	]]>
 	</insert>
 	
 	<update id="update">
+	<![CDATA[
 		update review set title=#{title}, content=#{content}, photo=#{photo}, regdate = sysdate
 		where no = #{no}
+	]]>
 	</update>
 	
 	<update id="viewCntUp">
+	<![CDATA[
 		update review set viewCnt = viewCnt+1 
 		where no=#{no}
+	]]>
 	</update>
 	
 	<update id="gbUP">
+	<![CDATA[
 		update review 
 		<if test="gbKey=='good'">
 			set good=good+1
@@ -26,6 +33,7 @@
 			set bad=bad+1
 		</if>
 		where no=#{no}
+	]]>
 	</update>
 	
 	<delete id="delete">
@@ -33,10 +41,10 @@
 		where no=#{no}
 	</delete>
 	
-	<select id="totalCount">
+	<select id="totalCount" resultType="int">
 		select count(*) 
 		from review natural join preview
-		where type=#{tabType}
+		where menu=#{tabType}
 	</select>
 	
 	<select id="selectOne" resultType="review">
@@ -46,7 +54,7 @@
 	<select id="selectList" resultType="reviewDTO">
 		select no,title,writer,regdate,replycnt,viewcnt,photo,parking,recommend
 		from review natural join preview
-		where type=#{tabType}
+		where menu=#{tabType}
 		<choose>
 			<when test="pageType=='review'">
 				order by no desc
@@ -56,5 +64,16 @@
 				order by good desc
 			</when>
 		</choose>
+	</select>
+	
+	<select id="guList" resultType="String">
+		select distinct(gu) from matnaAddr
+		order by gu
+	</select>
+	
+	<select id="dongList" resultType="String">
+		select dong from matnaAddr
+		where gu = #{gu}
+		order by dong
 	</select>
 </mapper>

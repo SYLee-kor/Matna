@@ -7,12 +7,14 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.persistence.review.ReviewDAO;
 
+@Transactional
 @Service
 public class ReviewServiceImpl implements ReviewService {
 	
@@ -24,7 +26,7 @@ public class ReviewServiceImpl implements ReviewService {
 		if(dao.insertReview(review) && dao.insertPreview(preview))return true;
 		return false;
 	}
-
+	
 	@Override
 	public boolean modifyReview(ReviewVO review, PreviewVO preview) throws Exception {
 		if(dao.updateReview(review) && dao.updatePreview(preview))return true;
@@ -63,6 +65,16 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int getTotalCount(String tabType) throws Exception {
 		return dao.getTotalCount(tabType);
+	}
+
+	@Override
+	public List<String> guList() throws Exception {
+		return dao.guList();
+	}
+
+	@Override
+	public List<String> dongList(String gu) throws Exception {
+		return dao.dongList(gu);
 	}
 
 }

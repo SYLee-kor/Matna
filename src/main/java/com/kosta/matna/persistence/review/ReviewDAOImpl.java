@@ -91,4 +91,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		return session.selectOne("review.totalCount", tabType);
 	}
 
+	@Override
+	public List<String> guList() throws Exception {
+		return session.selectList("review.guList");
+	}
+
+	@Override
+	public List<String> dongList(String gu) throws Exception {
+		return session.selectList("review.dongList",gu);
+	}
+
 }

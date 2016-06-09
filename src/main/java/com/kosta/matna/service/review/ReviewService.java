@@ -21,4 +21,7 @@ public interface ReviewService {
 	int getTotalCount(String tabType) throws Exception;
 	Object[] readReview(int no)throws Exception;
 	List<ReviewDTO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
+
+	List<String> guList() throws Exception;
+	List<String> dongList(String gu) throws Exception;
 }

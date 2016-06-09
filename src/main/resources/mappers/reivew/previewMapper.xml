@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="preview">
+	<!-- Insert -->
+	<insert id="insert">
+		insert into preview (no,parking,price,
+			score,recommend,map,menu,gu,dong,phone)
+		values (review_seq.currval,#{parking},#{price},
+			#{score},#{recommend},#{map},#{menu},#{gu},#{dong},#{phone})
+	</insert>
+	
+	<update id="update">
+		update preview set parking=#{parking}, price=#{price},
+			score=#{score},recommend=#{recommend},map=#{map},menu=#{menu},gu=#{gu}
+			, dong=#{dong}, phone=#{phone})
+		where no = #{no}
+	</update>
+	
+	<delete id="delete">
+		delete from preview
+		where no=#{no}
+	</delete>
+
+	<select id="selectOne" resultType="review">
+		select * from preview where no=#{no}
+	</select>
+</mapper>

@@ -30,6 +30,10 @@ public class Criteria {
 		return (this.page-1)*perPageNum;
 	}
 	
+	public int getPageEnd(){
+		return this.page*perPageNum;
+	}
+	
 	@Override
 	public String toString() {
 		return "Criteria [page : "+page+" / perPageNum : "+perPageNum+"]";

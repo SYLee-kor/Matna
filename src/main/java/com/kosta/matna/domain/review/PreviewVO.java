@@ -7,7 +7,7 @@ public class PreviewVO {
 	private int score;
 	private String recommend;
 	private String map;
-	private String type;
+	private String menu;
 	private String gu;
 	private String dong;
 	private String phone;
@@ -48,11 +48,12 @@ public class PreviewVO {
 	public void setMap(String map) {
 		this.map = map;
 	}
-	public String getType() {
-		return type;
+	
+	public String getMenu() {
+		return menu;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setMenu(String menu) {
+		this.menu = menu;
 	}
 	public String getGu() {
 		return gu;
