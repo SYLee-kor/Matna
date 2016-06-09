@@ -5,6 +5,7 @@
 
 <script type="text/javascript">
 function showContents(no) {
+	alert('${page}')
 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=${pageType}&tabType=${tabType}&page=${pageMaker.cri.page}";
 	document.location.href=moveUrl;
@@ -43,17 +44,16 @@ function showContents(no) {
 		</tr>
 	</c:forEach>
 </table>
-<c:if test="${pageDivShow eq 'ON' }">
 <div align="center" id="reviewPageDiv">
-		<br>
-		<br>
-		<button class="button" onclick="showPage('${type}',1)">처음</button>
-		<button class="button" onclick="showPage('${type}',beStart,beEnd)">이전</button>
-		<c:forEach items="list" var="reviewDTO" varStatus="stat">
-			<a href=#aList onclick="showPage('${type}',${start },${end },${reviewCnt })">${stat.index }</a>
-		</c:forEach>
-		<button class="button" onclick="showPage('${type}',afStart,afEnd,${reviewCnt })">다음</button>
-		<button class="button" onclick="showPage('${type}',${lastStart} ,${lastEnd})">끝</button>
-	</div>
 	<br>
-</c:if>
+	<br>
+	<c:if test="${pageMaker.prev }">
+	<button class="button" onclick="showPage('${tabType}',${pageMaker.beforePage })">이전</button>
+	</c:if>
+	<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
+		<a style="cursor: pointer; color: olive;" onclick="showPage('${tabType}',${stat.index})">${stat.index }</a>
+	</c:forEach>
+	<c:if test="${pageMaker.next }">
+	<button class="button" onclick="showPage('${tabType}',${pageMaker.afterPage })">다음</button>
+	</c:if>
+</div>

@@ -129,10 +129,10 @@ public class ReviewController {
 			cri.setPage(page);
 			PageMaker pageMaker = new PageMaker(cri, totalCount);
 			
-			
 			List<ReviewDTO> list = 
 			service.readList(typeMap, new RowBounds(cri.getPageStart(), cri.getPageEnd()));
 			
+			System.out.println("list.size() : "+list.size());
 			model.addAttribute("list", list);
 			model.addAttribute("pageMaker", pageMaker);
 			model.addAttribute("tabType", typeMap.get("tabType"));

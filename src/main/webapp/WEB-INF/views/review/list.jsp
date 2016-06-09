@@ -11,8 +11,10 @@
 <script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		alert('${tabType} ${page}');
 		showTab('${tabType}','${page}');
+		
+		// # 삽입 , 수정, 삭제 후 결과 출력.
+		if('${result}'=='success') alert('처리되었습니다.');
 	})
 	function showTab(type,page) {
 		var types = ['food','desert','drink','search'];
@@ -29,6 +31,7 @@
 		}
 	}
 	function showPage(type,page) {
+		alert('page : '+page);
 		$("#tab_"+type).load('/matna/review/tabPage?tabType='+type
 				+'&pageType=${pageType}&page='+page);
 	}
@@ -44,11 +47,11 @@
     <div class="tabBlock-pane">
 	<div style="text-align: left;">
 		<div style="border: 1px solid rgb(204, 204, 204);">
-			<span onclick="showTab('food')" id="foodT" 
+			<span onclick="showTab('food',${page})" id="foodT" 
 				style="padding: 0pt 5px; cursor: pointer;">식사</span> 
-			<span onclick="showTab('desert')" id="desertT"
+			<span onclick="showTab('desert',${page})" id="desertT"
 				style="padding: 0pt 5px; cursor: pointer;">디저트</span>
-			<span onclick="showTab('drink')" id="drinkT"
+			<span onclick="showTab('drink',${page})" id="drinkT"
 				style="padding: 0pt 5px; cursor: pointer;">주류</span>
 		<%-- 	<c:if test="${type != null }">
 			<span onclick="showTab('search')" id="searchT"

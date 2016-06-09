@@ -39,7 +39,8 @@ create table preview(
 	map varchar2(30),
 	menu varchar2(15) not null,
 	gu varchar2(60) not null,
-	dong varchar2(60) not null
+	dong varchar2(60) not null,
+	phone varchar2(20) not null
 );
 
 create table review_reply(

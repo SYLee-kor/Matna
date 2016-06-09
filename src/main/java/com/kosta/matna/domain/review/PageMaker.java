@@ -7,6 +7,9 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 	private int totalCount; // @ 전체 레코드 수
 	private int startPage; // @ 시작넘버
 	private int endPage; // @ 끝 넘버
+	private int beforePage;
+	private int afterPage;
+	
 	private boolean prev; // @ 이전페이지 
 	private boolean next; // @ 다음페이지
 	
@@ -21,6 +24,23 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 		calcData();
 	}
 	
+	
+	public int getBeforePage() {
+		return beforePage;
+	}
+
+	public void setBeforePage(int beforePage) {
+		this.beforePage = beforePage;
+	}
+
+	public int getAfterPage() {
+		return afterPage;
+	}
+
+	public void setAfterPage(int afterPage) {
+		this.afterPage = afterPage;
+	}
+
 	public Criteria getCri() {
 		return cri;
 	}
@@ -91,11 +111,12 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 		
 		// @ 하단 출력될 마지막 페이지 번호
 		int tempEndPage = (int) (Math.ceil(totalCount / (double)cri.getPerPageNum()));
-		if (endPage > tempEndPage){
-			endPage = tempEndPage;
-		}
+		endPage = endPage > tempEndPage ? tempEndPage : endPage;
 		
-		prev = startPage == 1 ? false: true;
-		next = endPage * cri.getPerPageNum() >= totalCount? false : true;
+		beforePage = startPage-1 < 1 ? 1 : startPage-1;
+		afterPage = endPage+1 > tempEndPage ? tempEndPage : endPage+1;
+		
+		prev = startPage <= displayPageNum ? false: true;
+		next = endPage == tempEndPage ? false : true;
 	}
 }

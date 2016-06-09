@@ -73,6 +73,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public List<ReviewDTO> readList(Map<String, String> typeMap, RowBounds rowBounds) throws Exception {
+		System.out.println(session.selectList("review.selectList", typeMap, rowBounds).size());
 		return session.selectList("review.selectList", typeMap, rowBounds);
 	}
 

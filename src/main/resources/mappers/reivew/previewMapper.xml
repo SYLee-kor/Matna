@@ -21,7 +21,7 @@
 		where no=#{no}
 	</delete>
 
-	<select id="selectOne" resultType="review">
+	<select id="selectOne" resultType="preview">
 		select * from preview where no=#{no}
 	</select>
 </mapper>
