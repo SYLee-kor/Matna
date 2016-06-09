@@ -3,8 +3,8 @@ package com.kosta.matna.domain.item;
 import java.util.Date;
 
 public class ItemVO {
-	//no, name, price, amount, state, regdate, content
-	private int no;//상품 시퀀스
+	//ino, name, price, amount, state, regdate, content
+	private int ino;//상품 시퀀스
 	private String name;//상품명
 	private int price;//상품가
 	private int amount;//수량
@@ -17,9 +17,9 @@ public class ItemVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ItemVO(int no, String name, int price, int amount, int state, Date regdate, String content, String photo) {
+	public ItemVO(int ino, String name, int price, int amount, int state, Date regdate, String content, String photo) {
 		super();
-		this.no = no;
+		this.ino = ino;
 		this.name = name;
 		this.price = price;
 		this.amount = amount;
@@ -30,11 +30,11 @@ public class ItemVO {
 	}
 
 	public int getNo() {
-		return no;
+		return ino;
 	}
 
 	public void setNo(int no) {
-		this.no = no;
+		this.ino = ino;
 	}
 	
 	public String getName() {
