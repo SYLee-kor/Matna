@@ -6,20 +6,10 @@ public class ReplyVO {
 	
 	private int rno;
 	private int bno;
-	private String replytext;
-	private String replyer;
+	private int writer;
+	private String nickName;
+	private String content;
 	private Date regdate;
-	private Date updatedate;
-	
-	public ReplyVO() {}
-	
-	public ReplyVO(int rno, int bno, String replytext, String replyer) {
-		super();
-		this.rno = rno;
-		this.bno = bno;
-		this.replytext = replytext;
-		this.replyer = replyer;
-	}
 	
 	public int getRno() {
 		return rno;
@@ -33,34 +23,28 @@ public class ReplyVO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public String getReplytext() {
-		return replytext;
+	public int getWriter() {
+		return writer;
 	}
-	public void setReplytext(String replytext) {
-		this.replytext = replytext;
+	public void setWriter(int writer) {
+		this.writer = writer;
 	}
-	public String getReplyer() {
-		return replyer;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setReplyer(String replyer) {
-		this.replyer = replyer;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public Date getRegdate() {
 		return regdate;
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
-	}
-	public Date getUpdatedate() {
-		return updatedate;
-	}
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
-	}
-	
-	@Override
-	public String toString() {
-		return "ReplyVO = [rno : "+rno+" / bno : "+bno+" / replytext : "+replytext
-				+" / replyer : "+replyer+" / regdate : "+regdate+" / updatetdate : "+updatedate+"]";
 	}
 }

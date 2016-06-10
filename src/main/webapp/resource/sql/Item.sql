@@ -8,7 +8,7 @@ create table Item(
 	regdate Date default sysdate,
 	content varchar2(500),
 	photo varchar2(100)
-)
+);
 
 drop sequence Item_seq;
 create sequence Item_seq

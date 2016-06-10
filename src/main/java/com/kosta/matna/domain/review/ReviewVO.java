@@ -6,19 +6,26 @@ public class ReviewVO {
 	private int no;
 	private String title;
 	private String content;
-	private String writer;
+	private int writer;
+	private String nickName;
 	private Date regdate;
-	private int replycnt;
-	private int viewcnt;
+	private int replyCnt;
+	private int viewCnt;
 	private int good;
 	private int bad;
 	private String photo;
 	
-	public String getWriter() {
+	public int getWriter() {
 		return writer;
 	}
-	public void setWriter(String writer) {
+	public void setWriter(int writer) {
 		this.writer = writer;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public int getNo() {
 		return no;
@@ -44,17 +51,17 @@ public class ReviewVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public int getReplycnt() {
-		return replycnt;
+	public int getReplyCnt() {
+		return replyCnt;
 	}
-	public void setReplycnt(int replycnt) {
-		this.replycnt = replycnt;
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
 	}
-	public int getViewcnt() {
-		return viewcnt;
+	public int getViewCnt() {
+		return viewCnt;
 	}
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 	public int getGood() {
 		return good;

@@ -111,7 +111,10 @@ $(function(){
 		<table cellpadding="5" bordercolor="#00bbdd" style="width:100%; padding-left: 50px" >
 			<tr>
 				<td>지역</td>
-				<td><span id="guSpan"></span> <span id="dongSpan"></span></td>
+				<td>
+					<span id="guSpan"></span> <span id="dongSpan"></span> 
+					<input type="text" name="addr" placeholder="상세 주소를 입력해주세요.">
+				</td>
 			</tr>
 			<tr>
 				<td>주차장 여부</td>

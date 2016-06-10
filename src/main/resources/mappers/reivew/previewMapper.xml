@@ -4,9 +4,9 @@
 	<!-- Insert -->
 	<insert id="insert">
 		insert into preview (no,parking,price,
-			score,recommend,map,menu,gu,dong,phone)
+			score,recommend,map,menu,gu,dong,addr,phone)
 		values (review_seq.currval,#{parking},#{price},
-			#{score},#{recommend},#{map},#{menu},#{gu},#{dong},#{phone})
+			#{score},#{recommend},#{map},#{menu},#{gu},#{dong},#{addr},#{phone})
 	</insert>
 	
 	<update id="update">

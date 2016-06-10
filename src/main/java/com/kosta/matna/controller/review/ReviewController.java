@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,13 +33,16 @@ public class ReviewController {
 	private String path = "review/"; // # WEB-INF/views/ {path} 
 	
 	@RequestMapping(value="regist",method=RequestMethod.GET)
-	public String registReview(){
+	public String registReview(@ModelAttribute("pageType") String pageType
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
 		return path+"regist";
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
+	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
+			, String tabType, String pageType, int page){
 		try {
+			System.out.println("preview_addr : "+preview.getAddr());
 			// # 받은 주소값을 통해 지도 좌표값 구하기.
 			String map = "1022323, 123123";
 			preview.setMap(map);
@@ -48,6 +52,9 @@ public class ReviewController {
 			review.setPhoto(photo);
 			if(service.registReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("pageType", pageType);
+			rttr.addFlashAttribute("tabType", tabType);
+			rttr.addFlashAttribute("page", page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -56,15 +63,20 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyReview(){
+	public String modifyReview(@ModelAttribute("pageType") String pageType
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
 		return path+"modify";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
-	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
+	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
+			, String pageType, String tabType, int page){
 		try {
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("tabType", tabType);
+			rttr.addFlashAttribute("pageType",pageType);
+			rttr.addFlashAttribute("page",page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -73,12 +85,13 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("read")
-	public String readReview(int no,Model model){
+	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
 			model.addAttribute("review",reviews[0]);
-			model.addAttribute("review",reviews[1]);
+			model.addAttribute("preview",reviews[1]);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -87,10 +100,14 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
-	public String removeReview(int no, RedirectAttributes rttr){
+	public String removeReview(int no, RedirectAttributes rttr
+			, String pageType, String tabType,  int page){
 		try {
 			if(service.removeReview(no))
 			rttr.addAttribute("result", "success");
+			rttr.addAttribute("pageType", pageType);
+			rttr.addAttribute("tabType", tabType);
+			rttr.addAttribute("page", page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";

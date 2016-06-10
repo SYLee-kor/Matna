@@ -30,7 +30,7 @@ function showContents(no) {
 							</b></font>
 						</td>
 						<td>
-							<font color="da1010" size=2>작성자 : <b>${review.writer }</b></font>
+							<font color="da1010" size=2>작성자 : <b>${review.nickName }</b></font>
 						</td>
 					</tr>
 					<tr>

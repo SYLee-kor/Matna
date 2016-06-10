@@ -40,6 +40,7 @@ create table preview(
 	menu varchar2(15) not null,
 	gu varchar2(60) not null,
 	dong varchar2(60) not null,
+	addr varchar2(60) not null,
 	phone varchar2(20) not null
 );
 

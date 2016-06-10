@@ -6,21 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="/Matna/css/body/community/all/content.css">
-<script type="text/javascript" src="/Matna/js/ajax2.js"></script>
-<script type="text/javascript" src="/Matna/js/jquery2.js"></script>
+<!-- <link rel="stylesheet" type="text/css"
+	href="/Matna/css/body/community/all/content.css"> -->
+<script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		selectAllReply();
 	}
 	function selectAllReply(){
 		$.ajax({
-			url:'/Matna/review/review.do',
+			url:'/matna/review/replyList',
 			type:"POST",
 			data:{
-				action:"selectAllReply",
-				reNo:'<%=request.getAttribute("reNo")%>'
+				rNo:'${review.no}'
 			},
 			success:function (result) {
 				$('#replyList').html(result);
@@ -81,11 +79,10 @@
 			alert('먼저 로그인 해주세요~'); return;
 		}
 		$.ajax({
-			url:'/Matna/review/review.do',
+			url:'/Matna/review/findGB',
 			data:{
-				action:"findGB",
-				name:name,
-				no:no
+				userNo:'${userNo}',
+				reviewNo:'${review.no}'
 			},
 			type:"post",
 			success:function(result){
@@ -150,21 +147,18 @@
 		upDiv.style.display = "none";
 	}
 	
-	function deleteReview(no,listType) {
-		var params = "action=delete&no="+no+"&listType="+listType
-		document.location.href="/Matna/review/review.do?"+params;
+	function deleteReview() {
+		var f = document.reviewForm;
+		f.action.value = "/matna/review/remove";
 	}
 	
-	function updateReview(action,no) {
+	function updateReview() {
 		var f = document.reviewForm;
-		f.action.value = action;
-		f.reviewNo.value = no;
+		f.action.value = "/matna/review/modify";
 		f.submit();
 	}
 </script>
 </head>
-<c:set var="taste" value='' />
-<c:set var="service" value='' />
 <c:forEach begin="1" end="5" varStatus="stat">
 	<c:if test="${preview.parking==1 }">
 			<c:set var="parking" value="있음" />
@@ -172,58 +166,50 @@
 		<c:if test="${preview.parking==0 }">
 			<c:set var="parking" value="없음" />
 		</c:if>
-	<%-- 맛 별점 체크 --%>
-	<c:if test="${preview.taste==stat.index }">
+	<%-- 평점 체크 --%>
+	<c:if test="${preview.score==stat.index }">
 		<c:forEach begin="1" end="${stat.index}">
-			<c:set var="taste" value='${taste += "★"}' />
+			<c:set var="score" value='${score += "★"}' />
 		</c:forEach>
 		<c:forEach begin="1" end="${5-stat.index }">
-			<c:set var="taste" value='${taste += "☆"}' />
+			<c:set var="score" value='${score += "☆"}' />
 		</c:forEach>
 	</c:if>
 
-	<%-- 서비스 별점 체크 --%>
-	<c:if test="${preview.service==stat.index }">
-		<c:forEach begin="1" end="${stat.index }">
-			<c:set var="service" value='${service += "★"}' />
-		</c:forEach>
-		<c:forEach begin="1" end="${5-stat.index }">
-			<c:set var="service" value='${service += "☆"}' />
-		</c:forEach>
-	</c:if>
 </c:forEach>
 <body>
-	<form name="reviewForm" id="reviewForm" class="reviewF"	action="/Matna/review/review.do" method="post">
-		<input type="hidden" name="reviewNo" id="reviewNo"/>
-		<input type="hidden" name="action" id="action"/>
+	<form name="reviewForm" id="reviewForm" class="reviewF" method="post">
+		<input type="hidden" name="no" value="${review.no }"/>
+		<input type="hidden" name="writer" value="${review.writer }"/>
+		<input type="hidden" name="tabType" value="${tabType }"/>
+		<input type="hidden" name="pageType" value="${pageType }"/>
+		
 		<table id="contentTable" cellpadding="5" bordercolor="#00bbdd" border="1">
 			<tr>
 				<td><font size="2">작성자</font></td>
-				<td><font size="2"><b>${review.writer }</b></font></td>
+				<td><font size="2"><b>${review.nickName }</b></font></td>
 				<td><font size="2">조회수</font></td>
-				<td><font size="2"><b>${review.cnt }</b></font></td>
+				<td><font size="2"><b>${review.viewCnt }</b></font></td>
 			</tr>
 			<tr>
-				<td><font size="2">상권</font></td>
-				<td><font size="2"><b>${preview.addr }</b></font></td>
 				<td><font size="2">주차장 여부</font></td>
 				<td><font size="2"><b>${parking}</b></font></td>
-			</tr>
-			<tr>
-				<td><font size="2">맛</font></td>
-				<td id="savor"><font color="orange">${taste }</font></td>
-				<td><font size="2">1인비용</font></td>
-				<td><font size="2"><b>${previewPrice }</b></font></td>
-			</tr>
-			<tr>
-				<td><font size="2">서비스</font></td>
-				<td id="service"><font color="orange">${service }</font></td>
 				<td><font size="2">연락처</font>
 				<td><font size="2"><b>${preview.phone }</b></font>
 			</tr>
 			<tr>
-				<td>요약</td>
-				<td colspan="3"><font size="3" color="3adf55"> ${preview.summary }</font></td>
+				<td><font size="2">평점</font></td>
+				<td id="savor"><font color="orange">${score }</font></td>
+				<td><font size="2">1인비용</font></td>
+				<td><font size="2"><b>${preview.price }</b></font></td>
+			</tr>
+			<tr>
+				<td colspan="4">
+				<div>
+					<font size="2"><b>${preview.gu } ${preview.dong } ${preview.addr }</b></font>
+				</div>
+				<div>${preview.map}</div>
+			</td>
 			</tr>
 			<tr></tr>
 			<tr>
@@ -240,19 +226,13 @@
 				<a href='javascript:findGB("bad",${reNo },"${userId }")' style="color: teal;">
 				싫어요:</a> <font color="red"><span id="bad">${review.bad }</span> </font></td>
 				<td colspan="4" align="right">
-					<c:if test="${userId != null && userId eq review.writer  || userId eq 'admin'}">
-					<input type="button" value="수정" onclick="javascript:updateReview('update','${review.no}');">
-					<input type="button" value="삭제" onclick="deleteReview(${reNo},'${listType }')"> 
+					<c:if test="${userNo != 0 && userNo == review.writer}">
+					<input type="button" value="수정" onclick="updateReview();">
+					<input type="button" value="삭제" onclick="deleteReview()"> 
 					</c:if>
-					<c:if test="${listType eq 'review' }">
- 					<input type="button" value="  목록으로  "
-					onclick='javascript:document.location.href="/Matna/review/list.do?tabType=food"'>
-					</c:if>
-					<c:if test="${listType eq 'ranking' }">
 					<input type="button" value="  목록으로  " 
-					onclick='javascript:document.location.href="/Matna/ranking/list.do?tabType=food"'>
+					onclick='javascript:document.location.href="/matna/review/list?page=${page }&tabType=${tabType }&pageType=${pageType}"'>
 					</td>
-					</c:if>
 			</tr>
 		</table>
 	</form>
@@ -260,7 +240,7 @@
 		<form name="addForm" style="border: thin; background-color: #f1f1f1;">
 			<!-- 입력폼 -->
 			<h4 style="font: fantasy;">댓글쓰기</h4>
-			<input type="hidden" name="writer" size="10" value="${userId }">
+			<input type="hidden" name="writer" size="10" value="${userNo }">
 			<textarea rows="3" cols="50" name="content" tabindex="0"
 				style="width: 500px; height: 80px;"></textarea>
 			<input type="button" value="등록" onclick="insertReply()" tabindex="1"
