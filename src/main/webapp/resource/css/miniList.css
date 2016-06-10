@@ -1,0 +1,281 @@
+@CHARSET "UTF-8";
+
+h3 {
+	margin-left: 0px;
+	width: 30;
+	border: 3px solid green;
+	padding: 10px;
+	text-align: left;
+}
+
+#menuTable td, th {
+	border: 1px solid #D4E0EE;
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	color: #555;
+}
+
+caption {
+	font-size: 150%;
+	font-weight: bold;
+	margin: 5px;
+}
+
+td, th {
+	padding: 4px;
+}
+
+thead th {
+	text-align: center;
+	background: #E6EDF5;
+	color: #4F76A3;
+	font-size: 100% !important;
+}
+
+tbody th {
+	font-weight: bold;
+}
+
+tbody tr {
+	background: #FFFFFF;
+}
+
+tbody tr.odd {
+	background: #F7F9FC;
+}
+
+table a:link {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:visited {
+	color: #718ABE;
+	text-decoration: none;
+}
+
+table a:hover {
+	color: #718ABE;
+	text-decoration: underline !important;
+}
+
+
+.group::after, .tabBlock-tabs::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+p, ol, ul {
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+}
+
+ol, ul {
+  padding: 0;
+  margin-left: 1.25rem;
+}
+
+.unstyledList, .tabBlock-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabBlock {
+  margin: 0 0 2.5rem;
+}
+
+.tabBlock-tab {
+  background-color: #fff;
+  border-color: #d8d8d8;
+  border-left-style: solid;
+  border-top: solid;
+  border-width: 2px;
+  color: #b5a8c5;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  float: left;
+  padding: 0.625rem 1.25rem;
+  position: relative;
+  -webkit-transition: 0.1s ease-in-out;
+          transition: 0.1s ease-in-out;
+}
+.tabBlock-tab:last-of-type {
+  border-right-style: solid;
+}
+.tabBlock-tab::before, .tabBlock-tab::after {
+  content: "";
+  display: block;
+  height: 4px;
+  position: absolute;
+  -webkit-transition: 0.1s ease-in-out;
+          transition: 0.1s ease-in-out;
+}
+.tabBlock-tab::before {
+  background-color: #b5a8c5;
+  left: -2px;
+  right: -2px;
+  top: -2px;
+}
+.tabBlock-tab::after {
+  background-color: transparent;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+}
+@media screen and (min-width: 700px) {
+  .tabBlock-tab {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+.tabBlock-tab.is-active {
+  position: relative;
+  color: #975997;
+  z-index: 1;
+}
+.tabBlock-tab.is-active::before {
+  background-color: #975997;
+}
+.tabBlock-tab.is-active::after {
+  background-color: #fff;
+}
+
+.tabBlock-content {
+  background-color: #fff;
+  border: 2px solid #d8d8d8;
+  padding: 1.25rem;
+}
+
+  
+   * { box-sizing: border-box; }
+
+.tabs {
+  position: relative;
+  margin: 3rem 0;
+  background:white; 
+  height: 100%;
+}
+.tabs::before,
+
+.tabs::after {
+  content: "";
+  display: table;
+}
+
+.tabs::after { clear: both; }
+.tab { float: left; }
+.tab-switch { display: none; }
+
+.tab-label {
+  position: relative;
+  display: block;
+  line-height: 2.75em;
+  height: 3em;
+  padding: 0 1.618em;
+  background: #79deff;
+  border-right: 0.125rem solid  white;
+  color: #fff;
+  cursor: pointer;
+  top: 0;
+  transition: all 0.25s;
+}
+
+.tab-label:hover {
+  top: -0.25rem;
+  transition: all 0.25s;
+}
+
+.tab-content {
+  padding: 1.618rem;
+  background: #f8f8f8;
+  color: #2c3e50;
+  border-bottom: 0.25rem solid #f8f8f8;
+  position: absolute;
+  z-index: 1;
+  top: 2.75em;
+  left: 0;
+  opacity: 0;
+  transition: all 0.35s;
+}
+
+
+ 
+.tab-switch:checked + .tab-label {
+   background:  #00bfff;
+   color: #2c3e50;
+   border-bottom: 0;
+   border-right: 0.0625rem solid #fff;
+   transition: all 0.35s;
+   z-index: 2;
+  top: -0.0625rem;
+}
+
+.tab-switch:checked + .tab-label:hover { top: -0.0625rem; }
+
+.tab-switch:checked + .tab-label + .tab-content {
+  opacity: 1;
+  transition: all 0.35s;
+  z-index: 3;
+}
+ 
+ 
+ 
+ =====================================
+         홈- 탭리뷰
+ =====================================
+ 
+ @import url('http://fonts.googleapis.com/css?family=Amarante');
+
+/** page structure **/
+
+#review_table {
+  margin: 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+
+#review_table thead {
+  cursor: pointer;
+  background: #c9dff0;
+}
+#review_table thead tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#review_table thead tr th span { 
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#review_table thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+  background: #acc8dd;
+}
+
+#review_table thead tr th.headerSortUp span {
+  background-image: url('http://i.imgur.com/SP99ZPJ.png');
+}
+#review_table thead tr th.headerSortDown span {
+  background-image: url('http://i.imgur.com/RkA9MBo.png');
+}
+
+
+#review_table tbody tr { 
+  color: #555;
+}
+#review_table tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+#review_table tbody tr td.lalign {
+  text-align: left;
+}
