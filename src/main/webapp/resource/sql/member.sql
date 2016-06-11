@@ -6,14 +6,15 @@ create table member(
 	id varchar(20) not null,
 	pw varchar(20) not null,
 	name varchar(35) not null,
+	nickName varchar(35) not null,
 	birth varchar(6) not null,
 	gender varchar(5) not null,
 	email varchar(50) not null,
 	phone varchar(15) not null,
 	post varchar(5) not null,
 	addr varchar(200) not null,
-	point number not null,
-	regdate varchar(10) not null
+	point number default 0,
+	regdate varchar(10) default sysdate
 );
 
 drop sequence member_seq;

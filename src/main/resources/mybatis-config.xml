@@ -7,5 +7,6 @@
    <typeAlias type="com.kosta.matna.domain.review.ReviewVO" alias="review"/>
    <typeAlias type="com.kosta.matna.domain.review.PreviewVO" alias="preview"/>
    <typeAlias type="com.kosta.matna.domain.review.ReviewDTO" alias="reviewDTO"/>
+   <typeAlias type="com.kosta.matna.domain.review.ReplyVO" alias="reply"/>
    </typeAliases>
 </configuration>

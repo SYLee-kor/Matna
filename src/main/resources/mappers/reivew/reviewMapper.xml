@@ -48,11 +48,12 @@
 	</select>
 	
 	<select id="selectOne" resultType="review">
-		select * from review where no=#{no}
+		select no,title,content,writer,(select nickName from member where no=writer),regdate,replyCnt,viewCnt,good,bad,photo 
+		from review where no=#{no}
 	</select>
 	
 	<select id="selectList" resultType="reviewDTO">
-		select no,title,writer,regdate,replycnt,viewcnt,photo,parking,recommend
+		select no,title,writer,(select nickName from member where no=writer) nickName, regdate,replycnt,viewcnt,photo,parking,recommend
 		from review natural join preview
 		where menu=#{tabType}
 		<choose>

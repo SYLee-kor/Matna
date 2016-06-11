@@ -39,10 +39,6 @@ public class ReviewController {
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
 		try {
-			// # 받은 주소값을 통해 지도 좌표값 구하기.
-			String map = "1022323, 123123";
-			preview.setMap(map);
-			
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
 			review.setPhoto(photo);
@@ -77,8 +73,14 @@ public class ReviewController {
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
+			
+			// # 가격 5000원 ~ 10000원 식으로 표현하기 위해
+			PreviewVO preview = (PreviewVO) reviews[1] ;
+			String prices[] = preview.getPrice().split(",");
+			preview.setPrice(prices[0]+"000원"+" ~ "+prices[1]+"000원");
+			
 			model.addAttribute("review",reviews[0]);
-			model.addAttribute("review",reviews[1]);
+			model.addAttribute("preview",preview);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";

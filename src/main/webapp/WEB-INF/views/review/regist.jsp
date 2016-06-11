@@ -8,6 +8,8 @@
 <script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 <script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
+<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	pringGu();
@@ -111,7 +113,10 @@ $(function(){
 		<table cellpadding="5" bordercolor="#00bbdd" style="width:100%; padding-left: 50px" >
 			<tr>
 				<td>지역</td>
-				<td><span id="guSpan"></span> <span id="dongSpan"></span></td>
+				<td>
+					<span id="guSpan"></span> <span id="dongSpan"></span>
+					<input type="text" name="addr" placeholder='상세주소'>
+				</td>
 			</tr>
 			<tr>
 				<td>주차장 여부</td>
@@ -162,12 +167,6 @@ $(function(){
 			<tr>
 				<td>추천 메뉴</td>
 				<td><textarea id="recommend" rows="2" cols="50" name="recommend"></textarea></td>
-			</tr>
-			<tr>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
 			</tr>
 			<tr>
 				<td>제목</td>
