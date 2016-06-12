@@ -52,13 +52,36 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyReview(){
+	public String modifyReview(int no, Model model){
+		try {
+			Object reviews[] = service.readReview(no);
+			model.addAttribute("review", (ReviewVO)reviews[0]);
+			model.addAttribute("preview", (PreviewVO)reviews[1]);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 		return path+"modify";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
 		try {
+			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
+			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
+			review.setPhoto(photo);
+			
+			System.out.println("reviewVO : "+review.getPhoto());
+			
+			System.out.println("previewVO : "+preview.getNo());
+			System.out.println("previewVO : "+preview.getScore());
+			System.out.println("previewVO : "+preview.getGu());
+			System.out.println("previewVO : "+preview.getDong());
+			System.out.println("previewVO : "+preview.getAddr());
+			System.out.println("previewVO : "+preview.getMenu());
+			System.out.println("previewVO : "+preview.getParking());
+			System.out.println("previewVO : "+preview.getPhone());
+			
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
 		} catch (Exception e) {

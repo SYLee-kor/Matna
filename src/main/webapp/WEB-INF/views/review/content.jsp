@@ -64,6 +64,21 @@
 			})
 		}
 	}
+	
+	$()
+	function deleteReview() {
+		var reviewForm = $('#reviewForm');
+		reviewForm.attr("action",'/matna/review/remove');
+		reviewForm.attr("method",'POST');
+		reviewForm.submit();
+	}
+	
+	function updateReview(no) {
+		var reviewForm = $('#reviewForm');
+		reviewForm.attr("method",'GET');
+		reviewForm.attr("action",'/matna/review/modify');
+		reviewForm.submit();
+	}
 </script>
 </head>
 <!-- 주차 여부 체크 -->
@@ -86,13 +101,12 @@
 	</c:if>
 </c:forEach>
 <body>
-	<form name="reviewForm" id="reviewForm" class="reviewF"	action="/Matna/review/review.do" method="post">
-		<input type="hidden" name="reviewNo" id="reviewNo"/>
-		<input type="hidden" name="action" id="action"/>
+	<form name="reviewForm" id="reviewForm" class="reviewF">
+		<input type="hidden" name="no" value="${review.no }"/>
 		<table id="contentTable" cellpadding="5" bordercolor="#00bbdd" border="1">
 			<tr>
 				<td><font size="2">작성자</font></td>
-				<td><font size="2"><b>${review.writer }</b></font></td>
+				<td><font size="2"><b>${review.nickName }</b></font></td>
 				<td><font size="2">조회수</font></td>
 				<td><font size="2"><b>${review.viewCnt }</b></font></td>
 			</tr>
@@ -110,7 +124,7 @@
 			</tr>
 			<tr>
 				<td colspan="4">
-					<div><font size="2"><b>${preview.gu } ${preview.dong } ${preview.addr } ${preview.map }</b></font></div>
+					<div><font size="2"><b>${preview.recommend }</b></font></div>
 					<div id="map" style="width:500px;height:250px;"></div>
 				</td>
 			</tr>
@@ -129,7 +143,7 @@
 				<a href='javascript:findGB("bad",${reNo },"${userNo }")' style="color: teal;">
 				싫어요:</a> <font color="red"><span id="bad">${review.bad }</span> </font></td>
 				<td colspan="4" align="right">
-					<c:if test="${userId != null && userId eq review.writer  || userId eq 'admin'}">
+					<c:if test="${ userNo == review.writer }">
 					<input type="button" value="수정" onclick="updateReview('${review.no}');">
 					<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
 					</c:if>

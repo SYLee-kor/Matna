@@ -17,8 +17,8 @@
 		if('${result}'=='success') alert('처리되었습니다.');
 	})
 	function showTab(type,page) {
-		var types = ['food','desert','drink','search'];
-		for (i= 0; i < 4; i++) {
+		var types = ['food','desert','drink'];
+		for (i= 0; i < 3; i++) {
 			var tb = document.getElementById('tab_'+types[i]);
 			if(type != types[i]){
 				tb.style.display = "none";
@@ -31,7 +31,6 @@
 		}
 	}
 	function showPage(type,page) {
-		alert('page : '+page);
 		$("#tab_"+type).load('/matna/review/tabPage?tabType='+type
 				+'&pageType=${pageType}&page='+page);
 	}
@@ -67,11 +66,9 @@
 	</div>
 	<br>
 	<div align="right" style="width: 90%;">
-		<c:if test="${login eq 'success' }" >
-			<form action="/matna/review/regist" method="get">
-				<button>글등록</button>
-			</form>
-		</c:if>
+		<form action="/matna/review/regist" method="get">
+			<button>글등록</button>
+		</form>
 	</div>
 	
 	</div></div></figure>

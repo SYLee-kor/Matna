@@ -35,7 +35,7 @@ create table preview(
 	parking number default 0,
 	price varchar(10) not null,
 	score number not null,
-	recommend varchar2(30),
+	recommend varchar2(100),
 	menu varchar2(15) not null,
 	gu varchar2(60) not null,
 	dong varchar2(60) not null,
