@@ -51,12 +51,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public Object[] readReview(int no) throws Exception {
-		// # 리뷰, 프리뷰 데이터 가져오기
 		Object[] reviews = new Object[2];
 		reviews[0] = dao.readReview(no);
 		reviews[1] = dao.readPreview(no);
-		// # 조회수 증가!!
-		dao.viewCntUp(no);
 		return reviews;
 	}
 

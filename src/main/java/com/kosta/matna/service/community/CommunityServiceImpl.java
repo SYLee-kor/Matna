@@ -8,13 +8,15 @@ import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.community.BoardTypeVO;
 import com.kosta.matna.domain.community.BoardVO;
-import com.kosta.matna.persistence.community.FreeBoardDAO;
+import com.kosta.matna.domain.community.Criteria;
+import com.kosta.matna.domain.community.SearchVO;
+import com.kosta.matna.persistence.community.CommunityDAO;
 
 @Service
-public class BoardServiceImpl implements BoardService {
+public class CommunityServiceImpl implements CommunityService {
 	
 	@Inject
-	private FreeBoardDAO dao;
+	private CommunityDAO dao;
 
 	@Override
 	public void regist(BoardVO board) throws Exception {
@@ -42,4 +44,25 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listAll(type);
 	}
 
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri,BoardTypeVO type) throws Exception {
+		return dao.listCriteria(cri,type);
+	}
+
+	@Override
+	public int listCountCriteria(BoardTypeVO type) throws Exception {		
+		return dao.countPaging(type);
+	}
+
+	@Override
+	public List<BoardVO> listSearchCriteria(SearchVO cri, BoardTypeVO type) throws Exception {
+		return dao.listSearch(cri,type);
+	}
+
+	@Override
+	public int listSearchCount(SearchVO cri, BoardTypeVO type) throws Exception {
+		return dao.listSearchCount(cri,type);
+	}
+	
+	
 }

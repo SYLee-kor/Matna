@@ -1,7 +1,7 @@
 
 // 기본 URL
 var url = "/matna/reviewReply";
-	function insertReply(rNo,page){
+	function insertReply(rNo){
 		/*if(login!='success'){
 			alert('댓글을 달기 위해선 로그인을 해야합니다.');
 			return;
@@ -10,13 +10,13 @@ var url = "/matna/reviewReply";
 			url:"/matna/reviewReply/addReply",
 			data:{
 				rNo:rNo,
-				writer:$('#replyWriter').val(),
-				content:$('#replyContent').val()
+				writer:$('#repWriter').val(),
+				content:$('#repContent').val()
 			},
 			type:"POST",
 			dataType:"json",
 			success:function(result){
-				listReply(rNo,page);
+				listReply(rNo);
 				$('#repContent').val('')
 			},
 			error:function(xhr,status,error){
@@ -26,12 +26,11 @@ var url = "/matna/reviewReply";
 		})
 	}
 	
-	function listReply(no,page) {
+	function listReply(no) {
 		$.ajax({
 			url:url+"/listReply",
 			data:{
-				rNo:no,		// # 게시글 번호
-				page:page
+				rNo:no		// # 게시글 번호
 			},
 			type:"POST",
 			success:function(result){
@@ -43,26 +42,23 @@ var url = "/matna/reviewReply";
 		})
 	}
 	var upNo=0;
-	var upPage=0;
 	var upContent = '';
-	function upReplyForm(no, content, page) { // # 업데이트 폼 형성
-		alert(no+"/"+content+'/'+page);
-		upPage=page;
+	function upReplyForm(no, content) { // # 업데이트 폼 형성
 		upNo=no;
 		upContent = content;
 		// # 업데이트 폼 이동
-		var upDiv = $("#replyUpDiv");
+		var upDiv = $("#replyUpdate");
 		upDiv.remove();
-		var upSpan = $('#upSpan'+no);
+		var upSpan = $('#r'+no);
 		upSpan.append(upDiv);
 		upDiv.show();
 		// # 업데이트 폼 데이터 세팅
-		$('#replyContent_up').val(content);
+		$('#repContent_up').val(content);
 	}
 	
 	function hideReplyForm() {
-		$('#replyUpDiv').hide();
-		var upDiv = $("#replyUpDiv");
+		$('#replyUpdate').hide();
+		var upDiv = $("#replyUpdate");
 		upDiv.remove();
 		var body = $("body");
 		body.append(upDiv);
@@ -75,18 +71,18 @@ var url = "/matna/reviewReply";
 			data:{
 				no:upNo,			// # upNo --> 댓글 번호
 				rNo:rNo,
-				content: $('#replyContent_up').val(),
+				content: $('#repContent_up').val()
 			},
 			type:"POST",
 			dataType:"json",
 			success:function(result){
 				hideReplyForm();
-				listReply(rNo,upPage)
+				listReply(rNo)
 			}
 		})
 	}
 
-	function deleteReply(no,rNo,page){
+	function deleteReply(no,rNo){
 		$.ajax({
 			url:url+"/removeReply",
 			data:{
@@ -96,7 +92,7 @@ var url = "/matna/reviewReply";
 			dataType:"json",
 			success:function(result){
 				hideReplyForm();
-				listReply(rNo,page);
+				listReply(rNo);
 			}
 		})
 	}

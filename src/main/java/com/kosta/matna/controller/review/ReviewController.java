@@ -3,8 +3,6 @@ package com.kosta.matna.controller.review;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -38,31 +36,17 @@ public class ReviewController {
 	public String registReview(@ModelAttribute("pageType") String pageType, Model model
 			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
 		model.addAttribute("action", "regist");
-		return path+"/regist";
+		return path+"regist";
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String tabType, String pageType, String page){
 		try {
-			System.out.println("review Content : "+review.getContent());
-			System.out.println("review title : "+review.getTitle());
-			System.out.println("preview Recommend : "+preview.getRecommend());
-			System.out.println("preview "+preview.getGu());
-			System.out.println("preview "+preview.getDong());
-			System.out.println("preview "+preview.getAddr());
-			System.out.println("preview "+preview.getMenu());
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			String photo = ( review.getPhoto()==null ) ? "<img src='nonPhoto.jpg' title='nonPhoto'":review.getPhoto(); 
-
-			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
-			Matcher match = pattern.matcher(review.getContent());
-			String imgTag = "";
-			if (match.find())imgTag = match.group(0);
-			photo = imgTag+" width=\"150\" height=\"90\">";
-			
+			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
 			review.setPhoto(photo);
-			System.out.println("review photo : "+photo);
+			
 			// # 주소값 입력안했을 경우...
 			String addr = ( preview.getAddr().equals("") ) ? "  " : preview.getAddr();
 			preview.setAddr(addr);
@@ -90,7 +74,7 @@ public class ReviewController {
 			e.printStackTrace();
 			return "error";
 		}
-		return path+"/regist";
+		return path+"regist";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)

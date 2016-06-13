@@ -15,10 +15,7 @@ public interface ReviewDAO {
 	
 	boolean updateReview(ReviewVO vo) throws Exception;
 	boolean updatePreview(PreviewVO vo)throws Exception;
-	
-	boolean viewCntUp(int no) throws Exception; // # 조회수 증가
-	boolean replyCntUp(int no) throws Exception; // # 댓글 수 증가
-	
+	boolean viewCntUp(int no) throws Exception;
 	boolean gbUp(int no, String gbKey)throws Exception;
 	
 	boolean deleteReview(int no) throws Exception;
