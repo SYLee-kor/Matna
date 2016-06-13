@@ -1,27 +1,26 @@
 package com.kosta.matna.domain.review;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ReplyVO {
-	
-	private int rno;
-	private int bno;
+	private int no;
+	private int rNo;
 	private int writer;
 	private String nickName;
 	private String content;
-	private Date regdate;
+	private Date regDate;
 	
-	public int getRno() {
-		return rno;
+	public int getNo() {
+		return no;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setNo(int no) {
+		this.no = no;
 	}
-	public int getBno() {
-		return bno;
+	public int getrNo() {
+		return rNo;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setrNo(int rNo) {
+		this.rNo = rNo;
 	}
 	public int getWriter() {
 		return writer;
@@ -41,10 +40,10 @@ public class ReplyVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 }

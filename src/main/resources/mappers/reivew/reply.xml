@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="review_reply">
+<mapper namespace="reviewReply">
 	<insert id="insert">
-	<![CDATA[
 		insert into review_reply (no,rNo,writer,content)
-		values(review_reply_seq.nextval, #{rNo}, #{writer}, #{content})
-	]]>
+		values(review_reply_seq.nextval,#{rNo},#{writer},#{content})
 	</insert>
 	
 	<update id="update">
-	<![CDATA[
-		update review_reply set content = #{content}
+		update review_reply set content=#{content}, regdate=sysdate
 		where no=#{no}
-	]]>
 	</update>
 	
 	<delete id="delete">
@@ -22,8 +18,10 @@
 	
 	<select id="list" resultType="reply">
 		select no,rNo,writer,(select nickName from member where no=writer) nickName
-			,content,regdate
-		 from review
-		 order by no desc
+			, content, regdate
+		from review_reply
+		where rNo=#{rNo}
+		order by no desc
+>>>>>>> branch 'master' of https://github.com/SYLee-kor/Matna.git
 	</select>
 </mapper>

@@ -6,83 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet" type="text/css"
-	href="/Matna/css/body/community/all/content.css"> -->
-<script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
+<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
+<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
+<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
-		selectAllReply();
+		showMap('${preview.gu} ${preview.dong} ${preview.addr}');
+		listReply('${review.no}');
 	}
-	function selectAllReply(){
-		$.ajax({
-			url:'/matna/review/replyList',
-			type:"POST",
-			data:{
-				rNo:'${review.no}'
-			},
-			success:function (result) {
-				$('#replyList').html(result);
-			},
-			error:function (xhr,result,error){
-				alert(error);
-				alert(result);
-			}
-			
-		})
-	}
-	
-	function insertReply() { // # 댓글 추가
-		if('${login}'!='success'){
-			alert('댓글을 달기 위해선 로그인을 해야합니다.');
-			return;
-		}
-		
-		var params = "writer=" + document.addForm.writer.value + "&content="
-				+ document.addForm.content.value +"&reNo="+<%=request.getAttribute("reNo")%> +"&action=insertReply";
-		hideForm();
-		new ajax.xhr.Request('/Matna/review/review.do', params, printReply,
-				'POST');
-
-		//@ addForm의 텍스트필드 리셋.
-		document.addForm.name.value = "";
-		document.addForm.content.value = "";
-	}
-	
-	var upNo = 0;
-	function upForm(no, name) { //# 수정폼 보이기, 위치변경 및 기존 데이터 출력
-		upNo = no;
-		// # 업데이트 폼의 위치 변경
-		var upDiv = document.getElementById("replyUpdate");
-		upDiv.parentNode.removeChild(upDiv);
-		var oneReply = document.getElementById("r" + upNo);
-		oneReply.appendChild(upDiv);
-		upDiv.style.display = "";
-
-		// # 업데이트 폼에 기존 데이터를 출력
-		document.updateForm.name.value = name;
-		var content = document.getElementById("c" + upNo).firstChild.nodeValue;
-		document.updateForm.content.value = content;
-	}
-
-	function updateReply() { // # 댓글 수정 작업..
-		var params = "no=" + upNo + "&name=" + document.updateForm.name.value
-				+ "&content=" + document.updateForm.content.value
-				+ "&action=updateReply";
-		hideForm();
-		new ajax.xhr.Request('/Matna/review/review.do', params, printReply,
-				'POST');
-	}
-	
 	var gbFlag ='';
 	function findGB(gbType,no,name) {
 		if('${login}'!='success'){
 			alert('먼저 로그인 해주세요~'); return;
 		}
 		$.ajax({
-			url:'/Matna/review/findGB',
+			url:'/matna/review/findGB',
 			data:{
-				userNo:'${userNo}',
-				reviewNo:'${review.no}'
+				name:name,
+				no:no
 			},
 			type:"post",
 			success:function(result){
@@ -123,67 +65,45 @@
 		}
 	}
 	
-	
-	function deleteReply(delNo) { // # 삭제
-		var params = "no=" + delNo + "&action=deleteReply";
-		hideForm();
-		new ajax.xhr.Request('/Matna/review/review.do', params, printReply,
-				'POST');
-	}
-
-	function printReply(xhr) { // # 페이지 출력..
-		if (xhr.readyState == 4 && xhr.status == 200) {
-			var replyList = document.getElementById("replyList");
-			replyList.innerHTML = xhr.responseText;
-		}
-		selectAllReply();
-	}
-
-	function hideForm() { // # 폼 숨기기 및 위치 변경
-		var upDiv = document.getElementById("replyUpdate");
-		upDiv.parentNode.removeChild(upDiv);
-		var body = document.documentElement;
-		body.appendChild(upDiv);
-		upDiv.style.display = "none";
-	}
-	
 	function deleteReview() {
-		var f = document.reviewForm;
-		f.action.value = "/matna/review/remove";
+		var reviewForm = $('#reviewForm');
+		reviewForm.attr("action",'/matna/review/remove');
+		reviewForm.attr("method",'POST');
+		reviewForm.submit();
 	}
 	
 	function updateReview() {
-		var f = document.reviewForm;
-		f.action.value = "/matna/review/modify";
-		f.submit();
+		var reviewForm = $('#reviewForm');
+		reviewForm.attr("method",'GET');
+		reviewForm.attr("action",'/matna/review/modify');
+		reviewForm.submit();
 	}
 </script>
 </head>
+<!-- 주차 여부 체크 -->
+<c:if test="${preview.parking==1 }">
+	<c:set var="parking" value="있음" />
+</c:if>
+<c:if test="${preview.parking==0 }">
+	<c:set var="parking" value="없음" />
+</c:if>
+
+<%-- 평점 체크 --%>
 <c:forEach begin="1" end="5" varStatus="stat">
-	<c:if test="${preview.parking==1 }">
-			<c:set var="parking" value="있음" />
-		</c:if>
-		<c:if test="${preview.parking==0 }">
-			<c:set var="parking" value="없음" />
-		</c:if>
-	<%-- 평점 체크 --%>
 	<c:if test="${preview.score==stat.index }">
-		<c:forEach begin="1" end="${stat.index}">
+		<c:forEach begin="1" end="${stat.index }">
 			<c:set var="score" value='${score += "★"}' />
 		</c:forEach>
 		<c:forEach begin="1" end="${5-stat.index }">
 			<c:set var="score" value='${score += "☆"}' />
 		</c:forEach>
 	</c:if>
-
 </c:forEach>
 <body>
-	<form name="reviewForm" id="reviewForm" class="reviewF" method="post">
+	<form name="reviewForm" id="reviewForm" class="reviewF">
 		<input type="hidden" name="no" value="${review.no }"/>
-		<input type="hidden" name="writer" value="${review.writer }"/>
-		<input type="hidden" name="tabType" value="${tabType }"/>
 		<input type="hidden" name="pageType" value="${pageType }"/>
-		
+		<input type="hidden" name="tabType" value="${tabType }"/>
 		<table id="contentTable" cellpadding="5" bordercolor="#00bbdd" border="1">
 			<tr>
 				<td><font size="2">작성자</font></td>
@@ -194,22 +114,20 @@
 			<tr>
 				<td><font size="2">주차장 여부</font></td>
 				<td><font size="2"><b>${parking}</b></font></td>
-				<td><font size="2">연락처</font>
-				<td><font size="2"><b>${preview.phone }</b></font>
-			</tr>
-			<tr>
-				<td><font size="2">평점</font></td>
-				<td id="savor"><font color="orange">${score }</font></td>
 				<td><font size="2">1인비용</font></td>
 				<td><font size="2"><b>${preview.price }</b></font></td>
 			</tr>
 			<tr>
+				<td><font size="2">평점</font></td>
+				<td id="score"><font color="orange">${score }</font></td>
+				<td><font size="2">연락처</font>
+				<td><font size="2"><b>${preview.phone }</b></font>
+			</tr>
+			<tr>
 				<td colspan="4">
-				<div>
-					<font size="2"><b>${preview.gu } ${preview.dong } ${preview.addr }</b></font>
-				</div>
-				<div>${preview.map}</div>
-			</td>
+					<div><font size="2"><b>${preview.recommend }</b></font></div>
+					<div id="map" style="width:500px;height:250px;"></div>
+				</td>
 			</tr>
 			<tr></tr>
 			<tr>
@@ -221,42 +139,22 @@
 			</tr>
 			<tr>
 				<td>
-				<a href='javascript:findGB("good",${reNo },"${userId }")' style="color: teal;">
+				<a href='javascript:findGB("good",${reNo },"${userNo }")' style="color: teal;">
 				좋아요:</a> <font color="red"><span id="good">${review.good }</span> </font>| 
-				<a href='javascript:findGB("bad",${reNo },"${userId }")' style="color: teal;">
+				<a href='javascript:findGB("bad",${reNo },"${userNo }")' style="color: teal;">
 				싫어요:</a> <font color="red"><span id="bad">${review.bad }</span> </font></td>
 				<td colspan="4" align="right">
-					<c:if test="${userNo != 0 && userNo == review.writer}">
-					<input type="button" value="수정" onclick="updateReview();">
-					<input type="button" value="삭제" onclick="deleteReview()"> 
+					<c:if test="${ userNo == review.writer }">
+					<input type="button" value="수정" onclick="updateReview('${review.no}');">
+					<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
 					</c:if>
 					<input type="button" value="  목록으로  " 
-					onclick='javascript:document.location.href="/matna/review/list?page=${page }&tabType=${tabType }&pageType=${pageType}"'>
+					onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
 					</td>
 			</tr>
 		</table>
 	</form>
-	<div id="replyAdd">
-		<form name="addForm" style="border: thin; background-color: #f1f1f1;">
-			<!-- 입력폼 -->
-			<h4 style="font: fantasy;">댓글쓰기</h4>
-			<input type="hidden" name="writer" size="10" value="${userNo }">
-			<textarea rows="3" cols="50" name="content" tabindex="0"
-				style="width: 500px; height: 80px;"></textarea>
-			<input type="button" value="등록" onclick="insertReply()" tabindex="1"
-				style="width: 50px; height: 80px;"><br>
-		</form>
-	</div>
-	<div id="replyList"></div>
-	<div id="replyUpdate" style="display: none">
-		<form name="updateForm">
-			<!-- 수정폼 -->
-			<h4>댓글 수정</h4>
-			<input type="hidden" name="name" size="10" value="id">
-			<textarea rows="3" cols="50" name="content"></textarea>
-			<input type="button" value="등록" onclick="updateReply(0,'no')">
-			<input type="button" value="취소" onclick="hideForm()">
-		</form>
-	</div>
+	<%session.setAttribute("userNo", 01); %>
+	<%@include file="/WEB-INF/views/review/replyPage.jsp" %>
 </body>
 </html>

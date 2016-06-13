@@ -54,7 +54,7 @@ public class ReviewVO {
 	public int getReplyCnt() {
 		return replyCnt;
 	}
-	public void setReplyCnt(int replyCnt) {
+	public void setReplycnt(int replyCnt) {
 		this.replyCnt = replyCnt;
 	}
 	public int getViewCnt() {

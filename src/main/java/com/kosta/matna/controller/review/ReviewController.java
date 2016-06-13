@@ -42,11 +42,6 @@ public class ReviewController {
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String tabType, String pageType, int page){
 		try {
-			System.out.println("preview_addr : "+preview.getAddr());
-			// # 받은 주소값을 통해 지도 좌표값 구하기.
-			String map = "1022323, 123123";
-			preview.setMap(map);
-			
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
 			review.setPhoto(photo);
@@ -63,8 +58,15 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyReview(@ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
+	public String modifyReview(int no, Model model){
+		try {
+			Object reviews[] = service.readReview(no);
+			model.addAttribute("review", (ReviewVO)reviews[0]);
+			model.addAttribute("preview", (PreviewVO)reviews[1]);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 		return path+"modify";
 	}
 
@@ -72,6 +74,21 @@ public class ReviewController {
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String pageType, String tabType, int page){
 		try {
+			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
+			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
+			review.setPhoto(photo);
+			
+			System.out.println("reviewVO : "+review.getPhoto());
+			
+			System.out.println("previewVO : "+preview.getNo());
+			System.out.println("previewVO : "+preview.getScore());
+			System.out.println("previewVO : "+preview.getGu());
+			System.out.println("previewVO : "+preview.getDong());
+			System.out.println("previewVO : "+preview.getAddr());
+			System.out.println("previewVO : "+preview.getMenu());
+			System.out.println("previewVO : "+preview.getParking());
+			System.out.println("previewVO : "+preview.getPhone());
+			
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
 			rttr.addFlashAttribute("tabType", tabType);
@@ -90,8 +107,14 @@ public class ReviewController {
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
+			
+			// # 가격 5000원 ~ 10000원 식으로 표현하기 위해
+			PreviewVO preview = (PreviewVO) reviews[1] ;
+			String prices[] = preview.getPrice().split(",");
+			preview.setPrice(prices[0]+"000원"+" ~ "+prices[1]+"000원");
+			
 			model.addAttribute("review",reviews[0]);
-			model.addAttribute("preview",reviews[1]);
+			model.addAttribute("preview",preview);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";

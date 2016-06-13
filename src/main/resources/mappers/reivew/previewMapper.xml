@@ -4,15 +4,15 @@
 	<!-- Insert -->
 	<insert id="insert">
 		insert into preview (no,parking,price,
-			score,recommend,map,menu,gu,dong,addr,phone)
+			score,recommend,menu,gu,dong,addr,phone)
 		values (review_seq.currval,#{parking},#{price},
-			#{score},#{recommend},#{map},#{menu},#{gu},#{dong},#{addr},#{phone})
+			#{score},#{recommend},#{menu},#{gu},#{dong},#{addr},#{phone})
 	</insert>
 	
 	<update id="update">
 		update preview set parking=#{parking}, price=#{price},
-			score=#{score},recommend=#{recommend},map=#{map},menu=#{menu},gu=#{gu}
-			, dong=#{dong}, phone=#{phone})
+			score=#{score},recommend=#{recommend},menu=#{menu},gu=#{gu}
+			, dong=#{dong}, addr=#{addr}, phone=#{phone}
 		where no = #{no}
 	</update>
 	

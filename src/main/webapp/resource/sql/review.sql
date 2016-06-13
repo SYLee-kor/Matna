@@ -21,7 +21,7 @@ create table review(
 	no number primary key,
 	title varchar2(200) not null,
 	content clob not null,
-	writer varchar(35) not null,
+	writer number not null,
 	regdate date default sysdate,
 	replyCnt number default 0,
 	viewCnt number default 0,
@@ -35,8 +35,7 @@ create table preview(
 	parking number default 0,
 	price varchar(10) not null,
 	score number not null,
-	recommend varchar2(30),
-	map varchar2(30),
+	recommend varchar2(100),
 	menu varchar2(15) not null,
 	gu varchar2(60) not null,
 	dong varchar2(60) not null,
@@ -47,7 +46,7 @@ create table preview(
 create table review_reply(
 	no number primary key,
 	reviewNo number references review(no),
-	writer varchar2(35),
+	writer number,
 	content varchar2(300),
 	regdate date default sysdate
 );

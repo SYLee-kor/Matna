@@ -13,7 +13,6 @@ public class PreviewVO {
 	private String addr;
 	private String phone;
 	
-	
 	public String getAddr() {
 		return addr;
 	}

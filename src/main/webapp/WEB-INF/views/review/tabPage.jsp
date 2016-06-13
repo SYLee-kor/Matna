@@ -5,7 +5,6 @@
 
 <script type="text/javascript">
 function showContents(no) {
-	alert('${page}')
 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=${pageType}&tabType=${tabType}&page=${pageMaker.cri.page}";
 	document.location.href=moveUrl;
