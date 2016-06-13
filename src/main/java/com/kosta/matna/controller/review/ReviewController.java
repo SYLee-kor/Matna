@@ -33,18 +33,24 @@ public class ReviewController {
 	private String path = "review/"; // # WEB-INF/views/ {path} 
 	
 	@RequestMapping(value="regist",method=RequestMethod.GET)
-	public String registReview(@ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
+	public String registReview(@ModelAttribute("pageType") String pageType, Model model
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
+		model.addAttribute("action", "regist");
 		return path+"regist";
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
-			, String tabType, String pageType, int page){
+			, String tabType, String pageType, String page){
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
 			review.setPhoto(photo);
+			
+			// # 주소값 입력안했을 경우...
+			String addr = ( preview.getAddr().equals("") ) ? "  " : preview.getAddr();
+			preview.setAddr(addr);
+			
 			if(service.registReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
 			rttr.addFlashAttribute("pageType", pageType);
@@ -63,31 +69,21 @@ public class ReviewController {
 			Object reviews[] = service.readReview(no);
 			model.addAttribute("review", (ReviewVO)reviews[0]);
 			model.addAttribute("preview", (PreviewVO)reviews[1]);
+			model.addAttribute("action", "modify");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
 		}
-		return path+"modify";
+		return path+"regist";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
-			, String pageType, String tabType, int page){
+			, String pageType, String tabType, String page){
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
 			review.setPhoto(photo);
-			
-			System.out.println("reviewVO : "+review.getPhoto());
-			
-			System.out.println("previewVO : "+preview.getNo());
-			System.out.println("previewVO : "+preview.getScore());
-			System.out.println("previewVO : "+preview.getGu());
-			System.out.println("previewVO : "+preview.getDong());
-			System.out.println("previewVO : "+preview.getAddr());
-			System.out.println("previewVO : "+preview.getMenu());
-			System.out.println("previewVO : "+preview.getParking());
-			System.out.println("previewVO : "+preview.getPhone());
 			
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
@@ -103,7 +99,7 @@ public class ReviewController {
 	
 	@RequestMapping("read")
 	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") int page){
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
@@ -124,10 +120,10 @@ public class ReviewController {
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
 	public String removeReview(int no, RedirectAttributes rttr
-			, String pageType, String tabType,  int page){
+			, String pageType, String tabType,  String page){
 		try {
 			if(service.removeReview(no))
-			rttr.addAttribute("result", "success");
+			rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("pageType", pageType);
 			rttr.addAttribute("tabType", tabType);
 			rttr.addAttribute("page", page);

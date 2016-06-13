@@ -48,7 +48,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="review">
-		select no,title,content,writer,(select nickName from member where no=writer),regdate,replyCnt,viewCnt,good,bad,photo 
+		select no,title,content,writer,(select nickName from member where no=writer) nickName,regdate,replyCnt,viewCnt,good,bad,photo 
 		from review where no=#{no}
 	</select>
 	

@@ -12,18 +12,48 @@
 <script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	pringGu();
+	printGu();
+	color_parking(0);
+	alert('${action}');
+	if('${action}'=='modify'){
+		alert('수정 세팅');
+		color_parking('${preview.parking}');
+		$("[name=score]").val('${preview.score}');
+		$("[name=menu]").val('${preview.menu}');
+		$("[name=price]").val('${preview.price}');
+		$("[name=addr]").val('${preview.addr}');
+		$("[name=recommend]").val('${preview.recommend}');
+		$("[name=phone]").val('${preview.phone}');
+		$("[name=title]").val('${review.title}');
+		$("[name=content]").val('${review.content}');
+	}
 	
-	$('#pON').attr("style",'color:gray');
-	$('#pOFF').attr("style",'color:blue; font-weight:bold');
+	$('#submit').click(function() {
+		var form = $('frm');
+		form.attr("action","/matna/review/${action}");
+		form.submit();
+	})
 })
 
-function pringGu() {
+//# 주차 공간 라디오 박스 눈에 잘 띄도록 색입히기
+function color_parking(type) {
+	if(type==1){
+		$('#pON').attr("style",'color:blue; font-weight:bold;');
+		$('#pOFF').attr("style",'color:gray');
+	}else if(type==0){
+		$('#pON').attr("style",'color:gray');
+		$('#pOFF').attr("style",'color:blue; font-weight:bold;');
+	}
+	$("#wrPark"+type).attr('checked',true); 
+}
+
+function printGu() {
 	$.ajax({
 		url:"/matna/review/guList",
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
 			var gu = '<select id="guList" onchange="printDong()" name="gu">';
+			gu += '<option value="구">구</option>'
 			for (var int = 0; int < result.length; int++) {
 				gu+='<option value="'+result[int]+'">'+result[int]+'</option>';
 			}
@@ -44,6 +74,7 @@ function printDong() {
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
 			var dong = '<select id="dongList" name="dong">';
+			dong += '<option value="동">동</option>'
 			for (var int = 0; int < result.length; int++) {
 				dong+='<option value="'+result[int]+'">'+result[int]+"</option>";
 			}
@@ -77,24 +108,10 @@ $(function(){
 			fCreator : "createSEditor2"
 		});
 		$("#submmit").click(function() {
-			/* if($('[name=phone]').val()==null ||$('[name=phone]').val()==''){
-				alert('연락처를 기입해주세요.');
-				return false;
-			} */
 			oEditors.getById["review_content"].exec("UPDATE_CONTENTS_FIELD", []);
 			$("#action").val("writeSubmit");
 			$("#review_writeForm").submit();
 		});
-		
-		// # 주차 공간 라디오 박스 눈에 잘 띄도록 색입히기
-		$('#wrPark1').click(function() {
-			$('#pON').attr("style",'color:blue; font-weight:bold');
-			$('#pOFF').attr("style",'color:gray');
-		})
-		$('#wrPark0').click(function() {
-			$('#pON').attr("style",'color:gray');
-			$('#pOFF').attr("style",'color:blue; font-weight:bold');
-		})
 	});
 </script>
 <style type="text/css">
@@ -108,27 +125,23 @@ $(function(){
 	<h3>리뷰 작성</h3>
 	<hr>
 	<% session.setAttribute("userNo", "01"); %>
-	<form name="review_writeForm" class="reviewF" id="frm" action="/matna/review/regist" method="post">
+	<form name="review_writeForm" class="reviewF" id="frm" method="post">
 		<input type="hidden" name="writer" value="${userNo }"/>
 		<table cellpadding="5" bordercolor="#00bbdd" style="width:100%; padding-left: 50px" >
 			<tr>
 				<td>지역</td>
 				<td>
-<<<<<<< HEAD
-					<span id="guSpan"></span> <span id="dongSpan"></span> 
-					<input type="text" name="addr" placeholder="상세 주소를 입력해주세요.">
-=======
 					<span id="guSpan"></span> <span id="dongSpan"></span>
 					<input type="text" name="addr" placeholder='상세주소'>
->>>>>>> branch 'master' of https://github.com/SYLee-kor/Matna.git
 				</td>
 			</tr>
 			<tr>
 				<td>주차장 여부</td>
-				<td><span id="pON">있음</span>
-				<input type="radio" name="parking" value="1" id="wrPark1">
+				<td>
+					<span id="pON">있음</span>
+					<input type="radio" name="parking" value="1" id="wrPark1" onclick="color_parking(1)">
 					<span id="pOFF">없음</span>
-					<input type="radio" name="parking" value="0" checked="checked" id="wrPark0">
+					<input type="radio" name="parking" value="0" id="wrPark0" onclick="color_parking(0)">
 				</td>
 			</tr>
 			<tr>

@@ -12,7 +12,9 @@
 <script type="text/javascript" src="/matna/resource/js/reply.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
-		showMap('${preview.gu} ${preview.dong} ${preview.addr}');
+		if(!('${preview.gu}'=='구' || '${preview.dong}'=='동')){
+			showMap('${preview.gu} ${preview.dong} ${preview.addr}');
+		}
 		listReply('${review.no}');
 	}
 	var gbFlag ='';

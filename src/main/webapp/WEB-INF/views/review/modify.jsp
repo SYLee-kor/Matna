@@ -24,6 +24,7 @@ function printGu() {
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
 			var gu = '<select id="guList" name="gu" onchange="printDong()">';
+			gu += '<option value="구">구</option>'
 			for (var int = 0; int < result.length; int++) {
 				gu+='<option value="'+result[int]+'">'+result[int]+'</option>';
 			}
@@ -45,6 +46,7 @@ function printDong() {
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
 			var dong = '<select id="dongList" name="dong">';
+			dong += '<option value="동">동</option>'
 			for (var int = 0; int < result.length; int++) {
 				dong+='<option value="'+result[int]+'">'+result[int]+"</option>";
 			}
@@ -108,8 +110,11 @@ function color_parking(type) {
 	<h3>리뷰 작성</h3>
 	<hr>
 	<form name="review_writeForm" class="reviewF" id="frm" action="/matna/review/modify" method="post">
-		<input type="hidden" name="writer" value="${review.writer }">
 		<input type="hidden" name="no" id="no" value="${review.no }"/>
+		<input type="hidden" name="writer" value="${review.writer }">
+		<input type="hidden" name="page" value="${page }">
+		<input type="hidden" name="pageType" value="${pageType }">
+		<input type="hidden" name="tabType" value="${tabType }">
 		<table cellpadding="5" bordercolor="#00bbdd" style="width:100%; padding-left:10%">
 			<tr>
 				<td>지역</td>
