@@ -28,6 +28,7 @@
 			fCreator : "createSEditor2"
 		});
 		$("#submmit").click(function() {
+			alert('섭밋 버튼 기능')
 			oEditors.getById["free_content"].exec("UPDATE_CONTENTS_FIELD", []);
 			$("#frm").submit();
 		});

@@ -49,7 +49,14 @@ public class ReviewDAOImpl implements ReviewDAO {
 		if(session.update("review.viewCntUp", no)==1)return true;
 		return false;
 	}
+	
+	@Override
+	public boolean replyCntUp(int no) throws Exception {
+		if(session.update("review.replyCntUp", no)==1)return true;
+		return false;
+	}
 
+	
 	@Override
 	public boolean gbUp(int no, String gbKey) throws Exception {
 		Map<String,Object> map = new HashMap<>();
@@ -100,5 +107,4 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public List<String> dongList(String gu) throws Exception {
 		return session.selectList("review.dongList",gu);
 	}
-
 }

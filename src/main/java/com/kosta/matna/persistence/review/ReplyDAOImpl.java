@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -35,8 +36,13 @@ public class ReplyDAOImpl implements ReplyDAO {
 	}
 
 	@Override
-	public List<ReplyVO> listReply(int rNo) throws Exception {
-		return session.selectList(nameSpc+"list", rNo);
+	public List<ReplyVO> listReply(int rNo,RowBounds rowBounds) throws Exception {
+		return session.selectList(nameSpc+"list", rNo, rowBounds);
+	}
+
+	@Override
+	public int getTotalCount(int rNo) throws Exception {
+		return session.selectOne(nameSpc+"totalCount", rNo);
 	}
 
 }

@@ -23,6 +23,13 @@
 	]]>
 	</update>
 	
+	<update id="replyCntUp">
+	<![CDATA[
+		update review set replyCnt = replyCnt+1 
+		where no=#{no}
+	]]>
+	</update>
+	
 	<update id="gbUP">
 	<![CDATA[
 		update review 

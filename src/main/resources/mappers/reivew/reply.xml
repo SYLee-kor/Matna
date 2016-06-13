@@ -23,4 +23,10 @@
 		where rNo=#{rNo}
 		order by no desc
 	</select>
+	
+	<select id="totalCount" resultType="int">
+		select count(*)
+		from review_reply
+		where rNo=#{rNo}
+	</select>
 </mapper>
