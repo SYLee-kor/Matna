@@ -27,7 +27,7 @@ h2 {
 }
 
 /*Contact Form*/
-#frm {
+#contact-form {
    width: 100%;
   background-color: pink;
    margin: 0px auto;
@@ -75,7 +75,7 @@ h2 {
    background-color:#777;
 }
 
-#recommend {
+#summary {
    display: inline;
    width: 400px;
    max-width: 400px;
@@ -90,8 +90,8 @@ h2 {
    -moz-border-radius: 5px;
 }
 
-#guList,
-#dongList,
+span[name="gu"],
+span[name="dong"],
 select[name="kind"],
 select[name="price"]{
   color : white;

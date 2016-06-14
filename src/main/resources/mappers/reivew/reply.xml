@@ -16,17 +16,17 @@
 		where no=#{no}
 	</delete>
 	
+	<select id="totalCount" resultType="int">
+		select count(*)
+		from review_reply
+		where rNo=#{rNo} 
+	</select>
+	
 	<select id="list" resultType="reply">
 		select no,rNo,writer,(select nickName from member where no=writer) nickName
 			, content, regdate
 		from review_reply
 		where rNo=#{rNo}
 		order by no desc
-	</select>
-	
-	<select id="totalCount" resultType="int">
-		select count(*)
-		from review_reply
-		where rNo=#{rNo}
 	</select>
 </mapper>

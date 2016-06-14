@@ -7,7 +7,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ViewTest {
 
 	@RequestMapping("/home")
-	public String viewTest(){
+	public String homeTest(){
 		return "home";
+	}
+	
+	@RequestMapping("/write")
+	public String writeTest(){
+		return "review/menu/all/write";
+	}
+	
+	@RequestMapping("/content")
+	public String contentTest(){
+		return "review/content";
 	}
 }

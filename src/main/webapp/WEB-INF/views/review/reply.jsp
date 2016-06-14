@@ -8,15 +8,14 @@
 <font size="2" style="color: gray">${reply.regDate }</font> &nbsp;
 </font> &nbsp;
 <c:if test="${userNo eq reply.writer}">
-<input type="button" value="수정" onclick="upReplyForm(${reply.no},'${reply.content }','${pageMaker.cri.page })"> 
-<input type="button" value="삭제" onclick="deleteReply(${reply.no},${reply.rNo },${pageMaker.cri.page })">
-${reply.rNo }
+<input type="button" value="수정" onclick="upReplyForm(${reply.no},'${reply.content }',${replyMaker.cri.page })"> 
+<input type="button" value="삭제" onclick="deleteReply(${reply.no},${reply.rNo },${replyMaker.cri.page })">
 </c:if>
 <pre><span style="color: #555555">${reply.content }</span></pre>
-<span id="upSpan${reply.no }"></span>
-<c:forEach begin="0" end="10"><font color="gray" size="3">...........</font></c:forEach><br>
+<span id="reply${reply.no }"></span>
+<c:forEach begin="0" end="10"><font color="gray" size="3">...........</font></c:forEach><br>	
 </c:forEach>
-<c:forEach begin="1" end="${pageMaker.endPage }" varStatus="stat">
+<c:forEach begin="1" end="${replyMaker.endPage }" varStatus="stat">
 	<a href="javascript:listReply(${rNo },${stat.index })">${stat.index }</a>
 </c:forEach>	
 </c:if>

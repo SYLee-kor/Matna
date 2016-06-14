@@ -10,6 +10,18 @@
        </choose>
    </sql>
    
+   <sql id="search">
+     <if test="searchType != null">
+       <choose>
+         <when test="searchType=='title'.toString()">
+           and title like '%'||#{keyword}||'%'
+         </when>
+         <when test="searchType=='writer'.toString()">
+           and writer like '%'||#{keyword}||'%'
+         </when>
+       </choose>       
+     </if>
+   </sql>
 
    <!--  no,title,writer,content,viewcnt,replycnt,regdate -->
    <insert id="create">
@@ -46,6 +58,24 @@
    	set viewcnt = viewcnt + 1
    	where no = #{no}
    </update>
+   
+   <select id="countPaging" resultType="int">
+      select count(*) from <include refid="type"/>
+   </select>
+   
+   <select id="listSearch" resultType="board">
+      select no,title,content,writer,regdate,viewcnt
+      from <include refid="type"/>
+      where no>0     
+      <include refid="search"/>
+     order by no desc     
+   </select>
+   
+   <select id="listSearchCount" resultType="int">
+      select count(*) from <include refid="type"/>
+      where no>0
+      <include refid="search"/>
+   </select>
    
 </mapper>
 

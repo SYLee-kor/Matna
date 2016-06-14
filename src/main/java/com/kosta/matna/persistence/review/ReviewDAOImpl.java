@@ -52,7 +52,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	@Override
 	public boolean replyCntUp(int no) throws Exception {
-		if(session.update("review.replyCntUp", no)==1)return true;
+		if(session.update("review.replyCntUp",no)==1) return true;
 		return false;
 	}
 

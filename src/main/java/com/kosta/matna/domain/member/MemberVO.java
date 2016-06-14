@@ -5,6 +5,7 @@ public class MemberVO {
 	private String id; 
 	private String pw; 
 	private String name; 
+	private String nickname; 
 	private String birth;
 	private String gender;
 	private String email; 
@@ -18,7 +19,7 @@ public class MemberVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberVO(String id, String pw, String name, String email, String gender, String birth, String phone,
+	public MemberVO(String id, String pw, String name,String nickname, String email, String gender, String birth, String phone,
 			String addr, String post, String regdate, int no, int point) {
 		super();
 		this.id = id;
@@ -33,6 +34,7 @@ public class MemberVO {
 		this.regdate = regdate;
 		this.no = no;
 		this.point = point;
+		this.nickname = nickname;
 	}
 
 	public String getId() {
@@ -131,4 +133,13 @@ public class MemberVO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
 }
