@@ -3,7 +3,7 @@ create table member_order(
 	ono number primary key,
 	giver number references member (no),
 	taker number references member (no),
-	item varchar2(100) not null,
+	item number references item(ino),
 	cnt number default 1,
 	orderDate Date default sysdate,
 	state number default 0,

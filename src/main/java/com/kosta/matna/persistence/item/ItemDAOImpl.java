@@ -60,7 +60,7 @@ public class ItemDAOImpl implements ItemDAO {
 
 	@Override
 	public boolean insertOrder(Member_orderVO order) throws Exception {
-		session.insert("item.insertOrder",order);
+		if(session.insert("item.insertOrder",order)==1)return true;
 		return false;
 	}
 
