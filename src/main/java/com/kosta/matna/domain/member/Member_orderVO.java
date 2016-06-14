@@ -1,6 +1,6 @@
 package com.kosta.matna.domain.member;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Member_orderVO {
 	//no,giver, taker, item, cnt, orderDate, state

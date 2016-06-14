@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="item">
+	
+	<!-- =============상품관련(관리자)=============== -->
+	<!-- 아이템 등록하기 -->
+	<insert id="insertItem">
+		insert into item (ino, name, price, amount, content, photo, state) values (Item_seq.nextval, #{name} ,#{price}, #{amount}, #{content}, #{photo}, #{state})
+	</insert>
+	
+	<!-- 아이템 수정하기 -->
+	<update id="modifyItem">
+		update item
+		set name=#{name}, price=#{price}, amount=#{amount}, content=#{content}, photo=#{photo}, state=#{state}
+		where ino=#{ino}
+	</update>
+	
+	<!-- 아이템 제거하기 -->
+	<delete id="deleteItem">
+		delete from item where ino=#{ino}
+	</delete>
+	
 	<!-- 아이템상세보기 -->
-	<select id="detailItem" resultType="item">
-		select photo, name, price, amount, regdate, content, price
+	<select id="detailItem" resultType="com.kosta.matna.domain.item.ItemVO">
+		select photo, name, price, amount, regdate, content, price, ino, state
 		from item
 		where ino=#{ino}
 	</select>
+	<!-- =============상품관련(관리자)끝=============== -->	
 	
+	<!-- =============상품관련(회원)=============== -->	
 	<!-- 아이템구매시 수량감소 -->
 	<update id="updateItem">
 		update item
@@ -29,14 +50,14 @@
 	</insert>
 	
 	<!-- 전체 아이템 리스트 -->
-	<select id="listAll" resultType="item">
-		select ino, photo, name, price
+	<select id="listAll" resultType="com.kosta.matna.domain.item.ItemVO">
+		select ino, photo, name, price, amount, state
 		from item
 		order by ino desc
 	</select>
 	
 	<!-- 검색 아이템 리스트 -->
-	<select id="itemSeach" resultType="item">
+	<select id="itemSeach" resultType="com.kosta.matna.domain.item.ItemVO">
 		select ino, photo, name, price
 		from item
 		where name like '%'||#{name}||'%'
@@ -49,4 +70,18 @@
 		from member
 		where no=#{no}
 	</select>
+	<!-- =============상품관련(회원)끝=============== -->		
+	
+	<!-- =============주문관련=============== -->
+	<!-- 전체 주문 조회(관리자) 고쳐야해  (select name from item where ino=item) itemName,-->
+	<select id="orderListAll" resultType="com.kosta.matna.domain.member.Member_orderVO">
+		select ono, giver, taker, item, cnt, orderDate, state, addr
+		from member_order
+		order by ono desc 
+	</select>
+	
+	<!-- 특정 주문제거(관리자) -->
+	<delete id="deleteOrder">
+		delete from member_order where ono=#{ono}
+	</delete>
 </mapper>
