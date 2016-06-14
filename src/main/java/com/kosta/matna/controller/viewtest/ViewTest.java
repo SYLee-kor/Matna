@@ -20,4 +20,10 @@ public class ViewTest {
 	public String contentTest(){
 		return "review/content";
 	}
+	
+	@RequestMapping("/test/login")
+	public String loginTest(){
+		return "test/login/loginForm";
+	}
+	
 }

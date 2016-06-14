@@ -23,9 +23,12 @@
 	<script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
 	<script src="/matna/resource/js/jquery.singlePageNav.js"></script>
 	<script src="/matna/resource/js/jquery.flexslider.js"></script>
-	
+	<!-- 절취 선 -->
+	<script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
+	<script type="text/javascript" src="/matna/resource/js/login_script.js"></script>
+<link rel="stylesheet" href="/matna/resource/css/login.css">
+	<!--  절취 선 -->
 	<script src="/matna/resource/js/custom.js"></script>
-    <script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
 	<script src="/matna/resource/js/jquery.lightbox.js"></script>
 	<script src="/matna/resource/js/templatemo_custom.js"></script>
     <script src="/matna/resource/js/jquery-git2.js"></script>
@@ -149,7 +152,7 @@
             </div>
 			
 			<!--================== 로그인폼  =============================================-->
-            <div class="col-md-5 col-sm-5" id="loginForm">
+           <!--  <div class="col-md-5 col-sm-5" id="loginForm">
                 <div id="box">
 			        <form id="login_frm">
 			           <input type="text" name=login_id placeholder="USERNAME" />
@@ -160,6 +163,10 @@
 				<div class="signup">
 				<p>not a member ? <a href="#">sign up</a></p>
 				</div>
+			   <div class="panel"> -->
+			   <!-- 절취 선 -->
+  <%@include file="/WEB-INF/views/test/login/loginForm.jsp" %>
+ <!-- 절취 선 -->
 			   </div>
 		    </div>
            </div>
