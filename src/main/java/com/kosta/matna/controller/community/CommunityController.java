@@ -2,31 +2,36 @@ package com.kosta.matna.controller.community;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.community.BoardTypeVO;
 import com.kosta.matna.domain.community.BoardVO;
-import com.kosta.matna.service.community.BoardService;
+import com.kosta.matna.domain.community.Criteria;
+import com.kosta.matna.domain.community.PageMaker;
+import com.kosta.matna.domain.community.SearchVO;
+import com.kosta.matna.service.community.CommunityService;
 
 
 @Controller
 @RequestMapping("/community")
-public class FreeController {
+public class CommunityController {
 	
 	private static final Logger logger
-    = LoggerFactory.getLogger(FreeController.class);
+    = LoggerFactory.getLogger(CommunityController.class);
  
 	@Inject
-	private BoardService service;
+	private CommunityService service;
 	
-	public FreeController() {
+	public CommunityController() {
 	System.out.println("생성");
 	}
 	
@@ -42,9 +47,16 @@ public class FreeController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) throws Exception{
+	public String list(Model model, Criteria cri,HttpSession session) throws Exception{
+		session.setAttribute("userID", "adminTester");
 		logger.info("전체list 요청..."+ model);	
-		model.addAttribute("freeList", service.listAll(new BoardTypeVO("free")));
+		model.addAttribute("list", service.listCriteria(cri,new BoardTypeVO("free")));
+		PageMaker maker = new PageMaker();
+		  maker.setCri(cri);
+		  maker.setTotalCount(service.listCountCriteria(new BoardTypeVO("free")));
+		model.addAttribute("pageMaker", maker);
+		String type = "free";
+		model.addAttribute("type", type);
 		return "main/body/community/all/list";
 	}
 	
@@ -99,12 +111,18 @@ public class FreeController {
 		attr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/community/list";
 	}
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="/slist", method=RequestMethod.GET)
+	public String listPage(@ModelAttribute("cri") SearchVO key, Model model)throws Exception{
+		 logger.info("검색리스트 요청: "+ key);
+		 
+		 model.addAttribute("list", service.listSearchCriteria(key,new BoardTypeVO("free")));
+		 PageMaker maker = new PageMaker();
+		 maker.setCri(key);
+		 maker.setTotalCount(service.listSearchCount(key,new BoardTypeVO("free")));
+		 model.addAttribute("pageMaker", maker);  
+		 
+		 return "main/body/community/all/list";
+	}
 	
 }
 

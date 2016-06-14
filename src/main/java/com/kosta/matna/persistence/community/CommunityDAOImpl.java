@@ -6,20 +6,23 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kosta.matna.domain.community.BoardTypeVO;
 import com.kosta.matna.domain.community.BoardVO;
+import com.kosta.matna.domain.community.Criteria;
+import com.kosta.matna.domain.community.SearchVO;
 
 @Repository
-public class FreeBoardDAOImpl implements FreeBoardDAO {
+public class CommunityDAOImpl implements CommunityDAO {
 
 	@Inject
 	private SqlSession session;
 
-	public FreeBoardDAOImpl() {
-		System.out.println("FreeBoardDAOImpl持失切!!");
+	public CommunityDAOImpl() {
+		System.out.println("持失切!!");
 	}
 
 	public Map<String, Object> map(int no, BoardTypeVO type) {
@@ -27,6 +30,13 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		map.put("no", no);
 		map.put("type", type.getType());
 
+		return map;
+	}
+	public Map<String, Object> Smap(SearchVO search, BoardTypeVO type) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("type", type.getType());
+		map.put("searchType", search.getSearchType());
+		map.put("keyword", search.getKeyword());		
 		return map;
 	}
 
@@ -59,6 +69,27 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public void updateViewCnt(int no, BoardTypeVO type) throws Exception {
 		System.out.println("updateViewCnt叔楳");
 		session.update("board.updateViewCnt", map(no, type));
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria cri,BoardTypeVO type) throws Exception {	
+        return session.selectList("board.listAll",type, 
+        		new RowBounds(cri.getPageStart(), cri.getPerPageNum()));		
+	}
+
+	@Override
+	public int countPaging(BoardTypeVO type) throws Exception {		
+		return session.selectOne("board.countPaging",type);
+	}
+
+	@Override
+	public List<BoardVO> listSearch(SearchVO cri, BoardTypeVO type) throws Exception {
+		return session.selectList("board.listSearch", Smap(cri, type) , new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
+	}
+
+	@Override
+	public int listSearchCount(SearchVO cri, BoardTypeVO type) throws Exception {
+		return session.selectOne("board.listSearchCount", Smap(cri, type));
 	}
 
 }

@@ -15,7 +15,7 @@
 	<!-- 수정폼 -->
 	<h4>댓글 수정</h4>
 	<input type="hidden" name="replyWriter_up" size="10" value="${userNo }" id="replyWriter_up">
-	<textarea rows="3" cols="50" name="repContent_up" id="replyContent_up"></textarea>
+	<textarea rows="3" cols="50" name="replyContent_up" id="replyContent_up"></textarea>
 	<input type="button" value="등록" onclick="updateReply(${review.no})">
 	<input type="button" value="취소" onclick="hideReplyForm()">
 </div>

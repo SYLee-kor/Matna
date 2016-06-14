@@ -12,8 +12,8 @@
 <input type="button" value="삭제" onclick="deleteReply(${reply.no},${reply.rNo },${replyMaker.cri.page })">
 </c:if>
 <pre><span style="color: #555555">${reply.content }</span></pre>
-<span id="upSpan${reply.no }"></span>
-<c:forEach begin="0" end="10"><font color="gray" size="3">...........</font></c:forEach><br>
+<span id="reply${reply.no }"></span>
+<c:forEach begin="0" end="10"><font color="gray" size="3">...........</font></c:forEach><br>	
 </c:forEach>
 <c:forEach begin="1" end="${replyMaker.endPage }" varStatus="stat">
 	<a href="javascript:listReply(${rNo },${stat.index })">${stat.index }</a>

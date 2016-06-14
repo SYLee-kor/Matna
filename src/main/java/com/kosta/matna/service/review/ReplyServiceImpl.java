@@ -6,14 +6,12 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.kosta.matna.domain.review.ReplyVO;
 import com.kosta.matna.persistence.review.ReplyDAO;
 import com.kosta.matna.persistence.review.ReviewDAO;
 
 @Service
-@Transactional
 public class ReplyServiceImpl implements ReplyService {
 	
 	@Inject

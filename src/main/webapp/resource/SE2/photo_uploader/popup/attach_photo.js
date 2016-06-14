@@ -1,6 +1,6 @@
-	//º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
+	//ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
 	var nImageInfoCnt = 0;
-	var htImageInfo = [];		//image fileÁ¤º¸ ÀúÀå
+	var htImageInfo = [];		//image fileì •ë³´ ì €ì¥
 	var aResult = [];
 	
 	var rFilter = /^(image\/bmp|image\/gif|image\/jpg|image\/jpeg|image\/png)$/i;  
@@ -14,7 +14,7 @@
 	var oFileUploader;
 	var bAttachEvent = false;
 
-	//¸¶Å©¾÷¿¡ µû¸¥ ÇÒ´ç
+	//ë§ˆí¬ì—…ì— ë”°ë¥¸ í• ë‹¹
 	var elContent= $("pop_content");  
 	var elDropArea = jindo.$$.getSingle(".drag_area",elContent);
 	var elDropAreaUL = jindo.$$.getSingle(".lst_type",elContent);
@@ -24,17 +24,17 @@
 	var welUploadInputBox = $Element("uploadInputBox");
 	var oNavigator = jindo.$Agent().navigator();
 	
-	//¸¶Å©¾÷-°øÅë 
-	var welBtnConfirm = $Element("btn_confirm");				//È®ÀÎ ¹öÆ°
-	var welBtnCancel= $Element("btn_cancel");				//Ãë¼Ò ¹öÆ°
+	//ë§ˆí¬ì—…-ê³µí†µ 
+	var welBtnConfirm = $Element("btn_confirm");				//í™•ì¸ ë²„íŠ¼
+	var welBtnCancel= $Element("btn_cancel");				//ì·¨ì†Œ ë²„íŠ¼
 	
-	//Áøµµ·Î ·¦ÇÎµÈ element
+	//ì§„ë„ë¡œ ë©í•‘ëœ element
 	var welTextGuide = $Element(elTextGuide);
 	var welDropArea = $Element(elDropArea);
 	var welDropAreaUL = $Element(elDropAreaUL); 
 	var fnUploadImage = null;
 	
-	//File API Áö¿ø ¿©ºÎ·Î °áÁ¤
+	//File API ì§€ì› ì—¬ë¶€ë¡œ ê²°ì •
 	function checkDragAndDropAPI(){
 		try{
 			if( !oNavigator.ie ){
@@ -51,9 +51,9 @@
 		}
 	}
 	
-	//--------------- html5 ¹ÌÁö¿ø ºê¶ó¿ìÀú¿¡¼­ (IE9 ÀÌÇÏ) ---------------
+	//--------------- html5 ë¯¸ì§€ì› ë¸Œë¼ìš°ì €ì—ì„œ (IE9 ì´í•˜) ---------------
 	/** 
-	 * ÀÌ¹ÌÁö¸¦ Ã·ºÎ ÈÄ È°¼ºÈ­µÈ ¹öÆ° »óÅÂ
+	 * ì´ë¯¸ì§€ë¥¼ ì²¨ë¶€ í›„ í™œì„±í™”ëœ ë²„íŠ¼ ìƒíƒœ
 	 */
      function goStartMode(){
     	 var sSrc = welBtnConfirm.attr("src")|| "";
@@ -63,7 +63,7 @@
     	 }
      } 
      /**
-      * ÀÌ¹ÌÁö¸¦ Ã·ºÎ Àü ºñÈ°¼ºÈ­µÈ ¹öÆ° »óÅÂ
+      * ì´ë¯¸ì§€ë¥¼ ì²¨ë¶€ ì „ ë¹„í™œì„±í™”ëœ ë²„íŠ¼ ìƒíƒœ
       * @return
       */
      function goReadyMode(){
@@ -75,15 +75,15 @@
      }   
 	
 	/**
-	 * ÀÏ¹İ ¾÷·Îµå 
-	 * @desc oFileUploaderÀÇ uploadÇÔ¼ö¸¦ È£ÃâÇÔ. 
+	 * ì¼ë°˜ ì—…ë¡œë“œ 
+	 * @desc oFileUploaderì˜ uploadí•¨ìˆ˜ë¥¼ í˜¸ì¶œí•¨. 
 	 */
 	function generalUpload(){
 		oFileUploader.upload();
 	}
 	
     /** 
-     * ÀÌ¹ÌÁö Ã·ºÎ Àü ¾È³» ÅØ½ºÆ®°¡ ³ª¿À´Â ¹è°æÀ¸·Î '¼³Á¤'ÇÏ´Â ÇÔ¼ö.
+     * ì´ë¯¸ì§€ ì²¨ë¶€ ì „ ì•ˆë‚´ í…ìŠ¤íŠ¸ê°€ ë‚˜ì˜¤ëŠ” ë°°ê²½ìœ¼ë¡œ 'ì„¤ì •'í•˜ëŠ” í•¨ìˆ˜.
      * @return
      */
  	function readyModeBG (){
@@ -95,7 +95,7 @@
  	}
  	
  	/**
- 	 * ÀÌ¹ÌÁö Ã·ºÎ Àü ¾È³» ÅØ½ºÆ®°¡ ³ª¿À´Â ¹è°æÀ» 'Á¦°Å'ÇÏ´Â ÇÔ¼ö. 
+ 	 * ì´ë¯¸ì§€ ì²¨ë¶€ ì „ ì•ˆë‚´ í…ìŠ¤íŠ¸ê°€ ë‚˜ì˜¤ëŠ” ë°°ê²½ì„ 'ì œê±°'í•˜ëŠ” í•¨ìˆ˜. 
  	 * @return
  	 */
  	function startModeBG (){
@@ -106,21 +106,21 @@
  		}
  	}
 
-	//--------------------- html5  Áö¿øµÇ´Â ºê¶ó¿ìÀú¿¡¼­ »ç¿ëÇÏ´Â ÇÔ¼ö  --------------------------
+	//--------------------- html5  ì§€ì›ë˜ëŠ” ë¸Œë¼ìš°ì €ì—ì„œ ì‚¬ìš©í•˜ëŠ” í•¨ìˆ˜  --------------------------
  	/**
- 	 * ÆË¾÷¿¡ ³ëÃâµÉ ¾÷·Îµå ¿¹Á¤ »çÁøÀÇ ¼ö.
- 	 * @param {Object} nCount ÇöÀç ¾÷·Îµå ¿¹Á¤ÀÎ »çÁø Àå¼ö
- 	 * @param {Object} nVariable »èÁ¦µÇ´Â ¼ö
+ 	 * íŒì—…ì— ë…¸ì¶œë  ì—…ë¡œë“œ ì˜ˆì • ì‚¬ì§„ì˜ ìˆ˜.
+ 	 * @param {Object} nCount í˜„ì¬ ì—…ë¡œë“œ ì˜ˆì •ì¸ ì‚¬ì§„ ì¥ìˆ˜
+ 	 * @param {Object} nVariable ì‚­ì œë˜ëŠ” ìˆ˜
  	 */
  	function updateViewCount (nCount, nVariable){
  		var nCnt = nCount + nVariable;
- 		elCountTxtTxt.innerHTML = nCnt +"Àå";
+ 		elCountTxtTxt.innerHTML = nCnt +"ì¥";
  		nImageFileCount = nCnt;
  		return nCnt;
  	}
  	
  	/**
- 	 * ÆË¾÷¿¡ ³ëÃâµÉ ¾÷·ÎµåµÉ »çÁø ÃÑ ¿ë·®
+ 	 * íŒì—…ì— ë…¸ì¶œë  ì—…ë¡œë“œë  ì‚¬ì§„ ì´ ìš©ëŸ‰
  	 */
  	function updateViewTotalSize(){
  		var nViewTotalSize = Number(parseInt((nTotalSize || 0), 10) / (1024*1024));
@@ -128,7 +128,7 @@
  	}
  	
  	/**
- 	 * ÀÌ¹ÌÁö ÀüÃ¼ ¿ë·® Àç°è»ê.
+ 	 * ì´ë¯¸ì§€ ì „ì²´ ìš©ëŸ‰ ì¬ê³„ì‚°.
  	 * @param {Object} sParentId
  	 */
  	function refreshTotalImageSize(sParentId){
@@ -139,17 +139,17 @@
  	}
 	
  	/**
- 	 * hash table¿¡¼­ ÀÌ¹ÌÁö Á¤º¸ ÃÊ±âÈ­.
+ 	 * hash tableì—ì„œ ì´ë¯¸ì§€ ì •ë³´ ì´ˆê¸°í™”.
  	 * @param {Object} sParentId
  	 */
  	function removeImageInfo (sParentId){
- 		//»èÁ¦µÈ ÀÌ¹ÌÁöÀÇ °ø°£À» ÃÊ±âÈ­ ÇÑ´Ù.
+ 		//ì‚­ì œëœ ì´ë¯¸ì§€ì˜ ê³µê°„ì„ ì´ˆê¸°í™” í•œë‹¤.
  		htImageInfo[sParentId] = null;
  	}
  	
  	
  	/**
- 	 * byte·Î ¹ŞÀº ÀÌ¹ÌÁö ¿ë·®À» È­¸é¿¡ Ç¥½Ã¸¦ À§ÇØ Æ÷¸ËÆÃ
+ 	 * byteë¡œ ë°›ì€ ì´ë¯¸ì§€ ìš©ëŸ‰ì„ í™”ë©´ì— í‘œì‹œë¥¼ ìœ„í•´ í¬ë§·íŒ…
  	 * @param {Object} nByte
  	 */
  	function setUnitString (nByte) {
@@ -176,9 +176,9 @@
      }
  	
  	/**
- 	 * È­¸é ¸ñ·Ï¿¡ Àû´çÇÏ°Ô ÀÌ¸§À» Àß¶ó¼­ Ç¥½Ã.
- 	 * @param {Object} sName ÆÄÀÏ¸í
- 	 * @param {Object} nMaxLng ÃÖ´ë ±æÀÌ
+ 	 * í™”ë©´ ëª©ë¡ì— ì ë‹¹í•˜ê²Œ ì´ë¦„ì„ ì˜ë¼ì„œ í‘œì‹œ.
+ 	 * @param {Object} sName íŒŒì¼ëª…
+ 	 * @param {Object} nMaxLng ìµœëŒ€ ê¸¸ì´
  	 */
  	function cuttingNameByLength (sName, nMaxLng) {
  		var sTemp, nIndex;
@@ -192,7 +192,7 @@
  	}
  	
  	/**
- 	 * Total Image Size¸¦ Ã¼Å©ÇØ¼­ Ãß°¡·Î ÀÌ¹ÌÁö¸¦ ³ÖÀ»Áö ¸»Áö¸¦ °áÁ¤ÇÔ.
+ 	 * Total Image Sizeë¥¼ ì²´í¬í•´ì„œ ì¶”ê°€ë¡œ ì´ë¯¸ì§€ë¥¼ ë„£ì„ì§€ ë§ì§€ë¥¼ ê²°ì •í•¨.
  	 * @param {Object} nByte
  	 */
  	function checkTotalImageSize(nByte){
@@ -204,7 +204,7 @@
  		}
  	}
 	
- 	// ÀÌº¥Æ® ÇÚµé·¯ ÇÒ´ç
+ 	// ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ í• ë‹¹
  	function dragEnter(ev) {
  		ev.stopPropagation();
  		ev.preventDefault();
@@ -221,7 +221,7 @@
      }
  	
 	/**
-	 * µå¶ø ¿µ¿ª¿¡ »çÁøÀ» ¶³±¸´Â ¼ø°£ ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+	 * ë“œë ì˜ì—­ì— ì‚¬ì§„ì„ ë–¨êµ¬ëŠ” ìˆœê°„ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
 	 * @param {Object} ev
 	 */
     function drop(ev) {
@@ -229,60 +229,60 @@
 		ev.preventDefault();
 		
 		if (nImageFileCount >= 10){
-			alert("ÃÖ´ë 10Àå±îÁö¸¸ µî·ÏÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+			alert("ìµœëŒ€ 10ì¥ê¹Œì§€ë§Œ ë“±ë¡í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 			return;
 		}
 		
 		if(typeof ev.dataTransfer.files == 'undefined'){
-			alert("HTML5¸¦ Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.");
+			alert("HTML5ë¥¼ ì§€ì›í•˜ì§€ ì•ŠëŠ” ë¸Œë¼ìš°ì €ì…ë‹ˆë‹¤.");
 		}else{
-			//º¯¼ö ¼±¾ğ
+			//ë³€ìˆ˜ ì„ ì–¸
 			var wel,
 				files,
 				nCount,
 				sListTag = '';
 			
-			//ÃÊ±âÈ­	
+			//ì´ˆê¸°í™”	
 			files = ev.dataTransfer.files;
 			nCount = files.length;
 						
 			if (!!files && nCount === 0){
-				//ÆÄÀÏÀÌ ¾Æ´Ñ, À¥ÆäÀÌÁö¿¡¼­ ÀÌ¹ÌÁö¸¦ µå·¡¼­ ³õ´Â °æ¿ì.
-				alert("Á¤»óÀûÀÎ Ã·ºÎ¹æ½ÄÀÌ ¾Æ´Õ´Ï´Ù.");
+				//íŒŒì¼ì´ ì•„ë‹Œ, ì›¹í˜ì´ì§€ì—ì„œ ì´ë¯¸ì§€ë¥¼ ë“œë˜ì„œ ë†“ëŠ” ê²½ìš°.
+				alert("ì •ìƒì ì¸ ì²¨ë¶€ë°©ì‹ì´ ì•„ë‹™ë‹ˆë‹¤.");
 				return ;
 			}
 			
 			for (var i = 0, j = nImageFileCount ; i < nCount ; i++){
 				if (!rFilter.test(files[i].type)) {
-					alert("ÀÌ¹ÌÁöÆÄÀÏ (jpg,gif,png,bmp)¸¸ ¾÷·Îµå °¡´ÉÇÕ´Ï´Ù.");
+					alert("ì´ë¯¸ì§€íŒŒì¼ (jpg,gif,png,bmp)ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 				} else if(files[i].size > nMaxImageSize){
-					alert("ÀÌ¹ÌÁö ¿ë·®ÀÌ 10MB¸¦ ÃÊ°úÇÏ¿© µî·ÏÇÒ ¼ö ¾ø½À´Ï´Ù.");
+					alert("ì´ë¯¸ì§€ ìš©ëŸ‰ì´ 10MBë¥¼ ì´ˆê³¼í•˜ì—¬ ë“±ë¡í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				} else {
-					//Á¦ÇÑµÈ ¼ö¸¸ ¾÷·Îµå °¡´É.
+					//ì œí•œëœ ìˆ˜ë§Œ ì—…ë¡œë“œ ê°€ëŠ¥.
 					if ( j < nMaxImageCount ){
 						sListTag += addImage(files[i]);
 						
-						//´ÙÀ½ »çÁøÀ»À§ÇÑ ¼ÂÆÃ
+						//ë‹¤ìŒ ì‚¬ì§„ì„ìœ„í•œ ì…‹íŒ…
 						j = j+1;
 						nImageInfoCnt = nImageInfoCnt+1;
 					} else {
-						alert("ÃÖ´ë 10Àå±îÁö¸¸ µî·ÏÇÒ ¼ö ÀÖ½À´Ï´Ù.");
+						alert("ìµœëŒ€ 10ì¥ê¹Œì§€ë§Œ ë“±ë¡í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.");
 						break;			
 					}
 				}
 			}
 			if(j > 0){
-				//¹è°æ ÀÌ¹ÌÁö º¯°æ
+				//ë°°ê²½ ì´ë¯¸ì§€ ë³€ê²½
 				startModeBG();
 				if ( sListTag.length > 1){
 					welDropAreaUL.prependHTML(sListTag);
 				}
-				//ÀÌ¹ÌÁö ÃÑ»çÀÌÁî view update 
+				//ì´ë¯¸ì§€ ì´ì‚¬ì´ì¦ˆ view update 
 				updateViewTotalSize();
-				//ÀÌ¹ÌÄ¡ ÃÑ ¼ö view update
+				//ì´ë¯¸ì¹˜ ì´ ìˆ˜ view update
 				nImageFileCount = j;
 				updateViewCount(nImageFileCount, 0);
-				// ÀúÀå ¹öÆ° È°¼ºÈ­
+				// ì €ì¥ ë²„íŠ¼ í™œì„±í™”
 				goStartMode();
 			}else{
 				readyModeBG();
@@ -291,12 +291,12 @@
     }
 	
     /**
-     * ÀÌ¹ÌÁö¸¦ Ãß°¡ÇÏ±â À§ÇØ¼­ fileÀ» ÀúÀåÇÏ°í, ¸ñ·Ï¿¡ º¸¿©ÁÖ±â À§ÇØ¼­ stringÀ» ¸¸µå´Â ÇÔ¼ö.
-     * @param ofile ÇÑ°³ÀÇ ÀÌ¹ÌÁö ÆÄÀÏ
+     * ì´ë¯¸ì§€ë¥¼ ì¶”ê°€í•˜ê¸° ìœ„í•´ì„œ fileì„ ì €ì¥í•˜ê³ , ëª©ë¡ì— ë³´ì—¬ì£¼ê¸° ìœ„í•´ì„œ stringì„ ë§Œë“œëŠ” í•¨ìˆ˜.
+     * @param ofile í•œê°œì˜ ì´ë¯¸ì§€ íŒŒì¼
      * @return
      */
     function addImage(ofile){
-    	//ÆÄÀÏ »çÀÌÁî
+    	//íŒŒì¼ ì‚¬ì´ì¦ˆ
 		var ofile = ofile,
 			sFileSize = 0,
 			sFileName = "",
@@ -309,15 +309,15 @@
 		bExceedLimitTotalSize = checkTotalImageSize(ofile.size);
 
 		if( !!bExceedLimitTotalSize ){
-			alert("ÀüÃ¼ ÀÌ¹ÌÁö ¿ë·®ÀÌ 50MB¸¦ ÃÊ°úÇÏ¿© µî·ÏÇÒ ¼ö ¾ø½À´Ï´Ù. \n\n (ÆÄÀÏ¸í : "+sFileName+", »çÀÌÁî : "+sFileSize+")");
+			alert("ì „ì²´ ì´ë¯¸ì§€ ìš©ëŸ‰ì´ 50MBë¥¼ ì´ˆê³¼í•˜ì—¬ ë“±ë¡í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤. \n\n (íŒŒì¼ëª… : "+sFileName+", ì‚¬ì´ì¦ˆ : "+sFileSize+")");
 		} else {
-			//ÀÌ¹ÌÁö Á¤º¸ ÀúÀå							
+			//ì´ë¯¸ì§€ ì •ë³´ ì €ì¥							
 			htImageInfo['img'+nImageInfoCnt] = ofile;
 			
-    		//List ¸¶Å©¾÷ »ı¼ºÇÏ±â
+    		//List ë§ˆí¬ì—… ìƒì„±í•˜ê¸°
 			aFileList.push('	<li id="img'+nImageInfoCnt+'" class="imgLi"><span>'+ sFileName +'</span>');
 			aFileList.push('	<em>'+ sFileSize +'</em>');
-	        aFileList.push('	<a onclick="delImage(\'img'+nImageInfoCnt+'\')"><img class="del_button" src="../../img/photoQuickPopup/btn_del.png"  width="14" height="13" alt="Ã·ºÎ »çÁø »èÁ¦"></a>');
+	        aFileList.push('	<a onclick="delImage(\'img'+nImageInfoCnt+'\')"><img class="del_button" src="../../img/photoQuickPopup/btn_del.png"  width="14" height="13" alt="ì²¨ë¶€ ì‚¬ì§„ ì‚­ì œ"></a>');
 			aFileList.push('	</li> ');   
 			
 			sLiTag = aFileList.join(" ");
@@ -327,7 +327,7 @@
     }
     
     /**
-     * HTML5 DragAndDropÀ¸·Î »çÁøÀ» Ãß°¡ÇÏ°í, È®ÀÎ¹öÆ°À» ´©¸¥ °æ¿ì¿¡ µ¿ÀÛÇÑ´Ù.
+     * HTML5 DragAndDropìœ¼ë¡œ ì‚¬ì§„ì„ ì¶”ê°€í•˜ê³ , í™•ì¸ë²„íŠ¼ì„ ëˆ„ë¥¸ ê²½ìš°ì— ë™ì‘í•œë‹¤.
      * @return
      */
     function html5Upload() {	
@@ -335,14 +335,14 @@
     		sUploadURL;
     	
     	//sUploadURL= 'file_uploader_html5.jsp'; 	//upload URL
-    	sUploadURL = '/matna/multiplePhotoUpload' //upload URL
+    	sUploadURL = '/matna/multiplePhotoUpload'; //upload URL 
     	
-    	//ÆÄÀÏÀ» ÇÏ³ª¾¿ º¸³»°í, °á°ú¸¦ ¹ŞÀ½.
+    	//íŒŒì¼ì„ í•˜ë‚˜ì”© ë³´ë‚´ê³ , ê²°ê³¼ë¥¼ ë°›ìŒ.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
     		tempFile = htImageInfo['img'+j];
     		try{
 	    		if(!!tempFile){
-	    			//AjaxÅë½ÅÇÏ´Â ºÎºĞ. ÆÄÀÏ°ú ¾÷·Î´õÇÒ urlÀ» Àü´ŞÇÑ´Ù.
+	    			//Ajaxí†µì‹ í•˜ëŠ” ë¶€ë¶„. íŒŒì¼ê³¼ ì—…ë¡œë”í•  urlì„ ì „ë‹¬í•œë‹¤.
 	    			callAjaxForHTML5(tempFile,sUploadURL);
 	    			k += 1;
 	    		}
@@ -355,14 +355,14 @@
     	var oAjax = jindo.$Ajax(sUploadURL, {
 			type: 'xhr',
 			method : "post",
-			onload : function(res){ // ¿äÃ»ÀÌ ¿Ï·áµÇ¸é ½ÇÇàµÉ Äİ¹é ÇÔ¼ö
+			onload : function(res){ // ìš”ì²­ì´ ì™„ë£Œë˜ë©´ ì‹¤í–‰ë  ì½œë°± í•¨ìˆ˜
 				var sResString = res._response.responseText;
 				if (res.readyState() == 4) {
 					if(sResString.indexOf("NOTALLOW_") > -1){
 						var sFileName = sResString.replace("NOTALLOW_", "");
-						alert("ÀÌ¹ÌÁö ÆÄÀÏ(jpg,gif,png,bmp)¸¸ ¾÷·Îµå ÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù. ("+sFileName+")");
+						alert("ì´ë¯¸ì§€ íŒŒì¼(jpg,gif,png,bmp)ë§Œ ì—…ë¡œë“œ í•˜ì‹¤ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ("+sFileName+")");
 					}else{
-						//¼º°ø ½Ã¿¡  responseText¸¦ °¡Áö°í array·Î ¸¸µå´Â ºÎºĞ.
+						//ì„±ê³µ ì‹œì—  responseTextë¥¼ ê°€ì§€ê³  arrayë¡œ ë§Œë“œëŠ” ë¶€ë¶„.
 						makeArrayFromString(res._response.responseText);
 					}
 				}
@@ -407,7 +407,7 @@
     }
     
     /**
- 	 * »çÁø »èÁ¦ ½Ã¿¡ È£ÃâµÇ´Â ÇÔ¼ö
+ 	 * ì‚¬ì§„ ì‚­ì œ ì‹œì— í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
  	 * @param {Object} sParentId 
  	 */
  	function delImage (sParentId){
@@ -417,26 +417,26 @@
  		
  		updateViewTotalSize();
  		updateViewCount(nImageFileCount,-1);
- 		//»çÁø file array¿¡¼­ Á¤º¸ »èÁ¦.
+ 		//ì‚¬ì§„ file arrayì—ì„œ ì •ë³´ ì‚­ì œ.
  		removeImageInfo(sParentId);
- 		//ÇØ´ç li»èÁ¦
+ 		//í•´ë‹¹ liì‚­ì œ
  		$Element(elLi).leave();
  		
- 		//¸¶Áö¸· ÀÌ¹ÌÁöÀÎ°æ¿ì.
+ 		//ë§ˆì§€ë§‰ ì´ë¯¸ì§€ì¸ê²½ìš°.
  		if(nImageFileCount === 0){
  			readyModeBG();
- 			//»çÁø Ãß°¡ ¹öÆ° ºñÈ°¼ºÈ­
+ 			//ì‚¬ì§„ ì¶”ê°€ ë²„íŠ¼ ë¹„í™œì„±í™”
  			goReadyMode();
  		}
  		
- 		// drop ¿µ¿ª ÀÌº¥Æ® ´Ù½Ã È°¼ºÈ­.
+ 		// drop ì˜ì—­ ì´ë²¤íŠ¸ ë‹¤ì‹œ í™œì„±í™”.
  		if(!bAttachEvent){
  			addEvent();
  		}
  	}
 
  	/**
-     * ÀÌº¥Æ® ÇÒ´ç
+     * ì´ë²¤íŠ¸ í• ë‹¹
      */
 	function addEvent() {
 		bAttachEvent = true;
@@ -455,16 +455,16 @@
 	}
  	
 	/**
-	 * Ajax Åë½Å ½Ã error°¡ ¹ß»ıÇÒ ¶§ Ã³¸®ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+	 * Ajax í†µì‹  ì‹œ errorê°€ ë°œìƒí•  ë•Œ ì²˜ë¦¬í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
 	 * @return
 	 */
 	function onAjaxError (){
-		alert("[°¡ÀÌµå]»çÁø ¾÷·Î´õÇÒ ¼­¹öURL¼ÂÆÃÀÌ ÇÊ¿äÇÕ´Ï´Ù.-onAjaxError");
+		alert("[ê°€ì´ë“œ]ì‚¬ì§„ ì—…ë¡œë”í•  ì„œë²„URLì…‹íŒ…ì´ í•„ìš”í•©ë‹ˆë‹¤.-onAjaxError");
 	}
 
  	/**
-      * ÀÌ¹ÌÁö ¾÷·Îµå ½ÃÀÛ
-      * È®ÀÎ ¹öÆ° Å¬¸¯ÇÏ¸é È£ÃâµÇ´Â msg
+      * ì´ë¯¸ì§€ ì—…ë¡œë“œ ì‹œì‘
+      * í™•ì¸ ë²„íŠ¼ í´ë¦­í•˜ë©´ í˜¸ì¶œë˜ëŠ” msg
       */
      function uploadImage (e){
     	 if(!bSupportDragAndDropAPI){
@@ -475,55 +475,55 @@
      }
      
  	/**
- 	 * jindo¿¡ ÆÄÀÏ ¾÷·Îµå »ç¿ë.(iframe¿¡ FormÀ» SubmitÇÏ¿© ¸®ÇÁ·¹½Ã¾øÀÌ ÆÄÀÏÀ» ¾÷·ÎµåÇÏ´Â ÄÄÆ÷³ÍÆ®)
+ 	 * jindoì— íŒŒì¼ ì—…ë¡œë“œ ì‚¬ìš©.(iframeì— Formì„ Submití•˜ì—¬ ë¦¬í”„ë ˆì‹œì—†ì´ íŒŒì¼ì„ ì—…ë¡œë“œí•˜ëŠ” ì»´í¬ë„ŒíŠ¸)
  	 */
  	function callFileUploader (){
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			//sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/file_uploader.jsp',	//»ùÇÃ URLÀÔ´Ï´Ù.
- 	        //sCallback : location.href.replace(/\/[^\/]*$/, '') + '/callback.html',	//¾÷·Îµå ÀÌÈÄ¿¡ iframeÀÌ redirectµÉ Äİ¹éÆäÀÌÁöÀÇ ÁÖ¼Ò
+ 			//sUrl  : location.href.replace(/\/[^\/]*$/, '') + '/file_uploader.jsp',	//ìƒ˜í”Œ URLì…ë‹ˆë‹¤.
+ 	        //sCallback : location.href.replace(/\/[^\/]*$/, '') + '/c allback.html',	//ì—…ë¡œë“œ ì´í›„ì— iframeì´ redirectë  ì½œë°±í˜ì´ì§€ì˜ ì£¼ì†Œ
  	    	sUrl : '/matna/photoUpload',
  	    	sCallback : '/matna/resource/SE2/photo_uploader/popup/callback.html',
- 			sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//Çã¿ëÇÒ ÆÄÀÏÀÇ Çü½Ä. ex) "*", "*.*", "*.jpg", ±¸ºĞÀÚ(;)	
- 	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP È®ÀåÀÚ¸¸ °¡´ÉÇÕ´Ï´Ù',	//Çã¿ëÇÒ ÆÄÀÏÀÇ Çü½ÄÀÌ ¾Æ´Ñ°æ¿ì¿¡ ¶ç¿öÁÖ´Â °æ°íÃ¢ÀÇ ¹®±¸
- 	    	bAutoUpload : false,									 	//ÆÄÀÏÀÌ ¼±ÅÃµÊ°ú µ¿½Ã¿¡ ÀÚµ¿À¸·Î ¾÷·Îµå¸¦ ¼öÇàÇÒÁö ¿©ºÎ (upload ¸Ş¼Òµå ¼öÇà)
- 	    	bAutoReset : true 											// ¾÷·ÎµåÇÑ Á÷ÈÄ¿¡ ÆÄÀÏÆûÀ» ¸®¼Â ½ÃÅ³Áö ¿©ºÎ (reset ¸Ş¼Òµå ¼öÇà)
+ 			sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//í—ˆìš©í•  íŒŒì¼ì˜ í˜•ì‹. ex) "*", "*.*", "*.jpg", êµ¬ë¶„ì(;)	
+ 	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP í™•ì¥ìë§Œ ê°€ëŠ¥í•©ë‹ˆë‹¤',	//í—ˆìš©í•  íŒŒì¼ì˜ í˜•ì‹ì´ ì•„ë‹Œê²½ìš°ì— ë„ì›Œì£¼ëŠ” ê²½ê³ ì°½ì˜ ë¬¸êµ¬
+ 	    	bAutoUpload : false,									 	//íŒŒì¼ì´ ì„ íƒë¨ê³¼ ë™ì‹œì— ìë™ìœ¼ë¡œ ì—…ë¡œë“œë¥¼ ìˆ˜í–‰í• ì§€ ì—¬ë¶€ (upload ë©”ì†Œë“œ ìˆ˜í–‰)
+ 	    	bAutoReset : true 											// ì—…ë¡œë“œí•œ ì§í›„ì— íŒŒì¼í¼ì„ ë¦¬ì…‹ ì‹œí‚¬ì§€ ì—¬ë¶€ (reset ë©”ì†Œë“œ ìˆ˜í–‰)
  	    }).attach({
  	    	select : function(oCustomEvent) {
- 	    		//ÆÄÀÏ ¼±ÅÃÀÌ ¿Ï·áµÇ¾úÀ» ¶§ ¹ß»ı
-// 		    	 oCustomEvent (ÀÌº¥Æ® °´Ã¼) = {
-// 	    			sValue (String) ¼±ÅÃµÈ File InputÀÇ °ª
-// 	    			bAllowed (Boolean) ¼±ÅÃµÈ ÆÄÀÏÀÇ Çü½ÄÀÌ Çã¿ëµÇ´Â Çü½ÄÀÎÁö ¿©ºÎ
-// 	    			sMsgNotAllowedExt (String) Çã¿ëµÇÁö ¾Ê´Â ÆÄÀÏ Çü½ÄÀÎ °æ¿ì ¶ç¿öÁÙ °æ°í¸Ş¼¼Áö
+ 	    		//íŒŒì¼ ì„ íƒì´ ì™„ë£Œë˜ì—ˆì„ ë•Œ ë°œìƒ
+// 		    	 oCustomEvent (ì´ë²¤íŠ¸ ê°ì²´) = {
+// 	    			sValue (String) ì„ íƒëœ File Inputì˜ ê°’
+// 	    			bAllowed (Boolean) ì„ íƒëœ íŒŒì¼ì˜ í˜•ì‹ì´ í—ˆìš©ë˜ëŠ” í˜•ì‹ì¸ì§€ ì—¬ë¶€
+// 	    			sMsgNotAllowedExt (String) í—ˆìš©ë˜ì§€ ì•ŠëŠ” íŒŒì¼ í˜•ì‹ì¸ ê²½ìš° ë„ì›Œì¤„ ê²½ê³ ë©”ì„¸ì§€
 // 	    		}
-//  				¼±ÅÃµÈ ÆÄÀÏÀÇ Çü½ÄÀÌ Çã¿ëµÇ´Â °æ¿ì¸¸ Ã³¸® 
+//  				ì„ íƒëœ íŒŒì¼ì˜ í˜•ì‹ì´ í—ˆìš©ë˜ëŠ” ê²½ìš°ë§Œ ì²˜ë¦¬ 
  	    		if(oCustomEvent.bAllowed === true){
  		    		goStartMode();
  		    	}else{
  		    		goReadyMode();
  		    		oFileUploader.reset();
  		    	}
-// 	    		bAllowed °ªÀÌ falseÀÎ °æ¿ì °æ°í¹®±¸¿Í ÇÔ²² alert ¼öÇà 
-// 	    		oCustomEvent.stop(); ¼öÇà½Ã bAllowed °¡ falseÀÌ´õ¶óµµ alertÀÌ ¼öÇàµÇÁö ¾ÊÀ½
+// 	    		bAllowed ê°’ì´ falseì¸ ê²½ìš° ê²½ê³ ë¬¸êµ¬ì™€ í•¨ê»˜ alert ìˆ˜í–‰ 
+// 	    		oCustomEvent.stop(); ìˆ˜í–‰ì‹œ bAllowed ê°€ falseì´ë”ë¼ë„ alertì´ ìˆ˜í–‰ë˜ì§€ ì•ŠìŒ
  	    	},
  	    	success : function(oCustomEvent) {
  	    		// alert("success");
- 	    		// ¾÷·Îµå°¡ ¼º°øÀûÀ¸·Î ¿Ï·áµÇ¾úÀ» ¶§ ¹ß»ı
- 	    		// oCustomEvent(ÀÌº¥Æ® °´Ã¼) = {
- 	    		//	htResult (Object) ¼­¹ö¿¡¼­ Àü´ŞÇØÁÖ´Â °á°ú °´Ã¼ (¼­¹ö ¼³Á¤¿¡ µû¶ó À¯µ¿ÀûÀ¸·Î ¼±ÅÃ°¡´É)
+ 	    		// ì—…ë¡œë“œê°€ ì„±ê³µì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆì„ ë•Œ ë°œìƒ
+ 	    		// oCustomEvent(ì´ë²¤íŠ¸ ê°ì²´) = {
+ 	    		//	htResult (Object) ì„œë²„ì—ì„œ ì „ë‹¬í•´ì£¼ëŠ” ê²°ê³¼ ê°ì²´ (ì„œë²„ ì„¤ì •ì— ë”°ë¼ ìœ ë™ì ìœ¼ë¡œ ì„ íƒê°€ëŠ¥)
  	    		// }
  	    		var aResult = []; 
  	    		aResult[0] = oCustomEvent.htResult;
  	    		setPhotoToEditor(aResult); 
- 	    		//¹öÆ° ºñÈ°¼ºÈ­
+ 	    		//ë²„íŠ¼ ë¹„í™œì„±í™”
  	    		goReadyMode();
  	    		oFileUploader.reset();
  	    		window.close();
  	    	},
  	    	error : function(oCustomEvent) {
- 	    		//¾÷·Îµå°¡ ½ÇÆĞÇßÀ» ¶§ ¹ß»ı
- 	    		//oCustomEvent(ÀÌº¥Æ® °´Ã¼) = {
- 	    		//	htResult : { (Object) ¼­¹ö¿¡¼­ Àü´ŞÇØÁÖ´Â °á°ú °´Ã¼. ¿¡·¯¹ß»ı½Ã errstr ÇÁ·ÎÆÛÆ¼¸¦ ¹İµå½Ã Æ÷ÇÔÇÏµµ·Ï ¼­¹ö ÀÀ´äÀ» ¼³Á¤ÇÏ¿©¾ßÇÑ´Ù.
- 	    		//		errstr : (String) ¿¡·¯¸Ş½ÃÁö
+ 	    		//ì—…ë¡œë“œê°€ ì‹¤íŒ¨í–ˆì„ ë•Œ ë°œìƒ
+ 	    		//oCustomEvent(ì´ë²¤íŠ¸ ê°ì²´) = {
+ 	    		//	htResult : { (Object) ì„œë²„ì—ì„œ ì „ë‹¬í•´ì£¼ëŠ” ê²°ê³¼ ê°ì²´. ì—ëŸ¬ë°œìƒì‹œ errstr í”„ë¡œí¼í‹°ë¥¼ ë°˜ë“œì‹œ í¬í•¨í•˜ë„ë¡ ì„œë²„ ì‘ë‹µì„ ì„¤ì •í•˜ì—¬ì•¼í•œë‹¤.
+ 	    		//		errstr : (String) ì—ëŸ¬ë©”ì‹œì§€
  	    		// 	}
  	    		//}
  	    		//var wel = jindo.$Element("info");
@@ -534,7 +534,7 @@
  	}
 	
     /**
-     * ÆäÀÌÁö ´İ±â ¹öÆ° Å¬¸¯
+     * í˜ì´ì§€ ë‹«ê¸° ë²„íŠ¼ í´ë¦­
      */
     function closeWindow(){
 	   	if(bSupportDragAndDropAPI){
@@ -564,7 +564,7 @@
 	};
 
 	/**
-	 *  ¼­¹ö·ÎºÎÅÍ ¹ŞÀº µ¥ÀÌÅ¸¸¦ ¿¡µğÅÍ¿¡ Àü´ŞÇÏ°í Ã¢À» ´İÀ½.
+	 *  ì„œë²„ë¡œë¶€í„° ë°›ì€ ë°ì´íƒ€ë¥¼ ì—ë””í„°ì— ì „ë‹¬í•˜ê³  ì°½ì„ ë‹«ìŒ.
 	 * @parameter aFileInfo [{},{},...] 
 	 * @ex aFileInfo = [
 	 * 	{
@@ -581,14 +581,14 @@
 	 */
  	function setPhotoToEditor(oFileInfo){
 		if (!!opener && !!opener.nhn && !!opener.nhn.husky && !!opener.nhn.husky.PopUpManager) {
-			//½º¸¶Æ® ¿¡µğÅÍ ÇÃ·¯±×ÀÎÀ» ÅëÇØ¼­ ³Ö´Â ¹æ¹ı (oFileInfo´Â Array)
+			//ìŠ¤ë§ˆíŠ¸ ì—ë””í„° í”ŒëŸ¬ê·¸ì¸ì„ í†µí•´ì„œ ë„£ëŠ” ë°©ë²• (oFileInfoëŠ” Array)
 			opener.nhn.husky.PopUpManager.setCallback(window, 'SET_PHOTO', [oFileInfo]);
-			//º»¹®¿¡ ¹Ù·Î tag¸¦ ³Ö´Â ¹æ¹ı (oFileInfo´Â StringÀ¸·Î <img src=....> )
+			//ë³¸ë¬¸ì— ë°”ë¡œ tagë¥¼ ë„£ëŠ” ë°©ë²• (oFileInfoëŠ” Stringìœ¼ë¡œ <img src=....> )
 			//opener.nhn.husky.PopUpManager.setCallback(window, 'PASTE_HTML', [oFileInfo]);
 		}
 	}
  	
- 	// 2012.05 ÇöÀç] jindo.$Ajax.prototype.request¿¡¼­ file°ú formÀ» Áö¿øÇÏÁö ¾ÈÇÔ. 
+ 	// 2012.05 í˜„ì¬] jindo.$Ajax.prototype.requestì—ì„œ fileê³¼ formì„ ì§€ì›í•˜ì§€ ì•ˆí•¨. 
  	jindo.$Ajax.prototype.request = function(oData) {
  		this._status++;
  		var t   = this;
@@ -628,8 +628,8 @@
  		var navi = navigator.userAgent;
  		if(req.addEventListener&&!(navi.indexOf("Opera") > -1)&&!(navi.indexOf("MSIE") > -1)){
  			/*
- 			 * opera 10.60¿¡¼­ XMLHttpRequest¿¡ addEventListener±â Ãß°¡µÇ¾úÁö¸¸ Á¤»óÀûÀ¸·Î µ¿ÀÛÇÏÁö ¾Ê¾Æ opera´Â ¹«Á¶°Ç dom1¹æ½ÄÀ¸·Î Áö¿øÇÔ.
- 			 * IE9¿¡¼­µµ opera¿Í °°Àº ¹®Á¦°¡ ÀÖÀ½.
+ 			 * opera 10.60ì—ì„œ XMLHttpRequestì— addEventListenerê¸° ì¶”ê°€ë˜ì—ˆì§€ë§Œ ì •ìƒì ìœ¼ë¡œ ë™ì‘í•˜ì§€ ì•Šì•„ operaëŠ” ë¬´ì¡°ê±´ dom1ë°©ì‹ìœ¼ë¡œ ì§€ì›í•¨.
+ 			 * IE9ì—ì„œë„ operaì™€ ê°™ì€ ë¬¸ì œê°€ ìˆìŒ.
  			 */
  			if(this._loadFunc){ req.removeEventListener("load", this._loadFunc, false); }
  			this._loadFunc = function(rq){ 
@@ -649,8 +649,8 @@
  				};
  			} else {
  	            /*
- 				 * IE6¿¡¼­´Â onreadystatechange°¡ µ¿±âÀûÀ¸·Î ½ÇÇàµÇ¾î timeoutÀÌº¥Æ®°¡ ¹ß»ı¾ÈµÊ.
- 				 * ±×·¡¼­ interval·Î Ã¼Å©ÇÏ¿© timeoutÀÌº¥Æ®°¡ Á¤»óÀûÀ¸·Î ¹ß»ıµÇµµ·Ï ¼öÁ¤. ºñµ¿±â ¹æ½ÄÀÏ¶§¸¸
+ 				 * IE6ì—ì„œëŠ” onreadystatechangeê°€ ë™ê¸°ì ìœ¼ë¡œ ì‹¤í–‰ë˜ì–´ timeoutì´ë²¤íŠ¸ê°€ ë°œìƒì•ˆë¨.
+ 				 * ê·¸ë˜ì„œ intervalë¡œ ì²´í¬í•˜ì—¬ timeoutì´ë²¤íŠ¸ê°€ ì •ìƒì ìœ¼ë¡œ ë°œìƒë˜ë„ë¡ ìˆ˜ì •. ë¹„ë™ê¸° ë°©ì‹ì¼ë•Œë§Œ
  		
  	             */
  				if(window.navigator.userAgent.match(/(?:MSIE) ([0-9.]+)/)[1]==6&&opt.async){

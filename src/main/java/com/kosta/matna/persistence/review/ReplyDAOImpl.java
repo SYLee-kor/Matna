@@ -37,7 +37,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 	@Override
 	public List<ReplyVO> listReply(int rNo,RowBounds rowBounds) throws Exception {
-		return session.selectList(nameSpc+"list", rNo, rowBounds);
+		return session.selectList(nameSpc+"list", rNo,rowBounds);
 	}
 
 	@Override

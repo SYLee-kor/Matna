@@ -17,7 +17,7 @@ var url = "/matna/reviewReply";
 			dataType:"json",
 			success:function(result){
 				listReply(rNo);
-				$('#repContent').val('')
+				$('#replyContent').val('')
 			},
 			error:function(xhr,status,error){
 				alert('error : '+error);
@@ -26,12 +26,12 @@ var url = "/matna/reviewReply";
 		})
 	}
 	
-	function listReply(no,page) {
+	function listReply(no,replyPage) {
 		$.ajax({
 			url:url+"/listReply",
 			data:{
 				rNo:no,		// # 게시글 번호
-				page:page
+				page:replyPage
 			},
 			type:"POST",
 			success:function(result){
@@ -46,14 +46,13 @@ var url = "/matna/reviewReply";
 	var replyPage=0;
 	var upContent = '';
 	function upReplyForm(no, content, page) { // # 업데이트 폼 형성
-		alert(no+"/"+content+'/'+page);
 		replyPage=page;
 		upNo=no;
 		upContent = content;
 		// # 업데이트 폼 이동
 		var upDiv = $("#replyUpDiv");
 		upDiv.remove();
-		var upSpan = $('#upSpan'+no);
+		var upSpan = $('#reply'+no);
 		upSpan.append(upDiv);
 		upDiv.show();
 		// # 업데이트 폼 데이터 세팅
@@ -61,8 +60,8 @@ var url = "/matna/reviewReply";
 	}
 	
 	function hideReplyForm() {
-		$('#replyUpDiv').hide();
 		var upDiv = $("#replyUpDiv");
+		//upDiv.hide();
 		upDiv.remove();
 		var body = $("body");
 		body.append(upDiv);
@@ -75,7 +74,7 @@ var url = "/matna/reviewReply";
 			data:{
 				no:upNo,			// # upNo --> 댓글 번호
 				rNo:rNo,
-				content: $('#replyContent_up').val(),
+				content: $('#replyContent_up').val()
 			},
 			type:"POST",
 			dataType:"json",
@@ -86,7 +85,7 @@ var url = "/matna/reviewReply";
 		})
 	}
 
-	function deleteReply(no,rNo,page){
+	function deleteReply(no,rNo,replyPage){
 		$.ajax({
 			url:url+"/removeReply",
 			data:{
@@ -96,7 +95,7 @@ var url = "/matna/reviewReply";
 			dataType:"json",
 			success:function(result){
 				hideReplyForm();
-				listReply(rNo,page);
+				listReply(rNo,replyPage);
 			}
 		})
 	}
