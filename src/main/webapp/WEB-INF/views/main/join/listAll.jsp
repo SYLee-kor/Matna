@@ -4,13 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/join/delete");
+			formObj.attr("action", "/matna/join/delete");
 			formObj.submit();
 		});
 	});

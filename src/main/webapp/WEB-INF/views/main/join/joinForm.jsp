@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
@@ -16,7 +16,7 @@
 			/* 
 			$("#gender").val($("input[name='sex']:checked").val());
 			 */
-			formObj.attr("action", "/join/joinSuccess");
+			formObj.attr("action", "/matna/join/joinSuccess");
 			formObj.attr("action2","null");
 			formObj.submit();
 		});
@@ -24,7 +24,7 @@
 		$('#confirmid').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmId",
+		      url: "/matna/join/confirmId",
 		      data: { action: "join", 
 		    	      action2: "confirmid", 
 		    	  	  id: $('#id').val()
@@ -40,7 +40,7 @@
 		$('#confirmnick').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmNick",
+		      url: "/matna/join/confirmNick",
 		      data: { action: "join", 
 		    	      action2: "confirmNick", 
 		    	  	  nickname: $('#nickname').val()
