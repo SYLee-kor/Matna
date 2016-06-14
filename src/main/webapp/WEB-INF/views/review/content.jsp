@@ -103,6 +103,7 @@
 <body>
 	<form name="reviewForm" id="reviewForm" class="reviewF">
 		<input type="hidden" name="no" value="${review.no }"/>
+		<input type="hidden" name="page" value="${page }"/>
 		<input type="hidden" name="pageType" value="${pageType }"/>
 		<input type="hidden" name="tabType" value="${tabType }"/>
 		<table id="contentTable" cellpadding="5" bordercolor="#00bbdd" border="1">
@@ -145,10 +146,10 @@
 				<a href='javascript:findGB("bad",${reNo },"${userNo }")' style="color: teal;">
 				싫어요:</a> <font color="red"><span id="bad">${review.bad }</span> </font></td>
 				<td colspan="4" align="right">
-					<c:if test="${ userNo == review.writer }">
+					<%-- <c:if test="${ userNo == review.writer }"> --%>
 					<input type="button" value="수정" onclick="updateReview('${review.no}');">
 					<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
-					</c:if>
+					<%-- </c:if> --%>
 					<input type="button" value="  목록으로  " 
 					onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
 					</td>

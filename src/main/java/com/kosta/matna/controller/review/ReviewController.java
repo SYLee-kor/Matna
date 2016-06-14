@@ -3,6 +3,8 @@ package com.kosta.matna.controller.review;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -41,10 +43,15 @@ public class ReviewController {
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
-			, String tabType, String pageType, String page){
+			, String pageType, String page){
 		try {
+			System.out.println("ddddd");
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Matcher match = pattern.matcher(review.getContent());
+			String imgTag = "";
+			if (match.find())imgTag = match.group(0);
+			String photo = imgTag+" width=\"150\" height=\"90\">";
 			review.setPhoto(photo);
 			
 			// # 주소값 입력안했을 경우...
@@ -53,9 +60,9 @@ public class ReviewController {
 			
 			if(service.registReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
-			rttr.addFlashAttribute("pageType", pageType);
-			rttr.addFlashAttribute("tabType", tabType);
-			rttr.addFlashAttribute("page", page);
+			rttr.addAttribute("pageType", pageType);
+			rttr.addAttribute("tabType", preview.getMenu());
+			rttr.addAttribute("page", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -64,12 +71,16 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyReview(int no, Model model){
+	public String modifyReview(int no, Model model
+			, String pageType, String tabType, String page){
 		try {
 			Object reviews[] = service.readReview(no);
 			model.addAttribute("review", (ReviewVO)reviews[0]);
 			model.addAttribute("preview", (PreviewVO)reviews[1]);
 			model.addAttribute("action", "modify");
+			model.addAttribute("page", page);
+			model.addAttribute("pageType", pageType);
+			model.addAttribute("tabType",tabType);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -80,16 +91,21 @@ public class ReviewController {
 	@RequestMapping(value="modify",method=RequestMethod.POST)
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String pageType, String tabType, String page){
+		System.out.println("review_modify 실행 [page : "+page+" / tabType : "+tabType+" / pageType : "+pageType);
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Matcher match = pattern.matcher(review.getContent());
+			String imgTag = "";
+			if (match.find())imgTag = match.group(0);
+			String photo = imgTag+" width=\"150\" height=\"90\">";
 			review.setPhoto(photo);
 			
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
-			rttr.addFlashAttribute("tabType", tabType);
-			rttr.addFlashAttribute("pageType",pageType);
-			rttr.addFlashAttribute("page",page);
+			rttr.addAttribute("tabType", preview.getMenu());
+			rttr.addAttribute("pageType",pageType);
+			rttr.addAttribute("page",page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -148,8 +164,9 @@ public class ReviewController {
 	} // # list페이지로 가기 위한 메소드
 	
 	@RequestMapping("tabPage")
-	public String resultPage(String pageType, String tabType,  
+	public String tabPage(String pageType, String tabType, 
 			Model model, Criteria cri) {
+		System.out.println("listReview = [page : "+cri.getPage()+"/tabType : "+tabType+"/ pageType : "+pageType);
 		try {
 			pageType = (pageType==null)?"review":pageType;
 			tabType = (tabType==null)?"food":tabType;
@@ -172,6 +189,7 @@ public class ReviewController {
 			model.addAttribute("pageMaker", pageMaker);
 			model.addAttribute("tabType", typeMap.get("tabType"));
 			model.addAttribute("pageType", typeMap.get("pageType"));
+			model.addAttribute("page", page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
