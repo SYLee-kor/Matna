@@ -5,32 +5,8 @@
 <head>
     <meta name="description" content="">
 	<meta name="keywords" content="" />
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="initial-scale=1">
 	
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/struts/css/animate.css">
-	<link rel="stylesheet" href="/struts/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/struts/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/struts/css/templatemo_misc.css">
-	<link rel="stylesheet" href="/struts/css/reviewList.css">
-  <!--   <link rel="stylesheet" href="css/matnaHeader.css">  -->
-	
-    <!-- JavaScripts -->
-	<script src="/struts/js/jquery-1.10.2.min.js"></script>
-	<script src="/struts/js/jquery.singlePageNav.js"></script>
-	<script src="/struts/js/jquery.flexslider.js"></script>
-	
-	<script src="/struts/js/custom.js"></script>
-    <script src="/struts/js/jquery-1.10.2.min.js"></script>
-	<script src="/struts/js/jquery.lightbox.js"></script>
-	<script src="/struts/js/templatemo_custom.js"></script>
-    <script src="/struts/js/jquery-git2.js"></script><!-- previous next script -->
-
-
-    <title>우리지금 Matna!!</title>
-
 <style type="text/css">
 .image{
    width :150px;
@@ -41,8 +17,8 @@
 </head>
 <body>
 
-<%@include file="matnaHeader.jsp" %>
-</br>
+<%@include file="/WEB-INF/views/matnaHeader.jsp" %>
+<br>
 <div class="col-md-1 col-sm-1"></div>
 <div class="col-md-10 col-sm-10">
  <div id="reviewList">
@@ -65,7 +41,7 @@
     <tbody>
       <tr>
          <td>4</td>
-         <td><img src="/struts/images/AD_pizza.jpg" class="image" /></td>
+         <td><img src="/matna/resource/images/AD_pizza.jpg" class="image" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [5]</td>  <!-- title,조회수 -->
          <td>배고푸다배고프다</td>
          <td>2</td>   <!-- 댓글수 -->
@@ -76,7 +52,7 @@
 
       <tr>
          <td>3</td>
-         <td><img src="/struts/images/AD_bugerking.jpg" class="image" alt="" /></td>
+         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [1]</td>
          <td>배고푸다배고프다</td>
          <td>2</td> 
@@ -87,7 +63,7 @@
 
       <tr>
          <td>2</td>
-         <td><img src="/struts/images/AD_bugerking.jpg"  class="image" alt="" /></td>
+         <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [2]</td>
          <td>배고푸다배고프다</td>
          <td>2</td> 
@@ -98,7 +74,7 @@
       
       <tr>
          <td>1</td>
-         <td><img src="/struts/images/AD_bugerking.jpg" class="image" alt="" /></td>
+         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [3]</td>
          <td>배고푸다배고프다</td>
          <td>2</td> 
@@ -112,7 +88,7 @@
   <!-- ===================== paging 처리======================= -->
   <ul class="pagination modal-1" id="pagination">
   <li><a href="#" class="prev">&laquo</a></li>
-  <li><a href="#" class="prev">&#706;</a></li>
+  <li><a href="#" class="prev">prev</a></li>
   <li><a href="#" class="active">1</a></li>
   <li> <a href="#">2</a></li>
   <li> <a href="#">3</a></li>
@@ -122,7 +98,7 @@
   <li> <a href="#">7</a></li>
   <li> <a href="#">8</a></li>
   <li> <a href="#">9</a></li>
-  <li><a href="#" class="next">&#62;</a></li>
+  <li><a href="#" class="next">next</a></li>
   <li><a href="#" class="next">&raquo;</a></li>
 </ul><br>
   
