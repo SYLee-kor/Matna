@@ -32,7 +32,7 @@ public class ReviewController {
 	ReviewService service;
 	
 	// # 뷰들의 위치 잡아주기.
-	private String path = "review/"; // # WEB-INF/views/ {path} 
+	private String path = "/main/body/review/"; // # WEB-INF/views/ {path} 
 	
 	@RequestMapping(value="regist",method=RequestMethod.GET)
 	public String registReview(@ModelAttribute("pageType") String pageType, Model model
@@ -205,5 +205,20 @@ public class ReviewController {
 	@RequestMapping("dongList")
 	public @ResponseBody List<String> dongList(String gu) throws Exception{
 		return service.dongList(gu);
+	}
+	
+	@RequestMapping("gbCheck")
+	public @ResponseBody Map<String,Object> gbCheck(int userNo, int rNo, String gbType) {
+		Map resultMap = new HashMap();
+		try {
+			Map map = new HashMap();
+			map.put("userNo", userNo);
+			map.put("rNo", rNo);
+			map.put("gbType", gbType);
+			resultMap = service.gbCheck(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resultMap;
 	}
 }

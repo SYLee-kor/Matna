@@ -51,6 +51,12 @@ create table review_reply(
 	regdate date default sysdate
 );
 
+drop table gbCheck();
+create table gbCheck(
+	rNo number references review(no),
+	userNo number references member(no)
+);
+
 drop table matnaAddr;
 create table matnaAddr
 as (select ds_gugun,ds_dong from ds_zip where ds_sido='¼­¿ï');

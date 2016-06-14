@@ -52,11 +52,11 @@
     <div class="tabBlock-pane">
 	<div style="text-align: left;">
 		<div style="border: 1px solid rgb(204, 204, 204);">
-			<span onclick="showTab('food',${page})" id="foodT" 
+			<span onclick="showTab('food',1)" id="foodT" 
 				style="padding: 0pt 5px; cursor: pointer;">식사</span> 
-			<span onclick="showTab('desert',${page})" id="desertT"
+			<span onclick="showTab('desert',1)" id="desertT"
 				style="padding: 0pt 5px; cursor: pointer;">디저트</span>
-			<span onclick="showTab('drink',${page})" id="drinkT"
+			<span onclick="showTab('drink',1)" id="drinkT"
 				style="padding: 0pt 5px; cursor: pointer;">주류</span>
 		<%-- 	<c:if test="${type != null }">
 			<span onclick="showTab('search')" id="searchT"
