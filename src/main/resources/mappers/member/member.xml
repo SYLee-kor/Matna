@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+
+
+   <insert id="insertMember" parameterType="member">
+       insert into member values (member_seq.nextval,#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{email},#{phone},#{post},#{addr},0,to_char(sysdate,'yyyymmdd'))
+   </insert>
+   
+   <select id="selectMember" resultType="member">
+      select * 
+      from member
+   </select>
+   
+   <select id="selectIsMember" parameterType="java.util.Map" resultType="member">
+      select * 
+      from member where id=#{id} and pw=#{pw}
+   </select>
+ 
+   <select id="selectID" parameterType="String" resultType="member">
+      select * 
+      from member where id=#{id}
+   </select>
+   
+   <select id="selectNickname" parameterType="String" resultType="member">
+      select * 
+      from member where nickname=#{nickname}
+   </select>
+   
+   <update id="update" parameterType="member">
+       update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, nickname=#{nickname},
+                         post=#{post},addr=#{addr}
+	    where id=#{id} 
+   </update>
+   
+   <delete id="delete" parameterType="int">
+		delete from member where no=#{no}
+	</delete>
+   
+   
+   <!-- <select id="selectCnt"  parameterClass="java.util.Map" resultClass="int">
+      select count(*) from member where id=#id# and pass=#pass#
+   </select>
+   <select id="selectPoint"  parameterClass="String" resultClass="int">
+      select point from member where id=#id#
+   </select>
+   
+   
+   <select id="findID" parameterClass="java.util.HashMap" resultClass="String">
+		select id 
+		from member
+		where name=#name# and email=#email#
+   </select>
+   
+   <select id="select" parameterClass="String" resultClass="model.beans.MemberInfo">
+      select pass,name,email,gender,birth,phone,addr,addr2 
+      from member where id=#id#
+   </select>
+   
+   <select id="findPass" parameterClass="java.util.HashMap" resultClass="String">
+   		select pass
+   		from member
+   		where name=#name# and id=#id# and email=#email#
+   </select>
+   
+   <update id="update" parameterClass="model.beans.MemberInfo">
+       update member set pass=#pass#, name=#name#, email=#email#, phone=#phone#,
+                         addr=#addr#,addr2=#addr2#
+	    where id=#id# 
+   </update>
+   
+   <update id="updatePoint" parameterClass="java.util.HashMap">
+   		update member set 
+   		point = (select point+#point# from member where id=#id#)
+   		where id = #id#
+   </update>
+
+	<delete id="delete" parameterClass="String">
+		delete from member where id=#id#
+	</delete>
+	
+	<select id="oselectFind" resultClass="model.beans.OrderUser" parameterClass="String">
+		select member.id, memberOrder.idx, title, cnt, price, phone, addr2, statement
+		from member, memberOrder
+		where member.id = memberOrder.id
+		 and member.id=#id#
+	</select>
+	
+	<select id="selectID" resultClass="int" parameterClass="String">
+		select count(*) from member where id=#id#
+	</select>
+	
+	<select id="selectprice" parameterClass="int" resultClass="int">
+      select price from memberOrder where idx=#idx#
+	</select>
+	
+	<select id="selectItem" parameterClass="int" resultClass="model.beans.Items">
+		select item.title, item.amount, item.cnt
+		from item, memberOrder
+		where memberOrder.title = item.title 
+		 and memberOrder.idx = #idx#
+	</select>
+	
+	<update id="updateItem" parameterClass="model.beans.Items">
+	    update item set amount=#amount#,cnt=#cnt#
+		where title=#title#
+	</update> -->
+
+</mapper>
+<!-- 
+insert into member values ('abcmart','1234','홍길동','abcmart@naver.com','0','19910711','010-1234-5678','서울특별시','강남구',to_char(sysdate,'yyyymmdd'),members_seq.nextval);
+ -->
