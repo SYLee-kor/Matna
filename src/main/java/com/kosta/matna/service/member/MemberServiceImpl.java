@@ -45,4 +45,14 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.checkID(id);
 	}
 
+	@Override
+	public boolean checkNickname(String nickname) throws Exception {
+		return memberDAO.checkNickname(nickname);
+	}
+
+	@Override
+	public MemberVO selectIsMember(String id, String pw) throws Exception {
+		return memberDAO.selectIsMember(id, pw);
+	}
+
 }
