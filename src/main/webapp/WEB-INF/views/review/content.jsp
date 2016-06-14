@@ -9,7 +9,6 @@
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
 <script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
 <script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
-<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		if(!('${preview.gu}'=='구' || '${preview.dong}'=='동')){

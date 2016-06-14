@@ -13,7 +13,7 @@
 </head>
 <body> 
         
-  <%@include file="/WEB-INF/views/review/menu/all/miniList.jsp" %>
+  <%-- <%@include file="/WEB-INF/views/review/menu/all/miniList.jsp" %> --%>
 
     <!--============== mini자유게시판, mini만남게시판==============================-->
     <!-- image크기 조절은 minilist.css - .miniimage에서  -->

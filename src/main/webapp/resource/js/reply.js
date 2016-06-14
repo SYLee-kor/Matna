@@ -1,7 +1,7 @@
 
 // 기본 URL
 var url = "/matna/reviewReply";
-	function insertReply(rNo,page){
+	function insertReply(rNo){
 		/*if(login!='success'){
 			alert('댓글을 달기 위해선 로그인을 해야합니다.');
 			return;
@@ -16,7 +16,7 @@ var url = "/matna/reviewReply";
 			type:"POST",
 			dataType:"json",
 			success:function(result){
-				listReply(rNo,page);
+				listReply(rNo);
 				$('#repContent').val('')
 			},
 			error:function(xhr,status,error){
@@ -43,11 +43,11 @@ var url = "/matna/reviewReply";
 		})
 	}
 	var upNo=0;
-	var upPage=0;
+	var replyPage=0;
 	var upContent = '';
 	function upReplyForm(no, content, page) { // # 업데이트 폼 형성
 		alert(no+"/"+content+'/'+page);
-		upPage=page;
+		replyPage=page;
 		upNo=no;
 		upContent = content;
 		// # 업데이트 폼 이동
@@ -81,7 +81,7 @@ var url = "/matna/reviewReply";
 			dataType:"json",
 			success:function(result){
 				hideReplyForm();
-				listReply(rNo,upPage)
+				listReply(rNo,replyPage)
 			}
 		})
 	}

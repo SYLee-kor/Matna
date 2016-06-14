@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
 <div id="replyAddDiv" align="left">
 	<!-- 입력폼 -->
 	<h4>댓글쓰기</h4>
 	<input type="hidden" name="replyWriter" size="10" value="${userNo }" id="replyWriter">
 	<textarea rows="3" cols="50" name="replyContent" tabindex="0" id="replyContent"
 		style="width: 500px; height: 80px;"></textarea>
-	<input type="button" value="등록" onclick="insertReply(${review.no},${replyPage } })"
+	<input type="button" value="등록" onclick="insertReply(${review.no})"
 		style="width: 50px; height: 80px;"><br>
 	</div>
 <div id="replyList"  align="left"></div>

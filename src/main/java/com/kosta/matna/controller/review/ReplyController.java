@@ -22,13 +22,13 @@ public class ReplyController {
 	ReplyService service;
 	
 	@RequestMapping("/addReply")
-	public @ResponseBody String addReply(ReplyVO vo, int rePage) throws Exception{
+	public @ResponseBody String addReply(ReplyVO vo) throws Exception{
 		System.out.println("ReplyVO "+vo.getContent());
 		return service.addReply(vo)+"";
 	}
 	
 	@RequestMapping("/modifyReply")
-	public @ResponseBody String modifyReply(ReplyVO vo, int rePage) throws Exception{
+	public @ResponseBody String modifyReply(ReplyVO vo) throws Exception{
 		return service.modifyReply(vo)+"";
 	}
 	
@@ -40,10 +40,10 @@ public class ReplyController {
 	@RequestMapping("/listReply")
 	public String listReply(int rNo, Model model, Criteria cri) throws Exception{
 		cri.setPerPageNum(5);
-		RowBounds rowBounds = new RowBounds(cri.getPageStart(),cri.getPageEnd());
+		RowBounds rowBounds = new RowBounds(cri.getPageStart(),cri.getPerPageNum());
 		
 		//# PageMaker 저장
-		model.addAttribute("pageMaker", new PageMaker(cri, service.getTotalCount(rNo)));
+		model.addAttribute("replyMaker", new PageMaker(cri, service.getTotalCount(rNo)));
 		//# 댓글 리스트 저장
 		model.addAttribute("replyList", service.listReply(rNo,rowBounds));
 		return "review/reply";

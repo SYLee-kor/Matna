@@ -32,11 +32,6 @@ public class Criteria {
 		return (this.page-1)*perPageNum;
 	}
 	
-	public int getPageEnd(){
-		System.out.println("getPageEnd ½ÇÇà : "+page+"/"+this.page*perPageNum);
-		return this.page*perPageNum;
-	}
-	
 	@Override
 	public String toString() {
 		return "Criteria [page : "+page+" / perPageNum : "+perPageNum+"]";
