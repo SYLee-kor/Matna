@@ -159,17 +159,16 @@ h1 {
   border: 1px solid #d3d3d3;
 	left: 50%;
   padding: 2px 5px;
-  position: absolute;
-	margin: -22px 0 0 -170px;
-	bottom : 2px;
-  width:28.4em;
+	margin: 2% 0 0 37.5%;
+margin-bottom : 3%;
+  width:29em;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
 }
 
 .searchform input, .searchform button {
-	float: left
+	float: left;
 }
 .searchform input {
 	background:#fefefe;
@@ -177,7 +176,7 @@ h1 {
 	font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	margin-right: 5px;
 	padding: 10px;
-	width: 29.7em;
+	width: 28em;
 	box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
 	-moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
 	-webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
@@ -215,7 +214,7 @@ h1 {
 	cursor: pointer;
 	font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	padding: 10px;
-	width:80px;
+	width:50px;
 	box-shadow: 0 0 2px #2692dd inset;
 	-moz-box-shadow: 0 0 2px #2692dd inset;
 	-webkit-box-shadow: 0 0 2px #2692dd inset;

@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/matna/resource/css/templatemo_style.css">
     <link rel="stylesheet" href="/matna/resource/css/miniList.css"> 
     <link rel="stylesheet" href="/matna/resource/css/write.css"> 
+    <link rel="stylesheet" href="/matna/resource/css/content.css"> 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 	<script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
@@ -32,6 +33,11 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
    
+   <%--content부분 --%>
+    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
+	<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
+	<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
+	<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
     <title>우리지금 Matna!!</title>
 </head>
 <body>
