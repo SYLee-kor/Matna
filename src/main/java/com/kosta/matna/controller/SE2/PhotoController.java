@@ -39,7 +39,7 @@ public class PhotoController {
 	            }
 	            String realname = UUID.randomUUID().toString() + "." + ext;
 	            vo.getFiledata().transferTo(new File(path+realname));
-	            file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/resource/photo_upload/"+realname;
+	            file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/matna/resource/photo_upload/"+realname;
 	        } else {
 	            file_result += "&errstr=error";
 	        }
@@ -84,7 +84,7 @@ public class PhotoController {
 	         os.close();
 	         sFileInfo += "&bNewLine=true";
 	         sFileInfo += "&sFileName="+ filename;;
-	         sFileInfo += "&sFileURL="+"/resource/photo_upload/"+realFileNm;
+	         sFileInfo += "&sFileURL="+"/matna/resource/photo_upload/"+realFileNm;
 	         PrintWriter print = response.getWriter();
 	         print.print(sFileInfo);
 	         print.flush();

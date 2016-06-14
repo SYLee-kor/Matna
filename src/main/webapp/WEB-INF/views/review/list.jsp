@@ -12,13 +12,18 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		showTab('${tabType}','${page}');
-		
 		// # 삽입 , 수정, 삭제 후 결과 출력.
 		if('${result}'=='success') alert('처리되었습니다.');
+		
+		// # 글등록 버튼을 누르면 이동
+		$('#goRegist').click(function() {
+			document.location.href=
+				"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
+		})
 	})
 	function showTab(type,page) {
-		var types = ['food','desert','drink','search'];
-		for (i= 0; i < 4; i++) {
+		var types = ['food','desert','drink'];
+		for (i= 0; i < 3; i++) {
 			var tb = document.getElementById('tab_'+types[i]);
 			if(type != types[i]){
 				tb.style.display = "none";
@@ -31,10 +36,10 @@
 		}
 	}
 	function showPage(type,page) {
-		alert('page : '+page);
-		$("#tab_"+type).load('/matna/review/tabPage?tabType='+type
+		$("#tab_"+type).load('/matna/review/tabPage?&tabType='+type
 				+'&pageType=${pageType}&page='+page);
 	}
+	
 </script>
 </head>
 <body>
@@ -67,11 +72,7 @@
 	</div>
 	<br>
 	<div align="right" style="width: 90%;">
-		<c:if test="${login eq 'success' }" >
-			<form action="/matna/review/regist" method="get">
-				<button>글등록</button>
-			</form>
-		</c:if>
+		<button id="goRegist">글등록</button>
 	</div>
 	
 	</div></div></figure>

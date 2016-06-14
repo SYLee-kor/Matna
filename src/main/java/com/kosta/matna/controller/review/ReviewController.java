@@ -3,12 +3,15 @@ package com.kosta.matna.controller.review;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,22 +35,34 @@ public class ReviewController {
 	private String path = "review/"; // # WEB-INF/views/ {path} 
 	
 	@RequestMapping(value="regist",method=RequestMethod.GET)
-	public String registReview(){
+	public String registReview(@ModelAttribute("pageType") String pageType, Model model
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
+		model.addAttribute("action", "regist");
 		return path+"regist";
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
+	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
+			, String pageType, String page){
 		try {
-			// # 받은 주소값을 통해 지도 좌표값 구하기.
-			String map = "1022323, 123123";
-			preview.setMap(map);
-			
+			System.out.println("ddddd");
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			String photo = ( review.getPhoto()==null ) ? "nonPhoto.jpg":review.getPhoto(); 
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Matcher match = pattern.matcher(review.getContent());
+			String imgTag = "";
+			if (match.find())imgTag = match.group(0);
+			String photo = imgTag+" width=\"150\" height=\"90\">";
 			review.setPhoto(photo);
+			
+			// # 주소값 입력안했을 경우...
+			String addr = ( preview.getAddr().equals("") ) ? "  " : preview.getAddr();
+			preview.setAddr(addr);
+			
 			if(service.registReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
+			rttr.addAttribute("pageType", pageType);
+			rttr.addAttribute("tabType", preview.getMenu());
+			rttr.addAttribute("page", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -56,15 +71,41 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyReview(){
-		return path+"modify";
+	public String modifyReview(int no, Model model
+			, String pageType, String tabType, String page){
+		try {
+			Object reviews[] = service.readReview(no);
+			model.addAttribute("review", (ReviewVO)reviews[0]);
+			model.addAttribute("preview", (PreviewVO)reviews[1]);
+			model.addAttribute("action", "modify");
+			model.addAttribute("page", page);
+			model.addAttribute("pageType", pageType);
+			model.addAttribute("tabType",tabType);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return path+"regist";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
-	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr){
+	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
+			, String pageType, String tabType, String page){
+		System.out.println("review_modify 실행 [page : "+page+" / tabType : "+tabType+" / pageType : "+pageType);
 		try {
+			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
+			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Matcher match = pattern.matcher(review.getContent());
+			String imgTag = "";
+			if (match.find())imgTag = match.group(0);
+			String photo = imgTag+" width=\"150\" height=\"90\">";
+			review.setPhoto(photo);
+			
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
+			rttr.addAttribute("tabType", preview.getMenu());
+			rttr.addAttribute("pageType",pageType);
+			rttr.addAttribute("page",page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -73,12 +114,19 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("read")
-	public String readReview(int no,Model model){
+	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
+			
+			// # 가격 5000원 ~ 10000원 식으로 표현하기 위해
+			PreviewVO preview = (PreviewVO) reviews[1] ;
+			String prices[] = preview.getPrice().split(",");
+			preview.setPrice(prices[0]+"000원"+" ~ "+prices[1]+"000원");
+			
 			model.addAttribute("review",reviews[0]);
-			model.addAttribute("review",reviews[1]);
+			model.addAttribute("preview",preview);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -87,10 +135,14 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
-	public String removeReview(int no, RedirectAttributes rttr){
+	public String removeReview(int no, RedirectAttributes rttr
+			, String pageType, String tabType,  String page){
 		try {
 			if(service.removeReview(no))
-			rttr.addAttribute("result", "success");
+			rttr.addFlashAttribute("result", "success");
+			rttr.addAttribute("pageType", pageType);
+			rttr.addAttribute("tabType", tabType);
+			rttr.addAttribute("page", page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -112,8 +164,9 @@ public class ReviewController {
 	} // # list페이지로 가기 위한 메소드
 	
 	@RequestMapping("tabPage")
-	public String resultPage(String pageType, String tabType,  
+	public String tabPage(String pageType, String tabType, 
 			Model model, Criteria cri) {
+		System.out.println("listReview = [page : "+cri.getPage()+"/tabType : "+tabType+"/ pageType : "+pageType);
 		try {
 			pageType = (pageType==null)?"review":pageType;
 			tabType = (tabType==null)?"food":tabType;
@@ -130,13 +183,13 @@ public class ReviewController {
 			PageMaker pageMaker = new PageMaker(cri, totalCount);
 			
 			List<ReviewDTO> list = 
-			service.readList(typeMap, new RowBounds(cri.getPageStart(), cri.getPageEnd()));
+			service.readList(typeMap, new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 			
-			System.out.println("list.size() : "+list.size());
 			model.addAttribute("list", list);
 			model.addAttribute("pageMaker", pageMaker);
 			model.addAttribute("tabType", typeMap.get("tabType"));
 			model.addAttribute("pageType", typeMap.get("pageType"));
+			model.addAttribute("page", page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";

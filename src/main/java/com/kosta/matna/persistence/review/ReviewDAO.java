@@ -15,7 +15,10 @@ public interface ReviewDAO {
 	
 	boolean updateReview(ReviewVO vo) throws Exception;
 	boolean updatePreview(PreviewVO vo)throws Exception;
+	
 	boolean viewCntUp(int no) throws Exception;
+	boolean replyCntUp(int no) throws Exception;
+	
 	boolean gbUp(int no, String gbKey)throws Exception;
 	
 	boolean deleteReview(int no) throws Exception;

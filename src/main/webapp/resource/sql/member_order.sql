@@ -8,7 +8,7 @@ create table member_order(
 	orderDate Date default sysdate,
 	state number default 0,
 	addr varchar2(200)
-)
+);
 
 drop sequence member_order_seq;
 create sequence member_order_seq

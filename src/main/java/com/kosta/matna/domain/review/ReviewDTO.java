@@ -5,7 +5,8 @@ import java.sql.Date;
 public class ReviewDTO {
 	private int no;
 	private String title;
-	private String writer;
+	private int writer;
+	private String nickName;
 	private Date regdate;
 	private int replyCnt;
 	private int viewCnt;
@@ -25,11 +26,17 @@ public class ReviewDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getWriter() {
+	public int getWriter() {
 		return writer;
 	}
-	public void setWriter(String writer) {
+	public void setWriter(int writer) {
 		this.writer = writer;
+	}
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public Date getRegdate() {
 		return regdate;

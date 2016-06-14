@@ -10,33 +10,27 @@
 <script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("[name=parking]").val('${preview.parking}');
-		if('${preview.parking}'==1){
-			$('#pON_up').attr("style",'color:blue; font-weight:bold');
-			$('#pOFF_up').attr("style",'color:gray');
-		}else{
-			$('#pON_up').attr("style",'color:gray');
-			$('#pOFF_up').attr("style",'color:blue; font-weight:bold');
-		}
+		color_parking('${preview.parking}');
 		$("[name=score]").val('${preview.score}');
-		$("[name=kind]").val('${preview.kind}');
+		$("[name=menu]").val('${preview.menu}');
 		$("[name=price]").val('${preview.price}');
+		printGu();
 		$("[name=addr]").val('${preview.addr}');
-		$("#upPark${preview.parking}").attr('checked',true);
 	})
 
-
-function pringGu() {
+function printGu() {
 	$.ajax({
 		url:"/matna/review/guList",
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
-			var gu = '<select id="guList" onchange="printDong()">';
+			var gu = '<select id="guList" name="gu" onchange="printDong()">';
+			gu += '<option value="구">구</option>'
 			for (var int = 0; int < result.length; int++) {
 				gu+='<option value="'+result[int]+'">'+result[int]+'</option>';
 			}
 			gu += '</select>';
 			$('#guSpan').html(gu);
+			$('#guList').val('${preview.gu}');
 			printDong();
 		},
 		error:function(xhr,status,error){
@@ -51,12 +45,14 @@ function printDong() {
 		data:"gu="+$('#guList').val(),
 		dataType:"json",
 		success:function(result){ // # result는 Array[String] 형태..
-			var dong = '<select id="dongList">';
+			var dong = '<select id="dongList" name="dong">';
+			dong += '<option value="동">동</option>'
 			for (var int = 0; int < result.length; int++) {
 				dong+='<option value="'+result[int]+'">'+result[int]+"</option>";
 			}
 			dong += '</select>';
 			$('#dongSpan').html(dong);
+			$('#dongList').val('${preview.dong}');
 		},
 		error:function(xhr,status,error){
 			alert('error : '+error);
@@ -69,7 +65,7 @@ $(function(){
       nhn.husky.EZCreator.createInIFrame({
           oAppRef: oEditors,
           elPlaceHolder: "review_content",
-          sSkinURI: "/Matna/SE2/SmartEditor2Skin.html",
+          sSkinURI: "/matna/resource/SE2/SmartEditor2Skin.html",
 			htParams : {
 				bUseToolbar : true,
 				bUseVerticalResizer : true,
@@ -99,6 +95,7 @@ function color_parking(type) {
 		$('#pON_up').attr("style",'color:gray');
 		$('#pOFF_up').attr("style",'color:blue; font-weight:bold;');
 	}
+	$("#upPark${preview.parking}").attr('checked',true); 
 }
 
 </script>
@@ -113,13 +110,19 @@ function color_parking(type) {
 	<h3>리뷰 작성</h3>
 	<hr>
 	<form name="review_writeForm" class="reviewF" id="frm" action="/matna/review/modify" method="post">
-		<input type="hidden" name="action" id="action"/>
+		<input type="hidden" name="no" id="no" value="${review.no }"/>
 		<input type="hidden" name="writer" value="${review.writer }">
-		<input type="hidden" name="idx" id="idx" value="${review.no }"/>
+		<input type="hidden" name="page" value="${page }">
+		<input type="hidden" name="pageType" value="${pageType }">
+		<input type="hidden" name="tabType" value="${tabType }">
 		<table cellpadding="5" bordercolor="#00bbdd" style="width:100%; padding-left:10%">
 			<tr>
 				<td>지역</td>
-				<td><span id="guSpan"></span><span id="dongSpan"></span></td>
+				<td>
+					<span id="guSpan"></span>
+					<span id="dongSpan"></span>
+					<input type="text" name="addr" value="${preview.addr }">
+				</td>
 			</tr>
 			<tr>
 				<td>주차장 여부</td>
@@ -131,10 +134,10 @@ function color_parking(type) {
 			</tr>
 			<tr><td>메뉴</td>
 				<td>
-					<select name="kind" style="color:green; ">
-						<option value="식사">식사</option>
-						<option value="디저트">디저트</option>
-						<option value="주류">주류</option>
+					<select name="menu" style="color:green; ">
+						<option value="food">식사</option>
+						<option value="desert">디저트</option>
+						<option value="drink">주류</option>
 					</select>
 				</td>
 			</tr>
@@ -168,8 +171,7 @@ function color_parking(type) {
 			</tr>
 			<tr>
 				<td>추천메뉴</td>
-				<td><textarea id="recommend" rows="2" cols="50" name="recommend">
-				${preview.recommend }</textarea></td>
+				<td><textarea id="recommend" rows="2" cols="50" name="recommend">${preview.recommend }</textarea></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -179,13 +181,13 @@ function color_parking(type) {
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type="text" name="review_title" id="review_title" size="80" value="${review.title }"></td>
+				<td><input type="text" name="title" id="review_title" size="80" value="${review.title }"></td>
 			</tr>
 			<tr>
 				<td colspan="2">내용</td>
 			</tr>
 			<tr>
-				<td colspan="2"><textarea cols="100" rows="35" name="review_content"
+				<td colspan="2"><textarea cols="100" rows="35" name="content"
 						id="review_content" style="width: 700px; height: 350px;">${review.content }</textarea></td>
 			</tr>
 			<tr>

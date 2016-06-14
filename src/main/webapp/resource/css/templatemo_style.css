@@ -1,0 +1,736 @@
+/*
+
+Solidity Template
+
+http://www.templatemo.com/tm-407-solidity
+
+*/
+
+body {  font: 14px/1.85em 'Open Sans', Arial, Helvetice Neue, sans-serif; color: #888888; font-weight: 300; font-style: normal; -webkit-font-smoothing: antialiased; Fix for webkit rendering -webkit-text-size-adjust: 100%; }
+
+a, a:hover, a:focus { 
+	text-decoration: none; 
+	-webkit-transition: all 150ms ease-in; 
+	-moz-transition: all 150ms ease-in; 
+	-o-transition: all 150ms ease-in; 
+	transition: all 150ms ease-in;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+	font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif; 
+}
+
+h1 { 
+	text-transform: uppercase; width: 100%; border-bottom: 1px solid #00bfff; font-size: 24px; color: #333333; padding-bottom: 10px; font-weight: bold; 
+}
+
+.clear { 
+	clear: both;
+}
+
+.content { 
+ 	display: none; 
+	height: auto;
+}
+
+.homepage { 
+ 	display: block;
+}
+
+.templatemo_title { 
+	float: left; 
+	width: 100%; 
+	font-size: 50px; 
+	color: #00bfff;
+	font-weight: 400; 
+	margin-top: 60px;
+	margin-left: 70px;
+}
+
+.templatemo_title a { 
+	color: #00bfff; 
+}
+
+.templatemo_subtitle { 
+	float: left; 
+	margin-top: 7px; 
+	margin-left: 70px;
+}
+
+.templatemo_search { 
+ 	float: left; 
+	width: 100%;
+	margin-right: 100px;
+}
+.templatemo_search input { 
+ 	border: 1px solid #cccccc; 
+	padding: 7px; 
+	width: 100%; 
+	font-style: italic; 
+	color: #999999;
+}
+
+::-webkit-input-placeholder { 
+ WebKit browsers
+    color: #999999;
+}
+:-moz-placeholder { 
+ Mozilla Firefox 4 to 18
+    color: #999999;
+}
+::-moz-placeholder { 
+ Mozilla Firefox 19+
+    color: #999999;
+}
+:-ms-input-placeholder { 
+ Internet Explorer 10+
+    color: #999999;
+}
+
+.responsive-navigation { 
+ 	background: #00bfff; 
+	float: left; 
+	padding: 10px 0px; 
+	margin-bottom: 30px;
+}
+.menu-toggle-btn { 
+	 margin-left: 20px;
+}
+
+a.menu-toggle-btn { 
+	 color: #ffffff;
+}
+
+.templatemo_menu { 
+ 	text-align: center;
+}
+
+.responsive_menu ul { 
+ 	padding: 0; 
+	margin: 0; 
+	list-style: none;
+}
+
+ .main_menu { 
+ 	text-align: center; 
+	margin-top: 30px; 
+	margin-bottom: 30px;
+	margin-left: 90px;
+} 
+.main_menu div.col-md-2 { 
+ 	margin-bottom: 1px; 
+	font-size: 16px;
+}
+.main_menu div.col-md-2 div.fa { 
+	font-size: 50px;
+}
+.main_menu div.col-md-2 a { 
+ 	color: white; 
+	text-transform: uppercase; 
+	display: block; 
+	background-color: #00bfff; 
+	width:100px;
+	-webkit-transition: all 150ms ease-in; 
+	-moz-transition: all 150ms ease-in; 
+	-o-transition: all 150ms ease-in; 
+	transition: all 150ms ease-in; 
+}
+
+.main_menu div.col-md-2 a:hover { 
+	background-color: #008ae6; 
+}
+
+/* .main_menu div.col-md-2 a#prev { 
+	width: 70px; 
+	height: 70px; 
+	line-height: 70px; 
+	font-weight: 400; 
+	cursor: pointer; 
+} */
+.main_menu div.col-md-2 a#next { 
+ 	width: 70px;
+	height: 70px; 
+	line-height: 70px; 
+	margin-left: 8px;  /* 추가 */
+	font-weight: 400; 
+	cursor: pointer;
+}
+
+a.menu_toggle-btn { 
+	width: 100%; 
+	height: 60px; 
+	background-color:  #00bfff; 
+	text-align: center; 
+	line-height: 60px; 
+	display: block; 
+	color: white; 
+	}
+a.menu_toggle-btn i { 
+	line-height: 60px; 
+	}
+
+.responsive-navigation { 
+	position: relative; 
+	width: 100%; 
+	display: block; 
+	z-index: 9999; 
+}
+
+.responsive_menu { 
+	display: none; 
+	background-color:  #00bfff; 
+}
+.responsive_menu ul li a { 
+	color: white; 
+	text-transform: uppercase; 
+	display: block; 
+	padding: 10px 20px; 
+	border-bottom: 1px solid #80dfff; 
+}
+ /* ===================광고====================== */
+.main-slider { 
+	width: 50%; 
+	height: 180px;
+	margin-top: 30px;  
+	margin-left: 100px;
+}
+
+.flexslider .slides { 
+	height: 100%;
+    width:  100%;
+}
+
+
+.flexslider { 
+	background-color: black; 
+	height: 150px; 
+	width:  550px;
+	overflow: hidden; 
+	margin: 0;
+}
+
+/* .flexslider img { 이미지 흐릿하게
+	position: relative; 
+	opacity: 0.5; 
+	width: 100%; 
+	z-index: 7; 
+} */
+/* ========================================= */
+.flex-control-nav { 
+	bottom: 10px; 
+	z-index: 9;
+}
+
+.flex-control-paging li a { 
+	background-color: white; 
+	border: 2px solid black; 
+	opacity: 0.6;
+}
+
+.flex-control-paging li a:hover { 
+	opacity: 1; 
+	background: white; 
+}
+
+.flex-control-paging li a.flex-active { 
+	opacity: 1; 
+	background: white; 
+}
+
+.templatemo_icon { 
+	float: left; 
+	font-size: 40px; 
+	color: #00bfff; 
+	text-align: center; 
+	padding-bottom: 3px; 
+	border-bottom: 2px solid #cccccc;
+}
+
+.templatemo_greentitle { 
+	float: left; 
+	font-size: 20px; 
+	color: #00bfff; 
+	font-weight: bold; 
+	text-transform: uppercase; 
+	margin-left: 10px; 
+	margin-top: 5px;
+}
+.templatemo_servicegap { 
+	margin: 40px 0px 0px 0px;
+}
+.templatemo_servicegap img { 
+	width: 80%;
+}
+
+
+.templatemo_email { 
+	 width: 40px; 
+	 height: 40px; 
+	 border-radius: 20px; 
+	 background: #00bfff; 
+	 text-align: center;  
+	 left:40%;  
+	 margin-left:-20px; 
+	 margin-top: -20px; 
+	 position: absolute;
+	-webkit-transition-duration: 1.5s;
+    -moz-transition-duration: 1.5s;
+    -o-transition-duration: 1.5s;
+    transition-duration: 1.5s;
+     
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+    transition-property: transform;
+    overflow:hidden;
+}
+
+.templatemo_email div.fa { 
+	font-size: 16px; 
+	color: #ffffff; 
+	line-height: 40px;
+}
+
+.templatemo_email:hover	{ 
+	-webkit-transform: rotate(360deg);    
+	-moz-transform: rotate(360deg);   
+	 -o-transform: rotate(360deg);
+}
+
+.templatemo_teamtext { 
+	 float: left;
+	 width: 100%;
+	 margin: 20px 0px;
+}
+.templatemo_teamname { 
+	float: left;
+	width: 100%;
+}
+.templatemo_teamtitle { 
+	float: left; 
+	font-size: 18px; 
+	color: #00bfff; 
+	font-weight: bold; 
+	text-transform: uppercase;
+	width: 100%; 
+}
+
+.templatemo_teampost { 
+	float: left; 
+	text-transform: uppercase; 
+	font-style: italic;
+}
+
+.templatemo_teamsocial { 
+	float: right; 
+	width: 50%; 
+	text-align: right;
+}
+.templatemo_teamsocial .fa { 
+	margin-left: 5px;
+	color: #cccccc; 
+	font-size: 16px;
+}
+.templatemo_teamsocial .fa:hover{ color: #00bfff; }
+
+.templatemo_portfolio img { 
+	width: 100%; 
+	margin-top: 30px;
+}
+
+.fadeInDown	{ 
+}
+
+------------------------------------------------------
+	Gallery Styles 
+--------------------------------------------------------
+.gallery-item { 
+	margin-bottom: 0px;
+ 	position: relative;
+	overflow: hidden;
+}
+.gallery-item .content-gallery { 
+	text-align: center;
+}
+.gallery-item .content-gallery h3 { 
+	  color: #b10021;
+	  font-size: 16px;
+	  font-weight: 300;
+	  margin-top: 5px;
+	  padding-bottom: 5px;
+	  display: inline-block;
+}
+.gallery-item img { 
+ width: 100%;
+}
+.gallery-item .overlay { 
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: block;
+  -webkit-transition: all 50ms ease-in-out;
+  -moz-transition: all 50ms ease-in-out;
+  -ms-transition: all 50ms ease-in-out;
+  -o-transition: all 50ms ease-in-out;
+  transition: all 50ms ease-in-out;
+}
+.gallery-item .overlay a { 
+  color: #ffffff;
+  text-align: center;
+  line-height: 32px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-top: -16px;
+  margin-left: -16px;
+  font-size: 24px;
+}
+
+#templatemo_map	{ 
+    width: 100%;
+	height: 300px;
+	border: 1px solid #cccccc;
+	margin: 40px 0px;
+}
+.templatemo_textbox	{ 
+ 	width: 50%; 
+	float: left; 
+	margin-top: 0px;
+}
+.templatemo_textbox	input { 
+	width: 95%; 
+	border-radius: 0px; 
+	padding: 7px;
+}
+.templatemo_textareabox	{ 
+	width: 100%; 
+	float: left;
+}
+.templatemo_textareabox	textarea { 
+	border-radius: 0px;
+	padding: 7px; 
+	height: 130px; 
+	width: 97.5%; 
+	margin-top: 20px;
+}
+.templatemo_textareabox button { 
+	border-radius: 0px; 
+	background: #00bfff; 
+	padding: 7px 15px; 
+	text-transform: uppercase; 
+	font-weight: 400; 
+	font-size: 16px;
+	margin-top: 20px;
+}
+.templatemo_address ul { 
+	float: left; 
+	margin: 0px; 
+	padding: 0px; 
+}
+.templatemo_address	li { 
+	padding: 0px 0px 10px 0px; 
+	margin: 0px; 
+	list-style: none; 
+	float: left;
+}
+.templatemo_address	li.fa { 
+	width: 10%; 
+	color:#00bfff; 
+	font-size: 20px;
+}
+.templatemo_address	li.text { 
+	width: 90%;
+	font-size: 16px;
+}
+
+.templatemo_footer { 
+	background: #00bfff; 
+	margin-top: 50px; 
+	padding: 10px 0px; 
+	text-align: center; 
+	color:#ffffff;
+}
+
+.templatemo_footer a { 
+	color: #ffffff;
+}
+
+@media (max-width: 767px) { 
+	.slider-caption a, .slider-caption p { 
+	display: none; 
+	top: 50px !important; } 
+	.templatemo_servicegap {
+	float: left;
+	width: 100%;
+	}
+	}
+@media (max-width: 581px) { 
+ .slider-caption { 
+ display: none; } }
+@media (max-width: 991px) { 
+ .navigation	{ 
+ display: none;}
+	 #main-content { 
+ width: 100%; }
+ 	.first-footer { 
+ border-left: 0; }
+	.flexslider .slides, .flexslider, .main-slider { 
+ height: auto; }
+	.service-item { 
+ margin-bottom: 30px; }
+	.progess-bars { 
+ margin-top: 40px; }
+ }
+
+ @media (min-width: 332px)	{ 
+ .templatemo_address	{ 
+	margin-top: 30px; 
+	}
+	.templatemo_search	{ 
+	margin: 20px 0px;
+	}
+ }
+ @media (min-width: 768px) {
+ 	.templatemo_search	{ 
+	margin-top: 60px;}
+ }
+ @media (min-width: 768px) and (max-width: 991px) {
+ 	.main-navigation { margin-top: 20px;}
+ }
+ @media (min-width: 992px) { 
+	.main_menu div.col-md-2 div.fa	{ line-height: 128px;}
+	.main_menu div.col-md-2 a{ 
+ 	height: 128px; 
+	line-height: 128px;
+	}
+	.main_menu div.col-md-2 a#prev	{ 
+	margin-top: 22%;
+	}
+	.main_menu div.col-md-2 a#next	{ 
+	margin-top: 22%;
+	}
+	.templatemo_imagecontrol { 
+	height: 118px; 
+	overflow: hidden;
+	}
+	.templatemo_imagecontrol .gallery-item .overlay a{ 
+ top: 20%;}
+	.templatemo_address	{ 
+ margin-top: 0px;}
+
+ }
+ 
+@media (min-width: 1200px) {   /* 상단메뉴크기조절 */
+	.main_menu div.col-md-2 div.fa	{ 
+	line-height: 100px;
+	}
+	.main_menu div.col-md-2 a{ 
+	 height: 100px; 
+	 line-height: 100px;
+	 }
+	/* .main_menu div.col-md-2 a#prev	{ 
+	margin-top: 27%;
+	} */
+	.main_menu div.col-md-2 a#next	{ 
+ 	margin-top: 15%;
+	}
+	.templatemo_imagecontrol { 
+	height: 140px; 
+	overflow: hidden;
+	}
+	.templatemo_imagecontrol .gallery-item .overlay a { 
+	top: 22%;
+	}
+ }
+ 
+ 
+/*header 상세검색버튼*/
+
+#search_detail {
+  position:relative;
+  background:#fff;
+  border:3px solid deepskyblue;
+  padding:5px;
+  font-size:0.5em;
+  color:white;
+  margin-top: 60px;
+  font-family: 'Open Sans', sans-serif;
+  color: gray;
+  font-weight:600;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  border-radius: 2px;
+  
+}
+
+#search_detail:hover {
+  bottom:4px;
+   box-shadow:0px 2px 0px 0px deepskyblue;
+  transition: all .01s ease-in-out;
+  -moz-transition: all .01s ease-in-out;
+  -webkit-transition: all .01s ease-in-out;
+}
+
+#search_detail:active {
+  top:4px;
+  box-shadow:inset 0px 2px 0px 0px deepskyblue;
+  transition: all .01s ease-in-out;
+  -moz-transition: all .01s ease-in-out;
+  -webkit-transition: all .01s ease-in-out;
+
+}
+
+.search_bt{
+  position:relative;
+  display: inline-block;
+}
+.icon-search{
+  border:0px;
+  background: lightgray;
+  color:deepskyblue;
+  border-radius:5px;
+  display:inline-block;
+  margin-top:63px;
+  padding:8px 8px 11px;
+  width: 40px;
+  font-size:18px;
+  transition:all 0.5s ease;
+  -webkit-transition:all 0.5s ease;
+  cursor: pointer;
+  position:relative;
+}
+.icon-search:hover{
+  background: gray;
+  text-shadow:0px 0px 0px gray;
+  box-shadow: inset 0px 0px 8px gray;
+  transition:all 0.5s ease;
+  -webkit-transition:all 0.5s ease;
+}
+
+-----------
+  로그인폼
+-----------
+@import compass;
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+#wrapper{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#box{
+  width: 320px;
+  height: auto;
+  margin: 0 auto;
+  background: #fff;
+}
+#box > form;{
+  width: 100%;
+  height: auo;
+  margin: 0 auto;
+  text-align: center;
+}
+#box > form > input{
+  display: inline-block;
+  width: 260px;
+  height: 40px;
+  margin: 7px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: .8em;
+  border: 1.5px solid #cccccc;
+  transition: all .2s ease;
+}
+#box > form > input:focus{
+  border: thin solid #015b7e;
+  outline: none;
+}
+::-webkit-input-placeholder {
+  color: #ccc;
+  font-weight: 700;
+  font-size: .9em;
+}
+
+#box > a{
+  display: block;
+  margin: 0;
+  padding: 5px 0 15px 0;
+  width: 260px;
+  height: 20px;
+  margin: 0 auto;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: .7em;
+  color: #ccc;
+  font-weight: 400;
+}
+#box > input{
+  width: 260px;
+  height: 40px;
+  background: #b4b4b4;
+  border: none;
+  outline: none;
+  margin: 0 auto;
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .7em;
+  transition: all .2s ease;
+}
+#box > input:hover{
+  background: skyblue;
+}
+#box > .signup{
+  width: 100%;
+  height: auto;
+  border: none;
+  background: #f5f5f5;
+  outline: none;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+  color: #666;
+  text-transform: uppercase;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: .8em;
+   } 
+#box > .signup p,a{
+  font-size: .8em;
+  text-decoration: none;
+  }
+#box > .signup p{
+  color: #ccc;
+  }
+  
+#box > .signup a{
+  text-decoration: none;
+  color: #015b7e;
+  font-size: 1em;
+  padding-left: 25px;
+  }
+
+
+
+#item_header{
+  font-family: 'Amarante', Tahoma, sans-serif;
+  font-size: 2em;
+  line-height: 3em;
+  margin-bottom:3px;
+  margin-left:10%;
+  color: gray;
+
+}
+ 

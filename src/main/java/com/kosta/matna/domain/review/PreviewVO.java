@@ -10,8 +10,15 @@ public class PreviewVO {
 	private String menu;
 	private String gu;
 	private String dong;
+	private String addr;
 	private String phone;
 	
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	public int getNo() {
 		return no;
 	}

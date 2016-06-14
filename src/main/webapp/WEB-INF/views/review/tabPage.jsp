@@ -5,7 +5,6 @@
 
 <script type="text/javascript">
 function showContents(no) {
-	alert('${page}')
 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=${pageType}&tabType=${tabType}&page=${pageMaker.cri.page}";
 	document.location.href=moveUrl;
@@ -30,7 +29,7 @@ function showContents(no) {
 							</b></font>
 						</td>
 						<td>
-							<font color="da1010" size=2>작성자 : <b>${review.writer }</b></font>
+							<font color="da1010" size=2>작성자 : <b>${review.nickName }</b></font>
 						</td>
 					</tr>
 					<tr>

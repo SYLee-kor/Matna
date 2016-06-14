@@ -1,66 +1,49 @@
 package com.kosta.matna.domain.review;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ReplyVO {
+	private int no;
+	private int rNo;
+	private int writer;
+	private String nickName;
+	private String content;
+	private Date regDate;
 	
-	private int rno;
-	private int bno;
-	private String replytext;
-	private String replyer;
-	private Date regdate;
-	private Date updatedate;
-	
-	public ReplyVO() {}
-	
-	public ReplyVO(int rno, int bno, String replytext, String replyer) {
-		super();
-		this.rno = rno;
-		this.bno = bno;
-		this.replytext = replytext;
-		this.replyer = replyer;
+	public int getNo() {
+		return no;
 	}
-	
-	public int getRno() {
-		return rno;
+	public void setNo(int no) {
+		this.no = no;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public int getrNo() {
+		return rNo;
 	}
-	public int getBno() {
-		return bno;
+	public void setrNo(int rNo) {
+		this.rNo = rNo;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public int getWriter() {
+		return writer;
 	}
-	public String getReplytext() {
-		return replytext;
+	public void setWriter(int writer) {
+		this.writer = writer;
 	}
-	public void setReplytext(String replytext) {
-		this.replytext = replytext;
+	public String getNickName() {
+		return nickName;
 	}
-	public String getReplyer() {
-		return replyer;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
-	public void setReplyer(String replyer) {
-		this.replyer = replyer;
+	public String getContent() {
+		return content;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public Date getUpdatedate() {
-		return updatedate;
-	}
-	public void setUpdatedate(Date updatedate) {
-		this.updatedate = updatedate;
-	}
-	
-	@Override
-	public String toString() {
-		return "ReplyVO = [rno : "+rno+" / bno : "+bno+" / replytext : "+replytext
-				+" / replyer : "+replyer+" / regdate : "+regdate+" / updatetdate : "+updatedate+"]";
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 }

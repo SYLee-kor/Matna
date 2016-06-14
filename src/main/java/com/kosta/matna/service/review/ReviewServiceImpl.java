@@ -54,6 +54,7 @@ public class ReviewServiceImpl implements ReviewService {
 		Object[] reviews = new Object[2];
 		reviews[0] = dao.readReview(no);
 		reviews[1] = dao.readPreview(no);
+		dao.viewCntUp(no); //# 조회수 증가
 		return reviews;
 	}
 
