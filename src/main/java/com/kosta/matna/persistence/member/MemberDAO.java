@@ -11,4 +11,6 @@ public interface MemberDAO {
 	public void update(MemberVO member)throws Exception;
 	public void delete(int no)throws Exception;
 	public boolean checkID(String id)throws Exception;
+	public boolean checkNickname(String nickname) throws Exception;
+	public MemberVO selectIsMember(String id, String pw)throws Exception;
 }
