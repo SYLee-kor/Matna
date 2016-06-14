@@ -2,14 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
-<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
-<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
-<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
+<%@include file="/WEB-INF/views/matnaHeader.jsp" %>
+
 <script type="text/javascript">
 	window.onload = function() {
 		if(!('${preview.gu}'=='구' || '${preview.dong}'=='동')){
@@ -101,62 +95,62 @@
 		</c:forEach>
 	</c:if>
 </c:forEach>
+
 <body>
+
 	<form name="reviewForm" id="reviewForm" class="reviewF">
 		<input type="hidden" name="no" value="${review.no }"/>
 		<input type="hidden" name="pageType" value="${pageType }"/>
 		<input type="hidden" name="tabType" value="${tabType }"/>
-		<table id="contentTable" cellpadding="5" bordercolor="#00bbdd" border="1">
-			<tr>
-				<td><font size="2">작성자</font></td>
-				<td><font size="2"><b>${review.nickName }</b></font></td>
-				<td><font size="2">조회수</font></td>
-				<td><font size="2"><b>${review.viewCnt }</b></font></td>
-			</tr>
-			<tr>
-				<td><font size="2">주차장 여부</font></td>
-				<td><font size="2"><b>${parking}</b></font></td>
-				<td><font size="2">1인비용</font></td>
-				<td><font size="2"><b>${preview.price }</b></font></td>
-			</tr>
-			<tr>
-				<td><font size="2">평점</font></td>
-				<td id="score"><font color="orange">${score }</font></td>
-				<td><font size="2">연락처</font>
-				<td><font size="2"><b>${preview.phone }</b></font>
-			</tr>
-			<tr>
-				<td colspan="4">
-					<div><font size="2"><b>${preview.recommend }</b></font></div>
-					<div id="map" style="width:500px;height:250px;"></div>
-				</td>
-			</tr>
-			<tr></tr>
-			<tr>
-				<td colspan="4"><font size="3"><b>${review.title }</b></font></td>
-			</tr>
-			<tr>
-				<td colspan="4"><div id="content"
-						style="width: 1047px; height: 500px; overflow: scroll;">${review.content }</div></td>
-			</tr>
-			<tr>
-				<td>
-				<a href='javascript:findGB("good",${reNo },"${userNo }")' style="color: teal;">
-				좋아요:</a> <font color="red"><span id="good">${review.good }</span> </font>| 
-				<a href='javascript:findGB("bad",${reNo },"${userNo }")' style="color: teal;">
-				싫어요:</a> <font color="red"><span id="bad">${review.bad }</span> </font></td>
-				<td colspan="4" align="right">
-					<c:if test="${ userNo == review.writer }">
-					<input type="button" value="수정" onclick="updateReview('${review.no}');">
-					<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
-					</c:if>
-					<input type="button" value="  목록으로  " 
-					onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
-					</td>
-			</tr>
-		</table>
-	</form>
+		
+		<div id="preview"> 
+    <p id ='one'>
+	    <label class="fa fa-user fa-2x"></label>
+	    <label class="preview_la">&nbsp; 작성자:</label>
+	                  &nbsp;&nbsp;<b>${review.nickName }</b></br>
+	    <label class="fa fa-hand-o-up fa-2x" ></label>
+	    <label class="preview_la">&nbsp; 조회수:</label>
+	                  &nbsp;&nbsp;<b>${review.viewCnt }</b></br>
+	    <label class="fa fa-truck fa-2x"></label>
+	    <label class="preview_la">&nbsp; 주차장여부:</label>
+	                  &nbsp;&nbsp;<b>${parking}</b></br> 
+	    <label class="fa fa-money fa-2x"></label>
+	    <label class="preview_la">&nbsp; 1인비용:</label>
+	                  &nbsp;&nbsp;<b>${preview.price }</b></br> 
+	    <label class="fa fa-cutlery fa-2x"></label>
+	    <label class="preview_la">&nbsp; 추천메뉴:</label>
+	                  &nbsp;&nbsp;<b>${preview.recommend }</b></br> 
+	    <label class="fa fa-star fa-2x"></label>
+	    <label class="preview_la">&nbsp; 평점:</label>
+	                  &nbsp;&nbsp;<font color="orange">${score }</font></br> 
+	    <label class="fa fa-phone fa-2x"></label>
+	    <label class="preview_la">&nbsp; 연락처:</label>
+	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
+     </p>
+     <p id="map" ></p>
+  </div> <%--preview,map --%>
+		  
+	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
+	  <div id="content" >${review.content }</div>
+			
+			<%--버튼으로 바꿀예정!! --%>
+	  <div id="like_hate">
+	  LIKE <a href='javascript:findGB("good",${reNo },"${userNo }")'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
+	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
+	  HATE <a href='javascript:findGB("bad",${reNo },"${userNo }")' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
+	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
+        <c:if test="${ userNo == review.writer }">
+		<input type="button" value="수정" onclick="updateReview('${review.no}');">
+		<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
+		</c:if>
+		<input type="button" value="  목록으로  " 
+		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
+					
+  </div>	
+ </form>
 	<%session.setAttribute("userNo", 01); %>
 	<%@include file="/WEB-INF/views/review/replyPage.jsp" %>
+	
+	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

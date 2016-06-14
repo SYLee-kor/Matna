@@ -259,8 +259,9 @@ a.menu_toggle-btn i {
 	margin: 40px 0px 0px 0px;
 }
 .templatemo_servicegap img { 
-	width: 100%;
+	width: 80%;
 }
+
 
 .templatemo_email { 
 	 width: 40px; 
@@ -268,7 +269,7 @@ a.menu_toggle-btn i {
 	 border-radius: 20px; 
 	 background: #00bfff; 
 	 text-align: center;  
-	 left:50%;  
+	 left:40%;  
 	 margin-left:-20px; 
 	 margin-top: -20px; 
 	 position: absolute;
@@ -303,7 +304,7 @@ a.menu_toggle-btn i {
 }
 .templatemo_teamname { 
 	float: left;
-	width: 50%;
+	width: 100%;
 }
 .templatemo_teamtitle { 
 	float: left; 
@@ -721,4 +722,15 @@ a.menu_toggle-btn i {
   padding-left: 25px;
   }
 
+
+
+#item_header{
+  font-family: 'Amarante', Tahoma, sans-serif;
+  font-size: 2em;
+  line-height: 3em;
+  margin-bottom:3px;
+  margin-left:10%;
+  color: gray;
+
+}
  
