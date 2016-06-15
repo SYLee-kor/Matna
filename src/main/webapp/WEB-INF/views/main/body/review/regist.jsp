@@ -100,8 +100,9 @@ $(function(){
             }
          },
           fOnAppLoad : function() {
-            oEditors.getById["review_content"].exec("PASTE_HTML",
-                  [ "글 작성시 공지사항에 룰을 먼저 필독 해 주세요" ]);
+            if('${action}'=='regist')
+        	  oEditors.getById["review_content"].exec("PASTE_HTML",
+                  [ "글 작성시 공지사항에 룰을 먼저 필독 해 주세요<br>" ]);
          }, 
          fCreator : "createSEditor2"
       });
@@ -111,6 +112,10 @@ $(function(){
     		 form.attr("action","/matna/review/${action}");
     		 form.submit();
       });
+      $("#cancel").click(function() {
+		 document.location.href=
+			 '/matna/review/list?page=${page}&pageType=${pageType}&tabType=${tabType}';
+	  })
 });
 </script>
 </head>
@@ -179,7 +184,7 @@ $(function(){
       <!-- 1인비용 선택  -->
      <p class="inputfield"><label for="price">1인 비용 </label></p> 
          <select name="price">
-                <option selected="selected"> == 1인 비용 == </option>
+                <option selected="selected" value="0,0"> == 1인 비용 == </option>
                 <option value="0,5">5천원 이하</option>
                 <option value="5,10" >5천원~1만원</option>
                 <option value="10,20">1만원~2만원</option>
@@ -211,7 +216,7 @@ $(function(){
 	  
         <!-- 버튼 -->
        <input name="submit" type="submit" id="submit" tabindex="5" value="등록" />
-       <input type="reset" value="  취소  ">
+       <input type="button" id="cancel" value="  취소  ">
     </form>
                  
            

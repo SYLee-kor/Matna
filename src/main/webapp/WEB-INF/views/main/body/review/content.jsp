@@ -109,9 +109,9 @@
 			
 			<%--버튼으로 바꿀예정!! --%>
 	  <div id="like_hate">
-	  LIKE <a href='javascript:gbCheck("good",${review.no },${userNo })'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
+	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
 	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-	  HATE <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
+	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
 		<input type="button" value="수정" onclick="updateReview('${review.no}');">
@@ -124,7 +124,6 @@
  </form>
 	<%session.setAttribute("userNo", 01); %>
 	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
-	
 	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

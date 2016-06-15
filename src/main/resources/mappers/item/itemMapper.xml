@@ -11,7 +11,14 @@
 	<!-- 아이템 수정하기 -->
 	<update id="modifyItem">
 		update item
-		set name=#{name}, price=#{price}, amount=#{amount}, content=#{content}, photo=#{photo}, state=#{state}
+		<choose>
+			<when test="name==null">
+				set amount=#{amount}
+			</when>
+			<otherwise>
+				set name=#{name}, price=#{price}, amount=#{amount}, content=#{content}, photo=#{photo}, state=#{state}
+			</otherwise>
+		</choose>
 		where ino=#{ino}
 	</update>
 	
@@ -75,7 +82,7 @@
 	<!-- =============주문관련=============== -->
 	<!-- 전체 주문 조회(관리자) 고쳐야해  (select name from item where ino=item) itemName,-->
 	<select id="orderListAll" resultType="com.kosta.matna.domain.member.Member_orderVO">
-		select ono, giver, taker, item, cnt, orderDate, state, addr
+		select ono, giver, taker,(select id from member where no=giver) giverid, (select id from member where no=taker) takerid, (select name from item where ino=item) itemname, item, cnt, orderDate, state, addr
 		from member_order
 		order by ono desc 
 	</select>
@@ -84,4 +91,32 @@
 	<delete id="deleteOrder">
 		delete from member_order where ono=#{ono}
 	</delete>
+	
+	<!-- 특정 주문 배송상태 변경(관리자) -->
+	<update id="updateOrderState">
+		<choose>
+			<when test=" state == 0">
+			update member_order set state=1 where ono=#{ono}
+			</when>
+			<otherwise>
+			update member_order set state=0 where ono=#{ono}
+			</otherwise>
+		</choose>
+	</update>
+	
+	<!-- 특정 수령인,구매자 검색 주문리스트 출력 -->
+	<select id="orderSearchList" resultType="com.kosta.matna.domain.member.Member_orderVO">
+		select ono, giver, taker,(select id from member where no=giver) giverid, (select id from member where no=taker) takerid, (select name from item where ino=item) itemname, item, cnt, orderDate, state, addr
+		from member_order
+		<choose>
+			<when test="id=='buyer'">
+			where giver in (select no from member where id like '%'||#{search}||'%') 
+			</when>
+			<otherwise>
+			where taker in (select no from member where id like '%'||#{search}||'%') 
+			</otherwise>
+		</choose>
+		order by ono desc 
+	</select>
+	
 </mapper>

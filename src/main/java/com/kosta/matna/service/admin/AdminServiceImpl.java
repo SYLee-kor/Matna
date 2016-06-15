@@ -1,12 +1,14 @@
 package com.kosta.matna.service.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.item.ItemVO;
+import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.persistence.admin.AdminDAO;
 
@@ -53,5 +55,27 @@ public class AdminServiceImpl implements AdminService {
 	public boolean deleteOrder(int ono) throws Exception {
 		if(dao.deleteOrder(ono))return true;
 		return false;
+	}
+
+	@Override
+	public boolean updateOrderState(Map<String, Integer> map) throws Exception {
+		if(dao.updateOrderState(map))return true;
+		return false;
+	}
+
+	@Override
+	public MemberVO detailMember(int no) throws Exception {
+		return dao.detailMember(no);
+	}
+
+	@Override
+	public boolean updatePoint(Map<String, Integer> map) throws Exception {
+		if(dao.updatePoint(map))return true;
+		return false;
+	}
+
+	@Override
+	public List<Member_orderVO> orderSearchList(Map<String, String> map) throws Exception {
+		return dao.orderSearchList(map);
 	}
 }

@@ -55,7 +55,7 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public List<ReviewDTO> readList(Map<String, String> typeMap, RowBounds rowBounds) throws Exception {
+	public List<ReviewVO> readList(Map<String, String> typeMap, RowBounds rowBounds) throws Exception {
 		return dao.readList(typeMap, rowBounds);
 	}
 
