@@ -5,20 +5,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인폼</title>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script>
 $(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#login_bt').click(function() {
-			formObj.attr("action", "/login/login");
+			formObj.attr("action", "/matna/login/login");
 			formObj.submit();
 		});
 		
 		$('#confirmid').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmId",
+		      url: "/matna/join/confirmId",
 		      data: { action: "join", 
 		    	      action2: "confirmid", 
 		    	  	  id: $('#id').val()

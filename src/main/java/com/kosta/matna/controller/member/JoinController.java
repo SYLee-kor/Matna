@@ -102,16 +102,6 @@ public class JoinController {
        return "main/join/joinSuccess";//스프링에게 뷰정보 전달!!	
     }
 	
-
-	@RequestMapping("/delete")
-	public String delete(@RequestParam("no") int memberNo, 
-			RedirectAttributes attr)throws Exception{
-		logger.info("게시물 삭제...["+ memberNo +"]");
-		memberService.delete(memberNo);
-		attr.addFlashAttribute("msg","SUCCESS");
-		return "redirect:/join/listAll";
-	}
-	
 	
 }
 
