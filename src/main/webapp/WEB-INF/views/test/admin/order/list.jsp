@@ -11,15 +11,34 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		$('#detail').click(function(){
+		$('#cancel').click(function(){
 			var length = $('input[name=ck]:checked').length;
 			if(length==1){
 				$('input[name=ck]:checked').each(function(index){
-					window.open("/Matna/admin/members/list.do?action=oselectSearch&id="+$(this).val(), "상세보기", "width=500,height=400");
-					$('input[name=ck]:checked').each(function(){ this.checked = false;});
+					var state = $(this).parent().parent().find('input[name=state]').val();
+					var item = $(this).parent().parent().find('input[name=item]').val();
+					var cnt = $(this).parent().parent().find('input[name=cnt]').val();
+					var giver = $(this).parent().parent().find('input[name=giver]').val();
+					if(state==0){
+						$.ajax({
+							url:'/matna/admin/cancelOrder',
+							data:{
+								item:item,
+								cnt:cnt,
+								giver:giver,
+								ono:$(this).val()
+							},
+							success:function(){
+								document.location.href = "/matna/admin/orderlistall";
+							}
+						})
+					}else{
+						alert("발송완료 상품은 주문취소가 불가능 합니다.");
+						$('input[name=ck]:checked').each(function(){ this.checked = false;});
+					}
 				});
 			}else{
-				alert("상세보기를 하나만 선택해 주세요");
+				alert("주문취소를 하나만 선택해 주세요");
 				$('input[name=ck]:checked').each(function(){ this.checked = false;});
 			}
 		});
@@ -28,6 +47,9 @@
 			var length = $('input[name=ck]:checked').length;
 			if(length>=1){
 				$('input[name=ck]:checked').each(function(index){
+					var state = $(this).parent().parent().find('input[name=state]').val();
+					
+					if(state==1){
 					$.ajax({
 						url:'/matna/admin/deleteOrder',
 						data:{
@@ -37,6 +59,10 @@
 							document.location.href = "/matna/admin/orderlistall";
 						}
 					});
+					}else{
+						alert("발송전 상품은 주문목록 삭제가 불가능 합니다.");
+						$('input[name=ck]:checked').each(function(){ this.checked = false;});
+					}
 				});
 			}else{
 				alert("삭제를 하나 이상 선택해 주세요");
@@ -49,14 +75,15 @@
 			var length = $('input[name=ck]:checked').length;
 			if(length>=1){
 				$('input[name=ck]:checked').each(function(index){
+					var state = $(this).parent().parent().find('input[name=state]').val();
 					$.ajax({
-						url:'/Matna/admin/members/list.do',
+						url:'/matna/admin/updateOrderState',
 						data:{
-							action:'oupdate',
-							id:$(this).val(),
+							ono:$(this).val(),
+							state:state
 						},
 						success:function(){
-							document.location.href = "/Matna/admin/members/list.do?action=oselectAll";
+							document.location.href = "/matna/admin/orderlistall";
 						}
 					});
 				});
@@ -67,17 +94,6 @@
 
 		});	
 		
-		/* $('#search').click(function(){
-			var search = $('#text').val();
-			$.ajax({
-				url:'/Matna/admin/members/list.do',
-				data:{
-					action:'idselectSearch',
-					id:search
-				}
-		
-			});
-		}); */
 		
 	});
 </script>
@@ -100,17 +116,18 @@
 			<c:forEach items="${orders}" var="order">
 			<tr>
 				<td><input type="checkbox" name="ck" value="${order.ono}"></td>
-				<td class="val" id="giver">${order.giver}</td>
-				<td class="val" id="taker">${order.taker}</td>
-				<td class="val" id="item">${order.item}</td>
-				<td class="val" id=cnt>${order.cnt}</td>
+				<td class="val" id="giver"><input type="hidden" name="giver" value="${order.giver}">${order.giverid}</td>
+				<td class="val" id="taker"><input type="hidden" name="takerid" value="">${order.takerid}</td>
+				<td class="val" id="item"><input type="hidden" name="item" value="${order.item}">${order.itemname}</td>
+				<td class="val" id=cnt ><input type="hidden" name="cnt" value="${order.cnt}">${order.cnt}</td>
 				<td class="val" id="orderDate">${order.orderDate}</td>
 				<td class="val" id="state">
+				<input type="hidden" name="state" value="${order.state}">
 					<c:if test="${order.state==0}">
-						<c:set var="state" value="배송중"/>
+						<c:set var="state" value="발송전"/>
 					</c:if>
 					<c:if test="${order.state==1}">
-						<c:set var="state" value="배송완료"/>
+						<c:set var="state" value="발송완료"/>
 					</c:if>
 					${state}
 				</td>
@@ -119,16 +136,21 @@
 			</c:forEach>
 			<tr>
 				<td colspan="8" align="right">
-				<input type="button" value="배송완료" id="update">
 				<input type="button" value="목록보기" onclick="javascript:document.location.href='/matna/admin/orderlistall'">
-				<input type="button" value="상세보기" id="detail">
-				<input type="button" value="주문제거" id="delete">
+				<input type="button" value="배송상태 변경" id="update">
+				<input type="button" value="주문취소" id="cancel">
+				<input type="button" value="발송완료 제거" id="delete">
 				</td>
 			</tr>
 		</table>
 		<br>
-		<form action="/Matna/admin/members/list.do?action=idselectSearch" method="post">
-			아이디 <input type="text" id="text" name="id"> <input type="submit" value="검색" id="search">
+		<form action="/matna/admin/searchId" method="post">
+			<select name="searchId">
+				<option value="buyer">구매자</option>
+				<option value="receiver">수령인</option>
+			</select>
+			<input type="text" id="text" name="search" placeholder="아이디로 검색합니다.">
+			<input type="submit" value="검색">
 		</form>
 		
 	</center>

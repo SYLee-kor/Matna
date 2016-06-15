@@ -7,7 +7,7 @@
 
 
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 이미지 크기는 500x500 입니다 -->
 <div class="clear"></div>
     <div class="container">
@@ -20,7 +20,9 @@
         <div class="clear"></div>
         <div class="row" >
             <div class="col-md-2"></div>
+            <c:forEach begin="0" end="2" varStatus="i" >
         	<div class="col-md-3 col-sm-4 templatemo_servicegap">
+        	<c:forEach begin="${i.index*3 }" end="${i.index*3+2 }" var="itemVO" items="${list}">
             <img src="/resource/images/point1.png" alt="10,000포인트">
             	<div class="templatemo_email"> <!-- 동그라미 돌아가는거 class명 안바꿔도됨 -->
                 	<a href="#"><div class="fa fa-gift"></div></a>
@@ -33,128 +35,9 @@
                     </div>
                     
                </div>
+               			</c:forEach>
             </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/point2.png" alt="5,000point">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-gift"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">5,000 POINT</div>
-                        <div class="templatemo_teampost">5,000p</div>
-                    </div>
-                   
-               </div>
-             </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/쉑쉑.png" alt="service 03">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">쉑쉐버거-논현점</div>
-                        <div class="templatemo_teampost">15,000</div>
-                    </div>
-                    
-               </div>
-            </div>
-        </div>
-     
-        <div class="row" >
-            <div class="col-md-2"></div>
-        	<div class="col-md-3 col-sm-4 templatemo_servicegap">
-            <img src="/resource/images/member1.jpg" alt="Tracy - Designer">
-            	<div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Candy</div>
-                        <div class="templatemo_teampost">Designer</div>
-                    </div>
-                    
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member2.jpg" alt="service 02">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Marvel</div>
-                        <div class="templatemo_teampost">Developer</div>
-                    </div>
-                   
-               </div>
-             </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member3.jpg" alt="service 03">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Julia</div>
-                        <div class="templatemo_teampost">Director</div>
-                    </div>
-                    
-               </div>
-            </div>
-        </div>
-       
-        <div class="row" >
-            <div class="col-md-2"></div>
-        	<div class="col-md-3 col-sm-4 templatemo_servicegap">
-            <img src="/resource/images/member1.jpg" alt="Tracy - Designer">
-            	<div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Candy</div>
-                        <div class="templatemo_teampost">Designer</div>
-                    </div>
-                    
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member2.jpg" alt="service 02">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Marvel</div>
-                        <div class="templatemo_teampost">Developer</div>
-                    </div>
-                   
-               </div>
-             </div>
-            <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member3.jpg" alt="service 03">
-                <div class="templatemo_email">
-                	<a href="#"><div class="fa fa-shopping-cart"></div></a>
-                </div>
-                <div class="clear"></div>
-                <div class="templatemo_teamtext">
-                    <div class="templatemo_teamname">
-                        <div class="templatemo_teamtitle">Julia</div>
-                        <div class="templatemo_teampost">Director</div>
-                    </div>
-                    
-               </div>
-            </div>
-        </div>
+            </c:forEach>
         </div>
         
        

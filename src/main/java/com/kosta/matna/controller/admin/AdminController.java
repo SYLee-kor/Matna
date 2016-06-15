@@ -2,13 +2,16 @@ package com.kosta.matna.controller.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.kosta.matna.domain.item.ItemVO;
+import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.service.admin.AdminService;
 
@@ -31,8 +35,69 @@ public class AdminController {
 	
 	String uploadPath;
 	
+	@RequestMapping("/searchId") //수령인, 구매자 선택 검색
+	public String searchId(String searchId,String search, Model model){
+		System.out.println("구분자"+searchId);
+		System.out.println("검색어"+search);
+		
+		try {
+			//List<Integer> memberno= service.orderSearch(search);
+	
+				
+				Map<String, String> map = new HashMap<>();
+					map.put("id", searchId);
+					map.put("search",search);
+				
+				List<Member_orderVO> orders= service.orderSearchList(map);
+				System.out.println("리스트 사이즈:"+orders.size());
+				model.addAttribute("orders",orders);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/test/admin/order/list";//주문리스트 뷰로이동
+	}
+	
+	@Transactional
 	@ResponseBody
-	@RequestMapping("deleteOrder") //관리자 특정 주문 삭제
+	@RequestMapping("/cancelOrder") //관리자 발송전 주문취소 
+	public void cancelOrder(int item, int ono, int giver, int cnt){
+		int ino = item;
+		int no = giver;
+		try {
+			ItemVO itemvo = service.readItem(ino);
+				int amount = itemvo.getAmount();
+				itemvo.setAmount(amount+cnt); 
+			service.modifyItem(itemvo); //수량복구
+			
+				int price = itemvo.getPrice();
+				Map<String, Integer> map = new HashMap<>();
+					map.put("price", price);
+					map.put("no", no);
+			service.updatePoint(map); //포인트 복구
+			
+			service.deleteOrder(ono); // 주문삭제
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateOrderState") //관리자 배송상태 완료 변경
+	public void updateOrderState(int ono, int state){
+		try {
+			Map<String, Integer> map = new HashMap<>();
+				map.put("state", state);
+				map.put("ono", ono);
+			service.updateOrderState(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deleteOrder") //관리자 특정 주문 삭제
 	public void deleteOrder(int ono){
 		try {
 			service.deleteOrder(ono);
@@ -41,7 +106,7 @@ public class AdminController {
 		}
 	}
 	
-	@RequestMapping("orderlistall") //관리자 주문 전체조회
+	@RequestMapping("/orderlistall") //관리자 주문 전체조회
 	public String orderList(Model model){
 		try {
 			List<Member_orderVO> orders= service.orderlistAll();

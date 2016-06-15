@@ -1,6 +1,7 @@
 package com.kosta.matna.persistence.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.kosta.matna.domain.item.ItemVO;
+import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
 
 @Repository
@@ -53,6 +55,28 @@ public class AdminDAOImpl implements AdminDAO {
 	public boolean deleteOrder(int ono) throws Exception {
 		if(session.delete("item.deleteOrder", ono)>0)return true;
 		return false;
+	}
+
+	@Override
+	public boolean updateOrderState(Map<String, Integer> map) throws Exception {
+		if(session.update("item.updateOrderState", map)>0)return true;
+		return false;
+	}
+
+	@Override
+	public MemberVO detailMember(int no) throws Exception {
+		return session.selectOne("item.detailMember", no);
+	}
+
+	@Override
+	public boolean updatePoint(Map<String, Integer> map) throws Exception {
+		if(session.update("item.updatePoint", map)>0)return true;
+		return false;
+	}
+
+	@Override
+	public List<Member_orderVO> orderSearchList(Map<String, String> map) throws Exception {
+		return session.selectList("item.orderSearchList", map);
 	}
 
 }
