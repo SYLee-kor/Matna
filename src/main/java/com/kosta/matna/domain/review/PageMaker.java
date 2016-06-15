@@ -9,6 +9,8 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 	private int endPage; // @ 끝 넘버
 	private int beforePage;
 	private int afterPage;
+	private int prevPage;
+	private int nextPage;
 	
 	private boolean prev; // @ 이전페이지 
 	private boolean next; // @ 다음페이지
@@ -25,20 +27,22 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 	}
 	
 	
+	public int getPrevPage() {
+		prevPage = ( (cri.getPage()-1) < 1 ) ? 1 : cri.getPage()-1;
+		return prevPage;
+	}
+
+	public int getNextPage() {
+		nextPage = ( cri.getPage()+1 > endPage ) ? endPage : cri.getPage()+1;
+		return nextPage;
+	}
+
 	public int getBeforePage() {
 		return beforePage;
 	}
 
-	public void setBeforePage(int beforePage) {
-		this.beforePage = beforePage;
-	}
-
 	public int getAfterPage() {
 		return afterPage;
-	}
-
-	public void setAfterPage(int afterPage) {
-		this.afterPage = afterPage;
 	}
 
 	public Criteria getCri() {

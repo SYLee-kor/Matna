@@ -46,8 +46,8 @@
 		from review where no=#{no}
 	</select>
 	
-	<select id="selectList" resultType="reviewDTO">
-		select no,title,writer,(select nickName from member where no=writer) nickName, regdate,replycnt,viewcnt,photo,parking,recommend
+	<select id="selectList" resultType="review">
+		select no,title,writer,(select nickName from member where no=writer) nickName, regdate,replycnt,viewcnt,photo,good,bad
 		from review natural join preview
 		where menu=#{tabType}
 		<choose>

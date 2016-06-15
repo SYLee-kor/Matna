@@ -31,7 +31,7 @@ public interface ReviewDAO {
 	List<String> guList() throws Exception;
 	List<String> dongList(String gu) throws Exception;
 	
-	List<ReviewDTO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
+	List<ReviewVO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
 	
 	List<Integer> gbCheck(int rNo) throws Exception;
 
