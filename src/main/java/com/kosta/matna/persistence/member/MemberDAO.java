@@ -15,4 +15,6 @@ public interface MemberDAO {
 	public boolean checkID(String id)throws Exception;
 	public boolean checkNickname(String nickname) throws Exception;
 	public MemberVO selectIsMember(String id, String pw)throws Exception;
+	public int selectAllCount()throws Exception;
+	public List<MemberVO> selectAllPage(int start, int end)throws Exception;
 }

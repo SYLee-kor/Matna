@@ -64,5 +64,15 @@ public class MemberServiceImpl implements MemberService {
 		public List<MemberVO> selectNickname(String nickname) throws Exception {
 			return memberDAO.selectNickname(nickname);
 		}
+
+		@Override
+		public int selectAllCount() throws Exception {
+			return memberDAO.selectAllCount();
+		}
+
+		@Override
+		public List<MemberVO> selectAllPage(int start, int end) throws Exception {
+			return memberDAO.selectAllPage(start, end);
+		}
 	
 }

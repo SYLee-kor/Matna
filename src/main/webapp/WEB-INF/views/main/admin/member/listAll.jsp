@@ -26,6 +26,25 @@
 	});
 </script>
 
+<script>
+	function showPage(page) {
+		document.location.href='/admin/memberList?page='+page;
+	}
+</script>
+
+<c:if test="${page > 1 }">
+	<c:set value="${page-1 }" var="beforePage" />
+</c:if>
+<c:if test="${page == 1 }">
+	<c:set value="${oldPage }" var="beforePage" />
+</c:if>
+<c:if test="${page < allTotalPage }">
+	<c:set value="${page+1 }" var="nextPage" />
+</c:if>
+<c:if test="${page == allTotalPage }">
+	<c:set value="${page }" var="nextPage" />
+</c:if>
+
 <!-- Main content -->
 <section class="content">
 	<div align="center" class="row">
@@ -42,7 +61,6 @@
 <table class="table table-bordered" border="1">
 	<tr>
 		<th></th>
-		<th style="width: 10px">NO</th>
 		<th>아이디</th>
 		<th>비번</th>
 		<th>이름</th>
@@ -62,7 +80,6 @@
 
 	<tr>
 		<td><input type="checkbox" name="check" id="check" value="${memberVO.no}"/></td>
-		<td>${memberVO.no}</td>
 		<td>${memberVO.id}</td>
 		<td>${memberVO.pw}</td>
 		<td>${memberVO.name}</td>
@@ -87,6 +104,18 @@
 	<input type="submit" name="search" value="검색" id="search" class="btn btn-search" />
 	<input type="submit" name="update" value="수정" id="update" class="btn btn-update" />
 	<input type="submit" name="delete" value="삭제" id="delete" class="btn btn-delete" />
+	<br>
+	<div>
+			<input type="button" class="button" onclick="showPage(1)" value="처음">
+			<%-- <input type="button" class="button" value="이전" onclick="showPage(${beforePage})"> --%>
+			<c:forEach var="i" begin="1" end="${allTotalPage }">
+            [<a href="javascript: showPage(${i })">${i}</a>]
+			
+         	</c:forEach>
+			<%-- <input type="button" class="button" value="다음" onclick="showPage(${nextPage})"> --%>
+			<input type="button" class="button" onclick="showPage(${allTotalPage })" value="끝">
+		</div>
+	
 </form>
 
 				</div>

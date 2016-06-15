@@ -12,6 +12,10 @@
       from member
    </select>
    
+   <select id="selectAllCount" resultType="int">
+	     select count(*) no from member
+	</select>
+   
    <select id="selectIsMember" parameterType="java.util.Map" resultType="member">
       select * 
       from member where id=#{id} and pw=#{pw}
@@ -46,5 +50,16 @@
    <delete id="delete" parameterType="int">
 		delete from member where no=#{no}
 	</delete>
+	
+	<select id="selectAllPage" parameterType="java.util.Map" resultType="member">
+		select no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate, rn
+		from (select  no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate, rownum rn 
+			from (select no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate
+			     from member order by no desc))
+		where rn between #{start} and #{end}
+	</select>
    
 </mapper>
