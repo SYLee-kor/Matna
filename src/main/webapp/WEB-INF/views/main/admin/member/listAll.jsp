@@ -4,21 +4,50 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page session="false"%>
 
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/join/delete");
+			formObj.attr("action", "/admin/delete");
+			formObj.submit();
+		});
+		
+		$('#update').click(function() {
+			formObj.attr("action", "/admin/toUpdateForm");
+			formObj.submit();
+		});
+
+		$('#search').click(function() {
+			formObj.attr("action", "/admin/search");
 			formObj.submit();
 		});
 	});
 </script>
 
+<script>
+	function showPage(page) {
+		document.location.href='/admin/memberList?page='+page;
+	}
+</script>
+
+<c:if test="${page > 1 }">
+	<c:set value="${page-1 }" var="beforePage" />
+</c:if>
+<c:if test="${page == 1 }">
+	<c:set value="${oldPage }" var="beforePage" />
+</c:if>
+<c:if test="${page < allTotalPage }">
+	<c:set value="${page+1 }" var="nextPage" />
+</c:if>
+<c:if test="${page == allTotalPage }">
+	<c:set value="${page }" var="nextPage" />
+</c:if>
+
 <!-- Main content -->
 <section class="content">
-	<div class="row">
+	<div align="center" class="row">
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
@@ -28,10 +57,10 @@
 					<h3 class="box-title">Member List</h3>
 				</div>
 				<div class="box-body">
-				
+<form name="delete_member" method="post" role="form">				
 <table class="table table-bordered" border="1">
 	<tr>
-		<th style="width: 10px">NO</th>
+		<th></th>
 		<th>아이디</th>
 		<th>비번</th>
 		<th>이름</th>
@@ -50,7 +79,7 @@
 <c:forEach items="${list}" var="memberVO">
 
 	<tr>
-		<td>${memberVO.no}</td>
+		<td><input type="checkbox" name="check" id="check" value="${memberVO.no}"/></td>
 		<td>${memberVO.id}</td>
 		<td>${memberVO.pw}</td>
 		<td>${memberVO.name}</td>
@@ -70,9 +99,23 @@
 </table>
 
 
-<form name="delete_member" method="post" role="form">
-	<input type="text" name="no" id="no"/>
+
+	<input type="text" name="nickname" id="nickname"/>
+	<input type="submit" name="search" value="검색" id="search" class="btn btn-search" />
+	<input type="submit" name="update" value="수정" id="update" class="btn btn-update" />
 	<input type="submit" name="delete" value="삭제" id="delete" class="btn btn-delete" />
+	<br>
+	<div>
+			<input type="button" class="button" onclick="showPage(1)" value="처음">
+			<%-- <input type="button" class="button" value="이전" onclick="showPage(${beforePage})"> --%>
+			<c:forEach var="i" begin="1" end="${allTotalPage }">
+            [<a href="javascript: showPage(${i })">${i}</a>]
+			
+         	</c:forEach>
+			<%-- <input type="button" class="button" value="다음" onclick="showPage(${nextPage})"> --%>
+			<input type="button" class="button" onclick="showPage(${allTotalPage })" value="끝">
+		</div>
+	
 </form>
 
 				</div>

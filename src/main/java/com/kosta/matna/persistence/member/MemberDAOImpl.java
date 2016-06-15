@@ -2,6 +2,7 @@ package com.kosta.matna.persistence.member;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -46,6 +47,11 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
+	public MemberVO selectNo(int no) throws Exception {
+		return session.selectOne("member.selectNo",no);
+	}
+	
+	@Override
 	public void update(MemberVO member) throws Exception {
 		session.update("member.update", member);
 	}
@@ -83,5 +89,24 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberVO member = session.selectOne("member.selectIsMember",map);
 		
 		return member;
+	}
+
+	@Override
+	public List<MemberVO> selectNickname(String nickname) throws Exception {
+		return session.selectList("member.searchNickname",nickname);
+	}
+	
+	@Override
+	public int selectAllCount() throws Exception {
+		return session.selectOne("member.selectAllCount");
+	}
+
+	@Override
+	public List<MemberVO> selectAllPage(int start, int end) throws Exception {
+		Map<String,Integer> map = new HashMap<>();
+		map.put("start", start);
+		map.put("end", end);
+		
+		return session.selectList("member.selectAllPage", map);
 	}
 }

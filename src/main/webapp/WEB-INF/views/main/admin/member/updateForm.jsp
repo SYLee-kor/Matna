@@ -6,13 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/join/updateSuccess");
+			formObj.attr("action", "/admin/updateSuccess");
 			formObj.submit();
 		});
 		
@@ -169,6 +169,11 @@
 				</html:messages>
 				</div>
 				<br>
+				<div>
+					포인트:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<input type="text" id="nickname" value="${memberVO.point}" name="point" placeholder="point" class="tf1" maxlength="15" path="point"/>
+					<label class="la" style="margin-left: 20px">*숫자만 입력</label>
+				</div>
 				<br>
 				<br>
 				<div align="center">

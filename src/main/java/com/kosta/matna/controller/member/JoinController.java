@@ -102,40 +102,6 @@ public class JoinController {
        return "main/join/joinSuccess";//스프링에게 뷰정보 전달!!	
     }
 	
-	@RequestMapping("/listAll")//게시물 전체 목록 요청
-	public String listAll(Model model)throws Exception{
-		logger.info("전체 회원list 요청..."+ model);	
-		model.addAttribute("list", memberService.listAll());
-	   return "main/join/listAll";
-	}
-	
-	@RequestMapping(value="/update" , method=RequestMethod.GET)//회원가입폼
-    public String updateGET(Model model)throws Exception{
-	   logger.info("회원가입 수정폼 update GET요청...");
-	   model.addAttribute("memberVO", memberService.selectID("1"));
-		
-       return "main/join/updateForm";//스프링에게 뷰정보 전달!!	
-    }
-	
-	@RequestMapping(value="/updateSuccess",  method=RequestMethod.POST)//회원가입폼
-    public String updateSuccess(MemberVO member, Model model)throws Exception{
-	   logger.info("updateSuccess 요청...");
-	   
-	   memberService.update(member);
-	   
-	   model.addAttribute("list", memberService.listAll());
-       return "main/join/listAll";//스프링에게 뷰정보 전달!!	
-    }
-
-	@RequestMapping("/delete")
-	public String delete(@RequestParam("no") int memberNo, 
-			RedirectAttributes attr)throws Exception{
-		logger.info("게시물 삭제...["+ memberNo +"]");
-		memberService.delete(memberNo);
-		attr.addFlashAttribute("msg","SUCCESS");
-		return "redirect:/join/listAll";
-	}
-	
 	
 }
 
