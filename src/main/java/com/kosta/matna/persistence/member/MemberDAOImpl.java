@@ -109,4 +109,20 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return session.selectList("member.selectAllPage", map);
 	}
+	
+	@Override
+	public List<MemberVO> selectSearchList(String nickname, int start, int end) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+		   map.put("nickname",nickname );
+		   map.put("start", start);
+		   map.put("end", end);
+
+		return session.selectList("member.selectSearchList",map);
+	}
+
+	@Override
+	public int selectSearchCount(String nickname) throws Exception {
+		return session.selectOne("member.selectSearchCount",nickname);
+	}
 }

@@ -17,5 +17,7 @@ public interface MemberService {
 	public MemberVO selectIsMember(String id, String pw)throws Exception;
 	public int selectAllCount()throws Exception;
 	public List<MemberVO> selectAllPage(int start, int end)throws Exception;
+	public List<MemberVO> selectSearchList(String nickname, int start, int end)throws Exception;
+	public int selectSearchCount(String nickname)throws Exception;
 	
 }
