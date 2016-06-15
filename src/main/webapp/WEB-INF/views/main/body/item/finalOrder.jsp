@@ -16,7 +16,7 @@
 				<i class="fa fa-check"></i>
 			</div>
 			<div class="order_title">
-				<h1>Finalize Order</h1><!-- 구매확인 -->
+				<label>Finalize Order</label><!-- 구매확인 -->
 			</div>
 
 		</div>
@@ -24,7 +24,7 @@
 			<div class="left" id="ordered">
 				<div class="products">
 					<div class="product_image">
-						<img src="/resource/images/쉑쉑.png" id="order_img"/>
+						<img src="/matna/resource/images/쉑쉑.png" id="order_img"/>
 					</div>
 					<div class="product_details">
 						<span class="product_name">&nbsp;&nbsp;&nbsp;&nbsp;Cherry Bikini</span>
