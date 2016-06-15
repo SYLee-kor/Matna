@@ -9,7 +9,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="initial-scale=1">
 	
+	
+	
+	
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- finalOrder때 추가 --> <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/matna/resource/css/animate.css">
 	<link rel="stylesheet" href="/matna/resource/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/matna/resource/css/font-awesome.min.css">
