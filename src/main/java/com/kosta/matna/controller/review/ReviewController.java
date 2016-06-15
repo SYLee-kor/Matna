@@ -32,7 +32,7 @@ public class ReviewController {
 	ReviewService service;
 	
 	// # 뷰들의 위치 잡아주기.
-	private String path = "review/"; // # WEB-INF/views/ {path} 
+	private String path = "/main/body/review/"; // # WEB-INF/views/ {path} 
 	
 	@RequestMapping(value="regist",method=RequestMethod.GET)
 	public String registReview(@ModelAttribute("pageType") String pageType, Model model
@@ -52,6 +52,7 @@ public class ReviewController {
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+" width=\"150\" height=\"90\">";
+			photo = (imgTag.equals("")) ? "포토" : photo;
 			review.setPhoto(photo);
 			
 			// # 주소값 입력안했을 경우...
@@ -99,6 +100,7 @@ public class ReviewController {
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+" width=\"150\" height=\"90\">";
+			photo = (imgTag.equals("")) ? "포토" : photo;
 			review.setPhoto(photo);
 			
 			if(service.modifyReview(review, preview))
@@ -120,10 +122,18 @@ public class ReviewController {
 		try {
 			reviews = service.readReview(no);
 			
-			// # 가격 5000원 ~ 10000원 식으로 표현하기 위해
+			// # 가격 5천원 ~ 1만원 식으로 표현하기 위해
 			PreviewVO preview = (PreviewVO) reviews[1] ;
 			String prices[] = preview.getPrice().split(",");
-			preview.setPrice(prices[0]+"000원"+" ~ "+prices[1]+"000원");
+			prices[0] = ( prices[0].length()<2 ) ? prices[0]+"천원" : prices[0].charAt(0)+"만원";
+			if(prices[1].length()==1) prices[1] = prices[1]+"천원";
+			else if(prices[1].length()==2) prices[1] = prices[1].charAt(0)+"만원";
+			else if(prices[1].length()==3) prices[1] = "7만원 이상";
+			
+			String price = prices[0] + " ~ "+prices[1];
+			price = (prices[0].equals("0천원")) ? "5천원 이하" : price;
+			price = (prices[1].equals("7만원 이상")) ? prices[1] : price;
+			preview.setPrice(price);
 			
 			model.addAttribute("review",reviews[0]);
 			model.addAttribute("preview",preview);
@@ -182,7 +192,7 @@ public class ReviewController {
 			cri.setPage(page);
 			PageMaker pageMaker = new PageMaker(cri, totalCount);
 			
-			List<ReviewDTO> list = 
+			List<ReviewVO> list = 
 			service.readList(typeMap, new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 			
 			model.addAttribute("list", list);
@@ -205,5 +215,20 @@ public class ReviewController {
 	@RequestMapping("dongList")
 	public @ResponseBody List<String> dongList(String gu) throws Exception{
 		return service.dongList(gu);
+	}
+	
+	@RequestMapping("gbCheck")
+	public @ResponseBody Map<String,Object> gbCheck(int userNo, int rNo, String gbType) {
+		Map resultMap = new HashMap();
+		try {
+			Map map = new HashMap();
+			map.put("userNo", userNo);
+			map.put("rNo", rNo);
+			map.put("gbType", gbType);
+			resultMap = service.gbCheck(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return resultMap;
 	}
 }

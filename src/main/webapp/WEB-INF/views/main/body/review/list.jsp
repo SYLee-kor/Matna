@@ -2,12 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<title>리뷰 목록 페이지</title>
-<!-- <link rel="stylesheet" type="text/css"
-	href="/Matna/css/body/review/menu/all/list.css"> -->
+<%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 <script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -41,8 +36,7 @@
 	}
 	
 </script>
-</head>
-<body>
+<div id="listPage">
 <a id="aList"></a>
 	<figure class="tabBlock">
   <ul class="tabBlock-tabs">
@@ -52,11 +46,11 @@
     <div class="tabBlock-pane">
 	<div style="text-align: left;">
 		<div style="border: 1px solid rgb(204, 204, 204);">
-			<span onclick="showTab('food',${page})" id="foodT" 
+			<span onclick="showTab('food',1)" id="foodT" 
 				style="padding: 0pt 5px; cursor: pointer;">식사</span> 
-			<span onclick="showTab('desert',${page})" id="desertT"
+			<span onclick="showTab('desert',1)" id="desertT"
 				style="padding: 0pt 5px; cursor: pointer;">디저트</span>
-			<span onclick="showTab('drink',${page})" id="drinkT"
+			<span onclick="showTab('drink',1)" id="drinkT"
 				style="padding: 0pt 5px; cursor: pointer;">주류</span>
 		<%-- 	<c:if test="${type != null }">
 			<span onclick="showTab('search')" id="searchT"
@@ -65,7 +59,7 @@
 		</div>
 	</div>
 	<div style="text-align: center;">
-		<div id="tab_food" style="display: block;"  style="width:1023px;"></div>
+		<div id="tab_food" style="display: block;"></div>
 		<div id="tab_desert" style="display: none;"></div>
 		<div id="tab_drink" style="display: none;"></div>
 		<!-- <div id="tab_search" style="display: none;"></div> -->
@@ -76,5 +70,5 @@
 	</div>
 	
 	</div></div></figure>
-</body>
-</html>
+</div>
+<%@include file="/WEB-INF/views/footer.jsp" %>

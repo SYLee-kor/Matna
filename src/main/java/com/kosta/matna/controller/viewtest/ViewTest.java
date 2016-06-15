@@ -16,8 +16,14 @@ public class ViewTest {
 		return "review/menu/all/write";
 	}
 	
-	@RequestMapping("/content")
-	public String contentTest(){
-		return "review/content";
+	@RequestMapping("/test")
+	public String testView(){
+		return "test/review_tab";
 	}
+	
+	@RequestMapping("/test/login")
+	public String loginTest(){
+		return "test/login/loginForm";
+	}
+	
 }

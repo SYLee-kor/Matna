@@ -9,21 +9,23 @@
 		}
 		listReply('${review.no}');
 	}
-	var gbFlag ='';
-	function findGB(gbType,no,name) {
-		if('${login}'!='success'){
-			alert('먼저 로그인 해주세요~'); return;
-		}
+	
+	function gbCheck(gbType,rNo,userNo) {
 		$.ajax({
-			url:'/matna/review/findGB',
+			url:'/matna/review/gbCheck',
 			data:{
-				name:name,
-				no:no
+				rNo:rNo,
+				gbType:gbType,
+				userNo:userNo
 			},
 			type:"post",
+			dataType:"json",
 			success:function(result){
-				gbFlag = result;
-				good_bad(gbType,no,name);
+				if(result.result){ // # 좋아요를 누르지 않은 경우
+					$('#'+result.gbType).html(result.gbNum);
+				}else{ // # 이미 좋아요를 누른 경우
+					alert('좋아요 / 싫어요 는 한 리뷰당 한번만 가능합니다.');
+				}
 			},
 			error:function(xhr,status,error){
 				alert(status.text);
@@ -31,32 +33,6 @@
 				alert(xhr);
 			}
 		})
-	}
-	function good_bad(gbType,no,name) {
-		if(gbFlag =='true'){ // # 이미 좋아요를 눌렀을 경우
-			alert('좋아요 / 싫어요 기능은 각 리뷰마다 한번 선택 가능합니다.'); return;
-		}else{
-			$.ajax({
-				url:'/Matna/review/review.do',
-				data:{
-					action:"good_bad",
-					no:no,
-					gbType:gbType,
-					name:name
-				},
-				type:"post",
-				dataType:"json",
-				success:function(result){
-					if(result.gbType=='good')$("#good").html(result.cnt);
-					else if(result.gbType=='bad') $("#bad").html(result.cnt);
-				},
-				error:function(xhr,status,error){
-					alert(status.text);
-					alert(error);
-					alert(xhr);
-				}
-			})
-		}
 	}
 	
 	function deleteReview() {
@@ -133,9 +109,9 @@
 			
 			<%--버튼으로 바꿀예정!! --%>
 	  <div id="like_hate">
-	  LIKE <a href='javascript:findGB("good",${reNo },"${userNo }")'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
+	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
 	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-	  HATE <a href='javascript:findGB("bad",${reNo },"${userNo }")' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
+	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
 		<input type="button" value="수정" onclick="updateReview('${review.no}');">
@@ -146,10 +122,8 @@
 					
   </div>	
  </form>
->>>>>>> branch 'master' of https://github.com/SYLee-kor/Matna.git
 	<%session.setAttribute("userNo", 01); %>
-	<%@include file="/WEB-INF/views/review/replyPage.jsp" %>
-	
+	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

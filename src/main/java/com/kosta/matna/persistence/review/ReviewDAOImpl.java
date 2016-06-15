@@ -58,15 +58,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	
 	@Override
-	public boolean gbUp(int no, String gbKey) throws Exception {
-		Map<String,Object> map = new HashMap<>();
-		map.put("no", no);
-		map.put("gbKey", gbKey);
-		if(session.update("review.gbUp", map)==1)return true;
-		return false;
-	}
-
-	@Override
 	public boolean deleteReview(int no) throws Exception {
 		if(session.delete("review.delete", no)==1)return true;
 		return false;
@@ -79,7 +70,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	}
 
 	@Override
-	public List<ReviewDTO> readList(Map<String, String> typeMap, RowBounds rowBounds) throws Exception {
+	public List<ReviewVO> readList(Map<String, String> typeMap, RowBounds rowBounds) throws Exception {
 		return session.selectList("review.selectList", typeMap, rowBounds);
 	}
 
@@ -106,5 +97,28 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public List<String> dongList(String gu) throws Exception {
 		return session.selectList("review.dongList",gu);
+	}
+
+	@Override
+	public List<Integer> gbCheck(int rNo) throws Exception {
+		return session.selectList("review.gbCheck", rNo);
+	}
+
+	@Override
+	public boolean gbInsert(Map map) throws Exception {
+		if(session.insert("review.gbInsert",map)==1) return true;
+		return false;
+	}
+
+	@Override
+	public int getGBNo(Map map) throws Exception {
+		return session.selectOne("review.getGBNo", map);
+	}
+	
+	@Override
+	public boolean gbUpdate(Map map) throws Exception {
+		System.out.println(map.get("gbType"));
+		if(session.update("review.gbUpdate", map)==1)return true;
+		return false;
 	}
 }
