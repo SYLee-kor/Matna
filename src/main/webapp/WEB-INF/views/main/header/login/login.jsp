@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!-- <link rel="stylesheet" href="/matna/resource/css/login.css"> -->
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="/matna/resource/css/login.css">
 
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script>
@@ -28,10 +28,24 @@ $(document).ready(function() {
 		      }
 		    });
 		});
+		
+		$('#logout').click(function() {
+			formObj.attr("action", "/matna/login/logout");
+			formObj.submit();
+		});
+		
+		$('#message').click(function() {
+			formObj.attr("action", "/matna/message/sendList");
+			formObj.submit();
+		}); 
 	});
 </script>
 
 </head>
+<body>
+<c:if test="${isLogin == null }">
+<div class="panel">
+<h4>로그인</h4>
 <div class="col-md-5 col-sm-5" id="loginForm">
 	<div id="box">
 		<form role="form" id="login_frm" method="post">
@@ -52,6 +66,24 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
+</div>
+</c:if>
+
+
+<c:if test="${isLogin == true }">
+
+<form role="form" name="memberinfo" method="post">
+    <label class="nickname" name="nickname">
+    	${userNickname } 님 반갑습니다~~!!</label><br>
+    <label class="point" name="point">
+          POINT: ${userPoint } </label><br>
+  <input class="mypage" type="submit" id="mypage" name="mypage" value="MyPage">
+  <input class="logout" type="submit" id="logout"  name="logout" value="logout">
+  <input class="message" type="submit" id="message"  name="message" value="message">
+</form>
+
+</c:if>
+
 <!-- <div class="panel">
   <h4>로그인</h4>
   <form role="form" id="login_frm" method="post">
@@ -68,7 +100,7 @@ $(document).ready(function() {
   </div>
   </form>
 </div> -->
-
+</body>
 <script>
     
     var result = '${msg}';

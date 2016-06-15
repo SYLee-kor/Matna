@@ -30,7 +30,7 @@ public class LoginController {
     = LoggerFactory.getLogger(LoginController.class);
 	
 	@RequestMapping(value="", method=RequestMethod.GET)	//로그인폼
-    public String loginForm(HttpSession session)throws Exception{
+    public String loginForm(Model model,HttpSession session)throws Exception{
 		logger.info("로그인 form 요청..");
 		/*if(session.getAttribute("userNo")==null)
 			return "project/login/login";
@@ -38,11 +38,14 @@ public class LoginController {
 			
 			return "redirect:/login/login";
 		}*/
+		
+		//model.addAttribute("isLogin", session.getAttribute("isLogin"));
+		
 		return "main/header/login/login";
 	}
 	
 	@RequestMapping(value="/logout", method=RequestMethod.POST)	//로그인폼
-    public String logout(HttpSession session)throws Exception{
+    public String logout(HttpSession session, Model model)throws Exception{
 		logger.info("로그아웃 요청..");
 		
 		ServletContext application = session.getServletContext();
@@ -61,8 +64,11 @@ public class LoginController {
 		session.setAttribute("userId", null);
 		session.setAttribute("userNickname", null);
 		session.setAttribute("userPoint", null);
+		session.setAttribute("isLogin", null);
 		
-	   return "redirect:/login";
+		model.addAttribute("isLogin", session.getAttribute("isLogin"));
+		
+	   return "redirect:/home";
 	}
 	
 	@RequestMapping(value="login", method=RequestMethod.POST)	//로그인
@@ -87,8 +93,8 @@ public class LoginController {
 		loginList = (loginList == null) ? new ArrayList<Integer>() : loginList;
 		for (int i = 0; i < loginList.size(); i++) {
 			if( loginList.get(i) == member.getNo()) {
-				model.addAttribute("msg", false);
-				return "main/header/login/login";
+				attr.addFlashAttribute("msg", false);
+				return "redirect:/home";
 			}
 		}
 		
@@ -100,11 +106,9 @@ public class LoginController {
 		session.setAttribute("userId", member.getId());
 		session.setAttribute("userNickname", member.getNickname());
 		session.setAttribute("userPoint", member.getPoint());
+		session.setAttribute("isLogin", true);
 		
-		model.addAttribute("nickname",session.getAttribute("userNickname"));
-		model.addAttribute("point",session.getAttribute("userPoint"));
-		
-	   return "main/header/login/loginSuccess";
+	   return "redirect:/home";
 	}
 	@RequestMapping(value="login", method=RequestMethod.GET)	//로그인
 	public String loginGet(Model model, String login_id, String login_pass, RedirectAttributes attr,
