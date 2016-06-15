@@ -14,8 +14,6 @@ public interface ReviewService {
 	boolean modifyReview(ReviewVO review, PreviewVO preview) throws Exception;
 	
 	boolean viewCntUp(int no) throws Exception;
-	boolean gbUp(int no, String gbKey)throws Exception;
-	
 	boolean removeReview(int no) throws Exception;
 	
 	int getTotalCount(String tabType) throws Exception;
@@ -24,4 +22,6 @@ public interface ReviewService {
 
 	List<String> guList() throws Exception;
 	List<String> dongList(String gu) throws Exception;
+	
+	Map<String,Object> gbCheck(Map map)throws Exception;
 }

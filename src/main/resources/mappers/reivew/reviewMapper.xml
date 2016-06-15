@@ -30,19 +30,6 @@
 	]]>
 	</update>
 	
-	<update id="gbUP">
-	<![CDATA[
-		update review 
-		<if test="gbKey=='good'">
-			set good=good+1
-		</if>
-		<if test="gbKey=='bad'">
-			set bad=bad+1
-		</if>
-		where no=#{no}
-	]]>
-	</update>
-	
 	<delete id="delete">
 		delete from review
 		where no=#{no}
@@ -84,4 +71,37 @@
 		where gu = #{gu}
 		order by dong
 	</select>
+	
+	<select id="getGBNo" resultType="int">
+		select 
+		<if test="gbType=='good'">
+		good
+		</if>
+		<if test="gbType=='bad'">
+		bad
+		</if>
+		from review
+		where no = #{rNo}
+	</select>
+	
+	<select id="gbCheck" resultType="int">
+		select userNo from gbCheck
+		where rNo = #{rNo}
+	</select>
+	
+	<insert id="gbInsert">
+		insert into gbCheck 
+		values(#{rNo},#{userNo},#{gbType}) 
+	</insert>
+	
+	<update id="gbUpdate">
+		update review set
+		<if test="gbType=='good'">
+			good=good+1
+		</if>
+		<if test="gbType=='bad'">
+			bad=bad+1
+		</if>
+		where no=#{rNo}
+	</update>
 </mapper>

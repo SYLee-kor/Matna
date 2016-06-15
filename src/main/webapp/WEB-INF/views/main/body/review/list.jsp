@@ -12,9 +12,14 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		showTab('${tabType}','${page}');
-		
 		// # 삽입 , 수정, 삭제 후 결과 출력.
 		if('${result}'=='success') alert('처리되었습니다.');
+		
+		// # 글등록 버튼을 누르면 이동
+		$('#goRegist').click(function() {
+			document.location.href=
+				"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
+		})
 	})
 	function showTab(type,page) {
 		var types = ['food','desert','drink'];
@@ -31,9 +36,10 @@
 		}
 	}
 	function showPage(type,page) {
-		$("#tab_"+type).load('/matna/review/tabPage?tabType='+type
+		$("#tab_"+type).load('/matna/review/tabPage?&tabType='+type
 				+'&pageType=${pageType}&page='+page);
 	}
+	
 </script>
 </head>
 <body>
@@ -46,11 +52,11 @@
     <div class="tabBlock-pane">
 	<div style="text-align: left;">
 		<div style="border: 1px solid rgb(204, 204, 204);">
-			<span onclick="showTab('food',${page})" id="foodT" 
+			<span onclick="showTab('food',1)" id="foodT" 
 				style="padding: 0pt 5px; cursor: pointer;">식사</span> 
-			<span onclick="showTab('desert',${page})" id="desertT"
+			<span onclick="showTab('desert',1)" id="desertT"
 				style="padding: 0pt 5px; cursor: pointer;">디저트</span>
-			<span onclick="showTab('drink',${page})" id="drinkT"
+			<span onclick="showTab('drink',1)" id="drinkT"
 				style="padding: 0pt 5px; cursor: pointer;">주류</span>
 		<%-- 	<c:if test="${type != null }">
 			<span onclick="showTab('search')" id="searchT"
@@ -66,9 +72,7 @@
 	</div>
 	<br>
 	<div align="right" style="width: 90%;">
-		<form action="/matna/review/regist" method="get">
-			<button>글등록</button>
-		</form>
+		<button id="goRegist">글등록</button>
 	</div>
 	
 	</div></div></figure>

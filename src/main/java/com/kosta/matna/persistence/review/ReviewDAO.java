@@ -19,8 +19,6 @@ public interface ReviewDAO {
 	boolean viewCntUp(int no) throws Exception;
 	boolean replyCntUp(int no) throws Exception;
 	
-	boolean gbUp(int no, String gbKey)throws Exception;
-	
 	boolean deleteReview(int no) throws Exception;
 	boolean deletePreview(int no) throws Exception;
 	
@@ -29,8 +27,14 @@ public interface ReviewDAO {
 	ReviewVO readReview(int no)throws Exception;
 	PreviewVO readPreview(int no)throws Exception;
 	
+	int getGBNo(Map map) throws Exception;
 	List<String> guList() throws Exception;
 	List<String> dongList(String gu) throws Exception;
 	
 	List<ReviewDTO> readList(Map<String,String> typeMap, RowBounds rowBounds) throws Exception;
+	
+	List<Integer> gbCheck(int rNo) throws Exception;
+
+	boolean gbInsert(Map map) throws Exception;
+	boolean gbUpdate(Map map)throws Exception;
 }

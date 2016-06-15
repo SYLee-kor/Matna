@@ -14,7 +14,7 @@ public class ItemVO {
 	private String photo;//상품 사진 주소
 	
 	public ItemVO() {
-		// TODO Auto-generated constructor stub
+		photo="";
 	}
 	
 	public ItemVO(int ino, String name, int price, int amount, int state, Date regdate, String content, String photo) {
@@ -29,11 +29,11 @@ public class ItemVO {
 		this.photo = photo;
 	}
 
-	public int getNo() {
+	public int getIno() {
 		return ino;
 	}
 
-	public void setNo(int no) {
+	public void setIno(int ino) {
 		this.ino = ino;
 	}
 	

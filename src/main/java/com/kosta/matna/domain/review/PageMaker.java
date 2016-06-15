@@ -22,7 +22,6 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 		this.totalCount = totalCount;
 		this.cri = cri;
 		calcData();
-		System.out.println("endPage : "+endPage);
 	}
 	
 	
@@ -80,7 +79,6 @@ public class PageMaker { // # 게시판 하단에 페이징 처리해주는 클래스
 		this.startPage = startPage;
 	}
 	public int getEndPage() {
-		System.out.println("getEndPage() 실행 : "+endPage);
 		return endPage;
 	}
 	public void setEndPage(int endPage) {

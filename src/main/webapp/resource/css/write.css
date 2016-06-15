@@ -36,7 +36,7 @@ h2 {
    -moz-border-radius: 0 0 5px 5px;
 }
 
-#phone,#review_title,#addr {
+#phone,#review_title,#addr,#recommend {
    display: inline;
    width: 400px;
    font-size: 14px;
@@ -90,9 +90,9 @@ h2 {
    -moz-border-radius: 5px;
 }
 
-span[name="gu"],
-span[name="dong"],
-select[name="kind"],
+#guList,
+#dongList,
+select[name="menu"],
 select[name="price"]{
   color : white;
   background-color: #9EcDDF;

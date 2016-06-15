@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kosta.matna.domain.item.ItemVO;
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.service.item.ItemService;
@@ -22,32 +23,32 @@ public class ItemController {
 	public String listall(Model model) { 
 			try {
 				model.addAttribute("list", service.listAll());
-				System.out.println("1번떠라");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		return "test/list";
+		return "test/item/list";
 	}
 	
 	@RequestMapping("/itemdetail")//상품 클릭 상세보기
-	public String detail(Model model){//, int ino){ 아직 뷰가없어서 no값 못받음
+	public String detail(Model model, int ino){
 		try {
-			model.addAttribute("detailItem", service.readItem(3));//service.read(no));
+			ItemVO item= service.readItem(ino);
+			model.addAttribute("detailItem", item);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "test/detail";
+		return "test/item/detail";
 	}
 	
 	@RequestMapping(value="/itembuy", method=RequestMethod.GET)//상품구매 페이지 //post는 url호출이 아닌 내부적 호출
-	public String buypage(Model model){//, int no, int num, int ino){
+	public String buypage(Model model, int no, int num, int ino){
 		try{
 			model.addAttribute("detailMember", service.readMember(3));//service.readMember(no)); 회원 넘버
 			model.addAttribute("detailItem", service.readItem(3));//service.readItem(ino));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "test/buy";
+		return "test/item/buy";
 	}
 	
 	@RequestMapping("/buy")//상품 구매
@@ -105,13 +106,13 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/itemSeach")//상품 검색 보기
-	public String itemSeach(Model model){//, String 상품명){ 아직 뷰가없어서 no값 못받음
+	public String itemSeach(Model model, String title){
 		try {
-			model.addAttribute("list", service.itemSeach("음식")); //service.itemSeach(name));
-			System.out.println("상품검색 실행");
+			System.out.println("상품검색 단어"+title);
+			model.addAttribute("list", service.itemSeach(title)); //service.itemSeach(name));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return "test/list";
+	return "test/item/list";
 	}
 }

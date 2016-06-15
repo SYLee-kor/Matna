@@ -45,6 +45,6 @@ public class ReplyController {
 		model.addAttribute("replyMaker", new PageMaker(cri, service.getTotalCount(rNo)));
 		//# 댓글 리스트 저장
 		model.addAttribute("replyList", service.listReply(rNo,rowBounds));
-		return "review/reply";
+		return "/main/body/review/reply";
 	}
 }

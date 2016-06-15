@@ -50,3 +50,19 @@ create table review_reply(
 	content varchar2(300),
 	regdate date default sysdate
 );
+
+drop table gbCheck();
+create table gbCheck(
+	rNo number references review(no),
+	userNo number references member(no)
+);
+
+drop table matnaAddr;
+create table matnaAddr
+as (select ds_gugun,ds_dong from ds_zip where ds_sido='¼­¿ï');
+ 
+alter table matnaAddr
+rename column ds_gugun to gu;
+
+alter table matnaAddr
+rename column ds_dong to dong;

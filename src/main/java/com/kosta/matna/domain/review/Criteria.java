@@ -23,12 +23,10 @@ public class Criteria {
 	}
 
 	public void setPerPageNum(int perPageNum) {
-		System.out.println("setperPageNum 실행");
 		this.perPageNum = (perPageNum < 1 || perPageNum > 100) ? 10 : perPageNum;
 	}
 	
 	public int getPageStart(){
-		System.out.println("getPageStart 실행 : "+page+"/"+(this.page-1)*perPageNum);
 		return (this.page-1)*perPageNum;
 	}
 	
