@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/matna/resource/css/miniList.css"> 
     <link rel="stylesheet" href="/matna/resource/css/write.css"> 
     <link rel="stylesheet" href="/matna/resource/css/content.css"> 
+    <link rel="stylesheet" href="/matna/resource/css/finalOrder.css"> 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 	<script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
