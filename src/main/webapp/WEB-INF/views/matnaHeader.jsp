@@ -170,7 +170,7 @@
 				</div>
 			   <div class="panel"> -->
 			   <!-- 절취 선 -->
-  <%@include file="/WEB-INF/views/test/login/loginForm.jsp" %>
+  <%@include file="/WEB-INF/views/main/header/login/login.jsp" %>
  <!-- 절취 선 -->
 			   </div>
 		    </div>

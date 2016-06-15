@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인폼</title>
+
+<!-- <link rel="stylesheet" href="/matna/resource/css/login.css"> -->
+
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script>
 $(document).ready(function() {
@@ -34,23 +32,42 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body>
-
 <div class="col-md-5 col-sm-5" id="loginForm">
 	<div id="box">
 		<form role="form" id="login_frm" method="post">
-			<input type="text" id="login_id" name=login_id placeholder="USERNAME" />
-			<input type="password" id="login_pass" name=login_pass placeholder="PASSWORD" />
+			<div class="form-group">
+     			<label class="form-label">아이디</label>
+      			<input type="text" class="form-control"id="login_id" name=login_id >
+    		</div>
+    		<div class="form-group">
+    			<label class="form-label">비밀번호</label>
+				<input class="form-control" type="password" id="login_pass" name=login_pass />
+			</div>
 		</form>
-		<a href="#" name="find_idpass">forgot ID / PASS ?</a>
-		<input name="login_bt" id="login_bt" type="submit" value="LOGIN !"/>
+		
+		<button type="submit" class="btn" name="login_bt" id="login_bt">Log in</button>
 		<div class="signup">
-			<p>not a member ? <a href="#">sign up</a></p>
+			<a href="#" name="find_idpass">ID / PW 찾기</a>
+			<a href="#">회원가입</a></p>
 		</div>
 	</div>
 </div>
-
-</body>
+<!-- <div class="panel">
+  <h4>로그인</h4>
+  <form role="form" id="login_frm" method="post">
+  <div class="formset">
+    <div class="form-group">
+      <label class="form-label">아이디</label>
+      <input type="text" class="form-control"id="login_id" name=login_id >
+    </div>
+    <div class="form-group">
+      <label class="form-label">비밀번호</label>
+      <input type="password" class="form-control" id="login_pass" name=login_pass/>
+    </div>
+    <button type="submit" class="btn" name="login_bt" id="login_bt">Log in</button>
+  </div>
+  </form>
+</div> -->
 
 <script>
     
@@ -64,4 +81,3 @@ $(document).ready(function() {
     }
     
 </script>
-</html>

@@ -63,6 +63,6 @@ $(document).ready(function() {
         left: x + 'px'
       }).addClass("rippleEffect");
       
-      alert('로그인 시도 중...');
+      //alert('로그인 시도 중...');
     });// 버튼 클릭
 })

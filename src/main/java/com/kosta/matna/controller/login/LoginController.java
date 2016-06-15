@@ -70,6 +70,8 @@ public class LoginController {
 			HttpSession session, HttpServletRequest request)throws Exception{
 		logger.info("로그인 Post 요청..");
 		
+		System.out.println(login_id+","+login_pass);
+		
 		MemberVO member = new MemberVO();
 		if(login_id!=null&&login_pass!=null)
 			member = memberService.selectIsMember(login_id, login_pass);
