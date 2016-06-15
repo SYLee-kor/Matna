@@ -10,7 +10,17 @@
 		var formObj = $("form[role='form']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/matna/join/delete");
+			formObj.attr("action", "/admin/delete");
+			formObj.submit();
+		});
+		
+		$('#update').click(function() {
+			formObj.attr("action", "/admin/toUpdateForm");
+			formObj.submit();
+		});
+
+		$('#search').click(function() {
+			formObj.attr("action", "/admin/search");
 			formObj.submit();
 		});
 	});
@@ -18,7 +28,7 @@
 
 <!-- Main content -->
 <section class="content">
-	<div class="row">
+	<div align="center" class="row">
 		<!-- left column -->
 		<div class="col-md-12">
 			<!-- general form elements -->
@@ -28,9 +38,10 @@
 					<h3 class="box-title">Member List</h3>
 				</div>
 				<div class="box-body">
-				
+<form name="delete_member" method="post" role="form">				
 <table class="table table-bordered" border="1">
 	<tr>
+		<th></th>
 		<th style="width: 10px">NO</th>
 		<th>아이디</th>
 		<th>비번</th>
@@ -50,6 +61,7 @@
 <c:forEach items="${list}" var="memberVO">
 
 	<tr>
+		<td><input type="checkbox" name="check" id="check" value="${memberVO.no}"/></td>
 		<td>${memberVO.no}</td>
 		<td>${memberVO.id}</td>
 		<td>${memberVO.pw}</td>
@@ -70,8 +82,10 @@
 </table>
 
 
-<form name="delete_member" method="post" role="form">
-	<input type="text" name="no" id="no"/>
+
+	<input type="text" name="nickname" id="nickname"/>
+	<input type="submit" name="search" value="검색" id="search" class="btn btn-search" />
+	<input type="submit" name="update" value="수정" id="update" class="btn btn-update" />
 	<input type="submit" name="delete" value="삭제" id="delete" class="btn btn-delete" />
 </form>
 

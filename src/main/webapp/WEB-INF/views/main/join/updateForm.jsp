@@ -6,20 +6,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/join/updateSuccess");
+			formObj.attr("action", "/matna/join/updateSuccess");
 			formObj.submit();
 		});
 		
 		$('#confirmnick').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmNick",
+		      url: "/matna/join/confirmNick",
 		      data: { action: "join", 
 		    	      action2: "confirmNick", 
 		    	  	  nickname: $('#nickname').val()
