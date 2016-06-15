@@ -49,7 +49,7 @@ public class LoginController {
 		List<Integer> loginList = (List<Integer>)application.getAttribute("loginList");
 		loginList = (loginList == null) ? new ArrayList<Integer>() : loginList;
 		for (int i = 0; i < loginList.size(); i++) {
-			System.out.println(loginList.get(i)+","+session.getAttribute("userNo"));
+			//System.out.println(loginList.get(i)+","+session.getAttribute("userNo"));
 			if( loginList.get(i) == session.getAttribute("userNo")) {
 				loginList.remove(i);
 			}
