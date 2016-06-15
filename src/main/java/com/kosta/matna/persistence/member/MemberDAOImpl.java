@@ -46,6 +46,11 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
+	public MemberVO selectNo(int no) throws Exception {
+		return session.selectOne("member.selectNo",no);
+	}
+	
+	@Override
 	public void update(MemberVO member) throws Exception {
 		session.update("member.update", member);
 	}
@@ -83,5 +88,10 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberVO member = session.selectOne("member.selectIsMember",map);
 		
 		return member;
+	}
+
+	@Override
+	public List<MemberVO> selectNickname(String nickname) throws Exception {
+		return session.selectList("member.searchNickname",nickname);
 	}
 }
