@@ -281,7 +281,7 @@ input{
  }
 }
 </style>
-<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
    /* tab 실행 */
    (function() {
@@ -319,11 +319,6 @@ input{
 			//formObj.attr("action2","null");
 			formObj.submit();
 		});
-      
-      $('#').click(function(){
-          $('#').toggle();
-      });
-      
      
    });
    
