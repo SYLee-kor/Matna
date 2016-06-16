@@ -125,4 +125,24 @@ public class MemberDAOImpl implements MemberDAO{
 	public int selectSearchCount(String nickname) throws Exception {
 		return session.selectOne("member.selectSearchCount",nickname);
 	}
+	
+	@Override
+	public String findPw(String id, String email, String name) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("name",name );
+		   map.put("id", id);
+		   map.put("email", email);
+		
+		return session.selectOne("member.findPw", map);
+	}
+
+	@Override
+	public String findId(String email, String name) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("name",name );
+		   map.put("email", email);
+		
+		return session.selectOne("member.findId", map);
+	}
+	
 }

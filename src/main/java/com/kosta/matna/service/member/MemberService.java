@@ -20,4 +20,7 @@ public interface MemberService {
 	public List<MemberVO> selectSearchList(String nickname, int start, int end)throws Exception;
 	public int selectSearchCount(String nickname)throws Exception;
 	
+	public String findPw(String id,String email, String name)throws Exception;
+	public String findId(String email, String name)throws Exception;
+	
 }

@@ -12,12 +12,12 @@
 		var formObj = $("form[role='form']");
 		
 		$('#confirmid').click(function() {
-			formObj.attr("action", "/find/findPw");
+			formObj.attr("action", "/matna/find/findPw");
 			formObj.submit();
 		});
 		
 		$('#confirmid2').click(function() {
-			formObj.attr("action", "/find/findId");
+			formObj.attr("action", "/matna/find/findId");
 			formObj.submit();
 		});
 	});

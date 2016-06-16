@@ -11,7 +11,7 @@
 <body bgcolor = "#E6E6FA">
 <center>
 <br><br><br><br><br>
-<form method = "get" action = "/find">
+<form method = "get" action = "/matna/find">
 	<c:if test="${pageType =='findId' }">
 		<c:if test="${result =='success'}">
 			${ name} 님의 아이디는 <b>${ pw }</b> 입니다.<p>
