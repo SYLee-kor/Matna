@@ -64,8 +64,8 @@ public class BoardDAOTest {
 	
 	@Test
 	public void testEmail() throws Exception{
-		email.setContent("테스트는 완벽하지");
-        email.setReceiver("hsj1172@gmail.com");
+		email.setContent("비번찾기");
+        email.setReceiver("MatnaManager@gmail.com");
         email.setSubject("mail Test");
         emailSender.SendEmail(email);
 	}

@@ -47,6 +47,11 @@
 	    where id=#{id} 
    </update>
    
+   <update id="updatePW">
+   		update member set pw=#{pw}
+   		where id=#{id} and email=#{email}
+   </update>
+   
    <delete id="delete" parameterType="int">
 		delete from member where no=#{no}
 	</delete>
