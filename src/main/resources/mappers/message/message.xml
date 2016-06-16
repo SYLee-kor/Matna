@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="message">
+	<insert id="create" parameterType="message">
+		insert into message (no, senderNo, receiverNo, title, content, sendDate, state)
+		values (message_seq.nextval,#{senderNo}, #{receiverNo}, #{title}, #{content},sysdate,0)
+	</insert>
+	
+	<select id="selectSenderNo" parameterType="message" resultType="int">
+		select no from member where nickname=#{senderNickname}
+	</select>
+	
+	<select id="selectReceiverNo" parameterType="message" resultType="int">
+		select no from member where nickname=#{receiverNickname}
+	</select>
+	
+	
+	<select id="readMessage" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+		(select nickname from member where no=receiverNo) receiverNickname,
+		(select nickname from member where no=senderNo) senderNickname,
+		 sendDelete,receiverDelete from message where no=#{no}
+	</select>
+	
+	<select id="selectMessageAll" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+		(select nickname from member where no=receiverNo) receiverNickname,
+		(select nickname from member where no=senderNo) senderNickname,
+		 sendDelete,receiverDelete from message order by no desc
+	</select>
+		
+	<select id="searchSenderTitle" parameterType="java.util.Map"  resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from
+    		(select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc)
+			where senderNo=#{senderNo} and sendDelete=0 and title like '%'||#{title}||'%' )
+		where rn between #{start} and #{end}
+    </select>
+    
+	<select id="searchSenderTitleCount" parameterType="java.util.Map"  resultType="int">
+    	select count(*) no
+		from message
+		where senderNo=#{senderNo} and sendDelete=0 and title like '%'||#{title}||'%' order by no desc
+    </select>
+	
+	<select id="searchSenderContent" parameterType="java.util.Map"  resultType="message">
+    	select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from
+    		(select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc)
+		where senderNo=#{senderNo} and sendDelete=0 and content like '%'||#{content}||'%')
+		where rn between #{start} and #{end}
+    </select>
+    
+    <select id="searchSenderContentCount" parameterType="java.util.Map"  resultType="int">
+    	select count(*) no
+		from message
+		where senderNo=#{senderNo} and sendDelete=0 and content like '%'||#{content}||'%' order by no desc
+    </select>
+    
+	<select id="searchReceiverTitle" parameterType="java.util.Map"  resultType="message">
+    	select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from
+    		(select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc)
+		where receiverNo=#{receiverNo} and receiverDelete=0 and title like '%'||#{title}||'%')
+		where rn between #{start} and #{end}
+    </select>
+    
+    <select id="searchReceiverTitleCount" parameterType="java.util.Map"  resultType="int">
+    	select count(*) no
+		from message
+		where receiverNo=#{receiverNo} and receiverDelete=0 and title like '%'||#{title}||'%' order by no desc
+    </select>
+	
+	<select id="searchReceiverContent" parameterType="java.util.Map"  resultType="message">
+    	select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from
+    		(select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc)
+		where receiverNo=#{receiverNo} and receiverDelete=0 and content like '%'||#{content}||'%')
+		where rn between #{start} and #{end}
+    </select>
+    
+    <select id="searchReceiverContentCount" parameterType="java.util.Map"  resultType="int">
+    	select count(*) no
+		from message
+		where receiverNo=#{receiverNo} and receiverDelete=0 and content like '%'||#{content}||'%' order by no desc
+    </select>
+	
+	<delete id="delete" parameterType="int">
+		delete from message where no=#{no}
+	</delete>
+	
+	<delete id="deleteSevenDays">
+	<![CDATA[
+		delete from message where (sysdate-sendDate) > 7
+	]]>
+	</delete>
+	
+	<select id="selectSenderMessage" parameterType="int" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+		(select nickname from member where no=receiverNo) receiverNickname, sendDelete,receiverDelete
+		 from message where senderNo=#{senderNo} and sendDelete=0
+		 order by no desc
+	</select>
+	
+	<select id="selectReceiverMessage" parameterType="int" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,(select nickname from member where no=senderNo) senderNickname,sendDelete,receiverDelete
+		 from message where receiverNo=#{receiverNo} and receiverDelete=0
+		 order by no desc
+	</select>
+	
+	<update id="updateState" parameterType="int">
+		update message set state = 1 where no=#{no}
+	</update>
+	
+	<update id="updateSenderDelete" parameterType="int">
+		update message set sendDelete = 1 where no=#{no}
+	</update>
+	
+	<update id="updateReceiverDelete" parameterType="int">
+		update message set receiverDelete = 1 where no=#{no}
+	</update>
+	
+	<select id="selectAllPage" parameterType="java.util.Map" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from (select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn 
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc))
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="selectSenderPage" parameterType="java.util.Map" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from (select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn 
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc) where senderNo=${senderNo} and sendDelete=0)
+		where rn between #{start} and #{end}
+	</select>
+	
+	<select id="selectReceiverPage" parameterType="java.util.Map" resultType="message">
+		select no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rn
+		from (select  no,senderNo,receiverNo, title,content,sendDate,state,
+			(select nickname from member where no=receiverNo) receiverNickname,
+			(select nickname from member where no=senderNo) senderNickname,
+		 	sendDelete,receiverDelete, rownum rn 
+			from (select no,senderNo,receiverNo, title,content,sendDate,state,
+				(select nickname from member where no=receiverNo) receiverNickname,
+				(select nickname from member where no=senderNo) senderNickname,
+		 		sendDelete,receiverDelete 
+			     from message order by no desc) where receiverNo=${receiverNo} and receiverDelete=0)
+		where rn between #{start} and #{end}
+	</select>
+	  
+	<select id="selectAllCount" resultType="int">
+	     select count(*) no from message
+	</select>
+	
+	<select id="selectSenderCount" parameterType="int" resultType="int">
+	     select count(*) no from message where senderNo=#{senderNo} and sendDelete=0
+	</select>
+	
+	<select id="selectReceiverCount" parameterType="int" resultType="int">
+	     select count(*) no from message where receiverNo=#{receiverNo} and receiverDelete=0
+	</select>
+	
+</mapper>
+
+	<!-- <insert id="create">
+		insert into tbl_message (targetid, sender, message)
+		values (#{targetid}, #{sender}, #{message})
+	</insert> -->
+	
+	<!-- <select id="readMessage" resultType="message">
+		select * from tbl_message where mid=#{mid}
+	</select> -->
