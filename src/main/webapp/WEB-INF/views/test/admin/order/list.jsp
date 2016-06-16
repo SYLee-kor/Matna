@@ -11,9 +11,15 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		// 이전 검색조건 유지
+		if('${searchId}' != ''){
+			$("[name=searchId]").val('${searchId}');
+			$("[name=search]").val('${search}');
+		}
+		
 		$('#cancel').click(function(){
 			var length = $('input[name=ck]:checked').length;
-			if(length==1){
+			if(length>=1){
 				$('input[name=ck]:checked').each(function(index){
 					var state = $(this).parent().parent().find('input[name=state]').val();
 					var item = $(this).parent().parent().find('input[name=item]').val();
@@ -144,7 +150,7 @@
 			</tr>
 		</table>
 		<br>
-		<form action="/matna/admin/searchId" method="post">
+		<form action="/matna/admin/orderlistall" method="get">
 			<select name="searchId">
 				<option value="buyer">구매자</option>
 				<option value="receiver">수령인</option>
@@ -153,6 +159,22 @@
 			<input type="submit" value="검색">
 		</form>
 		
+		
+	<br>
+	<div>
+			<c:if test="${pageMaker.prev}">
+				<a name="page" href="${pageMaker.startPage - 1}">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }" var="idx">
+				<a name="page" href="/matna/admin/orderlistall?page=${idx}&search=${search}&searchId=${searchId}">${idx}</a>
+			</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				<a name="page" href="${pageMaker.endPage +1}">&raquo;</a>
+			</c:if>
+	</div>
+	<br>
+
 	</center>
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.item.ItemVO;
@@ -25,8 +26,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ItemVO> listAll() throws Exception {
-		return dao.listAll();
+	public List<ItemVO> listAll(String search, RowBounds rowBounds) throws Exception {
+		return dao.listAll(search, rowBounds);
 	}
 
 	@Override
@@ -44,11 +45,6 @@ public class AdminServiceImpl implements AdminService {
 	public boolean modifyItem(ItemVO item) throws Exception {
 		if(dao.modifyItem(item))return true;
 		return false;
-	}
-
-	@Override
-	public List<Member_orderVO> orderlistAll() throws Exception {
-		return dao.orderlistAll();
 	}
 
 	@Override
@@ -75,7 +71,18 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Member_orderVO> orderSearchList(Map<String, String> map) throws Exception {
-		return dao.orderSearchList(map);
+	public List<Member_orderVO> orderSearchList(Map<String, String> map, RowBounds rowBounds) throws Exception {
+		return dao.orderSearchList(map, rowBounds);
 	}
+
+	@Override
+	public int orderListCount(Map<String, String> map) throws Exception {
+		return dao.orderListCount(map);
+	}
+
+	@Override
+	public int listAllCnt(String search) throws Exception {
+		return dao.listAllCnt(search);
+	}
+
 }

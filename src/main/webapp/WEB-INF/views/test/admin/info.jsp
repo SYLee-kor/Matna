@@ -17,6 +17,13 @@ $(document).ready(function(){
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+            var file = input.files[0].name;
+            var img_format = "\.(bmp|gif|jpg|jpeg|png)$";
+            if(!(new RegExp(img_format, "i")).test(file)){
+            	alert("이미지 파일만 올려주세요");
+                $('#file').val('');
+                return;
+            }
             reader.onload = function (e) {
             //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
                 $('#photo').attr('src', e.target.result);
@@ -63,7 +70,7 @@ $(document).ready(function(){
 			<c:if test="${items.photo==null}">
 				<img src="" id="photo" width="300px" height="300px"><br>
 			</c:if>
-				<input type="file" id="file" name="file">
+				<input type="file" id="file" name="file" accept="image/*">
 				<input type="hidden" value="${items.photo}" name="photo">
 			</td>
 			<td class="name">상품명</td>

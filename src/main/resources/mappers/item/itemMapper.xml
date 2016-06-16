@@ -56,10 +56,23 @@
 	values(member_order_seq.nextval, #{giver}, #{taker}, #{item}, #{cnt}, #{addr}) 
 	</insert>
 	
-	<!-- 전체 아이템 리스트 -->
-	<select id="listAll" resultType="com.kosta.matna.domain.item.ItemVO">
+	<!-- 전체,검색 아이템 리스트 -->
+	<select id="listAll" resultType="com.kosta.matna.domain.item.ItemVO" parameterType="String">
 		select ino, photo, name, price, amount, state
 		from item
+		<if test="value != null">
+		where name like '%'||#{search}||'%'
+		</if>
+		order by ino desc
+	</select>
+	
+	<!-- 전체,검색 아이템 리스트 페이징 -->
+	<select id="listAllCnt" resultType="int" parameterType="String">
+		select count(*) cnt
+		from item
+		<if test="value != null">
+		where name like '%'||#{search}||'%'
+		</if>
 		order by ino desc
 	</select>
 	
@@ -80,12 +93,6 @@
 	<!-- =============상품관련(회원)끝=============== -->		
 	
 	<!-- =============주문관련=============== -->
-	<!-- 전체 주문 조회(관리자) 고쳐야해  (select name from item where ino=item) itemName,-->
-	<select id="orderListAll" resultType="com.kosta.matna.domain.member.Member_orderVO">
-		select ono, giver, taker,(select id from member where no=giver) giverid, (select id from member where no=taker) takerid, (select name from item where ino=item) itemname, item, cnt, orderDate, state, addr
-		from member_order
-		order by ono desc 
-	</select>
 	
 	<!-- 특정 주문제거(관리자) -->
 	<delete id="deleteOrder">
@@ -108,15 +115,35 @@
 	<select id="orderSearchList" resultType="com.kosta.matna.domain.member.Member_orderVO">
 		select ono, giver, taker,(select id from member where no=giver) giverid, (select id from member where no=taker) takerid, (select name from item where ino=item) itemname, item, cnt, orderDate, state, addr
 		from member_order
-		<choose>
-			<when test="id=='buyer'">
-			where giver in (select no from member where id like '%'||#{search}||'%') 
-			</when>
-			<otherwise>
-			where taker in (select no from member where id like '%'||#{search}||'%') 
-			</otherwise>
-		</choose>
+		<if test="search != null and id !=null">
+			<choose>
+				<when test="id=='buyer'">
+				where giver 
+				</when>
+				<when test="id=='receiver'">
+				where taker 
+				</when>
+			</choose>
+			in (select no from member where id like '%'||#{search}||'%')
+		</if>
 		order by ono desc 
+	</select>
+	
+	<!-- 검색한 주문 페이징을 위한 숫자 확인 -->
+	<select id="orderListCount" resultType="int">
+		select count(*) cnt 
+		from member_order
+		<if test="search != null and id !=null">
+			<choose>
+				<when test="id=='buyer'">
+				where giver 
+				</when>
+				<when test="id=='receiver'">
+				where taker 
+				</when>
+			</choose>
+			in (select no from member where id like '%'||#{search}||'%')
+		</if>
 	</select>
 	
 </mapper>
