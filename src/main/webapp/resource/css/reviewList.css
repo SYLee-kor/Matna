@@ -12,14 +12,6 @@ html { overflow-y: scroll; }
 
 img { border: 0; max-width: 100%; }
 
-h1 { 
-  font-family: 'Amarante', Tahoma, sans-serif;
-  font-weight: bold;
-  font-size: 6em;
-  line-height: 3em;
-  margin-bottom: 10px;
-  text-align: center;
-}
 
 
 /** page structure **/
@@ -33,7 +25,7 @@ h1 {
 
 .review_List thead {
   cursor: pointer;
-  background: #c9dff0;
+  background: #fdbda8;
 }
 .review_List thead tr th { 
   font-weight: bold;
@@ -48,7 +40,7 @@ h1 {
 }
 
 .review_List thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
-  background: #acc8dd;
+  background: #ffc6bb;
 }
 
 .review_List thead tr th.headerSortUp span {
@@ -114,16 +106,16 @@ h1 {
 }
 .modal-1 a {
   border-color: #ddd;
-  color: #4285F4;
+  color: #ff4524;
   background: #fff;
 
 }
 .modal-1 a:hover {
-  background: #eee;
+  background: #ffedea;
 }
 .modal-1 a.active, .modal-1 a:active {
-  border-color: #4285F4;
-  background: #4285F4;
+  border-color: #ff4524;
+  background: #ff4524;
   color: #fff;
 }
 
@@ -186,9 +178,9 @@ margin-bottom : 3%;
 }
 	.searchform input:focus {
 		outline: none;
-		box-shadow:0 0 4px #0d76be inset;
-		-moz-box-shadow:0 0 4px #0d76be inset;
-		-webkit-box-shadow:0 0 4px #0d76be inset;
+		box-shadow:0 0 4px #dd2100 inset;
+		-moz-box-shadow:0 0 4px #dd2100 inset;
+		-webkit-box-shadow:0 0 4px #dd2100 inset;
 	}
 	.searchform input::-webkit-input-placeholder {
   	font-style: italic;
@@ -201,7 +193,7 @@ margin-bottom : 3%;
 	}
 
 .searchform button {
-	background: rgb(52,173,236);
+	background: #ff4524;
 	background: -moz-linear-gradient(top, rgba(52,173,236,1) 0%, rgba(38,145,220,1) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(52,173,236,1)), color-stop(100%,rgba(38,145,220,1)));
 	background: -webkit-linear-gradient(top, rgba(52,173,236,1) 0%,rgba(38,145,220,1) 100%);
@@ -215,9 +207,9 @@ margin-bottom : 3%;
 	font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
 	padding: 10px;
 	width:50px;
-	box-shadow: 0 0 2px #2692dd inset;
-	-moz-box-shadow: 0 0 2px #2692dd inset;
-	-webkit-box-shadow: 0 0 2px #2692dd inset;
+	box-shadow: 0 0 2px #ff4524i nset;
+	-moz-box-shadow: 0 0 2px #ff4524 inset;
+	-webkit-box-shadow: 0 0 2px #ff4524 inset;
   border-radius: 9px;
   -moz-border-radius: 9px;
   -webkit-border-radius: 9px;

@@ -20,8 +20,10 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Open Sans', Arial, Helvetice Neue, sans-serif; 
 }
 
+/* border-bottom 변경시 리스트?아래에  줄하나 변경 가능 */
 h1 { 
-	text-transform: uppercase; width: 100%; border-bottom: 1px solid #00bfff; font-size: 24px; color: #333333; padding-bottom: 10px; font-weight: bold; 
+	text-transform: uppercase; width: 100%; border-bottom: 1px solid 
+ #ff9582; font-size: 24px; color: #333333; padding-bottom: 10px; font-weight: bold; 
 }
 
 .clear { 
@@ -41,14 +43,14 @@ h1 {
 	float: left; 
 	width: 100%; 
 	font-size: 50px; 
-	color: #00bfff;
+	color: #ff7359;
 	font-weight: 400; 
 	margin-top: 60px;
 	margin-left: 70px;
 }
 
 .templatemo_title a { 
-	color: #00bfff; 
+	color: #ff7359; 
 }
 
 .templatemo_subtitle { 
@@ -88,7 +90,7 @@ h1 {
 }
 
 .responsive-navigation { 
- 	background: #00bfff; 
+ 	background: #ff7359; 
 	float: left; 
 	padding: 10px 0px; 
 	margin-bottom: 30px;
@@ -128,7 +130,7 @@ a.menu-toggle-btn {
  	color: white; 
 	text-transform: uppercase; 
 	display: block; 
-	background-color: #00bfff; 
+	background-color: #ff7359; 
 	width:100px;
 	-webkit-transition: all 150ms ease-in; 
 	-moz-transition: all 150ms ease-in; 
@@ -137,7 +139,7 @@ a.menu-toggle-btn {
 }
 
 .main_menu div.col-md-2 a:hover { 
-	background-color: #008ae6; 
+	background-color: #ff3511; 
 }
 
 /* .main_menu div.col-md-2 a#prev { 
@@ -159,7 +161,7 @@ a.menu-toggle-btn {
 a.menu_toggle-btn { 
 	width: 100%; 
 	height: 60px; 
-	background-color:  #00bfff; 
+	background-color:  #ff7359; 
 	text-align: center; 
 	line-height: 60px; 
 	display: block; 
@@ -178,14 +180,14 @@ a.menu_toggle-btn i {
 
 .responsive_menu { 
 	display: none; 
-	background-color:  #00bfff; 
+	background-color:  #ff7359; 
 }
 .responsive_menu ul li a { 
 	color: white; 
 	text-transform: uppercase; 
 	display: block; 
 	padding: 10px 20px; 
-	border-bottom: 1px solid #80dfff; 
+	border-bottom: 1px solid #ff9582; 
 }
  /* ===================광고====================== */
 .main-slider { 
@@ -240,7 +242,7 @@ a.menu_toggle-btn i {
 .templatemo_icon { 
 	float: left; 
 	font-size: 40px; 
-	color: #00bfff; 
+	color: #ff7359; 
 	text-align: center; 
 	padding-bottom: 3px; 
 	border-bottom: 2px solid #cccccc;
@@ -249,7 +251,7 @@ a.menu_toggle-btn i {
 .templatemo_greentitle { 
 	float: left; 
 	font-size: 20px; 
-	color: #00bfff; 
+	color: #ff7359; 
 	font-weight: bold; 
 	text-transform: uppercase; 
 	margin-left: 10px; 
@@ -267,7 +269,7 @@ a.menu_toggle-btn i {
 	 width: 40px; 
 	 height: 40px; 
 	 border-radius: 20px; 
-	 background: #00bfff; 
+	 background: #ff7359; 
 	 text-align: center;  
 	 left:40%;  
 	 margin-left:-20px; 
@@ -309,7 +311,7 @@ a.menu_toggle-btn i {
 .templatemo_teamtitle { 
 	float: left; 
 	font-size: 18px; 
-	color: #00bfff; 
+	color: #ff7359; 
 	font-weight: bold; 
 	text-transform: uppercase;
 	width: 100%; 
@@ -331,7 +333,7 @@ a.menu_toggle-btn i {
 	color: #cccccc; 
 	font-size: 16px;
 }
-.templatemo_teamsocial .fa:hover{ color: #00bfff; }
+.templatemo_teamsocial .fa:hover{ color: #ff7359; }
 
 .templatemo_portfolio img { 
 	width: 100%; 
@@ -420,7 +422,7 @@ a.menu_toggle-btn i {
 }
 .templatemo_textareabox button { 
 	border-radius: 0px; 
-	background: #00bfff; 
+	background: #ff7359; 
 	padding: 7px 15px; 
 	text-transform: uppercase; 
 	font-weight: 400; 
@@ -440,7 +442,7 @@ a.menu_toggle-btn i {
 }
 .templatemo_address	li.fa { 
 	width: 10%; 
-	color:#00bfff; 
+	color:#ff7359; 
 	font-size: 20px;
 }
 .templatemo_address	li.text { 
@@ -449,7 +451,7 @@ a.menu_toggle-btn i {
 }
 
 .templatemo_footer { 
-	background: #00bfff; 
+	background: #ff7359; 
 	margin-top: 50px; 
 	padding: 10px 0px; 
 	text-align: center; 
@@ -554,7 +556,7 @@ a.menu_toggle-btn i {
 #search_detail {
   position:relative;
   background:#fff;
-  border:3px solid deepskyblue;
+  border:3px solid #ff7359;
   padding:5px;
   font-size:0.5em;
   color:white;
@@ -570,7 +572,7 @@ a.menu_toggle-btn i {
 
 #search_detail:hover {
   bottom:4px;
-   box-shadow:0px 2px 0px 0px deepskyblue;
+   box-shadow:0px 2px 0px 0px #ff7359;
   transition: all .01s ease-in-out;
   -moz-transition: all .01s ease-in-out;
   -webkit-transition: all .01s ease-in-out;
@@ -578,7 +580,7 @@ a.menu_toggle-btn i {
 
 #search_detail:active {
   top:4px;
-  box-shadow:inset 0px 2px 0px 0px deepskyblue;
+  box-shadow:inset 0px 2px 0px 0px #ff7359;
   transition: all .01s ease-in-out;
   -moz-transition: all .01s ease-in-out;
   -webkit-transition: all .01s ease-in-out;
@@ -591,8 +593,8 @@ a.menu_toggle-btn i {
 }
 .icon-search{
   border:0px;
-  background: lightgray;
-  color:deepskyblue;
+  background: #f2f2f2;
+  color:#ff7359;
   border-radius:5px;
   display:inline-block;
   margin-top:63px;
@@ -605,9 +607,7 @@ a.menu_toggle-btn i {
   position:relative;
 }
 .icon-search:hover{
-  background: gray;
-  text-shadow:0px 0px 0px gray;
-  box-shadow: inset 0px 0px 8px gray;
+  background: #ffe8e8;
   transition:all 0.5s ease;
   -webkit-transition:all 0.5s ease;
 }
@@ -649,7 +649,7 @@ a.menu_toggle-btn i {
   transition: all .2s ease;
 }
 #box > form > input:focus{
-  border: thin solid #015b7e;
+  border: thin solid #cc1f00;
   outline: none;
 }
 ::-webkit-input-placeholder {
@@ -717,7 +717,7 @@ a.menu_toggle-btn i {
   
 #box > .signup a{
   text-decoration: none;
-  color: #015b7e;
+  color: #a00501;
   font-size: 1em;
   padding-left: 25px;
   }
