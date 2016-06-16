@@ -46,14 +46,41 @@ public class CommunityController {
 	    System.out.println("에디터 컨텐츠값(String):"+editor);
 	}
 	
+//	@RequestMapping(value="/slist", method=RequestMethod.GET)
+//	public String listPage(@ModelAttribute("cri") SearchVO key, Model model)throws Exception{
+//		 logger.info("검색리스트 요청: "+ key);
+//		 
+//		 model.addAttribute("list", service.listSearchCriteria(key,new BoardTypeVO("free")));
+//		 PageMaker maker = new PageMaker();
+//		 maker.setCri(key);
+//		 maker.setTotalCount(service.listSearchCount(key,new BoardTypeVO("free")));
+//		 model.addAttribute("pageMaker", maker);  
+//		 
+//		 return "main/body/community/all/list";
+//	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, Criteria cri,HttpSession session) throws Exception{
-		session.setAttribute("userID", "adminTester");
+	public String list(Model model, SearchVO cri) throws Exception{
+		System.out.println("검색어 : " + cri.getKeyword());
 		logger.info("전체list 요청..."+ model);	
-		model.addAttribute("list", service.listCriteria(cri,new BoardTypeVO("free")));
+		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO("free")));
 		PageMaker maker = new PageMaker();
 		  maker.setCri(cri);
-		  maker.setTotalCount(service.listCountCriteria(new BoardTypeVO("free")));
+		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO("free")));
+		model.addAttribute("pageMaker", maker);
+		String type = "free";
+		model.addAttribute("type", type);
+		return "main/body/community/all/list";
+	}
+	
+	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
+	public String listPage(Model model, SearchVO cri) throws Exception{
+		System.out.println("페이지 : " + cri.getPage());
+		logger.info("특정 페이지 list 요청..."+ model);	
+		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO("free")));
+		PageMaker maker = new PageMaker();
+		  maker.setCri(cri);
+		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO("free")));
 		model.addAttribute("pageMaker", maker);
 		String type = "free";
 		model.addAttribute("type", type);
@@ -61,10 +88,12 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/listOne", method = RequestMethod.GET)
-	public String listOne(int no,String type,Model model) throws Exception{
+	public String listOne(int no,String type,Model model,@ModelAttribute("cri") SearchVO cri) throws Exception{
 		logger.info("list one :" + no);
 		logger.info("type : " + type);
-		model.addAttribute("free",service.read(no,new BoardTypeVO(type)));
+		System.out.println("검색어 : " + cri.getKeyword()+", "+cri.getSearchType());
+		System.out.println("페이지 정보 : "+cri.getPage());
+		model.addAttribute("board",service.read(no,new BoardTypeVO(type)));
 		
 		return "main/body/community/all/content";
 	}
@@ -79,7 +108,6 @@ public class CommunityController {
 	public String writePOST(BoardVO board,RedirectAttributes attr) throws Exception{
 		logger.info("register POST요청...");	
 		logger.info("BoardVO::"+ board);
-		board.setWriter("adminTester");
 		service.regist(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
@@ -88,7 +116,7 @@ public class CommunityController {
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(int no,String type,Model model) throws Exception{
-		model.addAttribute("free",service.read(no,new BoardTypeVO(type)));
+		model.addAttribute("board",service.read(no,new BoardTypeVO(type)));
 		
 		return "main/body/community/all/update";
 	}
@@ -97,7 +125,6 @@ public class CommunityController {
 	public String modify(BoardVO board,RedirectAttributes attr) throws Exception{
 		logger.info("update POST요청...");	
 		logger.info("BoardVO::"+ board);
-		board.setWriter("adminTester");
 		service.modify(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");

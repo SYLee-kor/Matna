@@ -20,4 +20,5 @@ public interface CommunityDAO {
 	public int countPaging(BoardTypeVO type)throws Exception;
 	public List<BoardVO> listSearch(SearchVO cri,BoardTypeVO type)throws Exception; 
 	public int listSearchCount(SearchVO cri,BoardTypeVO type)throws Exception;
+	public boolean replyCnt(int no,BoardTypeVO type) throws Exception;
 }

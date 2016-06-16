@@ -67,7 +67,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	@Override
 	public void updateViewCnt(int no, BoardTypeVO type) throws Exception {
-		System.out.println("updateViewCnt실행");
+		System.out.println("updateViewCnt실행 : " +type.getType());
 		session.update("board.updateViewCnt", map(no, type));
 	}
 
@@ -90,6 +90,13 @@ public class CommunityDAOImpl implements CommunityDAO {
 	@Override
 	public int listSearchCount(SearchVO cri, BoardTypeVO type) throws Exception {
 		return session.selectOne("board.listSearchCount", Smap(cri, type));
+	}
+
+	@Override
+	public boolean replyCnt(int no, BoardTypeVO type) throws Exception {
+		System.out.println("정보 : " + no + ", " + type.getType());
+		if(session.update("board.updateReplyCnt",map(no,type))==1) return true;
+		return false;
 	}
 
 }

@@ -8,6 +8,31 @@
            <trim>board_free</trim>
          </when>
        </choose>
+       <choose>
+         <when test="type=='meeting'.toString()">
+           <trim>board_meeting</trim>
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='noname'.toString()">
+           <trim>board_noname</trim>
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='suggest'.toString()">
+           <trim>board_suggest</trim>
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='faq'.toString()">
+           <trim>board_faq</trim>
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='notice'.toString()">
+           <trim>board_notice</trim>
+         </when>
+       </choose>
    </sql>
    
    <sql id="search">
@@ -53,6 +78,12 @@
       where no=#{no}
    </update>
    
+   <update id="updateReplyCnt">
+		update <include refid="type"/>
+		set replyCnt = replyCnt+1 
+		where no=#{no}
+	</update>
+   
    <update id="updateViewCnt">
    	update <include refid="type"/>
    	set viewcnt = viewcnt + 1
@@ -75,6 +106,10 @@
       select count(*) from <include refid="type"/>
       where no>0
       <include refid="search"/>
+   </select>
+   
+   <select id="searchNick" resultType="String">
+   	  select nickName from member where no=#{no}
    </select>
    
 </mapper>
