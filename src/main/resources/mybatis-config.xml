@@ -10,5 +10,6 @@
    <typeAlias type="com.kosta.matna.domain.review.ReviewDTO" alias="reviewDTO"/>
    <typeAlias type="com.kosta.matna.domain.review.ReplyVO" alias="reply"/>
    <typeAlias type="com.kosta.matna.domain.member.MemberVO" alias="member"/>
+   <typeAlias type="com.kosta.matna.domain.message.MessageVO" alias="message"/>
    </typeAliases>
 </configuration>

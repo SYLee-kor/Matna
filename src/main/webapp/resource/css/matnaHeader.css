@@ -51,13 +51,13 @@ p.check {
 	border-radius: 5px;
 	font-family: 'Open Sans', Helvetica, sans-serif;
 	background: #3db2e1;
-	background: -o-linear-gradient(top, #69c4e8, #21a1d4);
-	background: -ms-linear-gradient(top, #69c4e8, #21a1d4);
-	background: -webkit-linear-gradient(top, #69c4e8, #21a1d4);
-	background: -moz-linear-gradient(top, #69c4e8, #21a1d4);
-	background: linear-gradient(to bottom, #69c4e8, #21a1d4);
-	box-shadow: inset 0 -3px 0 #1f97c7, inset 0 -3px 3px #1f9acc, inset 0
-		2px 2px #9ad7ef, inset 1px 0 2px #22a4d9, inset -1px 0 2px #22a4d9, 0
+	background: -o-linear-gradient(top,#ff7359 , #ff4524);
+	background: -ms-linear-gradient(top, #ff7359, #ff4524);
+	background: -webkit-linear-gradient(top, #ff7359, #ff4524);
+	background: -moz-linear-gradient(top, #ff7359, #ff4524);
+	background: linear-gradient(to bottom, #ff7359, #ff4524);
+	box-shadow: inset 0 -3px 0 #ff2600, inset 0 -3px 3px #ff2600, inset 0
+		2px 2px #ffac9d, inset 1px 0 2px #ff4524, inset -1px 0 2px #ff4524, 0
 		1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.06), 0 3px 3px
 		rgba(0, 0, 0, 0.17), 2px 1px 2px rgba(0, 0, 0, 0.05), -2px 1px 2px
 		rgba(0, 0, 0, 0.05);
@@ -121,7 +121,7 @@ p.check {
 	width: 18px;
 	height: 18px;
 	border-radius: 9px;
-	background: #3db2e1;
+	background: #ff7359;
 	background: -webkit-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%,
 		#58bde5 75%, #4ab7e3 100%);
 	background: -ms-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%, #58bde5
@@ -218,7 +218,7 @@ p.check {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 	color: #ffffff;
 	text-decoration: none;
-	background: #3db2e1;
+	background: #ff7359;
 	-webkit-transition: color .2s ease;
 	-moz-transition: color .2s ease;
 	-ms-transition: color .2s ease;
@@ -232,13 +232,13 @@ p.check {
 } */ #cssmenu ul ul li:first-child>a {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
-	box-shadow: inset 0 2px 2px #88d0ed;
+	box-shadow: inset 0 2px 2px #ff9f8e;
 }
 
 #cssmenu ul ul li:last-child>a {
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
-	box-shadow: inset 0 -3px 0 #27a9de, inset 0 -3px 3px #1f9acc, 0 1px 1px
+	box-shadow: inset 0 -3px 0 #ff7359, inset 0 -3px 3px #ff593c, 0 1px 1px
 		rgba(0, 0, 0, 0.03), 0 2px 2px rgba(0, 0, 0, 0.05), 0 2px 3px
 		rgba(0, 0, 0, 0.13);
 }
@@ -246,7 +246,7 @@ p.check {
 #cssmenu ul ul>li.has-sub>a:after {
 	right: 12px;
 	top: 9.5px;
-	background: #3db2e1;
+	background: #ff7359;
 	background: -webkit-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%,
 		#58bde5 75%, #4ab7e3 100%);
 	background: -ms-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%, #58bde5
@@ -290,13 +290,13 @@ p.check {
 
 #cssmenu ul ul>li.has-sub:hover>a:before {
 	border-top-color: transparent;
-	border-left-color: #1c89b5;
+	border-left-color: #ff4524;
 }
 
 #cssmenu.align-right ul ul>li.has-sub:hover>a:before {
 	border-top-color: transparent;
 	border-left-color: transparent;
-	border-right-color: #1c89b5;
+	border-right-color: #ff4524;
 }
 
 @media all and (max-width: 768px) , only screen and
@@ -387,7 +387,7 @@ p.check {
 		width: 28px;
 		height: 28px;
 		border-radius: 15px;
-		background: #3db2e1;
+		background: #ff7359;
 		background: -webkit-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%,
 			#58bde5 75%, #4ab7e3 100%);
 		background: -ms-linear-gradient(top, #58bde5 0%, #4ab7e3 25%, #2babde 50%, #58bde5
@@ -432,7 +432,7 @@ p.check {
 	}
 	#cssmenu #menu-button.menu-opened:before, #cssmenu .submenu-button.submenu-opened:before
 		{
-		border-top-color: #19799f;
+		border-top-color: #c11d00;
 	}
 }
 
@@ -492,7 +492,6 @@ p.check {
 #region::-ms-expand {
 	display: none;
 }
-
 #region {
 	border-radius: 4px;
 	height: 30px;
