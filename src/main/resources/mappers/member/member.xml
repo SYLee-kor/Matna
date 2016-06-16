@@ -61,5 +61,35 @@
 			     from member order by no desc))
 		where rn between #{start} and #{end}
 	</select>
+	
+	<select id="selectSearchList" parameterType="java.util.Map" resultType="member">
+		select no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate, rn
+		from (select  no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate, rownum rn 
+			from (select no, id, pw, name, nickname, birth, gender, email, phone,
+				 post, addr, point, regdate
+			     from member order by no desc)
+			     where nickname like '%'||#{nickname}||'%')
+		where rn between #{start} and #{end}
+	</select>
+   
+   	<select id="selectSearchCount" parameterType="String"  resultType="int">
+    	select count(*) no
+		from member
+		where nickname like '%'||#{nickname}||'%' order by no desc
+    </select>
+    
+    <select id="findId" parameterType="java.util.Map" resultType="String">
+    	select id from member
+    	where name=#{name} and email=#{email}
+    </select>
+    
+    <select id="findPw" parameterType="java.util.Map" resultType="String">
+    	select pw from member
+    	where name=#{name} and email=#{email} and id=#{id}
+    </select>
+    
+    
    
 </mapper>

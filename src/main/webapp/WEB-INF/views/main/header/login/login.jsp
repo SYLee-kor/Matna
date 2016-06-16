@@ -39,6 +39,14 @@ $(document).ready(function() {
 			formObj.submit();
 		}); 
 	});
+	
+	function join(){
+    window.open("/matna/join","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=300, width=700,height=600");
+	}
+	
+	function find(){
+    window.open("/matna/find","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=300,height=200");
+	}
 </script>
 
 </head>
@@ -61,8 +69,8 @@ $(document).ready(function() {
 		
 		<button type="submit" class="btn" name="login_bt" id="login_bt">Log in</button>
 		<div class="signup">
-			<a href="#" name="find_idpass">ID / PW 찾기</a>
-			<a href="#">회원가입</a></p>
+			<button type="button" onclick="find()" id="find">ID / PW 찾기</button>
+			<button type="button" onclick="join()" id="join">회원가입</button>
 		</div>
 	</div>
 </div>

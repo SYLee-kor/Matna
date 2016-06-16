@@ -74,5 +74,25 @@ public class MemberServiceImpl implements MemberService {
 		public List<MemberVO> selectAllPage(int start, int end) throws Exception {
 			return memberDAO.selectAllPage(start, end);
 		}
+
+		@Override
+		public List<MemberVO> selectSearchList(String nickname, int start, int end) throws Exception {
+			return memberDAO.selectSearchList(nickname, start, end);
+		}
+
+		@Override
+		public int selectSearchCount(String nickname) throws Exception {
+			return memberDAO.selectSearchCount(nickname);
+		}
+
+		@Override
+		public String findPw(String id, String email, String name) throws Exception {
+			return memberDAO.findPw(id, email, name);
+		}
+
+		@Override
+		public String findId(String email, String name) throws Exception {
+			return memberDAO.findId(email, name);
+		}
 	
 }
