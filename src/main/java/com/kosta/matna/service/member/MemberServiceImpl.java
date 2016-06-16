@@ -94,5 +94,10 @@ public class MemberServiceImpl implements MemberService {
 		public String findId(String email, String name) throws Exception {
 			return memberDAO.findId(email, name);
 		}
+
+		@Override
+		public void updatePW(String id, String email, String pw) throws Exception {
+			memberDAO.updatePW(id, email, pw);
+		}
 	
 }

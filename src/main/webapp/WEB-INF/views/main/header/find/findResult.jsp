@@ -14,7 +14,7 @@
 <form method = "get" action = "/matna/find">
 	<c:if test="${pageType =='findId' }">
 		<c:if test="${result =='success'}">
-			${ name} 님의 아이디는 <b>${ pw }</b> 입니다.<p>
+			${ name} 님의 아이디는 <b>${ id }</b> 입니다.<p>
 			<input type = "button" value = "메인화면" onclick="javascript:window.close()">
 	</p></c:if>
 	<c:if test="${result =='fail'}">
@@ -25,7 +25,7 @@
 	
 	<c:if test="${pageType =='findPw' }">
 		<c:if test="${result =='success'}">
-			${ name} 님의 비밀번호는<b>${ pw } </b> 입니다.<p>
+			${ name} 님의 이메일 <b>${ email } </b>로 임시 비밀번호가 발송되었습니다.<p>
 			<input type = "button" value = "메인화면" onclick="javascript:window.close()">
 		</p></c:if>
 	<c:if test="${result =='fail'}">

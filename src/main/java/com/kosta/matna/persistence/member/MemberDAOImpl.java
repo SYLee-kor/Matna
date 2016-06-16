@@ -144,5 +144,15 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return session.selectOne("member.findId", map);
 	}
+
+	@Override
+	public void updatePW(String id, String email, String pw) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("id",id);
+		   map.put("email", email);
+		   map.put("pw", pw);
+		   
+		   session.update("member.updatePW",map);
+	}
 	
 }

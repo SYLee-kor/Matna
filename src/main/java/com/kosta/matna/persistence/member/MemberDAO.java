@@ -22,4 +22,6 @@ public interface MemberDAO {
 	
 	public String findPw(String id,String email, String name)throws Exception;
 	public String findId(String email, String name)throws Exception;
+	
+	public void updatePW(String id,String email, String pw)throws Exception;
 }
