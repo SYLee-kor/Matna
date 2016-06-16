@@ -34,10 +34,6 @@ $(document).ready(function() {
 			formObj.submit();
 		});
 		
-		$('#message').click(function() {
-			formObj.attr("action", "/matna/message/sendList");
-			formObj.submit();
-		}); 
 	});
 	
 	function join(){
@@ -46,6 +42,10 @@ $(document).ready(function() {
 	
 	function find(){
     window.open("/matna/find","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=300,height=200");
+	}
+	
+	function message(){
+    window.open("/matna/message/listAll","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 	}
 </script>
 
@@ -85,9 +85,9 @@ $(document).ready(function() {
     	${userNickname } 님 반갑습니다~~!!</label><br>
     <label class="point" name="point">
           POINT: ${userPoint } </label><br>
-  <input class="mypage" type="submit" id="mypage" name="mypage" value="MyPage">
-  <input class="logout" type="submit" id="logout"  name="logout" value="logout">
-  <input class="message" type="submit" id="message"  name="message" value="message">
+  <input class="mypage" type="submit" id="mypage" name="mypage" value="마이페이지">
+  <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
+  <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
 </form>
 
 </c:if>

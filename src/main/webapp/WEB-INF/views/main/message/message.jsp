@@ -299,7 +299,7 @@ input{
       var formObj2 = $("form[role='form2']");
 
       $('#delete2').click(function() {
-         formObj2.attr("action", "/message/delete");
+         formObj2.attr("action", "/matna/message/delete");
          formObj2.submit();
       });
    });
@@ -310,12 +310,12 @@ input{
       var formObj = $("form[role='form']");
 
       $('#delete').click(function() {
-         formObj.attr("action", "/message/delete");
+         formObj.attr("action", "/matna/message/delete");
          formObj.submit();
       });
       
       $('#send').click(function() {
-			formObj.attr("action", "/message/sendSuccess");
+			formObj.attr("action", "/matna/message/sendSuccess");
 			//formObj.attr("action2","null");
 			formObj.submit();
 		});
@@ -333,11 +333,11 @@ input{
    }
    
 	function receiveShowPage(page,messageSelect,search) {
-		document.location.href='/message/listAll?searchs=1&&message=receive&&'
+		document.location.href='/matna/message/listAll?searchs=1&&message=receive&&'
 				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
 	}
 	function sendShowPage(page,messageSelect,search) {
-		document.location.href='/message/listAll?searchs=1&&message=send&&'
+		document.location.href='/matna/message/listAll?searchs=1&&message=send&&'
 				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
 	}
 </script>

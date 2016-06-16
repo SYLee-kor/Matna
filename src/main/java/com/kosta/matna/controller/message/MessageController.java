@@ -34,7 +34,7 @@ public class MessageController {
 	@RequestMapping(value="", method=RequestMethod.GET)	//메시지 쓰기
     public String writeMessage()throws Exception{
 		logger.info("메시지 쓰기 form 요청..");	
-	   return "project/message/writeMessage";
+	   return "main/message/writeMessage";
 	}
 	
 	@RequestMapping(value="/listAll", method=RequestMethod.GET)
@@ -99,7 +99,7 @@ public class MessageController {
 			model.addAttribute("receiverPage", pageNum);
 			model.addAttribute("search",searches);
 			
-			return "project/message/message";
+			return "main/message/message";
 		/*}
 		
 		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
@@ -409,7 +409,7 @@ public class MessageController {
 		//if(현재 로그인한사람과 보내사람이 다를때){
 			messageService.updateState(no);
 		//
-	   return "project/message/readMessage";
+	   return "main/message/readMessage";
 	}
 	
 }
