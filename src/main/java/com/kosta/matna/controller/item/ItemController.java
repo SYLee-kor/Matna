@@ -99,10 +99,10 @@ public class ItemController {
 		try {
 			
 			System.out.println("선물실행!@#");
+			
 			//int no = Integer.parseInt((String) (session.getAttribute("no"))); //세션에서 no값 받아오기
 			MemberVO member = service.readMember(1); //service.readMember(int no);
-			 //닉네임을 통한 검색후 선물할 사람의 회원번호 출력
-		    //System.out.println("뭐로나오니?"+takerno);
+			
 			MessageVO message = new MessageVO();
 			message.setReceiverNickname(taker);
 			message.setSenderNickname("aaa");
@@ -110,12 +110,6 @@ public class ItemController {
 			message.setContent(point+"P 를 선물 받으셨습니다.");
 			
 			if(member.getPoint()>=point){//선물하는사람 포인트가 많을때
-				//service.updatePoint(1, -point); //자기 포인트감소
-				//service.updatePoint(takerno, point); // 상대방 포인트 증가 
-	
-				/*
-				 * 쪽지 보내기 여기
-				 */
 				
 			}else{
 				//포인트가 부족합니다 리턴
@@ -132,13 +126,11 @@ public class ItemController {
 			
 			boolean check = messageService.addMessage(message);
 			
-			if(check){ //아이디 존재
+			if(check && service.countTaker(taker)!=0){ //아이디 존재
+				int takerno = service.readTaker(taker);//닉네임을 통한 검색후 선물할 사람의 회원번호 출력
 				service.updatePoint(1, -point); //자기 포인트감소
-				//service.updatePoint(takerno, point); // 상대방 포인트 증가 
-	
-				/*
-				 * 쪽지 보내기 여기
-				 */
+				service.updatePoint(takerno, point); // 상대방 포인트 증가 
+
 			   }else{
 				   response.setContentType("text/html;charset=UTF-8");   
 				     PrintWriter writer = response.getWriter();

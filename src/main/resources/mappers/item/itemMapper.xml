@@ -94,10 +94,17 @@
 	</select>
 
 	<!-- 아이템 선물전 수령인 정보확인 -->
-	<select id="readTaker" resultType="com.kosta.matna.domain.member.MemberVO">
+	<select id="readTaker" resultType="int">
 		select no
 		from member
-		where id=#{taker}
+		where nickname=#{taker}
+	</select>
+	
+	<!-- 수령자가 존재하는지 확인 -->
+	<select id="countTaker" resultType="int">
+		 select count(*) cnt 
+		 from member 
+		 where nickname=#{taker}
 	</select>
 	<!-- =============상품관련(회원)끝=============== -->		
 	

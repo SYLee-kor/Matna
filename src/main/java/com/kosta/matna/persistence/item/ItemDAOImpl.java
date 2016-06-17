@@ -80,4 +80,9 @@ public class ItemDAOImpl implements ItemDAO {
 		return session.selectOne("item.readTaker", taker);
 	}
 
+	@Override
+	public int countTaker(String taker) throws Exception {
+		return session.selectOne("item.countTaker", taker);
+	}
+
 }

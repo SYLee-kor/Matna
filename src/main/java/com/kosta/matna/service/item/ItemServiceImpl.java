@@ -68,4 +68,9 @@ public class ItemServiceImpl implements ItemService {
 		return dao.readTaker(taker);
 	}
 
+	@Override
+	public int countTaker(String taker) throws Exception {
+		return dao.countTaker(taker);
+	}
+
 }

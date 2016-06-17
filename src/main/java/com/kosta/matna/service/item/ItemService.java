@@ -27,4 +27,6 @@ public interface ItemService {
 	public List<ItemVO> itemSeach(String name, RowBounds rowBounds)throws Exception;//전체,검색상품 조회select name:상품명
 	
 	public int listAllCnt(String search)throws Exception;//전체,검색 상품 갯수 select
+	
+	public int countTaker(String taker)throws Exception;//받는사람 있는지 없는지 select
 }
