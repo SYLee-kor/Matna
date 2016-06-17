@@ -30,17 +30,18 @@ public class MypageController {
 	@RequestMapping(value="" , method=RequestMethod.GET)//회원가입폼
     public String joinGET(HttpSession session, Model model)throws Exception{
 	   logger.info("마이페이지 폼 GET요청...");
+	   if(session.getAttribute("userNo")!=null){
+		   int userNo=(int)session.getAttribute("userNo");
 	   
-	   int userNo=(int)session.getAttribute("userNo");
-	   
-	   model.addAttribute("memberVO",memberService.selectNo(userNo));
+	   		model.addAttribute("memberVO",memberService.selectNo(userNo));
+	   }
 	   
        return "main/mypage/mypage";//스프링에게 뷰정보 전달!!	
     }
 	
 	@RequestMapping(value="/modifySuccess",  method=RequestMethod.POST)//회원가입폼
     public String modifySuccess(String confirmpass,HttpSession session,
-    		RedirectAttributes attr,MemberVO member, Model model)throws Exception{
+    		RedirectAttributes attr, MemberVO member, Model model)throws Exception{
 	   logger.info("modifySuccess 요청...");
 
 	   int userNo=(int)session.getAttribute("userNo");
@@ -59,8 +60,8 @@ public class MypageController {
     }
 	
 	@RequestMapping(value="withdraw" , method=RequestMethod.POST)//회원가입폼
-    public String withdraw(HttpSession session, Model model)throws Exception{
-	   logger.info("마이페이지 폼 GET요청...");
+    public String withdraw(HttpSession session, Model model, RedirectAttributes attr)throws Exception{
+	   logger.info("회원탈퇴 요청..");
 	   
 	   ServletContext application = session.getServletContext();
 		List<Integer> loginList = (List<Integer>)application.getAttribute("loginList");
@@ -85,7 +86,9 @@ public class MypageController {
 		model.addAttribute("isLogin", session.getAttribute("isLogin"));
 		
 		memberService.delete(userNo);
+		
+		attr.addFlashAttribute("msg","withdraw");
 	   
-		return "redirect:/home";
+		return "redirect:/mypage";
     }
 }

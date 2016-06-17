@@ -753,7 +753,7 @@ h1 {
                   <div style="float:left; margin-left:215px;">
                      <input type="submit" name="modify" value="수정" id="modify" class="btn btn-modify" />
                         <input type="button" value="취소" OnClick="window.close()" id="cancel" style="margin-right: 35px;" />
-                        <input type="submit" name="submit" value="탈퇴" id="withdrawal" onclick="window.close()"  />
+                        <input type="submit" name="submit" value="탈퇴" id="withdrawal"  />
                   </div>
             </form>
             </div>
@@ -764,11 +764,19 @@ h1 {
 </body>
 
 <script>
-    
+	/* function withdraw(){
+		window.opener.location.reload();
+		window.close();
+	} */
+
     var result = '${msg}';
     
     if(result == 'notPw'){
     	alert("두 비밀번호가 일치하지 않습니다.");
+    }
+    if(result=='withdraw'){
+    	window.opener.location.reload();
+		window.close();
     }
     
 </script>
