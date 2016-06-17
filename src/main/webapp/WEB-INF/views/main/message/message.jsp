@@ -322,9 +322,23 @@ input{
      
    });
    
-   function read(no){
+   function read(no , message){
 	   var bno = '#'+no;
 	   $(bno).toggle();
+	   
+	   $.ajax({
+	   	      type: "GET",
+	   	      url: "/matna/message/read",
+	   	      data: {
+	   	    	  action: "/matna/message/read",
+	   	    	  no: no,
+	   	    	  message: message
+	   	      },
+	   	      success:function(result) {
+	   	    	   /*  var s = result;
+	   	        	alert(s);  */
+	   	      }
+	   	    });
    }
    
 	function receiveShowPage(page,messageSelect,search) {
@@ -406,7 +420,7 @@ input{
                                  <td><input type="checkbox" name="check"
                                     value="${messageVO.no}" /></td>
                                  <td>${messageVO.senderNickname}</td>
-                                 <td><a href="javascript:read(${messageVO.no})">${messageVO.title}</a></td>
+                                 <td><a href="javascript:read(${messageVO.no},'receive')">${messageVO.title}</a></td>
                                  <td>${messageVO.sendDate}</td>
                                  <td>${state}</td>
                               </tr>
@@ -482,7 +496,7 @@ input{
                                  <td><input type="checkbox" name="check" id="check"
                                     value="${messageVO.no}" /></td>
                                  <td>${messageVO.receiverNickname}</td>
-                                 <td><a href="javascript:read(${messageVO.no})">${messageVO.title}</a></td>
+                                 <td><a href="javascript:read(${messageVO.no},'send')">${messageVO.title}</a></td>
                                  <td>${messageVO.sendDate}</td>
                                  <td>${state}</td>
                               </tr>
