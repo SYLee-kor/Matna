@@ -403,13 +403,13 @@ public class MessageController {
     		@RequestParam("message") String message, Model model, String searches)throws Exception{
 		logger.info("메세지 read 요청..");
 		
-		model.addAttribute("searches",searches);
-		model.addAttribute("message",message);
-		model.addAttribute(messageService.readMessage(no));
-		//if(현재 로그인한사람과 보내사람이 다를때){
+		//model.addAttribute("searches",searches);
+		//model.addAttribute("message",message);
+		//model.addAttribute(messageService.readMessage(no));
+		if(message.equals("receive")){
 			messageService.updateState(no);
-		//
-	   return "main/message/readMessage";
+		}
+	   return "redirect:/message/listAll";
 	}
 	
 }

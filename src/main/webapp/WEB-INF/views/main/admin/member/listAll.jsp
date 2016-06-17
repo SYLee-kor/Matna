@@ -28,7 +28,7 @@
 
 <script>
 	function showPage(page) {
-		document.location.href='/admin/memberList?page='+page;
+		document.location.href='/admin/memberList?page='+page+'&nickname='+nickname;
 	}
 </script>
 
@@ -62,7 +62,6 @@
 	<tr>
 		<th></th>
 		<th>아이디</th>
-		<th>비번</th>
 		<th>이름</th>
 		<th>닉네임</th>
 		<th>생일</th>
@@ -81,7 +80,6 @@
 	<tr>
 		<td><input type="checkbox" name="check" id="check" value="${memberVO.no}"/></td>
 		<td>${memberVO.id}</td>
-		<td>${memberVO.pw}</td>
 		<td>${memberVO.name}</td>
 		<td>${memberVO.nickname}</td>
 		<td>${memberVO.birth}</td>
@@ -100,7 +98,7 @@
 
 
 
-	<input type="text" name="nickname" id="nickname"/>
+	<input type="text" name="nickname" id="nickname" value="${nickname }"/>
 	<input type="submit" name="search" value="검색" id="search" class="btn btn-search" />
 	<input type="submit" name="update" value="수정" id="update" class="btn btn-update" />
 	<input type="submit" name="delete" value="삭제" id="delete" class="btn btn-delete" />
@@ -109,11 +107,11 @@
 			<input type="button" class="button" onclick="showPage(1)" value="처음">
 			<%-- <input type="button" class="button" value="이전" onclick="showPage(${beforePage})"> --%>
 			<c:forEach var="i" begin="1" end="${allTotalPage }">
-            [<a href="javascript: showPage(${i })">${i}</a>]
+            [<a href="javascript: showPage(${i },'${nickname}')">${i}</a>]
 			
          	</c:forEach>
 			<%-- <input type="button" class="button" value="다음" onclick="showPage(${nextPage})"> --%>
-			<input type="button" class="button" onclick="showPage(${allTotalPage })" value="끝">
+			<input type="button" class="button" onclick="showPage(${allTotalPage },'${nickname}' )" value="끝">
 		</div>
 	
 </form>

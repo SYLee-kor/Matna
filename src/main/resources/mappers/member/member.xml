@@ -43,7 +43,7 @@
    
    <update id="update" parameterType="member">
        update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, nickname=#{nickname},
-                         post=#{post},addr=#{addr},point=#{point}
+                         post=#{post},addr=#{addr},point=#{point},grade=#{grade}
 	    where id=#{id} 
    </update>
    
@@ -58,22 +58,22 @@
 	
 	<select id="selectAllPage" parameterType="java.util.Map" resultType="member">
 		select no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate, rn
+				 post, addr, point, grade, regdate, rn
 		from (select  no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate, rownum rn 
+				 post, addr, point, grade, regdate, rownum rn 
 			from (select no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate
+				 post, addr, point, grade, regdate
 			     from member order by no desc))
 		where rn between #{start} and #{end}
 	</select>
 	
 	<select id="selectSearchList" parameterType="java.util.Map" resultType="member">
 		select no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate, rn
+				 post, addr, point, grade, regdate, rn
 		from (select  no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate, rownum rn 
+				 post, addr, point, grade, regdate, rownum rn 
 			from (select no, id, pw, name, nickname, birth, gender, email, phone,
-				 post, addr, point, regdate
+				 post, addr, point, grade, regdate
 			     from member order by no desc)
 			     where nickname like '%'||#{nickname}||'%')
 		where rn between #{start} and #{end}

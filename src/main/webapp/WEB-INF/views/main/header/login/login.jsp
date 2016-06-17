@@ -47,6 +47,10 @@ $(document).ready(function() {
 	function message(){
     window.open("/matna/message/listAll","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 	}
+	
+	function mypage(){
+  		 window.open("/matna/mypage","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+	}
 </script>
 
 </head>
@@ -85,8 +89,8 @@ $(document).ready(function() {
     	${userNickname } 님 반갑습니다~~!!</label><br>
     <label class="point" name="point">
           POINT: ${userPoint } </label><br>
-  <input class="mypage" type="submit" id="mypage" name="mypage" value="마이페이지">
   <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
+  <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
   <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
 </form>
 

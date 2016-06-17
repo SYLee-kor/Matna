@@ -84,7 +84,7 @@ public class LoginController {
 		
 		if(member==null){
 			attr.addFlashAttribute("msg","fail");
-			return "redirect:/login";
+			return "redirect:/home";
 		}
 		
 		
