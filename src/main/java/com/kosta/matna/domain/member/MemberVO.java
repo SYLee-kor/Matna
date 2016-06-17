@@ -14,6 +14,7 @@ public class MemberVO {
 	private String addr; 
 	private int point;
     private String regdate;
+    private int grade;
     
     public MemberVO() {
 		// TODO Auto-generated constructor stub
@@ -141,5 +142,14 @@ public class MemberVO {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	
 	
 }
