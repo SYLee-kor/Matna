@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -65,8 +66,18 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public List<ItemVO> itemSeach(String name) throws Exception {
-		return session.selectList("item.itemSeach", name);
+	public List<ItemVO> itemSeach(String name, RowBounds rowBounds) throws Exception {
+		return session.selectList("item.itemSeach", name, rowBounds);
+	}
+
+	@Override
+	public int listAllCnt(String search) throws Exception {
+		return session.selectOne("item.listAllCnt", search);
+	}
+
+	@Override
+	public int readTaker(String taker) throws Exception {
+		return session.selectOne("item.readTaker", taker);
 	}
 
 }

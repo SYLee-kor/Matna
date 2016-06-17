@@ -77,10 +77,12 @@
 	</select>
 	
 	<!-- 검색 아이템 리스트 -->
-	<select id="itemSeach" resultType="com.kosta.matna.domain.item.ItemVO">
-		select ino, photo, name, price
+	<select id="itemSeach" resultType="com.kosta.matna.domain.item.ItemVO" parameterType="String">
+		select ino, photo, name, price, content
 		from item
+		<if test="value != null">
 		where name like '%'||#{name}||'%'
+		</if>
 		order by ino desc
 	</select>
 	
@@ -89,6 +91,13 @@
 		select name, email, phone, post, addr, point, no
 		from member
 		where no=#{no}
+	</select>
+
+	<!-- 아이템 선물전 수령인 정보확인 -->
+	<select id="readTaker" resultType="com.kosta.matna.domain.member.MemberVO">
+		select no
+		from member
+		where id=#{taker}
 	</select>
 	<!-- =============상품관련(회원)끝=============== -->		
 	

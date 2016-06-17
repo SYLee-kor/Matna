@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.item.ItemVO;
@@ -53,8 +54,18 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<ItemVO> itemSeach(String name) throws Exception {
-		return dao.itemSeach(name);
+	public List<ItemVO> itemSeach(String name, RowBounds rowBounds) throws Exception {
+		return dao.itemSeach(name, rowBounds);
+	}
+
+	@Override
+	public int listAllCnt(String search) throws Exception {
+		return dao.listAllCnt(search);
+	}
+
+	@Override
+	public int readTaker(String taker) throws Exception {
+		return dao.readTaker(taker);
 	}
 
 }

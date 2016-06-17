@@ -14,7 +14,7 @@ create table member(
 	post varchar2(5) not null,
 	addr varchar2(200) not null,
 	point number default 0,
-	regdate date not null,
+	regdate date default sysdate,
 	grade number default 5
 );
 

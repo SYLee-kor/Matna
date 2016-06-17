@@ -4,7 +4,7 @@
 
 
    <insert id="insertMember" parameterType="member">
-       insert into member values (member_seq.nextval,#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{email},#{phone},#{post},#{addr},0,to_char(sysdate,'yyyymmdd'))
+       insert into member values (member_seq.nextval,#{id},#{pw},#{name},#{nickname},#{birth},#{gender},#{email},#{phone},#{post},#{addr})
    </insert>
    
    <select id="selectMember" resultType="member">
