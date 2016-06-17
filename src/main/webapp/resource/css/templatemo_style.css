@@ -113,7 +113,7 @@ a.menu-toggle-btn {
 	list-style: none;
 }
 
- .main_menu { 
+  .main_menu { 
  	text-align: center; 
 	margin-top: 30px; 
 	margin-bottom: 30px;
@@ -123,15 +123,17 @@ a.menu-toggle-btn {
  	margin-bottom: 1px; 
 	font-size: 16px;
 }
+
 .main_menu div.col-md-2 div.fa { 
 	font-size: 50px;
 }
+/*
 .main_menu div.col-md-2 a { 
  	color: white; 
 	text-transform: uppercase; 
 	display: block; 
 	background-color: #ff7359; 
-	width:100px;
+	width:130px;
 	-webkit-transition: all 150ms ease-in; 
 	-moz-transition: all 150ms ease-in; 
 	-o-transition: all 150ms ease-in; 
@@ -140,23 +142,95 @@ a.menu-toggle-btn {
 
 .main_menu div.col-md-2 a:hover { 
 	background-color: #ff3511; 
+} */
+
+
+/* 고친부분 시작*/
+.main_menu div.row div.col-md-2 col-sm-2 ul { /* list 메뉴 글자 속성 변경 */
+    color:  #ff7359; 
+   text-transform: uppercase; 
+   display: block; 
+   width: 300px;
 }
 
-/* .main_menu div.col-md-2 a#prev { 
-	width: 70px; 
-	height: 70px; 
-	line-height: 70px; 
-	font-weight: 400; 
-	cursor: pointer; 
-} */
-.main_menu div.col-md-2 a#next { 
- 	width: 70px;
-	height: 70px; 
-	line-height: 70px; 
-	margin-left: 8px;  /* 추가 */
-	font-weight: 400; 
-	cursor: pointer;
+
+.main_menu div.col-md-2 a { /* list 메뉴 글자 속성 변경 */
+    color:  #ff7359; 
+   text-transform: uppercase; 
+   display: block; 
+   width: 190px;
+   -webkit-transition: all 150ms ease-in; 
+   -moz-transition: all 150ms ease-in; 
+   -o-transition: all 150ms ease-in; 
+   transition: all 150ms ease-in; 
 }
+
+.main_menu div.col-md-2 button{
+   background: #ff7359;
+   border:none;
+}
+
+.main_menu div.col-md-2 button:hover
+{
+   background:#ff3511;
+}
+
+.main_menu div.col-md-2 ul li ul
+{
+   display:none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: none;
+}
+
+
+.marginBottom-0 {margin-bottom:0;}
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display:block;
+}
+.dropdown-submenu>a:after {
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color:#ffffff;
+}
+.dropdown-submenu.pull-left {
+    float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+} 
+
+/* 고친부분 끝 */
+
 
 a.menu_toggle-btn { 
 	width: 100%; 
@@ -171,6 +245,23 @@ a.menu_toggle-btn i {
 	line-height: 60px; 
 	}
 
+/* .main_menu div.col-md-2 a#prev { 
+	width: 70px; 
+	height: 70px; 
+	line-height: 70px; 
+	font-weight: 400; 
+	cursor: pointer; 
+} */
+/* .main_menu div.col-md-2 a#next { 
+ 	width: 70px;
+	height: 70px; 
+	line-height: 70px; 
+	margin-left: 8px;  추가
+	font-weight: 400; 
+	cursor: pointer;
+}
+ */
+ 
 .responsive-navigation { 
 	position: relative; 
 	width: 100%; 
@@ -527,29 +618,30 @@ a.menu_toggle-btn i {
 
  }
  
+ /* 고친부분 시작 */
 @media (min-width: 1200px) {   /* 상단메뉴크기조절 */
-	.main_menu div.col-md-2 div.fa	{ 
-	line-height: 100px;
-	}
-	.main_menu div.col-md-2 a{ 
-	 height: 100px; 
-	 line-height: 100px;
-	 }
-	/* .main_menu div.col-md-2 a#prev	{ 
-	margin-top: 27%;
-	} */
-	.main_menu div.col-md-2 a#next	{ 
- 	margin-top: 15%;
-	}
-	.templatemo_imagecontrol { 
-	height: 140px; 
-	overflow: hidden;
-	}
-	.templatemo_imagecontrol .gallery-item .overlay a { 
-	top: 22%;
-	}
+   .main_menu div.col-md-2 div.fa   { 
+   line-height: 100px;
+   }
+   .main_menu div.col-md-2 a{ /* list 메뉴크기조절 */
+    height: 30px; 
+    line-height: 30px;
+    }
+   .main_menu div.col-md-2 a#prev   { 
+   margin-top: 27%;
+   }
+   .main_menu div.col-md-2 a#next   { 
+    margin-top: 27%;
+   }
+   .templatemo_imagecontrol { 
+   height: 140px; 
+   overflow: hidden;
+   }
+   .templatemo_imagecontrol .gallery-item .overlay a { 
+   top: 22%;
+   }
  }
- 
+ /* 고친부분  끝 */
  
 /*header 상세검색버튼*/
 
@@ -733,4 +825,12 @@ a.menu_toggle-btn i {
   color: gray;
 
 }
+
+
+
+
+
+
+
+
  

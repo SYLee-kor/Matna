@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/matna/resource/css/content.css"> 
     <link rel="stylesheet" href="/matna/resource/css/finalOrder.css"> 
     <link rel="stylesheet" href="/matna/resource/css/reviewList.css"> 
+    <link rel="stylesheet" href="/matna/resource/css/itemDetail.css"> 
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
 	<script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
@@ -47,6 +48,44 @@
 	<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
 	<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 	<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
+    
+    <%--상세 검색 --%>
+    <script type="text/javascript">
+    var cc=0
+    function showHide(id) {//select detail button menu 생성
+        if (cc==0) {
+            cc=1
+            document.getElementById(id).style.display="block";
+        } else {
+            cc=0
+            document.getElementById(id).style.display="none";
+        }
+    }
+    
+    
+    $(document).ready(
+            function() {//class="dropdown-menu"
+               $('div.main_menu div.col-md-2').hover(
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeIn(100);
+                     },
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeOut(100);
+                     });
+                $('div.main_menu div.col-md-2 ul.dropdown-menu').hover(
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeIn(100);
+                     },
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeOut(100);
+                     }); 
+            });
+    </script>
+    
     <title>우리지금 Matna!!</title>
 </head>
 <body>
@@ -58,9 +97,42 @@
             	<div class="templatemo_title"><a href="/matna/home">Matna</a></div>
                 <div class="templatemo_subtitle">우리지금맛나</div>
             </div>
+        	
+        	<%--상세검색 --%>
         	<div class="col-md-2 col-sm-2">
-            	<button id="search_detail">search detail</button>
-            </div>
+                <a href="#layer" onclick="showHide('layer');return false;">
+                <button id="search_detail">search detail</button></a>
+               
+               <%-- 전체보기 레이어띄우는 창 --%>
+               <div id="layer" 
+               style="position:absolute; background-color:#fff7f7; left:15px; top:100px; margin-top:5%; z-index:1;display:none; width:555px; height:250px; /* border:3px solid #ff4a2b; */">
+				      <select>
+				        <option value="volvo">Volvo</option>
+				        <option value="saab">Saab</option>
+				        	        <option value="mercedes">Mercedes</option>
+				        <option value="audi">Audi</option>
+				      </select>
+				      <input type="radio" name="chk_info" value="HTML">HTML
+				      <input type="radio" name="chk_info" value="CSS">CSS
+				      <input type="radio" name="chk_info" value="웹디자인">웹디자인
+				      <input type="radio" name="chk_info" value="HTML">HTML
+				      <input type="radio" name="chk_info" value="CSS">CSS
+				      <input type="radio" name="chk_info" value="웹디자인">웹디자인
+				      AudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudiAudi
+				            <dt><a href="/map/" target="_blank">맛지도</a></dt>
+				            <dd><a href="/map/" target="_blank">맛지도홈</a></dd>
+				            <dd><a href="/Map/RestMap/Map_search.asp" target="_blank">맛지도검색</a></dd>
+				         <dl class="cate05">
+				            <dt>이벤트</dt>
+				            <dd><a href="/event/" target="_blank">메뉴판닷컴이벤트</a></dd>
+				            <dd><a href="/event/2010/201005_opencast/" target="_blank"><img src="/image/main2011/ico_opencast.gif" align="top" />오픈캐스트</a></dd>
+				         </dl>
+			   </div>
+		   </div>
+		     <%-- 전체보기 레이어 } --%>
+				        	
+        	
+        	
             <div class="col-md-4 col-sm-4">
             	<form id="search_form">
             		<div class="templatemo_search">
@@ -76,47 +148,124 @@
         </div>
     </div>
   <!-- title end -->
+  
   	<div class="site-header">
 		<div class="main-navigation">
-			<div class="container">
-            	<div class="row">
-            	<div class="col-md-12">
-                	<!-- This one in here is responsive menu for tablet and mobiles -->
+			
+			
+		 <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <!-- This one in here is responsive menu for tablet and mobiles -->
                   <div class="responsive-navigation visible-sm visible-xs">
-                   <a href="#" class="menu-toggle-btn">
-                    <i class="fa fa-bars fa-2x"></i>
-                  </a>
-       			 <div class="navigation responsive_menu">
-          			 <ul>
-					<li><a class="show-1 templatemo_home" href="#">공지사항</a></li>
-					<li><a href="/matna/resource/review/menu/all/list.jsp">리뷰</a></li>
-					<li><a class="show-3 templatemo_page3" href="#">게시판</a></li>
-					<li><a class="show-4 templatemo_page4" href="#">상품</a></li>
-					<li><a class="show-5 templatemo_page5" href="#">고객지원</a></li>
-				</ul>
-    	    </div> <!-- /.responsive_menu -->
-   		 </div> <!-- /responsive_navigation -->
-                </div>
+                     <a href="#" class="menu-toggle-btn"> <i
+                        class="fa fa-bars fa-2x"></i>
+                     </a>
+                     <div class="navigation responsive_menu">
+                        <ul>
+                           <li><a class="show-1 templatemo_home" href="#">Main
+                                 Page</a></li>
+                           <li><a class="show-2 templatemo_page2" href="#">Service</a></li>
+                           <li><a class="show-3 templatemo_page3" href="#">Portfolio</a></li>
+                           <li><a class="show-5 templatemo_page5" href="#">Contact</a></li>
+                        </ul>
+                     </div>
+                     <!-- /.responsive_menu -->
+                  </div>
+                  <!-- /responsive_navigation -->
+               </div>
             </div>
-            </div>
-			<div class="container">
-				<div class="row">
-                     <div class="col-md-12 navigation">
-						<div class="row main_menu">
-                    		<!-- <div class="col-md-2"><a id="prev">Prev</a></div> -->
-							<div class="col-md-2"><a class="show-1 templatemo_home" href="#"><div class="fa fa-volume-up"></div></a></div>
-							<div class="col-md-2"><a class="show-2 templatemo_page2"href="/matna/home"><div class="fa fa-cutlery"></div></a></div>
-							<div class="col-md-2"><a class="show-3 templatemo_page3" href="#"><div class="fa fa-comments-o"></div></a></div>
-							<div class="col-md-2"><a class="show-4 templatemo_page4" href="#"><div class="fa fa-shopping-cart"></div></a></div>
-							<div class="col-md-2"><a class="show-5 templatemo_page5" href="#"><div class="fa fa-users"></div></a></div>
-                            <div class="col-md-2"><a id="next">Next</a></div>
-							<!-- 메뉴늘리려면 grid다시잡아야함 -->
-						</div> 
+         </div>
+
+         <!-- 버튼의 시작2 (Header 버튼 5개 hover로 작동) -->
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12 navigation">
+                  <div class="row main_menu">
+                     <!-- <div class="col-md-2"><a id="prev">Prev</a></div> -->
+
+                     <div class="dropdown">
+                        <div class="col-md-2">
+                           <button class="btn btn-primary dropdown-toggle" type="button"
+                              data-toggle="dropdown">
+                              <div class="fa fa-volume-up"></div>
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">공지사항</a></li>
+                           </ul> 
+                        </div>
+                     </div>
+
+                     <div class="dropdown">
+                        <div class="col-md-2">
+                           <button class="btn btn-primary dropdown-toggle" type="button"
+                              data-toggle="dropdown">
+                              <div class="fa fa-cutlery"></div>
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li class="dropdown dropdown-submenu">
+                              <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
+                                 <ul id="submenu" class="dropdown-menu">
+                                    <li><a href="#">식사</a></li>
+                                    <li><a href="#">디저트</a></li>
+                                    <li><a href="#">주류</a></li>
+                                 </ul>
+                                 <li><a href="#">랭킹</a></li>
+                                 <li><a href="#">레시피</a></li>
+                           </ul>
+                       </div>
                     </div>
-				</div> 
-			</div> 
-		</div> 
-	</div> 
+
+                     <div class="dropdown">
+                        <div class="col-md-2">
+                           <button class="btn btn-primary dropdown-toggle" type="button"
+                              data-toggle="dropdown">
+                              <div class="fa fa-comments-o"></div>
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">자유 게시판</a>
+                              <li><a href="#">만남 게시판</a>
+                              <li><a href="#">익명 게시판</a>
+                           
+                           </ul>
+                        </div>
+                     </div>
+
+                     <div class="dropdown">
+                        <div class="col-md-2">
+                           <button class="btn btn-primary dropdown-toggle" type="button"
+                              data-toggle="dropdown">
+                              <div class="fa fa-shopping-cart"></a></div>
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">POINT SHOP ♥</a></li>
+                           </ul>
+                        </div>
+                     
+                     <div class="dropdown">
+                        <div class="col-md-2">
+                           <button class="btn btn-primary dropdown-toggle" type="button"
+                              data-toggle="dropdown">
+                              <div class="fa fa-users"></div>
+                              <span class="caret"></span>
+                           </button>
+                           <ul class="dropdown-menu">
+                              <li><a href="#">FAQ</a></li>
+                              <li><a href="#">건의사항</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <!-- 메뉴늘리려면 grid다시잡아야함 -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 	
 	
 	  <div id="menu-container">
@@ -130,12 +279,12 @@
         	<div class="col-md-7 col-sm-7">
             	<div class="main-slider">
 				<div class="flexslider">
-					<ul class="slides">
-						<li>
+					<!-- <ul class="slides">
+						<li> -->
 							<div class="slider-caption">
 							</div>
 							<img src="/matna/resource/images/AD_chicken.jpg" alt="Slide 1">
-						</li>
+						<!-- </li>
 
 						<li>
 							<div class="slider-caption"></div>
@@ -152,7 +301,7 @@
 							<img src="/matna/resource/images/slide4.jpg" alt="Slide 4">
 						</li>
 
-					</ul>
+					</ul> -->
 				</div>
 			</div>
             </div>
