@@ -6,7 +6,7 @@ public class BoardVO {
 	private String type;
 	private int no;
 	private String title;
-	private String writer;
+	private int writer;
 	private String content;
 	private int viewCnt;
 	private int replyCnt;
@@ -16,7 +16,7 @@ public class BoardVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BoardVO(String type, int no, String title, String writer, String content, int viewCnt, int replyCnt, Date regdate) {
+	public BoardVO(String type, int no, String title, int writer, String content, int viewCnt, int replyCnt, Date regdate) {
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
@@ -50,11 +50,11 @@ public class BoardVO {
 		this.title = title;
 	}
 
-	public String getWriter() {
+	public int getWriter() {
 		return writer;
 	}
 
-	public void setWriter(String writer) {
+	public void setWriter(int writer) {
 		this.writer = writer;
 	}
 

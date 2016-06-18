@@ -21,7 +21,7 @@
         <div class="row" >
             <div class="col-md-2"></div>
         	<div class="col-md-3 col-sm-4 templatemo_servicegap">
-            <img src="/resource/images/point1.png" alt="10,000포인트">
+            <img src="/matna/resource/images/point1.png" alt="10,000포인트">
             	<div class="templatemo_email"> <!-- 동그라미 돌아가는거 class명 안바꿔도됨 -->
                 	<a href="#"><div class="fa fa-gift"></div></a>
                 </div>
@@ -35,7 +35,7 @@
                </div>
             </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/point2.png" alt="5,000point">
+            	<img src="/matna/resource/images/point2.png" alt="5,000point">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-gift"></div></a>
                 </div>
@@ -49,7 +49,7 @@
                </div>
              </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/쉑쉑.png" alt="service 03">
+            	<img src="/matna/resource/images/쉑쉑.png" alt="service 03">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -67,7 +67,7 @@
         <div class="row" >
             <div class="col-md-2"></div>
         	<div class="col-md-3 col-sm-4 templatemo_servicegap">
-            <img src="/resource/images/member1.jpg" alt="Tracy - Designer">
+            <img src="/matna/resource/images/member1.jpg" alt="Tracy - Designer">
             	<div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -81,7 +81,7 @@
                </div>
             </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member2.jpg" alt="service 02">
+            	<img src="/matna/resource/images/member2.jpg" alt="service 02">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -95,7 +95,7 @@
                </div>
              </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member3.jpg" alt="service 03">
+            	<img src="/matna/resource/images/member3.jpg" alt="service 03">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -113,7 +113,7 @@
         <div class="row" >
             <div class="col-md-2"></div>
         	<div class="col-md-3 col-sm-4 templatemo_servicegap">
-            <img src="/resource/images/member1.jpg" alt="Tracy - Designer">
+            <img src="/matna/resource/images/member1.jpg" alt="Tracy - Designer">
             	<div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -127,7 +127,7 @@
                </div>
             </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member2.jpg" alt="service 02">
+            	<img src="/matna/resource/images/member2.jpg" alt="service 02">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>
@@ -141,7 +141,7 @@
                </div>
              </div>
             <div class="col-md-3 col-sm-4 templatemo_servicegap">
-            	<img src="/resource/images/member3.jpg" alt="service 03">
+            	<img src="/matna/resource/images/member3.jpg" alt="service 03">
                 <div class="templatemo_email">
                 	<a href="#"><div class="fa fa-shopping-cart"></div></a>
                 </div>

@@ -80,22 +80,35 @@
 			</c:forEach>	
 		</table>
 		<br>
-		<form action="/matna/admin/item" method="get">
-
-<input type="submit" value="추가">
-<input type="button" value="제거" id="delete">
-<input type="button" value="상세보기" id="update">
-		</form>
 		
-		<br><br>
-	<div align="center">
-		 <c:forEach var="i" begin="1" end="${totalPage }" >
-            <%-- [<a href="javascript:location.href='../main/body/community/free/list.jsp?page=${i}'">${i}</a>] --%>
-            [<a href="javascript:location.href='/Matna/admin/items/list.do?page=${i}'">${i}</a>]
-         </c:forEach>
-         
-		<%--<a href="">1</a>|<a href="">2</a>|<a href="">3</a>|<a href="">4</a>|<a href="">5</a> --%>
+		<form action="/matna/admin/item" method="get">
+			<input type="button" value="전체 목록" onclick="javascript:document.location.href='/matna/admin/itemlistall'">
+			<input type="submit" value="추가">
+			<input type="button" value="제거" id="delete">
+			<input type="button" value="상세보기" id="update">
+		</form>
+
+		<br>
+		<form action="/matna/admin/itemlistall" method="get">
+			<input type="text" id="text" name="search" placeholder="상품명으로 검색합니다.">
+			<input type="submit" value="검색">
+		</form>
+		<br>
+		
+	<br>
+	<div>
+			<c:if test="${pageMaker.prev}">
+				<a name="page" href="${pageMaker.startPage - 1}">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }" var="idx">
+				<a name="page" href="/matna/admin/itemlistall?page=${idx}&search=${search}">${idx}</a>
+			</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				<a name="page" href="${pageMaker.endPage +1}">&raquo;</a>
+			</c:if>
 	</div>
+	<br>
 	
 	</center>
 </body>

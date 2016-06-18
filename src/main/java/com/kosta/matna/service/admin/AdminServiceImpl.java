@@ -1,12 +1,15 @@
 package com.kosta.matna.service.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 
 import com.kosta.matna.domain.item.ItemVO;
+import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.persistence.admin.AdminDAO;
 
@@ -23,8 +26,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ItemVO> listAll() throws Exception {
-		return dao.listAll();
+	public List<ItemVO> listAll(String search, RowBounds rowBounds) throws Exception {
+		return dao.listAll(search, rowBounds);
 	}
 
 	@Override
@@ -45,13 +48,41 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Member_orderVO> orderlistAll() throws Exception {
-		return dao.orderlistAll();
-	}
-
-	@Override
 	public boolean deleteOrder(int ono) throws Exception {
 		if(dao.deleteOrder(ono))return true;
 		return false;
 	}
+
+	@Override
+	public boolean updateOrderState(Map<String, Integer> map) throws Exception {
+		if(dao.updateOrderState(map))return true;
+		return false;
+	}
+
+	@Override
+	public MemberVO detailMember(int no) throws Exception {
+		return dao.detailMember(no);
+	}
+
+	@Override
+	public boolean updatePoint(Map<String, Integer> map) throws Exception {
+		if(dao.updatePoint(map))return true;
+		return false;
+	}
+
+	@Override
+	public List<Member_orderVO> orderSearchList(Map<String, String> map, RowBounds rowBounds) throws Exception {
+		return dao.orderSearchList(map, rowBounds);
+	}
+
+	@Override
+	public int orderListCount(Map<String, String> map) throws Exception {
+		return dao.orderListCount(map);
+	}
+
+	@Override
+	public int listAllCnt(String search) throws Exception {
+		return dao.listAllCnt(search);
+	}
+
 }

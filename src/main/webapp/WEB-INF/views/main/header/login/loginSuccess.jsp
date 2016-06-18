@@ -16,7 +16,7 @@ $(document).ready(function() {
 		});
 		
 		$('#message').click(function() {
-			formObj.attr("action", "/matna/message/sendList");
+			formObj.attr("action", "/matna/message/listAll");
 			formObj.submit();
 		});
 	}); 

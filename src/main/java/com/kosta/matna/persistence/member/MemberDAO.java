@@ -17,4 +17,11 @@ public interface MemberDAO {
 	public MemberVO selectIsMember(String id, String pw)throws Exception;
 	public int selectAllCount()throws Exception;
 	public List<MemberVO> selectAllPage(int start, int end)throws Exception;
+	public List<MemberVO> selectSearchList(String nickname, int start, int end)throws Exception;
+	public int selectSearchCount(String nickname)throws Exception;
+	
+	public String findPw(String id,String email, String name)throws Exception;
+	public String findId(String email, String name)throws Exception;
+	
+	public void updatePW(String id,String email, String pw)throws Exception;
 }

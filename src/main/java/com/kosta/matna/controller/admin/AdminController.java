@@ -2,13 +2,17 @@ package com.kosta.matna.controller.admin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +23,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.kosta.matna.domain.item.ItemVO;
+import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.member.Member_orderVO;
+import com.kosta.matna.domain.review.Criteria;
+import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.service.admin.AdminService;
 
 @Controller
@@ -31,8 +38,46 @@ public class AdminController {
 	
 	String uploadPath;
 	
+	@Transactional
 	@ResponseBody
-	@RequestMapping("deleteOrder") //관리자 특정 주문 삭제
+	@RequestMapping("/cancelOrder") //관리자 발송전 주문취소 
+	public void cancelOrder(int item, int ono, int giver, int cnt){
+		int ino = item;
+		int no = giver;
+		try {
+			ItemVO itemvo = service.readItem(ino);
+				int amount = itemvo.getAmount();
+				itemvo.setAmount(amount+cnt); 
+			service.modifyItem(itemvo); //수량복구
+			
+				int price = itemvo.getPrice();
+				Map<String, Integer> map = new HashMap<>();
+					map.put("price", price);
+					map.put("no", no);
+			service.updatePoint(map); //포인트 복구
+			
+			service.deleteOrder(ono); // 주문삭제
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/updateOrderState") //관리자 배송상태 완료 변경
+	public void updateOrderState(int ono, int state){
+		try {
+			Map<String, Integer> map = new HashMap<>();
+				map.put("state", state);
+				map.put("ono", ono);
+			service.updateOrderState(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/deleteOrder") //관리자 특정 주문 삭제
 	public void deleteOrder(int ono){
 		try {
 			service.deleteOrder(ono);
@@ -41,11 +86,30 @@ public class AdminController {
 		}
 	}
 	
-	@RequestMapping("orderlistall") //관리자 주문 전체조회
-	public String orderList(Model model){
+	@RequestMapping("/orderlistall") //관리자 주문 전체조회, 검색 주문 조회, 페이징, 검색페이징
+	public String orderList(Model model, Criteria cri,String searchId, String search){
 		try {
-			List<Member_orderVO> orders= service.orderlistAll();
+			//List<Member_orderVO> orders= service.orderlistAll( new RowBounds(cri.getPageStart(), cri.getPerPageNum()));			
+			searchId = ( searchId == null || searchId.length()==0 ) ? "buyer" : searchId;
+			search = ( search == null ) ? "" : search;
+			
+			//검색
+			Map<String, String> map = new HashMap<>();
+				map.put("id", searchId);
+				map.put("search",search);
+			
+			List<Member_orderVO> orders= service.orderSearchList(map, new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 			model.addAttribute("orders",orders);
+			
+			//페이징
+			int totalCount = service.orderListCount(map);
+			int page = ( cri.getPage() <= 0 )? 1 : cri.getPage();
+			cri.setPage(page);
+			PageMaker pageMaker = new PageMaker(cri, totalCount);
+			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("searchId", searchId);
+			model.addAttribute("search",search);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,11 +152,21 @@ public class AdminController {
 		return "/test/admin/info";//관리자 아이템 상세보기 뷰로 이동
 	}
 	
-	@RequestMapping("/itemlistall") //상품 전체 호출
-	public String listAll(Model model){
+	@RequestMapping("/itemlistall") //상품 전체 호출, 상품 검색 호출
+	public String listAll(Model model, String search, Criteria cri){
 		try {
-			List<ItemVO> items = service.listAll();
+			
+			List<ItemVO> items = service.listAll(search, new RowBounds(cri.getPageStart(), cri.getPerPageNum()));
 			model.addAttribute("items", items);
+			
+			//페이징
+			int totalCount = service.listAllCnt(search);
+			int page = ( cri.getPage() <= 0 )? 1 : cri.getPage();
+			cri.setPage(page);
+			PageMaker pageMaker = new PageMaker(cri, totalCount);
+			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("search",search);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

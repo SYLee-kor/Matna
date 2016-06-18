@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
+<script src="/resources/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
@@ -12,6 +12,7 @@
 			formObj.submit();
 		});
 	});
+	
 </script>
 
 <script>
@@ -44,6 +45,11 @@
 				name="senderNickname" class="form-control" placeholder="Enter Sender">
 		</div>
 		<div class="form-group">
+			<label for="exampleInputEmail1">To.</label> 
+			<input type="text"
+				name="receiverNickname" class="form-control" placeholder="Enter Receiver">
+		</div>
+		<div class="form-group">
 			<label for="exampleInputEmail1">Title</label> 
 			<input type="text"
 				name='title' class="form-control" placeholder="Enter Title">
@@ -52,11 +58,6 @@
 			<label for="exampleInputPassword1">Content</label>
 			<textarea class="form-control" name="content" rows="3"
 				placeholder="Enter ..."></textarea>
-		</div>
-		<div class="form-group">
-			<label for="exampleInputEmail1">To.</label> 
-			<input type="text"
-				name="receiverNickname" class="form-control" placeholder="Enter Receiver">
 		</div>
 	</div>
 	<!-- /.box-body -->

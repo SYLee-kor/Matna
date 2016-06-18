@@ -6,7 +6,7 @@
 	<artifactId>matna</artifactId>
 	<name>Matna</name> 
 	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+	<version>1.0.0-BUILD-SNAPSHOT</version> 
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.2.6.RELEASE</org.springframework-version>
@@ -15,7 +15,7 @@
 	</properties>
 	<dependencies>
 		<!-- Spring -->
-		<dependency>
+		<dependency> 
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>

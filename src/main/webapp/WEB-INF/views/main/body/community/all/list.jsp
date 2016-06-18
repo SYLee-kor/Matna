@@ -12,7 +12,7 @@
 <link href="/matna/resource/css/main/body/community/all/list.css"
 	rel="stylesheet" type="text/css" />
 
-
+<%session.setAttribute("userNo", 4); %>
 </head>
 <body>
 <center>
@@ -51,8 +51,9 @@
 					<td>${list.no}</td>
 					<td>
 					<c:choose> 
-					    <c:when test="${userID eq list.writer}">
-					             <a href="/matna/community/listOne?no=${list.no}&type=${type}">${list.title }</a>
+					    <c:when test="${userNo eq list.writer}">
+					             <a href="/matna/community/listOne?no=${list.no}&type=${type}&page=${pageMaker.cri.page}&searchType=${pageMaker.cri.searchType}&keyword=${pageMaker.cri.keyword}     
+					             ">${list.title }</a>
 					    </c:when>
 					    <c:otherwise>
 					 	   ${list.title }
@@ -84,24 +85,10 @@
 	</div>
 	<br>
 	<form id="pageData" action="/matna/community/list" method="get">
-		<input type='hidden' name="page" value=${pageMaker.cri.perPageNum}>
+		<input type='hidden' name="page" id="page" value="${pageMaker.cri.page}">
 		<input type='hidden' name="perPageNum"
-			value=${pageMaker.cri.perPageNum}>
-	</form>
-
-	<script type="text/javascript">
-		$("a[name=page]").on("click", function(event) {
-			alert("실행");
-			event.preventDefault();
-			var targetPage = $(this).attr("href");
-			var f = $("#pageData");
-			f.find("[name='page']").val(targetPage);
-			f.submit();
-		});
-	</script>
-
-	<form name="search"
-		action="/matna/community/slist" method="get">
+			value="${pageMaker.cri.perPageNum}">
+			
 		<div align="center">
 				<select name="searchType">
 						<option value="title"
@@ -112,22 +99,30 @@
 							작성자</option>
 				</select> 
 				<input type="text" name='keyword' id="keywordInput"
-						value='${cri.keyword }'>
-			<input type="submit" value="검색">
+						value='${pageMaker.cri.keyword }'>
+			<input type="submit" id="searchBtn" value="검색">
 		</div>
 		<br> <br>
 	</form>
 	</center>
 	<script type="text/javascript">
 	$('#searchBtn').on("click",function(event) {
+		$('#page').val('1');
 				self.location = "list"
 						+ '${pageMaker.makeQuery(1)}'
 						+ "&searchType="
 						+ $("select option:selected").val()
 						+ "&keyword=" + $('#keywordInput').val();
 	});
-	</script>
 	
+	$("a[name=page]").on("click", function(event) {
+			event.preventDefault();
+			var targetPage = $(this).attr("href");
+			var f = $("#pageData");
+			f.find("[name='page']").val(targetPage);
+			f.submit();
+		});
+	</script>
 
 </body>
 </html>

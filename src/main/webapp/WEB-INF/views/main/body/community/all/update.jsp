@@ -41,16 +41,17 @@
 	<br>
 	<form id="frm" action="/matna/community/modify" method="post">
 		<input type="hidden" name="type" id="type" value="free"/>
-		<input type="hidden" name="no" id="no" value="${free.no }"/>
+				<input type="hidden" name="writer" id="writer" value="${userNo}"/>
+		<input type="hidden" name="no" id="no" value="${board.no }"/>
 		<table align="center" border="1">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" style="width: 650px" name="title" value="${free.title }"></td>
+				<td><input type="text" style="width: 650px" name="title" value="${board.title }"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
 				<td rowspan="2"><textarea name="content" id="free_content"style="width: 650px; height: 350px;">
-				${free.content }</textarea></td>
+				${board.content }</textarea></td>
 			</tr>
 
 		</table>

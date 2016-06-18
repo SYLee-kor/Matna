@@ -109,4 +109,50 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return session.selectList("member.selectAllPage", map);
 	}
+	
+	@Override
+	public List<MemberVO> selectSearchList(String nickname, int start, int end) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+		   map.put("nickname",nickname );
+		   map.put("start", start);
+		   map.put("end", end);
+
+		return session.selectList("member.selectSearchList",map);
+	}
+
+	@Override
+	public int selectSearchCount(String nickname) throws Exception {
+		return session.selectOne("member.selectSearchCount",nickname);
+	}
+	
+	@Override
+	public String findPw(String id, String email, String name) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("name",name );
+		   map.put("id", id);
+		   map.put("email", email);
+		
+		return session.selectOne("member.findPw", map);
+	}
+
+	@Override
+	public String findId(String email, String name) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("name",name );
+		   map.put("email", email);
+		
+		return session.selectOne("member.findId", map);
+	}
+
+	@Override
+	public void updatePW(String id, String email, String pw) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("id",id);
+		   map.put("email", email);
+		   map.put("pw", pw);
+		   
+		   session.update("member.updatePW",map);
+	}
+	
 }

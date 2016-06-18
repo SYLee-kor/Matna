@@ -47,7 +47,7 @@
 	</select>
 	
 	<select id="selectList" resultType="review">
-		select no,title,writer,(select nickName from member where no=writer) nickName, replycnt,photo,viewcnt
+		select no,substr(title,1,6) title,writer,(select nickName from member where no=writer) nickName, replycnt,photo,viewcnt
 		<if test="listType == null">
 		,regdate,good,bad
 		</if>

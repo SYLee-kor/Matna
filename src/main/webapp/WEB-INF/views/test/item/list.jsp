@@ -1,60 +1,86 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<body>
-	<figure class="tabBlock">
-  <ul class="tabBlock-tabs">
-    <li class="tabBlock-tab is-active">상품</li>
-  </ul>
-  <div class="tabBlock-content">
-    <div class="tabBlock-pane">
-    
-    
-	<!-- table시작 -->
-	<table id="itemTable" align="center" cellpadding="30">
-		<c:forEach begin="0" end="2" varStatus="i" >
-		<tr>
-			<c:forEach begin="${i.index*3 }" end="${i.index*3+2 }" var="itemVO" items="${list}">
-			<td>
-				
-				<table onclick="javascript:document.location.href='/matna/item/itemdetail?ino=${itemVO.ino}'">
-					<tr>
-						<td colspan="2"><img alt="사진1" src="/matna/resource/img/${itemVO.photo}" width="200" height="200"></td>
-					</tr>
-					<tr>
-						<td>${itemVO.name }</td>
-						<td>${itemVO.price}</td>
-					</tr>
-				</table>
-			</td>
+
+
+<%@include file="/WEB-INF/views/matnaHeader.jsp" %>
+
+<!-- 이미지 크기는 500x500 입니다 -->
+<div class="clear"></div>
+    <div class="container">
+       <div class="row" style="margin-left: 11%; width: 80%;">
+           <div class="col-md-12">
+               <label id="item_header">상품 구매하기</label>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <c:forEach begin="0" end="2" varStatus="i" >
+        <div class="row" ><!-- 1행 -->
+            <div class="col-md-2"></div>
+            
+            <c:forEach begin="${i.index*3 }" end="${i.index*3+2 }" var="itemVO" items="${list}">
+           <a href="/matna/item/itemdetail?ino=${itemVO.ino}">
+           <div class="col-md-3 col-sm-4 templatemo_servicegap" ><!-- 1번째꺼 -->
+            <img src="/matna/resource/img/${itemVO.photo}" alt="10,000포인트">
+               <div class="templatemo_email"> <!-- 동그라미 돌아가는거 class명 안바꿔도됨 -->
+                   <a href="#"><div class="fa fa-gift"></div></a>
+                </div>
+                <div class="clear"></div>
+                <div class="templatemo_teamtext">
+                    <div class="templatemo_teamname">
+                        <div class="templatemo_teamtitle">${itemVO.name }</div>
+                        <c:choose>
+                        	<c:when test="${itemVO.ino==5000}">
+                        		<div class="templatemo_teampost">${itemVO.content}</div>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<div class="templatemo_teampost">${itemVO.price}</div>
+                        	</c:otherwise>
+                        </c:choose>
+                    </div>
+                    
+               </div>
+            </div> <!-- 1번째꺼 -->
+           </a>
+            </c:forEach>
+            
+        </div><!-- 1행 -->
+        </c:forEach>
+     
+        </div>
+        
+       
+   <!-- =========== 페이징 ================= -->
+       <ul class="pagination modal-1" id="pagination">
+		  <!-- <li><a href="#" class="prev">&laquo</a></li>
+		  <li><a href="#" class="prev">prev</a></li> -->
+			<c:if test="${pageMaker.prev}">
+				<a name="page" href="${pageMaker.startPage - 1}">&laquo;</a>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage }"
+				end="${pageMaker.endPage }" var="idx">
+				<li><a name="page" href="/matna/item/itemSearch?page=${idx}&search=${search}">${idx}</a></li>
 			</c:forEach>
-		</tr>
-		</c:forEach>
-	</table>	
-	
-			
-	<!-- table끝 -->
-	<br>
-	<table align="center">
-	<tr>
-	<td>
-		<br> 
-		<form action="/matna/item/itemSeach">
-			<input type="text" size="20" placeholder="상품명 입력" name="title"> 
-			<input type="submit" value="검색">
-		</form>
-	</td>
-	</tr>	
-	</table>
-
-	</div>
-	</div></figure>
-
+			<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+				<a name="page" href="${pageMaker.endPage +1}">&raquo;</a>
+			</c:if>
+		  <!-- <li><a href="#" class="next">next</a></li>
+		  <li><a href="#" class="next">&raquo;</a></li> -->
+     </ul><br>
+  
+  <!-- =============검색================== -->
+  <div class="col-md-12 col-sm-12">
+  <form class="searchform cf" action="/matna/item/itemSearch">
+  	<input type="text" placeholder="상품을 검색해보세요!^_^" name="search">
+  	<button value="submit">검색</button>
+  </form>
+    </div>
+    
+<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

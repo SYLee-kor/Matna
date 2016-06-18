@@ -34,11 +34,23 @@ $(document).ready(function() {
 			formObj.submit();
 		});
 		
-		$('#message').click(function() {
-			formObj.attr("action", "/matna/message/sendList");
-			formObj.submit();
-		}); 
 	});
+	
+	function join(){
+    window.open("/matna/join","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=300, width=700,height=600");
+	}
+	
+	function find(){
+    window.open("/matna/find","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=300,height=200");
+	}
+	
+	function message(){
+    window.open("/matna/message/listAll","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+	}
+	
+	function mypage(){
+  		 window.open("/matna/mypage","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+	}
 </script>
 
 </head>
@@ -61,8 +73,8 @@ $(document).ready(function() {
 		
 		<button type="submit" class="btn" name="login_bt" id="login_bt">Log in</button>
 		<div class="signup">
-			<a href="#" name="find_idpass">ID / PW 찾기</a>
-			<a href="#">회원가입</a></p>
+			<button type="button" onclick="find()" id="find">ID / PW 찾기</button>
+			<button type="button" onclick="join()" id="join">회원가입</button>
 		</div>
 	</div>
 </div>
@@ -77,9 +89,9 @@ $(document).ready(function() {
     	${userNickname } 님 반갑습니다~~!!</label><br>
     <label class="point" name="point">
           POINT: ${userPoint } </label><br>
-  <input class="mypage" type="submit" id="mypage" name="mypage" value="MyPage">
-  <input class="logout" type="submit" id="logout"  name="logout" value="logout">
-  <input class="message" type="submit" id="message"  name="message" value="message">
+  <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
+  <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
+  <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
 </form>
 
 </c:if>

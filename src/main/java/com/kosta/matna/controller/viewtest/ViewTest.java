@@ -25,5 +25,18 @@ public class ViewTest {
 	public String loginTest(){
 		return "test/login/loginForm";
 	}
+	@RequestMapping("/test/finalOrder")
+	public String orderTest(){
+		return "main/body/item/finalOrder";
+	}
+	@RequestMapping("/test/itemDetail")
+	public String ItemTest(){
+		return "main/body/item/itemDetail";
+	}
+	
+	@RequestMapping("/test/itemDetail2")
+	public String ItemTest2(){
+		return "main/body/item/itemDetail2";
+	}
 	
 }
