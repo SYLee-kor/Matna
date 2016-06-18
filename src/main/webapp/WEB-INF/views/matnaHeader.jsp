@@ -50,8 +50,7 @@
 	<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
     
     
-    
-<style type="text/css">
+    <style type="text/css">
   
 /* radio 버튼 css 시작 */
 .detail_rb {
@@ -227,7 +226,8 @@
    
     
     
-    <%--상세 검색 --%>
+
+        <%--상세 검색 --%>
     <script type="text/javascript">
     var cc=0
     function showHide(id) {//select detail button menu 생성
@@ -240,91 +240,109 @@
         }
     }
     
-    
- // select 버튼 javascript
-    $(document).ready(function(){
-       
-       $(':selected').each(function(){
-          var pp =$(this).parent().parent();
-          pp.text($(this).val())
-       })
-       // set up select boxes
-       $('.selectholder').each(function(){
-          $(this).children().hide();
-          var description = $(this).children('label').text();
-          $(this).append('<span class="desc">'+description+'</span>');
-          $(this).append('<span class="pulldown"></span>');
-          // set up dropdown element
-          $(this).append('<div class="selectdropdown"></div>');
-         $(this).children('select').children('option').each(function(){
-             if($(this).attr('value') != '0') {
-                $drop = $(this).parent().siblings('.selectdropdown');
-                var name = $(this).attr('value');
-                $drop.append('<span>'+name+'</span>');
-             }
-          });
-          // on click, show dropdown
-          $(this).click(function(){
-             if($(this).hasClass('activeselectholder')) {
-                // roll up roll up
-                $(this).children('.selectdropdown').slideUp(200);
-                $(this).removeClass('activeselectholder');
-                // change span back to selected option text
-                if($(this).children('select').val() != '0') {
-                   $(this).children('.desc').fadeOut(100, function(){
-                      $(this).text($(this).siblings("select").val());
-                      $(this).fadeIn(100);
-                   });
-                }
-             }
-             else {
-                // if there are any other open dropdowns, close 'em
-                $('.activeselectholder').each(function(){
-                   $(this).children('.selectdropdown').slideUp(200);
-                   // change span back to selected option text
-                   if($(this).children('select').val() != '0') {
-                      $(this).children('.desc').fadeOut(100, function(){
-                         $(this).text($(this).siblings("select").val());
-                         $(this).fadeIn(100);
-                      });
-                   }
-                   $(this).removeClass('activeselectholder');
-                });         
-                // roll down
-                $(this).children('.selectdropdown').slideDown(200);
-                $(this).addClass('activeselectholder');
-                // change span to show select box title while open
-                if($(this).children('select').val() != '0') {
-                   $(this).children('.desc').fadeOut(100, function(){
-                      $(this).text($(this).siblings("select").children("option[value=0]").text());
-                      $(this).fadeIn(100);
-                   });
-                }
-             }
-          });
-       });
-       // select dropdown click action
-       $('.selectholder .selectdropdown span').click(function(){
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-          var value = $(this).text();
-          $(this).parent().siblings('select').val(value);
-          $(this).parent().siblings('.desc').fadeOut(100, function(){
-             $(this).text(value);
-             $(this).fadeIn(100);
-          });
-       });
-       
-       // preload hover images
-      preload([
-        'http://supereightstudio.com/img/radio_tick.png',
-        'http://supereightstudio.com/img/pulldown.png',
-        'http://supereightstudio.com/img/pulldown_hover.png'
-      ]);
+    $(document).ready(
+            function() {//class="dropdown-menu"
+               $('div.main_menu div.col-md-2').hover(
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeIn(100);
+                     },
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeOut(100);
+                     });
+                $('div.main_menu div.col-md-2 ul.dropdown-menu').hover(
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeIn(100);
+                     },
+                     function() {
+                        $(this).children('.dropdown-menu').stop(true, true)
+                              .delay(50).fadeOut(100);
+                     }); 
+                
+                
+                
+                //select버튼
+                $(':selected').each(function(){
+                    var pp =$(this).parent().parent();
+                    pp.text($(this).val())
+                 })
+                 // set up select boxes
+                 $('.selectholder').each(function(){
+                    $(this).children().hide();
+                    var description = $(this).children('label').text();
+                    $(this).append('<span class="desc">'+description+'</span>');
+                    $(this).append('<span class="pulldown"></span>');
+                    // set up dropdown element
+                    $(this).append('<div class="selectdropdown"></div>');
+                   $(this).children('select').children('option').each(function(){
+                       if($(this).attr('value') != '0') {
+                          $drop = $(this).parent().siblings('.selectdropdown');
+                          var name = $(this).attr('value');
+                          $drop.append('<span>'+name+'</span>');
+                       }
+                    });
+                    // on click, show dropdown
+                    $(this).click(function(){
+                       if($(this).hasClass('activeselectholder')) {
+                          // roll up roll up
+                          $(this).children('.selectdropdown').slideUp(200);
+                          $(this).removeClass('activeselectholder');
+                          // change span back to selected option text
+                          if($(this).children('select').val() != '0') {
+                             $(this).children('.desc').fadeOut(100, function(){
+                                $(this).text($(this).siblings("select").val());
+                                $(this).fadeIn(100);
+                             });
+                          }
+                       }
+                       else {
+                          // if there are any other open dropdowns, close 'em
+                          $('.activeselectholder').each(function(){
+                             $(this).children('.selectdropdown').slideUp(200);
+                             // change span back to selected option text
+                             if($(this).children('select').val() != '0') {
+                                $(this).children('.desc').fadeOut(100, function(){
+                                   $(this).text($(this).siblings("select").val());
+                                   $(this).fadeIn(100);
+                                });
+                             }
+                             $(this).removeClass('activeselectholder');
+                          });         
+                          // roll down
+                          $(this).children('.selectdropdown').slideDown(200);
+                          $(this).addClass('activeselectholder');
+                          // change span to show select box title while open
+                          if($(this).children('select').val() != '0') {
+                             $(this).children('.desc').fadeOut(100, function(){
+                                $(this).text($(this).siblings("select").children("option[value=0]").text());
+                                $(this).fadeIn(100);
+                             });
+                          }
+                       }
+                    });
+                 });
+                 // select dropdown click action
+                 $('.selectholder .selectdropdown span').click(function(){
+                    $(this).siblings().removeClass('active');
+                    $(this).addClass('active');
+                    var value = $(this).text();
+                    $(this).parent().siblings('select').val(value);
+                    $(this).parent().siblings('.desc').fadeOut(100, function(){
+                       $(this).text(value);
+                       $(this).fadeIn(100);
+                    });
+                 });
+                 
+                 // preload hover images
+                preload([
+                  'http://supereightstudio.com/img/radio_tick.png',
+                  'http://supereightstudio.com/img/pulldown.png',
+                  'http://supereightstudio.com/img/pulldown_hover.png'
+                ]);
 
-       
-       
-    });
+            });
     </script>
     
     <title>우리지금 Matna!!</title>
