@@ -32,11 +32,7 @@
 	<script src="/matna/resource/js/jquery.flexslider.js"></script>
 	<!-- 절취 선 -->
 	<script type="text/javascript" src="/matna/resource/js/login_script.js"></script>
-<<<<<<< HEAD
 	<link rel="stylesheet" href="/matna/resource/css/login.css">
-=======
-    <link rel="stylesheet" href="/matna/resource/css/login.css">
->>>>>>> branch 'master' of https://github.com/SYLee-kor/Matna.git
 	<!--  절취 선 -->
 	<script src="/matna/resource/js/custom.js"></script>
 	<script src="/matna/resource/js/jquery.lightbox.js"></script>
@@ -240,8 +236,48 @@
         }
     }
     
+    function printGu_home() {
+    	$.ajax({
+    		url:"/matna/review/guList",
+    		dataType:"json",
+    		success:function(result){ // # result는 Array[String] 형태..
+    			var gu = '<select id="guList_home" onchange="printDong_home()" name="gu" class="select">';
+    			gu += '<option value="구">== 구 선택 ==</option>'
+    			for (var int = 0; int < result.length; int++) {
+    				gu+='<option value="'+result[int]+'">'+result[int]+'</option>';
+    			}
+    			gu += '</select>';
+    			$('#guDiv_home').html(gu);
+    			printDong_home();
+    		},
+    		error:function(xhr,status,error){
+    			alert('error : '+error);
+    		}
+    	})
+    }
+    function printDong_home() {
+    	$.ajax({
+    		url:"/matna/review/dongList",
+    		data:"gu="+$('#guList_home').val(),
+    		dataType:"json",
+    		success:function(result){ // # result는 Array[String] 형태..
+    			var dong = '<select id="dongList_home" name="dong" class="select">';
+    			dong += '<option value="동">== 동 선택 ==</option>'
+    			for (var int = 0; int < result.length; int++) {
+    				dong+='<option value="'+result[int]+'">'+result[int]+"</option>";
+    			}
+    			dong += '</select>';
+    			$('#dongDiv_home').html(dong);
+    		},
+    		error:function(xhr,status,error){
+    			alert('error : '+error);
+    		}
+    	})
+    }
+    
     $(document).ready(
             function() {//class="dropdown-menu"
+    		printGu_home();
                $('div.main_menu div.col-md-2').hover(
                      function() {
                         $(this).children('.dropdown-menu').stop(true, true)
@@ -380,23 +416,9 @@
       </div>
       
       <div class="selectH" style="position: relative;z-index:2;">
-      <div class="selectholder" align="center">
-      <select class="select">
-        <option value="구" ></option>
-        <option value="강서구"></option>
-        <option value="양천구"></option>
-        <option value="영등포구"></option>
-      </select>
-      </div>
+      <div class="selectholder" align="center" id="guDiv_home"></div>
       
-      <div class="selectholder" align="center" >
-      <select class="select">
-        <option value="동"></option>
-        <option value="신월동"></option>
-        <option value="화곡동"></option>
-        <option value="여의도동"></option>
-      </select>
-      </div>
+      <div class="selectholder" align="center" id="dongDiv_home"></div>
       
       <div class="selectholder" align="center" >
       <select class="select">
