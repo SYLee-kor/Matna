@@ -37,6 +37,7 @@ jQuery(document).ready(function($){
 		$(".main_menu a.templatemo_page3, .responsive_menu a.templatemo_page3").removeClass('active');
 		$(".main_menu a.templatemo_page4, .responsive_menu a.templatemo_page4").removeClass('active');
 		$(".main_menu a.templatemo_page5, .responsive_menu a.templatemo_page5").removeClass('active');
+		document.location.href="/matna/review/list";
 		return false;
 	});
 

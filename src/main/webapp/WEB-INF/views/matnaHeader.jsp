@@ -29,22 +29,18 @@
 	<script src="/matna/resource/js/jquery.singlePageNav.js"></script>
 	<script src="/matna/resource/js/jquery.flexslider.js"></script>
 	<!-- 절취 선 -->
-	<script type="text/javascript" src="/matna/resource/jquery/jquery-2.2.3.js"></script>
 	<script type="text/javascript" src="/matna/resource/js/login_script.js"></script>
-<link rel="stylesheet" href="/matna/resource/css/login.css">
+	<link rel="stylesheet" href="/matna/resource/css/login.css">
 	<!--  절취 선 -->
 	<script src="/matna/resource/js/custom.js"></script>
 	<script src="/matna/resource/js/jquery.lightbox.js"></script>
 	<script src="/matna/resource/js/templatemo_custom.js"></script>
     <script src="/matna/resource/js/jquery-git2.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
    
    <%--content부분 --%>
-    <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=9f63f7a70411f9756f65fdec8b2face8&libraries=services"></script>
 	<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
-	<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 	<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
     <title>우리지금 Matna!!</title>
 </head>
@@ -88,7 +84,7 @@
        			 <div class="navigation responsive_menu">
           			 <ul>
 					<li><a class="show-1 templatemo_home" href="#">공지사항</a></li>
-					<li><a href="/matna/resource/review/menu/all/list.jsp">리뷰</a></li>
+					<li><a href="/matna/review/list">리뷰</a></li>
 					<li><a class="show-3 templatemo_page3" href="#">게시판</a></li>
 					<li><a class="show-4 templatemo_page4" href="#">상품</a></li>
 					<li><a class="show-5 templatemo_page5" href="#">고객지원</a></li>
@@ -177,6 +173,3 @@
            </div>
           </div>
          </div>
-            
-</body>
-</html>

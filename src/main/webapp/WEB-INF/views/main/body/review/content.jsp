@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
+<!-- services 라이브러리 불러오기 -->
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d57f90536554e1d1025bdf0836b0ed4f&libraries=services"></script>
+<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		if(!('${preview.gu}'=='구' || '${preview.dong}'=='동')){

@@ -15,18 +15,28 @@
         
   <%-- <%@include file="/WEB-INF/views/review/menu/all/miniList.jsp" %> --%>
 
-    <!--============== mini자유게시판, mini만남게시판==============================-->
+    <!--============== 미니게시판==============================-->
     <!-- image크기 조절은 minilist.css - .miniimage에서  -->
    <div class="container">
     	<div class="row">
-    	
+   <!-- Review miniList 영역 -->
+   <div class="col-md-6 col-sm-6">
+    	<% pageContext.setAttribute("listType", "mini"); %>
+    	<% pageContext.setAttribute("pageType", "review"); %>
+    	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
+   </div>
+   <!-- Review Ranking miniList 영역 -->
+   <div class="col-md-6 col-sm-6">
+    	<% pageContext.setAttribute("pageType", "ranking"); %>
+    	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
+   </div>
     	<!--============== free게시판 ================-->
    <div class="col-md-6 col-sm-6">
             	
        <div id="freetable">
 		  <h1>Meeting Board</h1>
 		  
-		  <table id="free_table" cellspacing="0" cellpadding="0">
+		  <table id="free_table" cellpadding="0">
 		    <thead>
 		      <tr>
 		        <th><span>title</span></th>
@@ -39,24 +49,6 @@
 		         <td><a href=#>가산 전주칼국수 먹어보신분 정말맛있나요????</a> [13]</td>
 		         <td>우리지금맛나맛나안녕</td>
 		         <td>60</td>
-		      </tr>
-		
-		      <tr>
-		         <td><a href=#>오늘은 금요일입니당</a> [155]</td>
-		         <td>더반</td>
-		         <td>250</td>
-		      </tr>
-		
-		      <tr>
-		         <td><a href=#>보쌈정식</a> [25]</td>
-		         <td>맛나최고</td>
-		         <td>50</td>
-		      </tr>
-		      
-		      <tr>
-		         <td><a href=#>보쌈정식</a> [25]</td>
-		         <td>맛나최고</td>
-		         <td>50</td>
 		      </tr>
 		    </tbody>
 		  </table>

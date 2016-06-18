@@ -33,9 +33,11 @@ function showContents(no) {
         <th><span>제목</span></th>
         <th><span>작성자</span></th>
         <th><span>조회수</span></th>
+        <c:if test="${listType ==null}">
         <th><span>좋아요!</span></th>
         <th><span>싫어요!</span></th>
         <th><span>등록일</span></th>
+        </c:if>
         
       </tr>
     </thead>
@@ -47,27 +49,29 @@ function showContents(no) {
          <td><a onclick="showContents(${review.no})" class="reviewTitle">${review.title }</a> [${review.replyCnt }]</td>  <!-- title,댓글수 -->
          <td>${review.nickName }</td>
          <td>${review.viewCnt }</td>   <!-- 조회수 -->
+         <c:if test="${listType == null }"><!-- listType (null or mini) mini일땐 굿 배드 출력 X-->
          <td>${review.good }</td>  <!-- 좋아요 -->
          <td>${review.bad }</td>  <!-- 싫어요 -->
          <td>${review.regdate }</td>
+         </c:if>
       </tr>
       </c:forEach>
     </tbody>
   </table>
-  
-  <!-- ===================== paging 처리======================= -->
-  <ul class="pagination modal-1" id="pagination">
-  <c:if test="${pageMaker.prev }">
-  <li><a class="prev" onclick="showPage('${tabType}',${pageMaker.beforePage})">&laquo</a></li>
-  </c:if>
-  <li><a class="prev" onclick="showPage('${tabType}',${pageMaker.prevPage})">이전</a></li>
-  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
-  <li><a class="pageIndex" onclick="showPage('${tabType}',${stat.index})">${stat.index }</a></li>
-  </c:forEach>
-  <li><a class="next" onclick="showPage('${tabType}',${pageMaker.nextPage})">다음</a></li>
-  <c:if test="${pageMaker.next }">
-  <li><a class="next" onclick="showPage('${tabType}',${pageMaker.afterPage})">&raquo;</a></li>
-  </c:if>
-</ul><br>
+<c:if test="${listType != 'mini' }">
+	<!-- ===================== paging 처리======================= -->
+	<ul class="pagination modal-1" id="pagination">
+	  <c:if test="${pageMaker.prev }">
+	  	<li><a class="prev" onclick="showPage_${pageType }('${tabType}',${pageMaker.beforePage})">&laquo</a></li>
+	  </c:if>
+	  <li><a class="prev" onclick="showPage_${pageType }('${tabType}',${pageMaker.prevPage})">이전</a></li>
+	  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
+	 	 <li><a class="pageIndex" onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
+	  </c:forEach>
+	  <li><a class="next" onclick="showPage_${pageType }('${tabType}',${pageMaker.nextPage})">다음</a></li>
+	  <c:if test="${pageMaker.next }">
+	  	<li><a class="next" onclick="showPage_${pageType }('${tabType}',${pageMaker.afterPage})">&raquo;</a></li>
+	  </c:if>
+	 </ul><br>
+</c:if>
  </div> 
-</div>

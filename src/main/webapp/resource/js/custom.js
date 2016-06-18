@@ -1,22 +1,22 @@
-jQuery(document).ready(function($){
+/*jQuery(document).ready(function($){
 
 
 
 
-	/************** Scroll Navigation *********************/
+	*//************** Scroll Navigation *********************//*
 	$('.navigation').singlePageNav({
         currentClass : 'active'
     });
 
 
-	/************** FlexSlider *********************/
+	*//************** FlexSlider *********************//*
     $('.flexslider').flexslider({
 	    animation: "fade",
 	    directionNav: false
 	});
 
 
-    /************** Responsive Navigation *********************/
+    *//************** Responsive Navigation *********************//*
 
 	$('.menu-toggle-btn').click(function(){
         $('.responsive-menu').stop(true,true).slideToggle();
@@ -25,4 +25,4 @@ jQuery(document).ready(function($){
 
 
 
-});
+});*/
