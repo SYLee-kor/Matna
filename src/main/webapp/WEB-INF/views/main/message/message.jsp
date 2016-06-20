@@ -7,9 +7,78 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/matna/resource/css/myPage.css">
 </head>
 <style>
 /* MAGIC ... IMPORTANT! */
+
+/* 상품리스트 paging css */
+.page{
+   margin-right:150px;
+}
+
+.pagination {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.pagination li {
+  display: inline;
+}
+
+.pagination a {
+  float: left;
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 5px 12px;
+  color: #fff;
+  margin-left: -1px;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+.pagination a.active {
+  cursor: default;
+}
+.pagination a:active {
+  outline: none;
+}
+
+.modal-1 li:first-child a {
+  -moz-border-radius: 6px 0 0 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px 0 0 6px;
+}
+.modal-1 li:last-child a {
+  -moz-border-radius: 0 6px 6px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 6px 6px 0;
+}
+.modal-1 a {
+  border-color: #ddd;
+  color: #ff4524;
+  background: #fff;
+
+}
+.modal-1 a:hover {
+  background: #ffedea;
+}
+.modal-1 a.active, .modal-1 a:active {
+  border-color: #ff4524;
+  background: #ff4524;
+  color: #fff;
+}
+
+#pagination{
+  margin-left: 17.5%;
+}
+
+/* 페이징 css 끝*/
+
+
+
 #tabs::after {
    display: block;
    content: "";
@@ -279,7 +348,7 @@ input{
  .b{
  	display:none;
  }
-}
+
 </style>
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
@@ -380,6 +449,7 @@ input{
 	
 
 <body>
+
    <div id="tabs">
       <span id="tab-1" class="tab-switch"></span> 
       	<a href="#tab-1" class="tab-link"><h4>받은 쪽지함</h4></a>
@@ -389,7 +459,7 @@ input{
             <!-- left column -->
             <div class="col-md-12">
                <!-- general form elements -->
-
+			
                <div id="read" class="box">
                   <!-- <div class="box-header with-border">
                      <h1 class="box-title">받은 메세지</h1>
@@ -401,8 +471,8 @@ input{
                         <table class="table table-bordered" style="text-align:center; margin:auto; border:1px soild #ff7359; width:100%; height:100px;">
                            <tr align="center" style="border:1px solid #ff7359;">
                               <th></th>
-                              <th width="80px">보내는이</th>
-                              <th width="350px">제목</th>
+                              <th width="100px">보내는이</th>
+                              <th width="300px">제목</th>
                               <th>날짜</th>
                               <th>읽음상태</th>
                            </tr>
@@ -438,10 +508,16 @@ input{
                         <input type="submit" name="delete2" value="삭제" id="delete2"
                            class="btn btn-delete2" />
        <br>
-         <div>
+         <div class="page">
+         	<ul class="pagination modal-1" id="pagination">
+         	<li><a href="#" class="prev">&laquo</a></li>
+            <li><a href="#" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${receiverTotalPage }">
-            [<a href="javascript: receiveShowPage(${i },'${messageSelect }','${search }')">${i}</a>]
+            	<li><a onfocus="" href="javascript: receiveShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
+         	<li><a href="#" class="next">next</a></li>
+            <li><a href="#" class="next">&raquo;</a></li>
+         	</ul>
 		</div>
                      </form>
 
@@ -478,7 +554,7 @@ input{
                            <tr align="center">
                               <th></th>
                               <th>받는이</th>
-                              <th width="350px">제목</th>
+                              <th width="300px">제목</th>
                               <th>날짜</th>
                               <th>읽음상태</th>
                            </tr>
@@ -514,10 +590,16 @@ input{
                         <input type="submit" name="delete" value="삭제" id="delete2"
                            class="btn btn-delete" />
                       <br>
-		<div>
+		<div align="center">
+			<ul class="pagination modal-1" id="pagination">
+			<li><a href="#" class="prev">&laquo</a></li>
+            <li><a href="#" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${senderTotalPage }">
-            [<a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a>]
+            	<li><a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
+         	<li><a href="#" class="next">next</a></li>
+            <li><a href="#" class="next">&raquo;</a></li>
+         	</ul>
 		</div>
                      </form>
                   </div>
