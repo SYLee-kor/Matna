@@ -4,13 +4,13 @@
 <html>
 <head>
     <meta name="description" content="">
-	<meta name="keywords" content="" />
-	<meta name="viewport" content="initial-scale=1">
-	
+   <meta name="keywords" content="" />
+   <meta name="viewport" content="initial-scale=1">
+   
 <style type="text/css">
 .image{
-   width :150px;
-   height: 100px;
+   width :100px;
+   height: 70px;
 } 
 
 </style>
@@ -24,6 +24,7 @@
  <div id="reviewList">
   <h1>Review</h1>
   <input type="button" value="글쓰기">
+
   <table class="review_List" cellspacing="0" cellpadding="0">
     <thead>
       <tr>
@@ -104,11 +105,44 @@
   
   
   <!-- =============검색================== -->
-  <form class="searchform cf">
-  <input type="text" placeholder="검색해보세요!^_^">
-  <button type="submit">검색</button>
-  </form>
+  
+  <!-- <label id="list_select_la">
+  <select id="list_select">
+    <option class="list_op">작성자+글제목</option>
+    <option class="list_op">작성자</option>
+    <option class="list_op">글제목</option>
+  </select>
+  </label> -->
+  
+   
 
+<div>
+  <form class="searchform2 cf">
+  <span include="form-input-select2()">
+			  <select required>
+			    <option value=""
+			            hidden
+			    > == 전체 == </option>
+			
+			    <!-- normal options -->
+			    <option value="1"> == 전체 == </option>
+			    <option value="2">작성자+글제목</option>
+			    <option value="3">작성자</option>
+			    <option value="4">글제목</option>
+			  </select>
+
+		    </span>
+    <!--  <span style="float: left;margin-top:7px;margin-left:20px;margin-right:27px;">
+      <select name="addr1">
+              <option> 작성자+글제목2 </option>
+              <option> 작성자 </option>
+              <option> 글제목 </option>
+      </select>
+      </span> -->
+  <span><input type="text" placeholder="검색해보세요!^_^"></span>
+  <span><button type="button" class="list_searchbt">검색</button></span>
+  </form>
+</div>
  
  </div> 
 </div>

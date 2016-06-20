@@ -254,31 +254,31 @@
 
 /*======´Ð³×ÀÓÀÔ·Â======*/
 
-.input {
+#nick_input {
   position: relative;
   width: 90%;
   margin: 15px auto;
   margin-left: 30%;
   margin-top: 5%;
 }
-.input span {
+#nick_input span {
   position: absolute;
   display: block;
-  color: #d4d4d4;
+  color: #ffe7e6 ;
   left: 10px;
   top: 8px;
   font-size: 20px;
 }
-.input input {
+#nick_input input {
   width: 20%;
   padding: 10px 5px 10px 40px;
   display: block;
-  border: 1px solid #EDEDED;
+  border: 2px solid #ffd7d5;
   border-radius: 4px;
   transition: 0.2s ease-out;
   color: #a1a1a1;
 }
-.input input:focus {
+#nick_input input:focus {
   padding: 10px 5px 10px 10px;
   outline: 0;
   border-color: #ff4a2b;
@@ -377,11 +377,11 @@
 [include*="form-input-select()"]::before {
   bottom: 55%;
   border-width: 0 6.5px 8px 6.5px;
-  border-bottom-color: #D6D6D6;
+  border-bottom-color: #ffe7e6 ;
 }
 [include*="form-input-select()"]::after {
   border-width: 8px 6.5px 0 6.5px;
-  border-top-color: #D6D6D6;
+  border-top-color: #ffe7e6 ;
   top: 55%;
 }
 @-moz-document url-prefix() {
@@ -406,7 +406,7 @@
   border-top-color: #ff4a2b;
 }
 [include*="form-input-select()"] select {
-  border: 3px solid #E6E6E6;
+  border: 3px solid #ffd7d5;
   border-radius: 0;
   font-weight: 400;
   color: inherit;
@@ -417,7 +417,7 @@
 }
 [include*="form-input-select()"] select:focus {
   box-shadow: 0 3px 4px rgba(0, 91, 166, 0.3) inset;
-  outline: 3px solid #E6E6E6;
+  outline: 3px solid #ffe7e6 ;
   outline-offset: -3px;
 }
 [include*="form-input-select()"] select[disabled], [include*="form-input-select()"] select:disabled {
@@ -428,6 +428,140 @@
   color: #C7C7C7;
 }
 
+
+/*====¸®ºä ¼¿·ºÆ®=====*/
+
+[include*="form-input-select2()"] {
+  
+  padding: 0;
+  position: relative;
+  color: #ff7359;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 12px;
+  margin-top: 9px;
+  width: 140px;
+}
+[include*="form-input-select2()"]::before, [include*="form-input-select2()"]::after {
+  content: '';
+  display: block;
+  position: relative;
+  pointer-events: none;
+  z-index: 2;
+}
+[include*="form-input-select2()"] select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: none;
+  box-sizing: border-box;
+  width: 140px;
+  margin: 0;
+  border: 1px solid transparent;
+  font-size: 13px;
+  outline: none;
+  /* Focus style */
+}
+[include*="form-input-selec2t()"] select:focus {
+  background-color: transparent;
+  outline: none;
+}
+[include*="form-input-select2()"] option {
+  font-weight: normal;
+}
+[include*="form-input-select2()"] x:-o-prefocus, [include*="form-input-select2()"]::after {
+  display: none;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  [include*="form-input-select2()"] select::-ms-expand {
+    display: none;
+  }
+  [include*="form-input-select2()"] select:focus::-ms-value {
+    background: transparent;
+    color: #000;
+  }
+}
+@-moz-document url-prefix() {
+  [include*="form-input-select2()"] {
+    overflow: hidden;
+  }
+  [include*="form-input-select2()"] select {
+    width: 120%;
+    width: calc(100% + 3em);
+    /* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
+  }
+  @supports (-moz-appearance: none) {
+    [include*="form-input-select2()"] select {
+      width: 100%;
+    }
+  }
+  [include*="form-input-select2()"] select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}
+@supports (-moz-appearance: none) {
+  [include*="form-input-select2()"] {
+    width: 100%;
+  }
+}
+[include*="form-input-select2()"]::before, [include*="form-input-select2()"]::after {
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid transparent;
+  width: 0;
+  height: 0;
+  right: 16px;
+}
+[include*="form-input-select2()"]::before {
+  bottom: 55%;
+  border-width: 0 6.5px 8px 6.5px;
+  border-bottom-color: #ff928c ;
+}
+[include*="form-input-select2()"]::after {
+  border-width: 8px 6.5px 0 6.5px;
+  border-top-color: #ff928c ;
+  top: 55%;
+}
+
+[include*="form-input-select2()"]:hover select {
+  box-shadow: 0 2px 3px rgba(0, 91, 166, 0.1) inset;
+  border-color:  #ff7359;
+}
+[include*="form-input-select2()"]:hover select:focus {
+  outline-color: transparent;
+}
+[include*="form-input-select2()"]:hover::before {
+  border-bottom-color:  #ff4a2b;
+}
+[include*="form-input-select2()"]:hover::after {
+  border-top-color: #ff4a2b;
+}
+[include*="form-input-select2()"] select {
+  border: 3px solid  #ffbebb;
+  border-radius: 0;
+  font-weight: 400;
+  color: inherit;
+  padding: 11px 15px;
+  line-height: normal;
+  -webkit-transition: border-color 0.2s ease, outline 0.2s ease;
+  transition: border-color 0.2s ease, outline 0.2s ease;
+}
+[include*="form-input-select2()"] select:focus {
+  box-shadow: 0 3px 4px rgba(0, 91, 166, 0.3) inset;
+  outline: 3px solid #ffe7e6 ;
+  outline-offset: -3px;
+}
+[include*="form-input-select2()"] select[disabled], [include*="form-input-select()"] select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+[include*="form-input-select2()"] select:invalid {
+  color: #C7C7C7;
+}
 
 
 

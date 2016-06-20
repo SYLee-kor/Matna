@@ -53,12 +53,13 @@ h2 {
   padding-top: 30px;
   font-weight: 400;
 }
+/* 검색창, item구매시 nickname placeholder 흰색으로바뀜
 
 ::-webkit-input-placeholder {
-  color: white;
+  color: #999999;
   font-weight: 300;
 }
-
+ */
 #submit{
    display: inline;
    width: 410px;

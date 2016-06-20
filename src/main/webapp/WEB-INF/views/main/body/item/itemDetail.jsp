@@ -44,7 +44,7 @@
        <div id="item_order" style="margin-left:23%; float:left; margin-top:3%; padding: 3%;">
            <div style="padding-left: 20%;">
             <input type="button" id="up" value="업"> 
-           <a href="#"><img alt="arrow_up" src="/matna/resource/images/arrow1_1.PNG"></a> &nbsp;&nbsp;
+           <a href="#"><img alt="arrow_up" src="/matna/resource/images/arrow1_1.PNG" ></a> &nbsp;&nbsp;
            <!-- <a href="#"><img alt="arrow_up" src="/struts/images/arrow2_1.PNG"></a>-->
            <input type="text" id="amount" value="1" style="width: 40px;height: 30px;text-align: center;font-size: 20px;"> &nbsp;&nbsp;
            <a href="#"><img alt="arrow_up" src="/matna/resource/images/arrow1_2.PNG"></a>

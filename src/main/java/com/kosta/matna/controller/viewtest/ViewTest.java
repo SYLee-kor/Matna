@@ -11,9 +11,15 @@ public class ViewTest {
 		return "home";
 	}
 	
-	@RequestMapping("/write")
+	@RequestMapping("/test/write")
 	public String writeTest(){
-		return "review/menu/all/write";
+		return "main/body/review/menu/all/write";
+	}
+	
+	
+	@RequestMapping("/test/review/list")
+	public String reviewListTest(){
+		return "/main/body/review/menu/all/list";
 	}
 	
 	@RequestMapping("/test")

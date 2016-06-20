@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 
 <script type="text/javascript">
-$( ".input" ).focusin(function() {
-	  $( this ).find( "span" ).animate({"opacity":"0"}, 200);
+
+$( ".nick_input" ).focusin(function() {
+	  $( this ).find( ".nick_icon" ).css({"opacity":"0"}, 200);
 	});
 
-	$( ".input" ).focusout(function() {
-	  $( this ).find( "span" ).animate({"opacity":"1"}, 300);
+	$( ".nick_input" ).focusout(function() {
+	  $( this ).find( ".nick_icon" ).animate({"opacity":"1"}, 300);
 	});
 
 	$(".login").submit(function(){
@@ -22,6 +23,7 @@ $( ".input" ).focusin(function() {
 	  $("input").css({"border-color":"#2ecc71"});
 	  return false;
 	});
+
 </script>
 </head>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
@@ -59,11 +61,12 @@ $( ".input" ).focusin(function() {
     </div>
       
             <!-- 닉네임입력 -->
-            <!-- <img alt="gift" src="/struts/images/gift-icon.png"> -->
-		    <div class="input">
-            <span><i class="fa fa-gift" style="color: #ff7359;"></i></span>
-		    	<input type="email" placeholder="NickName" required />
-		    
+             <!-- <img alt="gift" src="/struts/images/gift-icon.png">  -->
+           
+            <span><i id="nick_icon" class="fa fa-gift fa-4x" style="color: #ff7359;margin-left: 15%;"></i></span>
+		    <div id="nick_input">
+		    	<input type="text" placeholder="NickName" required />
+			
 		    <!-- point select -->
 		    <div include="form-input-select()">
 			  <select required>
@@ -77,10 +80,10 @@ $( ".input" ).focusin(function() {
 			    <option value="3">5,000 POINT</option>
 			    <option value="4">10,000 POINT</option>
 			  </select>
-			</div>
 
 		    </div>
 
+		   </div>
 		    
 		    <!-- 주문/취소 -->
 		    <div class="order_bt">   

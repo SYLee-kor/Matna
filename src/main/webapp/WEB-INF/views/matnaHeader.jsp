@@ -224,7 +224,32 @@
     
 
         <%--상세 검색 --%>
+   
+    
     <script type="text/javascript">
+    $(document).ready(
+             function() {//class="dropdown-menu"
+                $('div.main_menu div.col-md-2').hover(
+                      function() {
+                         $(this).children('.dropdown-menu').stop(true, true)
+                               .delay(200).fadeIn(500);
+                      },
+                      function() {
+                         $(this).children('.dropdown-menu').stop(true, true)
+                               .delay(200).fadeOut(500);
+                      });
+                 $('div.main_menu div.col-md-2 ul.dropdown-menu').hover(
+                      function() {
+                         $(this).children('.dropdown-menu').stop(true, true)
+                               .delay(200).fadeIn(500);
+                      },
+                      function() {
+                         $(this).children('.dropdown-menu').stop(true, true)
+                               .delay(200).fadeOut(500);
+                      }); 
+             });
+    
+    
     var cc=0
     function showHide(id) {//select detail button menu 생성
         if (cc==0) {
@@ -236,149 +261,93 @@
         }
     }
     
-    function printGu_home() {
-    	$.ajax({
-    		url:"/matna/review/guList",
-    		dataType:"json",
-    		success:function(result){ // # result는 Array[String] 형태..
-    			var gu = '<select id="guList_home" onchange="printDong_home()" name="gu" class="select">';
-    			gu += '<option value="구">== 구 선택 ==</option>'
-    			for (var int = 0; int < result.length; int++) {
-    				gu+='<option value="'+result[int]+'">'+result[int]+'</option>';
-    			}
-    			gu += '</select>';
-    			$('#guDiv_home').html(gu);
-    			printDong_home();
-    		},
-    		error:function(xhr,status,error){
-    			alert('error : '+error);
-    		}
-    	})
-    }
-    function printDong_home() {
-    	$.ajax({
-    		url:"/matna/review/dongList",
-    		data:"gu="+$('#guList_home').val(),
-    		dataType:"json",
-    		success:function(result){ // # result는 Array[String] 형태..
-    			var dong = '<select id="dongList_home" name="dong" class="select">';
-    			dong += '<option value="동">== 동 선택 ==</option>'
-    			for (var int = 0; int < result.length; int++) {
-    				dong+='<option value="'+result[int]+'">'+result[int]+"</option>";
-    			}
-    			dong += '</select>';
-    			$('#dongDiv_home').html(dong);
-    		},
-    		error:function(xhr,status,error){
-    			alert('error : '+error);
-    		}
-    	})
-    }
     
-    $(document).ready(
-            function() {//class="dropdown-menu"
-    		printGu_home();
-               $('div.main_menu div.col-md-2').hover(
-                     function() {
-                        $(this).children('.dropdown-menu').stop(true, true)
-                              .delay(50).fadeIn(100);
-                     },
-                     function() {
-                        $(this).children('.dropdown-menu').stop(true, true)
-                              .delay(50).fadeOut(100);
-                     });
-                $('div.main_menu div.col-md-2 ul.dropdown-menu').hover(
-                     function() {
-                        $(this).children('.dropdown-menu').stop(true, true)
-                              .delay(50).fadeIn(100);
-                     },
-                     function() {
-                        $(this).children('.dropdown-menu').stop(true, true)
-                              .delay(50).fadeOut(100);
-                     }); 
-                
-                
-                
-                //select버튼
-                $(':selected').each(function(){
-                    var pp =$(this).parent().parent();
-                    pp.text($(this).val())
-                 })
-                 // set up select boxes
-                 $('.selectholder').each(function(){
-                    $(this).children().hide();
-                    var description = $(this).children('label').text();
-                    $(this).append('<span class="desc">'+description+'</span>');
-                    $(this).append('<span class="pulldown"></span>');
-                    // set up dropdown element
-                    $(this).append('<div class="selectdropdown"></div>');
-                   $(this).children('select').children('option').each(function(){
-                       if($(this).attr('value') != '0') {
-                          $drop = $(this).parent().siblings('.selectdropdown');
-                          var name = $(this).attr('value');
-                          $drop.append('<span>'+name+'</span>');
-                       }
-                    });
-                    // on click, show dropdown
-                    $(this).click(function(){
-                       if($(this).hasClass('activeselectholder')) {
-                          // roll up roll up
-                          $(this).children('.selectdropdown').slideUp(200);
-                          $(this).removeClass('activeselectholder');
-                          // change span back to selected option text
-                          if($(this).children('select').val() != '0') {
-                             $(this).children('.desc').fadeOut(100, function(){
-                                $(this).text($(this).siblings("select").val());
-                                $(this).fadeIn(100);
-                             });
-                          }
-                       }
-                       else {
-                          // if there are any other open dropdowns, close 'em
-                          $('.activeselectholder').each(function(){
-                             $(this).children('.selectdropdown').slideUp(200);
-                             // change span back to selected option text
-                             if($(this).children('select').val() != '0') {
-                                $(this).children('.desc').fadeOut(100, function(){
-                                   $(this).text($(this).siblings("select").val());
-                                   $(this).fadeIn(100);
-                                });
-                             }
-                             $(this).removeClass('activeselectholder');
-                          });         
-                          // roll down
-                          $(this).children('.selectdropdown').slideDown(200);
-                          $(this).addClass('activeselectholder');
-                          // change span to show select box title while open
-                          if($(this).children('select').val() != '0') {
-                             $(this).children('.desc').fadeOut(100, function(){
-                                $(this).text($(this).siblings("select").children("option[value=0]").text());
-                                $(this).fadeIn(100);
-                             });
-                          }
-                       }
-                    });
-                 });
-                 // select dropdown click action
-                 $('.selectholder .selectdropdown span').click(function(){
-                    $(this).siblings().removeClass('active');
-                    $(this).addClass('active');
-                    var value = $(this).text();
-                    $(this).parent().siblings('select').val(value);
-                    $(this).parent().siblings('.desc').fadeOut(100, function(){
-                       $(this).text(value);
+    // select 버튼 javascript
+    var selectText=['구','동','가격대']; // 변수를 한번 더 지정해줌
+    
+    $(document).ready(function(){
+        $(':selected').each(function(){
+          var pp =$(this).parent().parent();
+          //pp.prepend($(this).val()) //prepend는 원래 있던 변수를 같이 읽어줌.
+          //pp.text($(this).val()) //text가 select option 모두 초기화
+       }) 
+       // set up select boxes
+       $('.selectholder').each(function(i){
+          $(this).children().hide();
+          var description = $(this).children('label').text();
+          $(this).append('<span class="desc">'+description+selectText[i]+'</span>'); // span에다가 변수 삽입
+          $(this).append('<span class="pulldown"></span>');
+          // set up dropdown element
+          $(this).append('<div class="selectdropdown"></div>');
+         $(this).children('select').children('option').each(function(){
+             if($(this).attr('value') != '0') {
+                $drop = $(this).parent().siblings('.selectdropdown');
+                var name = $(this).attr('value');
+                $drop.append('<span>'+name+'</span>');
+             }
+          });
+          // on click, show dropdown
+          $(this).click(function(){
+             if($(this).hasClass('activeselectholder')) {
+                // roll up roll up
+                $(this).children('.selectdropdown').slideUp(200);
+                $(this).removeClass('activeselectholder');
+                // change span back to selected option text
+                if($(this).children('select').val() != '0') {
+                   $(this).children('.desc').fadeOut(100, function(){
+                      $(this).text($(this).siblings("select").val());
                        $(this).fadeIn(100);
-                    });
-                 });
-                 
-                 // preload hover images
-                preload([
-                  'http://supereightstudio.com/img/radio_tick.png',
-                  'http://supereightstudio.com/img/pulldown.png',
-                  'http://supereightstudio.com/img/pulldown_hover.png'
-                ]);
-
-            });
+                   });
+                }
+             }
+             else {
+                // if there are any other open dropdowns, close 'em
+                $('.activeselectholder').each(function(){
+                   $(this).children('.selectdropdown').slideUp(200);
+                   // change span back to selected option text
+                   if($(this).children('select').val() != '0') {
+                      $(this).children('.desc').fadeOut(100, function(){
+                         $(this).text($(this).siblings("select").val());
+                         $(this).fadeIn(100);
+                      });
+                   }
+                   //$(this).removeClass('activeselectholder');
+                });         
+                // roll down
+                $(this).children('.selectdropdown').slideDown(200);
+                $(this).addClass('activeselectholder');
+                // change span to show select box title while open
+                if($(this).children('select').val() != '0') {
+                   $(this).children('.desc').fadeOut(100, function(){
+                      $(this).text($(this).siblings("select").children("option[value=0]").text());
+                      $(this).fadeIn(100);
+                   });
+                }
+             }
+          });
+       });
+       // select dropdown click action
+       $('.selectholder .selectdropdown span').click(function(){
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+          var value = $(this).text();
+          $(this).parent().siblings('select').val(value);
+          $(this).parent().siblings('.desc').fadeOut(100, function(){
+             $(this).text(value);
+             $(this).fadeIn(100);
+          });
+       });
+       
+       // preload hover images
+      preload([
+        'http://supereightstudio.com/img/radio_tick.png',
+        'http://supereightstudio.com/img/pulldown.png',
+        'http://supereightstudio.com/img/pulldown_hover.png'
+      ]);
+    });
+    
+    
+    
     </script>
     
     <title>우리지금 Matna!!</title>
@@ -386,41 +355,51 @@
 <body>
 
 <!-- title start -->
-  	<div class="container">
-    	<div class="row">
-        	<div class="col-md-4 col-sm-4">
-            	<div class="templatemo_title"><a href="/matna/home">Matna</a></div>
+     <div class="container">
+       <div class="row">
+           <div class="col-md-4 col-sm-4">
+               <div class="templatemo_title"><a href="/struts/home.jsp">Matna</a></div>
                 <div class="templatemo_subtitle">우리지금맛나</div>
             </div>
-        	
-        	<%--상세검색 --%>
-        	<div class="col-md-2 col-sm-2">
-                <a href="#layer" onclick="showHide('layer');return false;">
-                <button id="search_detail">search detail</button></a>
-               
-               <%-- 전체보기 레이어띄우는 창 --%>
-               
+            
+            <!-- 전체보기 레이어 { -->
+           <div class="col-md-2 col-sm-2">
+               <a href="#layer" onclick="showHide('layer');return false;"><button id="search_detail">search detail</button></a>
       <div id="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1;display:none; width:400px; height:250px; border:3px solid #ff7359;">
       
       
       
-      <div class="center-on-page" align="center" style="margin-top:2%;">
-         <input type="radio" name="rb" id="rb1" class="detail_rb" checked="checked" />
-         <label for="rb1" class="detail_lb">전체</label>
-         <input type="radio" name="rb" id="rb2" class="detail_rb"/>
-         <label for="rb2" class="detail_lb">식사</label>
-         <input type="radio" name="rb" id="rb3" class="detail_rb" />
-         <label for="rb3" class="detail_lb">디저트</label>
-         <input type="radio" name="rb" id="rb4" class="detail_rb" />
-         <label for="rb4" class="detail_lb">주류</label>
+      <div class="center-on-page" align="center" style="margin-top:2%;color:black;">
+         <input type="radio" name="rb" id="rb1" checked="checked"/>
+         <label for="rb1">전체</label>
+         <input type="radio" name="rb" id="rb2" />
+         <label for="rb2">식사</label>
+         <input type="radio" name="rb" id="rb3" />
+         <label for="rb3">디저트</label>
+         <input type="radio" name="rb" id="rb4" />
+         <label for="rb4">주류</label>
       </div>
       
       <div class="selectH" style="position: relative;z-index:2;">
-      <div class="selectholder" align="center" id="guDiv_home"></div>
+      <div class="selectholder" align="center">
+      <select class="select">
+        <option value="구" ></option>
+        <option value="강서구" ></option>
+        <option value="양천구"></option>
+        <option value="영등포구"></option>
+      </select>
+      </div>
       
-      <div class="selectholder" align="center" id="dongDiv_home"></div>
+      <div class="selectholder" align="center" style="color:black; background-color: white;">
+      <select class="select">
+        <option value="동"></option>
+        <option value="신월동"></option>
+        <option value="화곡동"></option>
+        <option value="여의도동"></option>
+      </select>
+      </div>
       
-      <div class="selectholder" align="center" >
+      <div class="selectholder" align="center" style="color:black; ">
       <select class="select">
         <option value="가격대" ></option>
         <option value="5000~10000"></option>
@@ -430,31 +409,29 @@
       </div>
       </div>
       
-      <div class="center-on-page" align="center" >
-         <input type="radio" name="parking" id="parkinglot1" class="detail_rb" checked="checked"/>
-         <label for="parkinglot1" class="detail_lb">전체</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot2" class="detail_rb" />
-         <label for="parkinglot2" class="detail_lb">주차장있음</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot3" class="detail_rb" />
-         <label for="parkinglot3" class="detail_lb">주차장없음</label>
+      <div class="center-on-page" align="center" style=color:black;">
+         <input type="radio" name="parking" id="parkinglot1" />
+         <label for="parkinglot1">전체</label>&nbsp;
+         <input type="radio" name="parking" id="parkinglot2" />
+         <label for="parkinglot2">있음</label>&nbsp;
+         <input type="radio" name="parking" id="parkinglot3" />
+         <label for="parkinglot3">없음</label>
       </div>
       
-      <div class="center-on-page" align="center">
-         <input type="radio" name="date" id="date1" class="detail_rb" checked="checked"/>
-         <label for="date1" class="detail_lb">전체</label>&nbsp;
-         <input type="radio" name="date" id="date2" class="detail_rb" />
-         <label for="date2" class="detail_lb">최근 일주일</label>&nbsp;
-         <input type="radio" name="date" id="date3" class="detail_rb" />
-         <label for="date3" class="detail_lb">한달</label>
+      <div class="center-on-page" align="center" style=color:black;">
+         <input type="radio" name="date" id="date1" />
+         <label for="date1">전체</label>&nbsp;
+         <input type="radio" name="date" id="date2" />
+         <label for="date2">최근 일주일</label>&nbsp;
+         <input type="radio" name="date" id="date3" />
+         <label for="date3">한달</label>
       </div>
 
       <input name="search_detail bt" id="searchBt" type="submit" value="검색" style="margin-left:80%; padding-top:2px; padding-down:2px; padding-left:10px; padding-right:10px;"/>
       </div>
       </div>
-		     <%-- 전체보기 레이어 } --%>
-				        	
-        	
-        	
+      <!-- 전체보기 레이어 } -->
+  
             <div class="col-md-4 col-sm-4">
             	<form id="search_form">
             		<div class="templatemo_search">
