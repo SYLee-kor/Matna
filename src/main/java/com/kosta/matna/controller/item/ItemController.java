@@ -109,7 +109,12 @@ public class ItemController {
 			message.setTitle("선물입니다");
 			message.setContent(point+"P 를 선물 받으셨습니다.");
 			
+			System.out.println(member.getPoint());
+			System.out.println(point);
+			
 			if(member.getPoint()>=point){//선물하는사람 포인트가 많을때
+				System.out.println(member.getPoint());
+				System.out.println(point);
 				
 			}else{
 				//포인트가 부족합니다 리턴
@@ -130,7 +135,6 @@ public class ItemController {
 				int takerno = service.readTaker(taker);//닉네임을 통한 검색후 선물할 사람의 회원번호 출력
 				service.updatePoint(1, -point); //자기 포인트감소
 				service.updatePoint(takerno, point); // 상대방 포인트 증가 
-
 			   }else{
 				   response.setContentType("text/html;charset=UTF-8");   
 				     PrintWriter writer = response.getWriter();
