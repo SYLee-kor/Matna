@@ -56,6 +56,7 @@
         
        
    <!-- =========== 페이징 ================= -->
+   <center>
        <ul class="pagination modal-1" id="pagination">
 		  <!-- <li><a href="#" class="prev">&laquo</a></li>
 		  <li><a href="#" class="prev">prev</a></li> -->
@@ -72,12 +73,12 @@
 		  <!-- <li><a href="#" class="next">next</a></li>
 		  <li><a href="#" class="next">&raquo;</a></li> -->
      </ul><br>
-  
+  </center>
   <!-- =============검색================== -->
   <div class="col-md-12 col-sm-12">
   <form class="searchform cf" action="/matna/item/itemSearch">
   	<input type="text" placeholder="상품을 검색해보세요!^_^" name="search">
-  	<button value="submit">검색</button>
+  	<button value="submit" class="list_searchbt">검색</button>
   </form>
     </div>
     
