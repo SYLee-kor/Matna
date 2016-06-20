@@ -45,15 +45,15 @@ $(document).ready(function() {
 	}
 	
 	function message(){
-    window.open("/matna/message/listAll","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+    window.open("/matna/message/listAll#tab-1","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 	}
 	
 	function mypage(){
-  		 window.open("/matna/mypage","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+  		 window.open("/matna/mypage#tab-1","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
 	}
 	
 	function admin(){
-  		 window.open("/matna/admin/memberList","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+  		 window.open("/matna/admin/memberList","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=0,left=100, width=1000,height=700");
 	}
 </script>
 

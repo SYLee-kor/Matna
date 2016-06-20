@@ -162,4 +162,18 @@
 		</if>
 	</select>
 	
+	<!-- 마이페이지 주문리스트 -->
+	<select id="orderMyList" resultType="com.kosta.matna.domain.member.Member_orderVO">
+		select ono, giver, (select name from item where ino=item) itemname, item, cnt, orderDate, state, addr
+		from member_order
+		where giver =#{giver}
+		order by ono desc
+	</select>
+	
+	<select id="orderMyListCount" resultType="int">
+		select count(*) cnt 
+		from member_order
+		where giver =#{giver}
+	</select>
+	
 </mapper>

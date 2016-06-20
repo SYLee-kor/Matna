@@ -547,7 +547,7 @@
                               <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu">
-                              <li><a href="#">POINT SHOP ♥</a></li>
+                              <li><a href="/matna/item/itemSearch">POINT SHOP ♥</a></li>
                            </ul>
                         </div>
                      

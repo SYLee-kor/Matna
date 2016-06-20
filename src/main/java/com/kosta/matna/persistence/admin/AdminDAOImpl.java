@@ -85,4 +85,14 @@ public class AdminDAOImpl implements AdminDAO {
 		return session.selectOne("item.listAllCnt", search);
 	}
 
+	@Override
+	public List<Member_orderVO> orderMyList(int ono, RowBounds rowBounds) throws Exception {
+		return session.selectList("item.orderMyList", ono, rowBounds);
+	}
+
+	@Override
+	public int orderMyListCount(int giver) throws Exception {
+		return session.selectOne("item.orderMyListCount", giver);
+	}
+
 }

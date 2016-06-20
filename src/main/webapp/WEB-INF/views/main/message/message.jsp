@@ -129,7 +129,8 @@
                      <form name="delete_message" method="post" role="form2">
                      	 <input type="hidden" name="message" id="message" value="receive" />
 
-                        <table class="table table-bordered" style="text-align:center; margin:auto; border:1px soild #ff7359; width:100%; height:100px;">
+                        <table class="table table-bordered" style="text-align:center; margin:auto;
+                        		 border:1px soild #ff7359; width:100%; height:100px;">
                            <tr align="center" style="border:1px solid #ff7359;">
                               <th></th>
                               <th width="100px">보내는이</th>
@@ -157,8 +158,8 @@
                               </tr>
                               <tr align="center" id="${messageVO.no}" class="b">
                                  <td></td>
-                                 <td colspan="4">${messageVO.content}</td>
-                                 <td></td>
+                                 <td style="border:1px solid #ff7359;">내용</td>
+                                 <td colspan="3" style="border:1px solid #ff7359;">${messageVO.content}</td>
                                  <td></td>
                                  <td></td>
                               </tr>
