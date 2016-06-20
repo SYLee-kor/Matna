@@ -8,18 +8,19 @@
 <title>Insert title here</title>
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/admin/updateSuccess");
+			formObj.attr("action", "/matna/admin/updateSuccess");
 			formObj.submit();
 		});
 		
 		$('#confirmnick').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmNick",
+		      url: "/matna/join/confirmNick",
 		      data: { action: "join", 
 		    	      action2: "confirmNick", 
 		    	  	  nickname: $('#nickname').val()
@@ -36,7 +37,7 @@
 </head>
 <%-- joinForm.jsp --%>
 <body>
-	
+	<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 	<div id="wrapper">
 		<form name="join_member" method="post" role="form">
 			<input type="hidden" name="action" id="action" value="join" />
@@ -178,7 +179,7 @@
 				<div>
 					회원등급:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					<select name = "grade" id="grade" path="grade">
-  						<option value="5" ${5 == memberVO.grade  ? 'selected="selected"' : '' }>일반회원</option>
+  						<option value="5" ${5 == memberVO.grade  ? 'selected="selected"' : '' }>일반회원</option>>
   						<option value="4" ${4 == memberVO.grade  ? 'selected="selected"' : '' }>우수회원</option>
   						<option value="3" ${3 == memberVO.grade  ? 'selected="selected"' : '' }>특별회원</option>
   						<option value="2" ${2 == memberVO.grade  ? 'selected="selected"' : '' }>부관리자</option>
@@ -192,6 +193,7 @@
 						type=button value="취소" OnClick="javascript:history.back(-1)"
 						id="cancel" style="margin-right: 35px" />
 				</div>
+				
 			</fieldset>
 		</form>
 	</div>

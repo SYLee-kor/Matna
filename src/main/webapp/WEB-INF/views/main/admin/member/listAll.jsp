@@ -10,25 +10,24 @@
 		var formObj = $("form[role='form']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/admin/delete");
+			formObj.attr("action", "/matna/admin/delete");
 			formObj.submit();
 		});
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/admin/toUpdateForm");
+			formObj.attr("action", "/matna/admin/toUpdateForm");
 			formObj.submit();
-		});
+		}); 
 
 		$('#search').click(function() {
-			formObj.attr("action", "/admin/search");
+			formObj.attr("action", "/matna/admin/search");
 			formObj.submit();
 		});
 	});
-</script>
-
-<script>
-	function showPage(page) {
-		document.location.href='/admin/memberList?page='+page+'&nickname='+nickname;
+	
+	function showPage(page,nickname) {
+		alert("dd");
+		document.location.href='/matna/admin/memberList?page='+page+'&nickname='+nickname;
 	}
 </script>
 
@@ -44,6 +43,8 @@
 <c:if test="${page == allTotalPage }">
 	<c:set value="${page }" var="nextPage" />
 </c:if>
+
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 
 <!-- Main content -->
 <section class="content">
@@ -71,6 +72,7 @@
 		<th>우편번호</th>
 		<th>주소</th>
 		<th>포인트</th>
+		<th>등급</th>
 		<th>가입일</th>
 	</tr>
 
@@ -89,6 +91,7 @@
 		<td>${memberVO.post}</td>
 		<td>${memberVO.addr}</td>
 		<td>${memberVO.point}</td>
+		<td>${memberVO.grade}</td>
 		<td>${memberVO.regdate}</td>
 	</tr>
 
@@ -104,14 +107,24 @@
 	<input type="submit" name="delete" value="삭제" id="delete" class="btn btn-delete" />
 	<br>
 	<div>
-			<input type="button" class="button" onclick="showPage(1)" value="처음">
+			<input type="button" class="button" onclick="showPage(1,'${nickname}')" value="처음">
 			<%-- <input type="button" class="button" value="이전" onclick="showPage(${beforePage})"> --%>
 			<c:forEach var="i" begin="1" end="${allTotalPage }">
             [<a href="javascript: showPage(${i },'${nickname}')">${i}</a>]
 			
          	</c:forEach>
 			<%-- <input type="button" class="button" value="다음" onclick="showPage(${nextPage})"> --%>
-			<input type="button" class="button" onclick="showPage(${allTotalPage },'${nickname}' )" value="끝">
+			<input type="button" class="button" onclick="showPage(${allTotalPage},'${nickname}' )" value="끝">
+			
+			
+			<%-- <input type="button" class="button" onclick="showPage(1,${nickname})" value="처음">
+			<input type="button" class="button" value="이전" onclick="showPage(${beforePage})">
+			<c:forEach var="i" begin="1" end="${allTotalPage }">
+            [<a href="javascript: showPage(${i },${nickname})">${i}</a>]
+			
+         	</c:forEach>
+			<input type="button" class="button" value="다음" onclick="showPage(${nextPage})">
+			<input type="button" class="button" onclick="showPage(${allTotalPage},${nickname} )" value="끝"> --%>
 		</div>
 	
 </form>

@@ -51,6 +51,10 @@ $(document).ready(function() {
 	function mypage(){
   		 window.open("/matna/mypage","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
 	}
+	
+	function admin(){
+  		 window.open("/matna/admin/memberList","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+	}
 </script>
 
 </head>
@@ -92,6 +96,10 @@ $(document).ready(function() {
   <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
   <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
   <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
+  
+  <c:if test="${userGrade == '1' }">
+  	<input class="admin" onclick="admin()" type="button" id="adm" name="adm" value="관리자">
+  </c:if>
 </form>
 
 </c:if>

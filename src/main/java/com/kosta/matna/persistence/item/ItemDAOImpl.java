@@ -52,7 +52,6 @@ public class ItemDAOImpl implements ItemDAO {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 			map.put("no", no);
 			map.put("price", price);
-		
 			if(session.update("item.updatePoint", map)==1){
 				return true;
 			}

@@ -7,280 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/matna/resource/css/message.css">
 </head>
-<style>
-/* MAGIC ... IMPORTANT! */
-#tabs::after {
-   display: block;
-   content: "";
-   clear: both;
-}
 
-.tab-switch {
-   position: fixed;
-}
-
-.tab-switch:target+.tab-link+.tab-content {
-   display: block;
-}
-
-.tab-link {
-   display: inline-block;
-}
-
-.tab-content {
-   box-sizing: border-box;
-   float: right;
-   display: none;
-   width: 100%;
-}
-
-/* FANCY STYLES */
-body {
-   font-family: sans-serif;
-   padding: 10px 20px;
-}
-
-h1 {
-   text-align: center;
-}
-
-footer {
-   margin-top: 20px;
-   text-align: center;
-}
-
-#tabs {
-   text-align: center;
-   background-color: #ff7359; /* tomato button color */
-   border: 1px solid #1caa5d;
-   font-size: 0;
-}
-
-.tab-link {
-   margin-left: 20px;
-   margin-top: 10px;
-   padding: 20px;
-   text-decoration: none;
-   font-size: 18px;
-   color: white;
-}
-
-.tab-link:hover {
-   background-color: white;
-   color: black;
-}
-
-.tab-link ~ .tab-link {
-   margin-left: 0;
-}
-
-.tab-switch:target+.tab-link {
-   background-color: white;
-   color: black;
-}
-
-.tab-content {
-   background-color: white;
-   padding: 35px;
-   font-size: 13px;
-}
-
-.tab-content p {
-   line-height: 1.65;
-}
-
-.tab-content ul, .tab-content ol {
-   padding: 0 0 0 15px;
-   margin: 0;
-   line-height: 1.25;
-}
-
-.tab-content ul>li, .tab-content ol>li {
-   margin: 5px 0;
-}
-
-/* 첫번째 tab table css */
-.box-body {
-    border-radius:4px;
-    background: #fff; 
-    background: -moz-linear-gradient(#fff, #f9fdff);
-    background: -o-linear-gradient(#fff, #f9fdff);
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff));
-    background: -webkit-linear-gradient(#fff, #f9fdff);
-    padding:5px;
-    border-color:rgba(4, 129, 177, 0.4);
-}
-.table{
-    border: 3px solid #ff7359;
-    text-transform:uppercase;
-    color: ;
-    cursor: pointer;
-    font-size: 20px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-}
-.name{
-     padding:10px;
-}
-.button{
-    background: #00b8e6;
-    border: none;
-    text-transform:uppercase;
-    color: #eee;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 5px 0;
-    padding: 5px 22px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    margin-right: 30px;
-}
-#delete{
-    background: #ff7359;
-    border: none;
-    text-transform:uppercase;
-    color: #eee;
-    cursor: pointer;
-    font-size: 20px;
-    margin: 5px 0;
-    padding: 5px 22px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    margin-left:450px;
-}
-    .name { 
-        color: #373737;
-        background: #fff;
-        border: 1px solid #CCCCCC;
-        color: #aaa;
-        font-size: 23px;
-        line-height: 1.2em;
-        margin-bottom:15px;
-
-        -moz-border-radius:4px;
-        -webkit-border-radius:4px;
-        border-radius:4px;
-         padding:10px;
-    }
-    .val{
-       color: #373737;
-        background: #fff;
-        border: 1px solid #CCCCCC;
-        color: #aaa;
-        font-size: 20px;
-        line-height: 1.2em;
-        margin-bottom:15px;
-
-        -moz-border-radius:4px;
-        -webkit-border-radius:4px;
-        border-radius:4px;
-        padding:10px;
-    }
-    h1{
-       color: #aaa;
-    }
-    
-/* 두번째 tab table css */
-#delete2{
-       background: #ff7359;
-        border: none;
-        text-transform:uppercase;
-        color: #eee;
-        cursor: pointer;
-        font-size: 20px;
-        margin: 5px 0;
-        padding: 5px 22px;
-        -moz-border-radius: 4px;
-        border-radius: 4px;
-        -webkit-border-radius:4px;
-        -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-        float:right;
-    }
-/* 세번째 tab table css */
-.form-group{
-    text-transform:uppercase;
-    color: ;
-    cursor: pointer;
-    font-size: 20px;
-}
-input{
-   border: 3px solid #ff7359;
-    text-transform:uppercase;
-    color: ;
-    cursor: pointer;
-    font-size: 20px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    margin-left:;
-}
-.form-control{
-   border: 3px solid #ff7359;
-    text-transform:uppercase;
-    cursor: pointer;
-    font-size: 20px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-}
-.form-control4{
-   border: 3px solid #ff7359;
-    text-transform:uppercase;
-    color: ;
-    cursor: pointer;
-    font-size: 20px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-    width: 70%;
-    height: 300px;
-}
-#send{
-   background: #ff7359;
-    border: none;
-    text-transform:uppercase;
-    color: #eee;
-    cursor: pointer;
-    font-size: 20px;
-    margin-right:20px;
-    padding: 5px 22px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-}
-#send2{
-   background: #ff7359;
-    border: none;
-    text-transform:uppercase;
-    color: #eee;
-    cursor: pointer;
-    font-size: 20px;
-    float:right;
-    padding: 5px 22px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    -webkit-border-radius:4px;
-    -webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
-}
-.box-footer{
-   float:right;
- }
- .b{
- 	display:none;
- }
-}
-</style>
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
    /* tab 실행 */
@@ -296,6 +25,7 @@ input{
 <script type="text/javascript">
    /* 첫번째 tab 받은쪽지함 */
    $(document).ready(function() {
+	   
       var formObj2 = $("form[role='form2']");
 
       $('#delete2').click(function() {
@@ -343,43 +73,44 @@ input{
    
 	function receiveShowPage(page,messageSelect,search) {
 		document.location.href='/matna/message/listAll?searchs=1&&message=receive&&'
-				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
+				+'messageSelect='+messageSelect+'&&searches='+search+'&&receivepage='+page+'#tab-1';
 	}
 	function sendShowPage(page,messageSelect,search) {
 		document.location.href='/matna/message/listAll?searchs=1&&message=send&&'
-				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
+				+'messageSelect='+messageSelect+'&&searches='+search+'&&sendpage='+page+'#tab-2';
 	}
 </script>
 
-<c:if test="${page > 1 }">
-	<c:set value="${page-1 }" var="beforePage" />
+<c:if test="${receiverPage > 1 }">
+	<c:set value="${receiverPage-1 }" var="receiverBeforePage" />
 </c:if>
-<c:if test="${page == 1 }">
-	<c:set value="${oldPage }" var="beforePage" />
+<c:if test="${receiverPage == 1 }">
+	<c:set value="${receiverPage }" var="receiverBeforePage" />
 </c:if>
-<c:if test="${page < receiverTotalPage }">
-	<c:set value="${page+1 }" var="nextPage" />
+<c:if test="${receiverPage < receiverTotalPage }">
+	<c:set value="${receiverPage+1 }" var="receiverNextPage" />
 </c:if>
-<c:if test="${page == receiverTotalPage }">
-	<c:set value="${page }" var="nextPage" />
+<c:if test="${receiverPage == receiverTotalPage }">
+	<c:set value="${receiverPage }" var="receiverNextPage" />
 </c:if>
 <!-- 위는 receive,  밑은 sender -->
-<c:if test="${page > 1 }">
-	<c:set value="${page-1 }" var="beforePage" />
+<c:if test="${senderPage > 1 }">
+	<c:set value="${senderPage-1 }" var="senderBeforePage" />
 </c:if>
-<c:if test="${page == 1 }">
-	<c:set value="${oldPage }" var="beforePage" />
+<c:if test="${senderPage == 1 }">
+	<c:set value="${senderPage}" var="senderBeforePage" />
 </c:if>
-<c:if test="${page < senderTotalPage }">
-	<c:set value="${page+1 }" var="nextPage" />
+<c:if test="${senderPage < senderTotalPage }">
+	<c:set value="${senderPage+1 }" var="senderNextPage" />
 </c:if>
-<c:if test="${page == senderTotalPage }">
-	<c:set value="${page }" var="nextPage" />
+<c:if test="${senderPage == senderTotalPage }">
+	<c:set value="${senderPage }" var="senderNextPage" />
 </c:if>
    
 	
 
 <body>
+
    <div id="tabs">
       <span id="tab-1" class="tab-switch"></span> 
       	<a href="#tab-1" class="tab-link"><h4>받은 쪽지함</h4></a>
@@ -389,7 +120,7 @@ input{
             <!-- left column -->
             <div class="col-md-12">
                <!-- general form elements -->
-
+			
                <div id="read" class="box">
                   <!-- <div class="box-header with-border">
                      <h1 class="box-title">받은 메세지</h1>
@@ -401,8 +132,8 @@ input{
                         <table class="table table-bordered" style="text-align:center; margin:auto; border:1px soild #ff7359; width:100%; height:100px;">
                            <tr align="center" style="border:1px solid #ff7359;">
                               <th></th>
-                              <th width="80px">보내는이</th>
-                              <th width="350px">제목</th>
+                              <th width="100px">보내는이</th>
+                              <th width="300px">제목</th>
                               <th>날짜</th>
                               <th>읽음상태</th>
                            </tr>
@@ -438,10 +169,16 @@ input{
                         <input type="submit" name="delete2" value="삭제" id="delete2"
                            class="btn btn-delete2" />
        <br>
-         <div>
+         <div class="page">
+         	<ul class="pagination modal-1" id="pagination">
+         	<li><a href="javascript: receiveShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
+            <li><a href="javascript: receiveShowPage(${receiverBeforePage },'${messageSelect }','${search }')" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${receiverTotalPage }">
-            [<a href="javascript: receiveShowPage(${i },'${messageSelect }','${search }')">${i}</a>]
+            	<li><a onfocus="" href="javascript: receiveShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
+         	<li><a href="javascript: receiveShowPage(${receiverNextPage },'${messageSelect }','${search }')" class="next">next</a></li>
+            <li><a href="javascript: receiveShowPage(${receiverTotalPage },'${messageSelect }','${search }')" class="next">&raquo;</a></li>
+         	</ul>
 		</div>
                      </form>
 
@@ -478,7 +215,7 @@ input{
                            <tr align="center">
                               <th></th>
                               <th>받는이</th>
-                              <th width="350px">제목</th>
+                              <th width="300px">제목</th>
                               <th>날짜</th>
                               <th>읽음상태</th>
                            </tr>
@@ -514,10 +251,16 @@ input{
                         <input type="submit" name="delete" value="삭제" id="delete2"
                            class="btn btn-delete" />
                       <br>
-		<div>
+		<div align="center">
+			<ul class="pagination modal-1" id="pagination">
+			<li><a href="javascript: sendShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
+            <li><a href="javascript:sendShowPage(${senderBeforePage},'${messageSelect }','${search }')" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${senderTotalPage }">
-            [<a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a>]
+            	<li><a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
+         	<li><a href="javascript:sendShowPage(${senderNextPage},'${messageSelect }','${search }')" class="next">next</a></li>
+            <li><a href="javascript:sendShowPage(${senderTotalPage },'${messageSelect }','${search }')" class="next">&raquo;</a></li>
+         	</ul>
 		</div>
                      </form>
                   </div>
@@ -558,8 +301,8 @@ input{
                         </div>
                         <div class="form-group">
                            <label for="exampleInputEmail1">From.</label> <input
-                              type="text" name="senderNickname" class="form-control"
-                              placeholder="Enter Sender">
+                              type="text" name="senderNickname" class="form-control" readonly="readonly"
+                              placeholder="Enter Sender" value="${userNickname}">
                         </div>
                         <div class="form-group">
                            <label for="exampleInputEmail1">Title</label> <input

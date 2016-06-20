@@ -107,6 +107,7 @@ public class LoginController {
 		session.setAttribute("userNickname", member.getNickname());
 		session.setAttribute("userPoint", member.getPoint());
 		session.setAttribute("isLogin", true);
+		session.setAttribute("userGrade", member.getGrade());
 		
 	   return "redirect:/home";
 	}

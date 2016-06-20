@@ -1,5 +1,7 @@
 package com.kosta.matna.controller.message;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -39,7 +41,7 @@ public class MessageController {
 	
 	@RequestMapping(value="/listAll", method=RequestMethod.GET)
     public String message(Model model,HttpSession session,
-    		String message, String page, String page2, String searches)throws Exception{
+    		String message, String receivepage, String sendpage, String searches)throws Exception{
 		logger.info("전체 메시지 list 요청...");
 		int userNo = (int) session.getAttribute("userNo");
 		
@@ -47,18 +49,18 @@ public class MessageController {
 		int pageNum2 = 1;// 보낸페이지를 1page로 설정
 		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
 		
-		String pageStr = page;
+		String pageStr = receivepage;
 		if (pageStr != null) {
 			pageNum = Integer.parseInt(pageStr);
 		}
-		String pageStr2 = page;
+		String pageStr2 = sendpage;
 		if (pageStr2 != null) {
 			pageNum2 = Integer.parseInt(pageStr2);
 		}
 		int end = pageNum * MAXRECORDCNT;		//받는
 		int start = end - (MAXRECORDCNT - 1);
-		int end2 = pageNum * MAXRECORDCNT;		//보낸
-		int start2 = end - (MAXRECORDCNT - 1);
+		int end2 = pageNum2 * MAXRECORDCNT;		//보낸
+		int start2 = end2 - (MAXRECORDCNT - 1);
 		
 		int receiveTotalCount = messageService.selectReceiverCount(userNo); // 받는 메세지 수
 		int sendTotalCount = messageService.selectSenderCount(userNo); // 보낸 메세지 수
@@ -71,300 +73,24 @@ public class MessageController {
 			totalPage2++;
 		}// totalPage는 페이지 수
 		
-		/*if(message==null){
-			message="receive";
-		}
-		if(message.equals("send")){
-			totalCount = messageService.selectSenderCount(userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-*/			
+			/*List<MessageVO> sendList= messageService.selectSenderPage(userNo, start2, end2);
+			for (int i = 0; i < sendList.size(); i++) {
+				
+				System.out.println(sendList.get(i).getSenderNickname()+","+sendList.get(i).getReceiverNickname());
+			}*/
+			
 			model.addAttribute("sendList", messageService.selectSenderPage(userNo, start2, end2));
 			model.addAttribute("senderTotalPage", totalPage2);
 			model.addAttribute("senderPage", pageNum2);
 			model.addAttribute("search",searches);
-			/*return "project/message/message";
-		}
-		if(message.equals("receive")){
-			totalCount = messageService.selectReceiverCount(userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-*/			
+		
 			model.addAttribute("receiveList", messageService.selectReceiverPage(userNo, start, end));
 			model.addAttribute("receiverTotalPage", totalPage);
 			model.addAttribute("receiverPage", pageNum);
 			model.addAttribute("search",searches);
 			
 			return "main/message/message";
-		/*}
-		
-		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
-		model.addAttribute("receiverTotalPage", totalPage);
-		model.addAttribute("receiverPage", pageNum);
-		model.addAttribute("search",searches);
-		
-		return "project/message/message";*/
-	}
-	
-	@RequestMapping(value="/sendList", method=RequestMethod.GET)
-	public String sendMessage(HttpSession session,Model model,
-			String messageSelect, String searches, String page)throws Exception{
-		logger.info("보낸메시지 get list 요청...");
-		int userNo = (int) session.getAttribute("userNo");
-		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
-		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
-		
-		String pageStr = page;
-		if (pageStr != null) {
-			pageNum = Integer.parseInt(pageStr);
-		}
-		int end = pageNum * MAXRECORDCNT;
-		int start = end - (MAXRECORDCNT - 1);
-		
-		int totalCount = messageService.selectSenderCount(userNo); // 전체레코드
-		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-			totalPage++;
-		}// totalPage는 페이지 수
-		
-		if(messageSelect==null){
-			messageSelect="all";
-		}
-		if(messageSelect.equals("제목")){
-			totalCount = messageService.searchSenderTitleCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("list", messageService.selectSenderPage(userNo, start, end));
-			model.addAttribute("senderTotalPage", totalPage);
-			model.addAttribute("senderPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			
-			model.addAttribute("list", messageService.selectSenderTitle(searches, userNo, start, end));
-			return "project/message/sendMessage";
-		}
-		if(messageSelect.equals("내용")){
-			totalCount = messageService.searchSenderContentCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("senderTotalPage", totalPage);
-			model.addAttribute("senderPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);	
-			
-			model.addAttribute("list", messageService.selectSenderContent(searches, userNo, start, end));
-			return "project/message/sendMessage";
-		}
-		
-		model.addAttribute("list", messageService.selectSenderPage(userNo, start, end));
-		model.addAttribute("senderTotalPage", totalPage);
-		model.addAttribute("senderPage", pageNum);
-		model.addAttribute("search","");
-		
-		//model.addAttribute("list", messageService.selectSenderMessage(2));
-		
-		return "project/message/sendMessage";
-	}
-	@RequestMapping(value="/sendList", method=RequestMethod.POST)
-	public String sendMessagePOST(HttpSession session,Model model,
-			String messageSelect, String searches, String page)throws Exception{
-		logger.info("보낸메시지 Post list 요청...");
-		
-		int userNo = (int) session.getAttribute("userNo");
-		
-		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
-		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
-		
-		String pageStr = page;
-		if (pageStr != null) {
-			pageNum = Integer.parseInt(pageStr);
-		}
-		int end = pageNum * MAXRECORDCNT;
-		int start = end - (MAXRECORDCNT - 1);
-		
-		int totalCount = messageService.selectSenderCount(userNo); // 전체레코드
-		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-			totalPage++;
-		}// totalPage는 페이지 수
-		
-		if(messageSelect==null){
-			messageSelect="all";
-		}
-		if(messageSelect.equals("제목")){
-			totalCount = messageService.searchSenderTitleCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			//model.addAttribute("list", messageService.selectSenderPage(userNo, start, end));
-			model.addAttribute("senderTotalPage", totalPage);
-			model.addAttribute("senderPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			
-			model.addAttribute("list", messageService.selectSenderTitle(searches, userNo, start, end));
-			return "project/message/sendMessage";
-		}
-		if(messageSelect.equals("내용")){
-			totalCount = messageService.searchSenderContentCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("senderTotalPage", totalPage);
-			model.addAttribute("senderPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);	
-			
-			model.addAttribute("list", messageService.selectSenderContent(searches, userNo, start, end));
-			return "project/message/sendMessage";
-		}
-		
-		model.addAttribute("list", messageService.selectSenderPage(userNo, start, end));
-		model.addAttribute("senderTotalPage", totalPage);
-		model.addAttribute("senderPage", pageNum);
-		model.addAttribute("search","");
-		
-		return "project/message/sendMessage";
-	}
-	
-	@RequestMapping(value="/receiveList", method=RequestMethod.GET)
-	public String receiveMessage(HttpSession session,Model model,
-			String messageSelect, String searches, String page)throws Exception{
-		logger.info("받은메시지 list 요청...");
-		int userNo = (int) session.getAttribute("userNo");
-		
-		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
-		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
-		
-		String pageStr = page;
-		if (pageStr != null) {
-			pageNum = Integer.parseInt(pageStr);
-		}
-		int end = pageNum * MAXRECORDCNT;
-		int start = end - (MAXRECORDCNT - 1);
-		
-		int totalCount = messageService.selectReceiverCount(userNo); // 전체레코드
-		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-			totalPage++;
-		}// totalPage는 페이지 수
-		
-		if(messageSelect==null){
-			messageSelect="all";
-		}
-		if(messageSelect.equals("제목")){
-			totalCount = messageService.searchReceiverTitleCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("receiverTotalPage", totalPage);
-			model.addAttribute("receiverPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			
-			model.addAttribute("list", messageService.selectReceiverTitle(searches, userNo, start, end));
-			return "project/message/receiveMessage";
-		}
-		if(messageSelect.equals("내용")){
-			totalCount = messageService.searchReceiverContentCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("receiverTotalPage", totalPage);
-			model.addAttribute("receiverPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			
-			model.addAttribute("list", messageService.selectReceiverContent(searches, userNo, start, end));
-			return "project/message/receiveMessage";
-		}
-		
-		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
-		model.addAttribute("receiverTotalPage", totalPage);
-		model.addAttribute("receiverPage", pageNum);
-		model.addAttribute("search","");
-		
-		//model.addAttribute("list", messageService.selectReceiverMessage(4));
-		
-		return "project/message/receiveMessage";
-	}
-	@RequestMapping(value="/receiveList", method=RequestMethod.POST)
-	public String receiveMessagePOST(HttpSession session,Model model,
-			String messageSelect, String searches, String page)throws Exception{
-		logger.info("받은메시지 list 요청...");
 
-		int userNo = (int) session.getAttribute("userNo");
-		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
-		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
-		
-		String pageStr = page;
-		if (pageStr != null) {
-			pageNum = Integer.parseInt(pageStr);
-		}
-		int end = pageNum * MAXRECORDCNT;
-		int start = end - (MAXRECORDCNT - 1);
-		
-		int totalCount = messageService.selectReceiverCount(userNo); // 전체레코드
-		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-			totalPage++;
-		}// totalPage는 페이지 수
-		
-		if(messageSelect==null){
-			messageSelect="all";
-		}
-		if(messageSelect.equals("제목")){
-			totalCount = messageService.searchReceiverTitleCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("receiverTotalPage", totalPage);
-			model.addAttribute("receiverPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			model.addAttribute("list", messageService.selectReceiverTitle(searches, userNo, start, end));
-			return "project/message/receiveMessage";
-		}
-		if(messageSelect.equals("내용")){
-			totalCount = messageService.searchReceiverContentCount(searches, userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-			
-			model.addAttribute("receiverTotalPage", totalPage);
-			model.addAttribute("receiverPage", pageNum);
-			model.addAttribute("search",searches);
-			model.addAttribute("messageSelect",messageSelect);
-			
-			model.addAttribute("list", messageService.selectReceiverContent(searches, userNo, start, end));
-			return "project/message/receiveMessage";
-		}
-		model.addAttribute("receiverTotalPage", totalPage);
-		model.addAttribute("receiverPage", pageNum);
-		model.addAttribute("search",searches);
-		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
-		return "project/message/receiveMessage";
 	}
 	
 	@RequestMapping(value="/sendSuccess",  method=RequestMethod.POST)//메세지 보내기
