@@ -97,7 +97,7 @@ $(document).ready(function() {
   <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
   <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
   
-  <c:if test="${userId == 'admin' }">
+  <c:if test="${userGrade == '1' }">
   	<input class="admin" onclick="admin()" type="button" id="adm" name="adm" value="관리자">
   </c:if>
 </form>
