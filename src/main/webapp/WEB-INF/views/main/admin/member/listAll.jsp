@@ -10,24 +10,24 @@
 		var formObj = $("form[role='form']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/admin/delete");
+			formObj.attr("action", "/matna/admin/delete");
 			formObj.submit();
 		});
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/admin/toUpdateForm");
+			formObj.attr("action", "/matna/admin/toUpdateForm");
 			formObj.submit();
 		}); 
 
 		$('#search').click(function() {
-			formObj.attr("action", "/admin/search");
+			formObj.attr("action", "/matna/admin/search");
 			formObj.submit();
 		});
 	});
 	
 	function showPage(page,nickname) {
 		alert("dd");
-		document.location.href='/admin/memberList?page='+page+'&nickname='+nickname;
+		document.location.href='/matna/admin/memberList?page='+page+'&nickname='+nickname;
 	}
 </script>
 

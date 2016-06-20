@@ -13,14 +13,14 @@
 		var formObj = $("form[role='form']");
 		
 		$('#update').click(function() {
-			formObj.attr("action", "/admin/updateSuccess");
+			formObj.attr("action", "/matna/admin/updateSuccess");
 			formObj.submit();
 		});
 		
 		$('#confirmnick').click(function() {
 		    $.ajax({
 		      type: "POST",
-		      url: "/join/confirmNick",
+		      url: "/matna/join/confirmNick",
 		      data: { action: "join", 
 		    	      action2: "confirmNick", 
 		    	  	  nickname: $('#nickname').val()

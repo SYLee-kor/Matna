@@ -11,12 +11,12 @@
 		var formObj2 = $("form[role='form2']");
 		
 		$('#delete').click(function() {
-			formObj.attr("action", "/admin/messageDelete");
+			formObj.attr("action", "/matna/admin/messageDelete");
 			formObj.submit();
 		});
 		
 		$('#delete2').click(function() {
-			formObj.attr("action", "/admin/messageLastDelete");
+			formObj.attr("action", "/matna/admin/messageLastDelete");
 			formObj.submit();
 		});
 
@@ -25,7 +25,7 @@
 
 <script>
 	function showPage(page) {
-		document.location.href='/admin/messageList?page='+page;
+		document.location.href='/matna/admin/messageList?page='+page;
 	}
 </script>
 
