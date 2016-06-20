@@ -72,11 +72,11 @@
    
 	function receiveShowPage(page,messageSelect,search) {
 		document.location.href='/matna/message/listAll?searchs=1&&message=receive&&'
-				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
+				+'messageSelect='+messageSelect+'&&searches='+search+'&&receivepage='+page;
 	}
 	function sendShowPage(page,messageSelect,search) {
 		document.location.href='/matna/message/listAll?searchs=1&&message=send&&'
-				+'messageSelect='+messageSelect+'&&searches='+search+'&&page='+page;
+				+'messageSelect='+messageSelect+'&&searches='+search+'&&sendpage='+page;
 	}
 </script>
 

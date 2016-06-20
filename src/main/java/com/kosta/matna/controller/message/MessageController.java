@@ -41,7 +41,7 @@ public class MessageController {
 	
 	@RequestMapping(value="/listAll", method=RequestMethod.GET)
     public String message(Model model,HttpSession session,
-    		String message, String page, String page2, String searches)throws Exception{
+    		String message, String receivepage, String sendpage, String searches)throws Exception{
 		logger.info("전체 메시지 list 요청...");
 		int userNo = (int) session.getAttribute("userNo");
 		
@@ -49,18 +49,18 @@ public class MessageController {
 		int pageNum2 = 1;// 보낸페이지를 1page로 설정
 		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
 		
-		String pageStr = page;
+		String pageStr = receivepage;
 		if (pageStr != null) {
 			pageNum = Integer.parseInt(pageStr);
 		}
-		String pageStr2 = page;
+		String pageStr2 = sendpage;
 		if (pageStr2 != null) {
 			pageNum2 = Integer.parseInt(pageStr2);
 		}
 		int end = pageNum * MAXRECORDCNT;		//받는
 		int start = end - (MAXRECORDCNT - 1);
-		int end2 = pageNum * MAXRECORDCNT;		//보낸
-		int start2 = end - (MAXRECORDCNT - 1);
+		int end2 = pageNum2 * MAXRECORDCNT;		//보낸
+		int start2 = end2 - (MAXRECORDCNT - 1);
 		
 		int receiveTotalCount = messageService.selectReceiverCount(userNo); // 받는 메세지 수
 		int sendTotalCount = messageService.selectSenderCount(userNo); // 보낸 메세지 수
