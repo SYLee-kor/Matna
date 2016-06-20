@@ -112,7 +112,7 @@
 			<tr>
 				<td></td>
 				<td class="name">구매자</td>
-				<td class="name">수령인</td>
+				<!-- <td class="name">수령인</td> -->
 				<td class="name">주문상품</td>
 				<td class="name">주문수량</td>
 				<td class="name">주문날짜</td>
@@ -123,7 +123,7 @@
 			<tr>
 				<td><input type="checkbox" name="ck" value="${order.ono}"></td>
 				<td class="val" id="giver"><input type="hidden" name="giver" value="${order.giver}">${order.giverid}</td>
-				<td class="val" id="taker"><input type="hidden" name="takerid" value="">${order.takerid}</td>
+			<%-- 	<td class="val" id="taker"><input type="hidden" name="takerid" value="">${order.takerid}</td> --%>
 				<td class="val" id="item"><input type="hidden" name="item" value="${order.item}">${order.itemname}</td>
 				<td class="val" id=cnt ><input type="hidden" name="cnt" value="${order.cnt}">${order.cnt}</td>
 				<td class="val" id="orderDate">${order.orderDate}</td>

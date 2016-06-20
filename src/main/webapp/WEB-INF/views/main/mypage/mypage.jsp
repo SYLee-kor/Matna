@@ -535,24 +535,30 @@ h1 {
                               <th class="name"></th>
                               <th class="name">상품명</th>
                               <th class="name">주문 수량</th>
-                              <th class="name">가격</th>
-                              <th class="name">연락번호</th>
-                              <th class="name">주소</th>
+                              <th class="name">주문날짜</th>
                               <th class="name">배송상태</th>
+                              <th class="name">배송주소</th>
                            </tr>
-
+							
+						   <c:forEach items="${orders}" var="order">
                            <tr>
-                              <td class="val"><input type="checkbox" name="ck"
-                                 value=">"> <input type="hidden" value="" name="mid"></td>
-                              <td class="val" id="title"><input type="hidden" value=""
-                                 name="nitem"></td>
-                              <td class="val" id="cnt"></td>
-                              <!-- item.getTitle()  -->
-                              <td class="val" id="price"></td>
-                              <td class="val" id="phone"></td>
-                              <td class="val" id="addr2"></td>
-                              <td class="val" id="statement"></td>
+                              <td class="val"><input type="checkbox" name="ck" value="${order.ono}"></td>
+                              <td class="val" id="item"><input type="hidden" name="item" value="${order.item}">${order.itemname}</td>
+                              <td class="val" id=cnt ><input type="hidden" name="cnt" value="${order.cnt}">${order.cnt}</td>
+                              <td class="val" id="orderDate">${order.orderDate}</td>
+                              <td class="val" id="state">
+								<input type="hidden" name="state" value="${order.state}">
+								<c:if test="${order.state==0}">
+									<c:set var="state" value="발송전"/>
+								</c:if>
+								<c:if test="${order.state==1}">
+									<c:set var="state" value="발송완료"/>
+								</c:if>
+								${state}
+								</td>
+                              <td class="val" id="addr">${order.addr}</td>
                            </tr>
+                           </c:forEach>
 
                         </table>
                         <br>
