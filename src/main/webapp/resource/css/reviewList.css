@@ -119,10 +119,10 @@ img { border: 0; max-width: 100%; }
   color: #fff;
 }
 
-#pagination{
+/* #pagination{
   margin-left: 37%;
 }
-
+ */
 /*--------------------------------------------------------------
 1.0 - BASE SITE STYLES
 --------------------------------------------------------------*/
@@ -149,7 +149,7 @@ img { border: 0; max-width: 100%; }
   background:#f4f4f4;
   background:rgba(244,244,244,.79);
   border: 1px solid #d3d3d3;
-  left: 30%;
+  left: 50%;
   padding: 2px 5px;
   margin: 2% 0 0 37.5%;
   margin-bottom : 3%;
@@ -160,64 +160,64 @@ img { border: 0; max-width: 100%; }
 }
 
 .searchform input, .searchform button {
-   float: left;
+	float: left;
 }
 .searchform input {
-   background:#fefefe;
-   border: none;
-   font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
-   margin-right: 5px;
-   padding: 10px;
-   width: 28em;
-   box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
-   -moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
-   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	background:#fefefe;
+	border: none;
+	font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	margin-right: 5px;
+	padding: 10px;
+	width: 28em;
+	box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
     border-radius: 9px;
     -moz-border-radius: 9px;
     -webkit-border-radius: 9px
 }
-   .searchform input:focus {
-   outline: none;
-   box-shadow:0 0 4px #dd2100 inset;
-   -moz-box-shadow:0 0 4px #dd2100 inset;
-   -webkit-box-shadow:0 0 4px #dd2100 inset;
-   }
-   .searchform input::-webkit-input-placeholder {
-     font-style: italic;
-     line-height: 15px
-   }
+	.searchform input:focus {
+	outline: none;
+	box-shadow:0 0 4px #dd2100 inset;
+	-moz-box-shadow:0 0 4px #dd2100 inset;
+	-webkit-box-shadow:0 0 4px #dd2100 inset;
+	}
+	.searchform input::-webkit-input-placeholder {
+  	font-style: italic;
+  	line-height: 15px
+	}
 
-   .searchform input:-moz-placeholder {
+	.searchform input:-moz-placeholder {
     font-style: italic;
-     line-height: 15px
-   }
+  	line-height: 15px
+	}
 
     
 .list_searchbt {
-   background: #ff4524;
-   background: -moz-linear-gradient(top,  #ff7359  0%, #ff4524 100%);
-   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff7359 ), color-stop(100%,#ff4524));
-   background: -webkit-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
-   background: -o-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
-   background: -ms-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
-   background: linear-gradient(to bottom,  #ff7359  0%,#ff4524 100%);
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=' #ff7359 ', endColorstr='#ff4524',GradientType=0 );
-   border: none;
-   color:#fff;
-   cursor: pointer;
-   font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
-   padding: 10px;
-   width:50px;
-   box-shadow: 0 0 2px #ff4524 inset;
-   -moz-box-shadow: 0 0 2px #ff4524 inset;
-   -webkit-box-shadow: 0 0 2px #ff4524 inset;
+	background: #ff4524;
+	background: -moz-linear-gradient(top,  #ff7359  0%, #ff4524 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff7359 ), color-stop(100%,#ff4524));
+	background: -webkit-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
+	background: -o-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
+	background: -ms-linear-gradient(top,  #ff7359  0%,#ff4524 100%);
+	background: linear-gradient(to bottom,  #ff7359  0%,#ff4524 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=' #ff7359 ', endColorstr='#ff4524',GradientType=0 );
+	border: none;
+	color:#fff;
+	cursor: pointer;
+	font: 13px/13px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	padding: 10px;
+	width:50px;
+	box-shadow: 0 0 2px #ff4524 inset;
+	-moz-box-shadow: 0 0 2px #ff4524 inset;
+	-webkit-box-shadow: 0 0 2px #ff4524 inset;
     border-radius: 9px;
     -moz-border-radius: 9px;
     -webkit-border-radius: 9px;
 }
-   .list_searchbt:hover {
-      opacity:.9;
-   } 
+	.list_searchbt:hover {
+		opacity:.9;
+	} 
  
 /*--------------------------------------------------------------
  LIST SEARCH FORM
@@ -226,11 +226,11 @@ img { border: 0; max-width: 100%; }
   background:#f4f4f4;
   background:rgba(244,244,244,.79);
   border: 1px solid #d3d3d3;
-  left: 50%;
+ /*  left: 50%;  */
   padding: 2px 5px;
-  margin: 2% 0 0 37.5%;
-  margin-bottom : 3%;
-  width:60em;
+  margin-top:2%;
+  margin-left:2%;
+  width:41em;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
@@ -238,80 +238,40 @@ img { border: 0; max-width: 100%; }
 
 
 .searchform2 input, .searchform2 button {
-   float: left;
+	float: left;
 }
 .searchform2 input {
-   background:#fefefe;
-   border: none;
-   font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
-   margin-right: 5px;
-   padding: 10px;
-   width: 28em;
-   box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
-   -moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
-   -webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	background:#fefefe;
+	border: none;
+	font:12px/12px 'HelveticaNeue', Helvetica, Arial, sans-serif;
+	margin-right: 5px;
+	padding: 10px;
+	width: 28em;
+	box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,.4) inset, 1px 1px 1px rgba(255,255,255,.75);
     border-radius: 9px;
     -moz-border-radius: 9px;
     -webkit-border-radius: 9px
 }
-   .searchform2 input:focus {
-   outline: none;
-   box-shadow:0 0 4px #dd2100 inset;
-   -moz-box-shadow:0 0 4px #dd2100 inset;
-   -webkit-box-shadow:0 0 4px #dd2100 inset;
-   }
-   .searchform2 input::-webkit-input-placeholder {
-     font-style: italic;
-     line-height: 15px
-   }
+	.searchform2 input:focus {
+	outline: none;
+	box-shadow:0 0 4px #dd2100 inset;
+	-moz-box-shadow:0 0 4px #dd2100 inset;
+	-webkit-box-shadow:0 0 4px #dd2100 inset;
+	}
+	.searchform2 input::-webkit-input-placeholder {
+  	font-style: italic;
+  	line-height: 15px
+	}
 
-   .searchform2 input:-moz-placeholder {
-   font-style: italic;
-     line-height: 15px
-   }
-   
-   ====================
-     셀렉트박스
-   ====================
-   
-#list_select_la{
-  box-shadow:0 3px 5px rgba(0,0,0,.2);
-  padding:15px;
-  background:white;
-  width:260px;
-  display:inline-block;
-  position:relative;
-  margin-left:50px;
-}
-
-#list_select{
-  border:none;
-  outline:none;
-  display: inline-block;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
-  cursor:pointer;
-  font-size:16px;
-  color:#909090;
-  border-radius:0;
-  width:275px;
-  z-index:2;
-  background:transparent;
-}
-
-#list_select_la:after{
-  content:"\25bc";
-  font-size:16px;
-  color:white;
-  background:#f3a1a1;
-  width:42px;
-  text-align:center;
-  line-height:3.2em;
-  top:0;
-  right:0;
-  bottom:0;
-  position:absolute;
-  pointer-events:none;
-}
-   
+	.searchform2 input:-moz-placeholder {
+	font-style: italic;
+  	line-height: 15px
+	}
+	
+	
+	=================
+	   글쓰기버튼
+	=================
+	
