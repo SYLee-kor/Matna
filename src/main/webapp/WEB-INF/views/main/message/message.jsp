@@ -25,6 +25,7 @@
 <script type="text/javascript">
    /* 첫번째 tab 받은쪽지함 */
    $(document).ready(function() {
+	   
       var formObj2 = $("form[role='form2']");
 
       $('#delete2').click(function() {
