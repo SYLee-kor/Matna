@@ -62,7 +62,7 @@
 			<td class="val"><input type="hidden" name="price" value="${detailItem.price }">${detailItem.price }</td>
 		</c:when>
 		<c:otherwise>
-			<td class="name">수령자 ID</td>
+			<td class="name">수령자 닉네임</td>
 			<td class="val"><input type="text" name="taker" ></td>
 		</c:otherwise>
 	</c:choose>
