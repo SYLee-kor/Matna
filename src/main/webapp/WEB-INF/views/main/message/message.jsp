@@ -249,7 +249,7 @@
                            </c:forEach>
 
                         </table>
-                        <input type="submit" name="delete" value="삭제" id="delete2"
+                        <input type="submit" name="delete" value="삭제" id="delete"
                            class="btn btn-delete" />
                       <br>
 		<div align="center">

@@ -115,13 +115,13 @@ public class MessageController {
 		//System.out.println(message);
 		if(message.equals("send")){
 			messageService.updateSenderDelete(check);
-			return "redirect:/message/listAll";
+			return "redirect:/message/listAll#tab-2";
 		}
 		if(message.equals("receive")){
 			messageService.updateReceiverDelete(check);
-			return "redirect:/message/listAll";
+			return "redirect:/message/listAll#tab-1";
 		}
-		return "redirect:/message/listAll";
+		return "redirect:/message/listAll#tab-1";
 	}
 	
 	@RequestMapping(value="/read")
