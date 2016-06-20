@@ -420,30 +420,30 @@ input{
 	}
 </script>
 
-<c:if test="${page > 1 }">
-	<c:set value="${page-1 }" var="beforePage" />
+<c:if test="${receiverPage > 1 }">
+	<c:set value="${receiverPage-1 }" var="receiverBeforePage" />
 </c:if>
-<c:if test="${page == 1 }">
-	<c:set value="${oldPage }" var="beforePage" />
+<c:if test="${receiverPage == 1 }">
+	<c:set value="${receiverPage }" var="receiverBeforePage" />
 </c:if>
-<c:if test="${page < receiverTotalPage }">
-	<c:set value="${page+1 }" var="nextPage" />
+<c:if test="${receiverPage < receiverTotalPage }">
+	<c:set value="${receiverPage+1 }" var="receiverNextPage" />
 </c:if>
-<c:if test="${page == receiverTotalPage }">
-	<c:set value="${page }" var="nextPage" />
+<c:if test="${receiverPage == receiverTotalPage }">
+	<c:set value="${receiverPage }" var="receiverNextPage" />
 </c:if>
 <!-- 위는 receive,  밑은 sender -->
-<c:if test="${page > 1 }">
-	<c:set value="${page-1 }" var="beforePage" />
+<c:if test="${senderPage > 1 }">
+	<c:set value="${senderPage-1 }" var="senderBeforePage" />
 </c:if>
-<c:if test="${page == 1 }">
-	<c:set value="${oldPage }" var="beforePage" />
+<c:if test="${senderPage == 1 }">
+	<c:set value="${senderPage}" var="senderBeforePage" />
 </c:if>
-<c:if test="${page < senderTotalPage }">
-	<c:set value="${page+1 }" var="nextPage" />
+<c:if test="${senderPage < senderTotalPage }">
+	<c:set value="${senderPage+1 }" var="senderNextPage" />
 </c:if>
-<c:if test="${page == senderTotalPage }">
-	<c:set value="${page }" var="nextPage" />
+<c:if test="${senderPage == senderTotalPage }">
+	<c:set value="${senderPage }" var="senderNextPage" />
 </c:if>
    
 	
@@ -510,13 +510,13 @@ input{
        <br>
          <div class="page">
          	<ul class="pagination modal-1" id="pagination">
-         	<li><a href="#" class="prev">&laquo</a></li>
-            <li><a href="#" class="prev">prev</a></li>
+         	<li><a href="javascript: receiveShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
+            <li><a href="javascript: receiveShowPage(${receiverBeforePage },'${messageSelect }','${search }')" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${receiverTotalPage }">
             	<li><a onfocus="" href="javascript: receiveShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
-         	<li><a href="#" class="next">next</a></li>
-            <li><a href="#" class="next">&raquo;</a></li>
+         	<li><a href="javascript: receiveShowPage(${receiverNextPage },'${messageSelect }','${search }')" class="next">next</a></li>
+            <li><a href="javascript: receiveShowPage(${receiverTotalPage },'${messageSelect }','${search }')" class="next">&raquo;</a></li>
          	</ul>
 		</div>
                      </form>
@@ -592,13 +592,13 @@ input{
                       <br>
 		<div align="center">
 			<ul class="pagination modal-1" id="pagination">
-			<li><a href="#" class="prev">&laquo</a></li>
-            <li><a href="#" class="prev">prev</a></li>
+			<li><a href="javascript: sendShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
+            <li><a href="javascript:sendShowPage(${senderBeforePage},'${messageSelect }','${search }')" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${senderTotalPage }">
             	<li><a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
          	</c:forEach>
-         	<li><a href="#" class="next">next</a></li>
-            <li><a href="#" class="next">&raquo;</a></li>
+         	<li><a href="javascript:sendShowPage(${senderNextPage},'${messageSelect }','${search }')" class="next">next</a></li>
+            <li><a href="javascript:sendShowPage(${senderTotalPage },'${messageSelect }','${search }')" class="next">&raquo;</a></li>
          	</ul>
 		</div>
                      </form>
