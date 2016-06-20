@@ -77,11 +77,12 @@ public class MypageController {
 		   memberService.update(member);
 		   model.addAttribute("memberVO",memberService.selectNo(userNo));
 		   System.out.println("수정완료");
+		   attr.addFlashAttribute("msg","modifySuccess");
 	   }else{
 		   attr.addFlashAttribute("msg","notPw");
 		   System.out.println("두 비번이 일치하지 않습니다.");
 	   }
-       return "redirect:/mypage";//스프링에게 뷰정보 전달!!	
+       return "redirect:/mypage#tab-2";//스프링에게 뷰정보 전달!!	
     }
 	
 	@RequestMapping(value="withdraw" , method=RequestMethod.POST)//회원가입폼

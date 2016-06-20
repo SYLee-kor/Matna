@@ -852,6 +852,9 @@ h1 {
     if(result == 'notPw'){
     	alert("두 비밀번호가 일치하지 않습니다.");
     }
+    if(result == 'modifySuccess'){
+    	alert("수정에 성공하였습니다.")
+    }
     if(result=='withdraw'){
     	window.opener.location.reload();
 		window.close();
