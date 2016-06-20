@@ -37,7 +37,7 @@
 </head>
 <%-- joinForm.jsp --%>
 <body>
-	
+	<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 	<div id="wrapper">
 		<form name="join_member" method="post" role="form">
 			<input type="hidden" name="action" id="action" value="join" />
