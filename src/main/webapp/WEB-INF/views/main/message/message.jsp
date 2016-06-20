@@ -158,8 +158,8 @@
                               </tr>
                               <tr align="center" id="${messageVO.no}" class="b">
                                  <td></td>
-                                 <td style="border:1px solid #ff7359;">내용</td>
-                                 <td colspan="3" style="border:1px solid #ff7359;">${messageVO.content}</td>
+                                 <td style="background:#e8f8fd;">내용</td>
+                                 <td colspan="3" style="background:#e8f8fd;">${messageVO.content}</td>
                                  <td></td>
                                  <td></td>
                               </tr>
@@ -240,8 +240,8 @@
                               </tr>
                               <tr align="center" id="${messageVO.no}" class="b">
                                  <td></td>
-                                 <td colspan="4">${messageVO.content}</td>
-                                 <td></td>
+                                 <td width="80px" style="background:#e8f8fd;">내용</td>
+                                 <td colspan="3" style=" background:#e8f8fd;">${messageVO.content}</td>
                                  <td></td>
                                  <td></td>
                               </tr>
