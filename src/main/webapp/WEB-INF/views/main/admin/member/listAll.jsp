@@ -44,6 +44,8 @@
 	<c:set value="${page }" var="nextPage" />
 </c:if>
 
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
+
 <!-- Main content -->
 <section class="content">
 	<div align="center" class="row">
