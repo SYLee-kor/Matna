@@ -85,4 +85,14 @@ public class AdminServiceImpl implements AdminService {
 		return dao.listAllCnt(search);
 	}
 
+	@Override
+	public List<Member_orderVO> orderMyList(int ono, RowBounds rowBounds) throws Exception {
+		return dao.orderMyList(ono, rowBounds);
+	}
+
+	@Override
+	public int orderMyListCount(int giver) throws Exception {
+		return dao.orderMyListCount(giver);
+	}
+
 }

@@ -37,4 +37,8 @@ public interface AdminService {
 	
 	public int listAllCnt(String search)throws Exception;//전체,검색 상품 갯수 select
 	//public int orderSearchCount(Map<String, String> map)throws Exception;//검색 주문 갯수 select
+	
+	public List<Member_orderVO> orderMyList(int ono, RowBounds rowBounds)throws Exception;//마이페이지 주문리스트 조회selectAll
+
+	public int orderMyListCount(int giver)throws Exception;//마이페이지 주문 갯수 select
 }
