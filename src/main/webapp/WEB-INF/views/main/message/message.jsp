@@ -558,8 +558,8 @@ input{
                         </div>
                         <div class="form-group">
                            <label for="exampleInputEmail1">From.</label> <input
-                              type="text" name="senderNickname" class="form-control"
-                              placeholder="Enter Sender">
+                              type="text" name="senderNickname" class="form-control" readonly="readonly"
+                              placeholder="Enter Sender" value="${userNickname}">
                         </div>
                         <div class="form-group">
                            <label for="exampleInputEmail1">Title</label> <input

@@ -11,16 +11,20 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.MultipartRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.item.ItemVO;
 import com.kosta.matna.domain.member.MemberVO;
@@ -28,6 +32,8 @@ import com.kosta.matna.domain.member.Member_orderVO;
 import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.service.admin.AdminService;
+import com.kosta.matna.service.member.MemberService;
+import com.kosta.matna.service.message.MessageService;
 
 @Controller
 @RequestMapping("/admin")
@@ -35,6 +41,15 @@ public class AdminController {
 	
 	@Inject
 	private AdminService service;
+	
+	@Inject
+	private MemberService memberService;
+	
+	@Inject
+	private MessageService messageService;
+	
+	private static final Logger logger
+    = LoggerFactory.getLogger(AdminController.class);
 	
 	String uploadPath;
 	
@@ -225,4 +240,165 @@ public class AdminController {
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 	}
+	
+	
+	
+	
+	
+	//  -------------------------------------------------------------------member, message(창원)
+	
+	@RequestMapping("/memberList")//게시물 전체 목록 요청
+	public String listAll(Model model, String page, String nickname)throws Exception{
+		logger.info("전체 회원list 요청..."+ model);	
+		System.out.println(nickname);
+		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
+		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
+		
+		String pageStr = page;
+		if (pageStr != null) {
+			pageNum = Integer.parseInt(pageStr);
+		}
+		int end = pageNum * MAXRECORDCNT;
+		int start = end - (MAXRECORDCNT - 1);
+		
+		int totalCount = memberService.selectAllCount(); // 전체레코드
+		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
+		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
+			totalPage++;
+		}// totalPage는 페이지 수
+		
+		if(nickname!=null){
+			totalCount = memberService.selectSearchCount(nickname); // 전체레코드
+			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
+			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
+				totalPage++;
+			}// totalPage는 페이지 수
+			
+			model.addAttribute("allTotalPage", totalPage);
+			//model.addAttribute("receiverPage", pageNum);
+			model.addAttribute("nickname",nickname);
+			
+			model.addAttribute("list", memberService.selectSearchList(nickname, start, end));
+			
+			//model.addAttribute("list", memberService.selectNickname(nickname));
+			
+			return "main/admin/member/listAll";//스프링에게 뷰정보 전달!!	
+		}
+		
+		model.addAttribute("list", memberService.selectAllPage(start, end));
+		model.addAttribute("allTotalPage", totalPage);
+		//model.addAttribute("senderPage", pageNum);
+		//model.addAttribute("list", memberService.listAll());
+	   return "main/admin/member/listAll";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(@RequestParam("check") int check, 
+			RedirectAttributes attr)throws Exception{
+		int memberNo = check;
+		logger.info("["+memberNo +"] 회원 삭제.");
+		memberService.delete(memberNo);
+		attr.addFlashAttribute("msg","SUCCESS");
+		return "redirect:/admin/memberList";
+	}
+	
+	@RequestMapping("/toUpdateForm")
+	public String toUpdateForm(@RequestParam("check") int check, Model model)throws Exception{
+		int memberNo = check;
+		logger.info("["+memberNo+"]회원의 updateForm 으로...");
+		model.addAttribute("memberVO",memberService.selectNo(memberNo));
+		return "main/admin/member/updateForm";
+	}
+	
+	@RequestMapping(value="/updateSuccess",  method=RequestMethod.POST)//회원가입폼
+    public String updateSuccess(MemberVO member, Model model)throws Exception{
+	   logger.info("updateSuccess 요청...");
+	   
+	   memberService.update(member);
+	   
+	   model.addAttribute("list", memberService.listAll());
+       return "main/admin/member/listAll";//스프링에게 뷰정보 전달!!	
+    }
+	
+	@RequestMapping(value="/search",  method=RequestMethod.POST)//회원가입폼
+	public String search(String nickname, Model model, String page)throws Exception{
+		logger.info("닉네임 '"+nickname+"' 검색 요청...");
+		
+		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
+		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
+		
+		String pageStr = page;
+		if (pageStr != null) {
+			pageNum = Integer.parseInt(pageStr);
+		}
+		int end = pageNum * MAXRECORDCNT;
+		int start = end - (MAXRECORDCNT - 1);
+		
+		int totalCount = memberService.selectSearchCount(nickname); // 전체레코드
+		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
+		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
+			totalPage++;
+		}// totalPage는 페이지 수
+		
+		model.addAttribute("allTotalPage", totalPage);
+		//model.addAttribute("receiverPage", pageNum);
+		model.addAttribute("nickname",nickname);
+		
+		model.addAttribute("list", memberService.selectSearchList(nickname, start, end));
+		
+		//model.addAttribute("list", memberService.selectNickname(nickname));
+		
+		return "main/admin/member/listAll";//스프링에게 뷰정보 전달!!	
+	}
+	
+	@RequestMapping(value="/messageList", method=RequestMethod.GET)
+    public String message(Model model, String message, String page, String searches)throws Exception{
+		logger.info("전체 메시지 list 요청...");
+
+		int pageNum = 1;// 목록출력의 기본페이지를 1page로 설정
+		final int MAXRECORDCNT = 10;// 한 페이지에 보여줄 최대 레코드 수
+		
+		String pageStr = page;
+		if (pageStr != null) {
+			pageNum = Integer.parseInt(pageStr);
+		}
+		int end = pageNum * MAXRECORDCNT;
+		int start = end - (MAXRECORDCNT - 1);
+		
+		int totalCount = messageService.selectAllCount(); // 전체레코드
+		int totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
+		if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
+			totalPage++;
+		}// totalPage는 페이지 수
+		
+		model.addAttribute("list", messageService.selectAllPage(start, end));
+		model.addAttribute("allTotalPage", totalPage);
+		model.addAttribute("senderPage", pageNum);
+		
+		//model.addAttribute("list", messageService.listAll());
+	   return "main/admin/message/messageList";
+	}
+	
+	@RequestMapping("/messageDelete")
+	public String messageDelete(@RequestParam("check") int check,
+			RedirectAttributes attr)throws Exception{
+		logger.info("쪽지 삭제...["+ check +"]");
+		//System.out.println(message);
+		
+		messageService.delete(check);
+		attr.addFlashAttribute("msg","SUCCESS");
+		return "redirect:/admin/messageList";
+	}
+	
+	@RequestMapping("/messageLastDelete")
+	public String messageLastDelete(RedirectAttributes attr)throws Exception{
+		logger.info("기간 지난 쪽지 삭제...");
+		//System.out.println(message);
+		
+		messageService.deleteSevenDays();
+		attr.addFlashAttribute("msg","SUCCESS");
+		return "redirect:/admin/messageList";
+	}
+	
+	//  ------------------------------------------------------------------member, message(창원) 끝
 }

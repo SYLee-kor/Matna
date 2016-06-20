@@ -1,13 +1,29 @@
 package com.kosta.matna.controller.viewtest;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.kosta.matna.domain.member.MemberVO;
+import com.kosta.matna.service.member.MemberService;
 
 @Controller
 public class ViewTest {
 
+	@Inject
+	private MemberService memberService;
+	
 	@RequestMapping("/home")
-	public String homeTest(){
+	public String homeTest(HttpSession session)throws Exception{
+		MemberVO member = new MemberVO();
+		
+		if(session.getAttribute("userId")!=null){
+			member = memberService.selectID((String)session.getAttribute("userId"));
+			session.setAttribute("userNickname", member.getNickname());
+			session.setAttribute("userPoint", member.getPoint());
+		}
 		return "home";
 	}
 	

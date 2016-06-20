@@ -1,5 +1,7 @@
 package com.kosta.matna.controller.message;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -71,29 +73,17 @@ public class MessageController {
 			totalPage2++;
 		}// totalPage는 페이지 수
 		
-		/*if(message==null){
-			message="receive";
-		}
-		if(message.equals("send")){
-			totalCount = messageService.selectSenderCount(userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-*/			
+			/*List<MessageVO> sendList= messageService.selectSenderPage(userNo, start2, end2);
+			for (int i = 0; i < sendList.size(); i++) {
+				
+				System.out.println(sendList.get(i).getSenderNickname()+","+sendList.get(i).getReceiverNickname());
+			}*/
+			
 			model.addAttribute("sendList", messageService.selectSenderPage(userNo, start2, end2));
 			model.addAttribute("senderTotalPage", totalPage2);
 			model.addAttribute("senderPage", pageNum2);
 			model.addAttribute("search",searches);
-			/*return "project/message/message";
-		}
-		if(message.equals("receive")){
-			totalCount = messageService.selectReceiverCount(userNo); // 전체레코드
-			totalPage = totalCount / MAXRECORDCNT;// 전체레코드/보여줄레코드
-			if (totalCount % MAXRECORDCNT != 0) {// 잔여레코드가 있다면
-				totalPage++;
-			}// totalPage는 페이지 수
-*/			
+		
 			model.addAttribute("receiveList", messageService.selectReceiverPage(userNo, start, end));
 			model.addAttribute("receiverTotalPage", totalPage);
 			model.addAttribute("receiverPage", pageNum);
@@ -110,7 +100,7 @@ public class MessageController {
 		return "project/message/message";*/
 	}
 	
-	@RequestMapping(value="/sendList", method=RequestMethod.GET)
+	/*@RequestMapping(value="/sendList", method=RequestMethod.GET)
 	public String sendMessage(HttpSession session,Model model,
 			String messageSelect, String searches, String page)throws Exception{
 		logger.info("보낸메시지 get list 요청...");
@@ -366,7 +356,7 @@ public class MessageController {
 		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
 		return "project/message/receiveMessage";
 	}
-	
+	*/
 	@RequestMapping(value="/sendSuccess",  method=RequestMethod.POST)//메세지 보내기
     public String joinSuccess(MessageVO message, Model model, RedirectAttributes attr)throws Exception{
 		
