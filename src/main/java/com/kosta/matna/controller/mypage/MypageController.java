@@ -46,7 +46,7 @@ public class MypageController {
 
 	   int userNo=(int)session.getAttribute("userNo");
 	   
-	   boolean equalPw=(member.getPw()==confirmpass);	//수정폼의 두 비번이 일치하는지
+	   boolean equalPw=(member.getPw().equals(confirmpass));	//수정폼의 두 비번이 일치하는지
 	   
 	   if(equalPw){
 		   memberService.update(member);
