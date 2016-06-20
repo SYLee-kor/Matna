@@ -356,7 +356,7 @@ public class MessageController {
 		model.addAttribute("list", messageService.selectReceiverPage(userNo, start, end));
 		return "project/message/receiveMessage";
 	}
-	
+	*/
 	@RequestMapping(value="/sendSuccess",  method=RequestMethod.POST)//메세지 보내기
     public String joinSuccess(MessageVO message, Model model, RedirectAttributes attr)throws Exception{
 		
@@ -370,7 +370,7 @@ public class MessageController {
 	   }
 	   
        return "redirect:/message/listAll";//스프링에게 뷰정보 전달!!	
-    }*/
+    }
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public String delete(@RequestParam("check") int check, @RequestParam("message") String message,
