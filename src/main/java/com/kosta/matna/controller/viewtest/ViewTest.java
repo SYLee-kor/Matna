@@ -56,6 +56,11 @@ public class ViewTest {
 		return "main/body/item/itemDetail";
 	}
 	
+	@RequestMapping("/test/item/list")
+	public String itemListTest(){
+		return "main/body/item/itemList";
+	}
+	
 	@RequestMapping("/test/itemDetail2")
 	public String ItemTest2(){
 		return "main/body/item/itemDetail2";

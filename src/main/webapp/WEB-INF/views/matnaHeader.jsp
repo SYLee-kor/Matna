@@ -232,20 +232,20 @@
                 $('div.main_menu div.col-md-2').hover(
                       function() {
                          $(this).children('.dropdown-menu').stop(true, true)
-                               .delay(200).fadeIn(500);
+                               .delay(50).fadeIn(100);
                       },
                       function() {
                          $(this).children('.dropdown-menu').stop(true, true)
-                               .delay(200).fadeOut(500);
+                               .delay(50).fadeOut(100);
                       });
                  $('div.main_menu div.col-md-2 ul.dropdown-menu').hover(
                       function() {
                          $(this).children('.dropdown-menu').stop(true, true)
-                               .delay(200).fadeIn(500);
+                               .delay(50).fadeIn(100);
                       },
                       function() {
                          $(this).children('.dropdown-menu').stop(true, true)
-                               .delay(200).fadeOut(500);
+                               .delay(50).fadeOut(100);
                       }); 
              });
     
@@ -355,42 +355,46 @@
 <body>
 
 <!-- title start -->
-     <div class="container">
-       <div class="row">
-           <div class="col-md-4 col-sm-4">
-               <div class="templatemo_title"><a href="/struts/home.jsp">Matna</a></div>
+  	<div class="container">
+    	<div class="row">
+        	<div class="col-md-4 col-sm-4">
+            	<div class="templatemo_title"><a href="/matna/home">Matna</a></div>
                 <div class="templatemo_subtitle">우리지금맛나</div>
             </div>
-            
-            <!-- 전체보기 레이어 { -->
-           <div class="col-md-2 col-sm-2">
-               <a href="#layer" onclick="showHide('layer');return false;"><button id="search_detail">search detail</button></a>
+        	
+        	<%--상세검색 --%>
+        	<div class="col-md-2 col-sm-2">
+                <a href="#layer" onclick="showHide('layer');return false;">
+                <button id="search_detail">search detail</button></a>
+               
+               <%-- 전체보기 레이어띄우는 창 --%>
+               
       <div id="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1;display:none; width:400px; height:250px; border:3px solid #ff7359;">
       
       
       
-      <div class="center-on-page" align="center" style="margin-top:2%;color:black;">
-         <input type="radio" name="rb" id="rb1" checked="checked"/>
-         <label for="rb1">전체</label>
-         <input type="radio" name="rb" id="rb2" />
-         <label for="rb2">식사</label>
-         <input type="radio" name="rb" id="rb3" />
-         <label for="rb3">디저트</label>
-         <input type="radio" name="rb" id="rb4" />
-         <label for="rb4">주류</label>
+      <div class="center-on-page" align="center" style="margin-top:2%;">
+         <input type="radio" name="rb" id="rb1" class="detail_rb" checked="checked" />
+         <label for="rb1" class="detail_lb">전체</label>
+         <input type="radio" name="rb" id="rb2" class="detail_rb"/>
+         <label for="rb2" class="detail_lb">식사</label>
+         <input type="radio" name="rb" id="rb3" class="detail_rb" />
+         <label for="rb3" class="detail_lb">디저트</label>
+         <input type="radio" name="rb" id="rb4" class="detail_rb" />
+         <label for="rb4" class="detail_lb">주류</label>
       </div>
       
       <div class="selectH" style="position: relative;z-index:2;">
       <div class="selectholder" align="center">
       <select class="select">
         <option value="구" ></option>
-        <option value="강서구" ></option>
+        <option value="강서구"></option>
         <option value="양천구"></option>
         <option value="영등포구"></option>
       </select>
       </div>
       
-      <div class="selectholder" align="center" style="color:black; background-color: white;">
+      <div class="selectholder" align="center" >
       <select class="select">
         <option value="동"></option>
         <option value="신월동"></option>
@@ -399,7 +403,7 @@
       </select>
       </div>
       
-      <div class="selectholder" align="center" style="color:black; ">
+      <div class="selectholder" align="center" >
       <select class="select">
         <option value="가격대" ></option>
         <option value="5000~10000"></option>
@@ -409,29 +413,31 @@
       </div>
       </div>
       
-      <div class="center-on-page" align="center" style=color:black;">
-         <input type="radio" name="parking" id="parkinglot1" />
-         <label for="parkinglot1">전체</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot2" />
-         <label for="parkinglot2">있음</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot3" />
-         <label for="parkinglot3">없음</label>
+      <div class="center-on-page" align="center" >
+         <input type="radio" name="parking" id="parkinglot1" class="detail_rb" checked="checked"/>
+         <label for="parkinglot1" class="detail_lb">전체</label>&nbsp;
+         <input type="radio" name="parking" id="parkinglot2" class="detail_rb" />
+         <label for="parkinglot2" class="detail_lb">주차장있음</label>&nbsp;
+         <input type="radio" name="parking" id="parkinglot3" class="detail_rb" />
+         <label for="parkinglot3" class="detail_lb">주차장없음</label>
       </div>
       
-      <div class="center-on-page" align="center" style=color:black;">
-         <input type="radio" name="date" id="date1" />
-         <label for="date1">전체</label>&nbsp;
-         <input type="radio" name="date" id="date2" />
-         <label for="date2">최근 일주일</label>&nbsp;
-         <input type="radio" name="date" id="date3" />
-         <label for="date3">한달</label>
+      <div class="center-on-page" align="center">
+         <input type="radio" name="date" id="date1" class="detail_rb" checked="checked"/>
+         <label for="date1" class="detail_lb">전체</label>&nbsp;
+         <input type="radio" name="date" id="date2" class="detail_rb" />
+         <label for="date2" class="detail_lb">최근 일주일</label>&nbsp;
+         <input type="radio" name="date" id="date3" class="detail_rb" />
+         <label for="date3" class="detail_lb">한달</label>
       </div>
 
       <input name="search_detail bt" id="searchBt" type="submit" value="검색" style="margin-left:80%; padding-top:2px; padding-down:2px; padding-left:10px; padding-right:10px;"/>
       </div>
       </div>
-      <!-- 전체보기 레이어 } -->
-  
+		     <%-- 전체보기 레이어 } --%>
+				        	
+        	
+        	
             <div class="col-md-4 col-sm-4">
             	<form id="search_form">
             		<div class="templatemo_search">

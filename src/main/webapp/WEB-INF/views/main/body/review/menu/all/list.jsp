@@ -14,6 +14,8 @@
 } 
 
 </style>
+
+
 </head>
 <body>
 
@@ -23,8 +25,8 @@
 <div class="col-md-10 col-sm-10">
  <div id="reviewList">
   <h1>Review</h1>
-  <input type="button" value="글쓰기">
-
+  
+  
   <table class="review_List" cellspacing="0" cellpadding="0">
     <thead>
       <tr>
@@ -87,6 +89,7 @@
   </table>
   
   <!-- ===================== paging 처리======================= -->
+  <center>
   <ul class="pagination modal-1" id="pagination">
   <li><a href="#" class="prev">&laquo</a></li>
   <li><a href="#" class="prev">prev</a></li>
@@ -114,35 +117,29 @@
   </select>
   </label> -->
   
-   
-
-<div>
-  <form class="searchform2 cf">
-  <span include="form-input-select2()">
-			  <select required>
-			    <option value=""
-			            hidden
-			    > == 전체 == </option>
-			
+   <table >
+     <tr>
+       <td>
+       <span include="form-input-select2()">
+       <select required>
+			    <option value=""  hidden> == 전체 == </option>
 			    <!-- normal options -->
 			    <option value="1"> == 전체 == </option>
 			    <option value="2">작성자+글제목</option>
 			    <option value="3">작성자</option>
 			    <option value="4">글제목</option>
 			  </select>
-
-		    </span>
-    <!--  <span style="float: left;margin-top:7px;margin-left:20px;margin-right:27px;">
-      <select name="addr1">
-              <option> 작성자+글제목2 </option>
-              <option> 작성자 </option>
-              <option> 글제목 </option>
-      </select>
-      </span> -->
-  <span><input type="text" placeholder="검색해보세요!^_^"></span>
-  <span><button type="button" class="list_searchbt">검색</button></span>
-  </form>
-</div>
+			  </span>
+       </td>
+       <td>
+           <form class="searchform2 cf">
+			  <span><input type="text" placeholder="검색해보세요!^_^"></span>
+			  <span><button type="button" class="list_searchbt">검색</button></span>
+		   </form>
+       </td>
+     </tr>
+   </table>
+   </center>
  
  </div> 
 </div>
