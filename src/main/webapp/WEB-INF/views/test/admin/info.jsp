@@ -54,6 +54,7 @@ $(document).ready(function(){
  });
 </script>
 </head>
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 <body>
 <center>
 	<h3>상품 상세 정보</h3>

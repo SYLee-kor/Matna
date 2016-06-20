@@ -103,7 +103,9 @@
 		
 	});
 </script>
+
 </head>
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 <body>
 	<center>
 		<h3>주문 리스트</h3>

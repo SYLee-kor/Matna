@@ -12,7 +12,7 @@
 		var formObj = $("form[role='form']");
 		
 		$('#order').click(function() {
-			formObj.attr("action", "/matna/admin/orderList");
+			formObj.attr("action", "/matna/admin/orderlistall");
 			formObj.submit();
 		});
 		
@@ -25,6 +25,11 @@
 			formObj.attr("action", "/matna/admin/messageList");
 			formObj.submit();
 		});
+		$('#item').click(function() {
+			formObj.attr("action", "/matna/admin/itemlistall");
+			formObj.submit();
+		});
+		
 	});
 	
 </script>
@@ -34,6 +39,7 @@
 	<form role="form" method="get">
 		<input type="submit" id="member" name="member" value="회원관리"> 
 		<input type="submit" id="order" name="order" value="주문관리"> 
+		<input type="submit" id="item" name="item" value="상품관리"> 
 		<input type="submit" id="message" name="message" value="쪽지관리"> 
 	</form>
 </body>
