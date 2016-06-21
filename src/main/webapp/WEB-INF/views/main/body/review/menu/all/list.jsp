@@ -33,10 +33,10 @@
         <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
         <th style="text-align: center;"><span>image</span></th>
         <th style="text-align: center;"><span>title</span></th>
-        <th style="text-align: center;"><span>author</span></th>
-        <th style="width: 80px;padding: 0px;text-align: center;">조회수</th>
-        <th style="width: 80px;padding: 0px;text-align: center;">좋아요!</th>
-        <th style="width: 80px;padding: 0px;text-align: center;">hate!></th>
+        <th style="text-align: center;width: 150px;"><span>author</span></th>
+        <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
+        <th style="width: 75px;padding: 0px;text-align: center;">좋아요!</th>
+        <th style="width: 75px;padding: 0px;text-align: center;">싫어요!</th>
         <th style="text-align: center;"><span>date</span></th>
         
       </tr>
@@ -45,49 +45,49 @@
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">4</td>
          <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
-         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으</a>
-             <span class="reply_num">
-               <img alt="댓글" src="/matna/resource/images/next.png" class="reply_num_img" />
-               <span class="reply_num_text">53</span>
-             </span>
+         <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으</a>
+           <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" ><!-- 리뷰수 -->
          </td>  <!-- title,조회수 -->
-         <td>배고푸다배고프다</td>
-         <td class="list_small">2</td>   <!-- 댓글수 -->
-         <td class="list_small">10</td>  <!-- 좋아요 -->
-         <td class="list_small">3</td>  <!-- 싫어요 -->
+         <td>배고푸다배고프다다다</td>
+         <td>2</td>   <!-- 댓글수 -->
+         <td><img alt="like" src="/matna/resource/images/good.PNG">10</td>  <!-- 좋아요 -->
+         <td><img alt="bad" src="/matna/resource/images/sad.PNG">3</td>  <!-- 싫어요 -->
          <td>2016-06-09 12:25</td>
       </tr>
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">3</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
-         <td><a href=#>가디에 콩국수 맛집을 찾았어요!!</a> [1]</td>
+         <td><a href=# style="font-size:13px;">가디에 콩국수 맛집을 찾았어요!!</a>
+             <input type="button" readonly="readonly" class="reply_num"  value="13"  style="cursor: default;" ></td>
          <td>배고푸다</td>
-         <td class="list_small">2</td> 
-         <td class="list_small">10</td>
-         <td class="list_small">3</td>
+         <td>21233</td> 
+         <td><img alt="like" src="/matna/resource/images/good.PNG">300</td>
+         <td><img alt="bad" src="/matna/resource/images/sad.PNG">100</td>
          <td>2016-06-09 12:25</td>
       </tr>
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">2</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
-         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [2]</td>
+         <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디</a> 
+             <input type="button" readonly="readonly" class="reply_num"  value="3"  style="cursor: default;" ></td>
          <td>맥도날드드</td>
-         <td class="list_small">2</td> 
-         <td class="list_small">10</td>
-         <td class="list_small">3</td>
+         <td>2</td> 
+         <td><img alt="like" src="/matna/resource/images/good.PNG">10</td>
+         <td><img alt="bad" src="/matna/resource/images/sad.PNG">3</td>
          <td>2016-06-09 12:25</td>
       </tr>
       
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">12345678</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
-         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [3]</td>
+         <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디디비디비디디디딥</a> 
+             <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
-         <td class="list_small">2</td> 
-         <td class="list_small">10</td>
-         <td class="list_small">3</td>
+         <td>2</td> 
+         <td><img alt="like" src="/matna/resource/images/good.PNG">10</td>
+         <td><img alt="bad" src="/matna/resource/images/sad.PNG">3</td>
          <td>2016-6-9</td>
       </tr>
     </tbody>
