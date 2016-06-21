@@ -36,11 +36,11 @@ $(document).ready(function() {
 		
 	});
 	
-	function join(){
-    window.open("/matna/join","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=300, width=700,height=600");
+	function joinMember(){
+    window.open("/matna/join","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=00,left=200, width=1000,height=700");
 	}
 	
-	function find(){
+	function findIdPW(){
     window.open("/matna/find","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=300,height=200");
 	}
 	
@@ -76,8 +76,10 @@ $(document).ready(function() {
 	
 				<div align="center">
 					<button type="submit" id="login_bt">Login</button>
-					<button type="button" onclick="find()" id="find">ID / PW 찾기</button>
-					<button type="button" onclick="join()" id="join">회원가입</button>
+					<input type="button" onclick="findIdPW()" id="find" value="ID / PW 찾기"/>
+					<input type="button" onclick="joinMember()" id="join" value="회원가입"/>
+					<!-- <button type="button" onclick="find()" id="find">ID / PW 찾기</button>
+					<button type="button" onclick="join()" id="join">회원가입</button> -->
 				</div>
 				</div>
 		</form>
