@@ -107,13 +107,20 @@
 	<c:set value="${senderPage }" var="senderNextPage" />
 </c:if>
    
+<style type="text/css">
+	a:link, a:visited{
+		color : gray;
+		text-decoration: none;
+	}
 	
+	@font-face{font-family:'Nanum Gothic'; src:url('/fonts/NanumGothic.woff')}
+</style>	
 
 <body>
 
-   <div id="tabs">
+   <div id="tabs" style="font-family: 'Nanum Gothic' ;" >
       <span id="tab-1" class="tab-switch"></span> 
-      	<a href="#tab-1" class="tab-link"><h4>받은 쪽지함</h4></a>
+      	<a href="#tab-1" class="tab-link"><h4 id="tab-select">받은 쪽지함</h4></a>
       <div class="tab-content">
          <!-- Main content -->
          <div class="row">
@@ -196,7 +203,7 @@
       <!-- /.content-wrapper -->
 
       <span id="tab-2" class="tab-switch"></span> <a href="#tab-2"
-         class="tab-link"><h4>보낸 쪽지함</h4></a>
+         class="tab-link"><h4 id="tab-select">보낸 쪽지함</h4></a>
       <div class="tab-content">
          <div class="row">
             <!-- left column -->
@@ -249,10 +256,11 @@
                            </c:forEach>
 
                         </table>
+                        
                         <input type="submit" name="delete" value="삭제" id="delete"
                            class="btn btn-delete" />
                       <br>
-		<div align="center">
+		<div class="page">
 			<ul class="pagination modal-1" id="pagination">
 			<li><a href="javascript: sendShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
             <li><a href="javascript:sendShowPage(${senderBeforePage},'${messageSelect }','${search }')" class="prev">prev</a></li>
@@ -279,7 +287,7 @@
 
 
       <span id="tab-3" class="tab-switch"></span> <a href="#tab-3"
-         class="tab-link"><h4>쪽지 보내기</h4></a>
+         class="tab-link"><h4 id="tab-select">쪽지 보내기</h4></a>
       <div class="tab-content">
          <!-- Main content -->
          <div class="row">
