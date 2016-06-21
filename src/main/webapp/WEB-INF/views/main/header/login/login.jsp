@@ -60,9 +60,34 @@ $(document).ready(function() {
 </head>
 <body>
 <c:if test="${isLogin == null }">
-<div class="panel">
-<h4>로그인</h4>
-<div class="col-md-5 col-sm-5" id="loginForm">
+
+
+
+			<div class="box">
+				<h2 id="logintoregister">Login</h2>
+				<div class="group">
+					<input class="inputMaterial" type="text" required> 
+					<span class="highlight"></span> <span class="bar"></span> <label>Username</label>
+				</div>
+				<div class="group">
+					<input class="inputMaterial" type="password" required>
+					<span class="highlight"></span> <span class="bar"></span> <label>Password</label>
+				</div>
+					<div align="center">
+					<button id="login_bt">Login</button>
+					<button type="button" onclick="find()" id="find">ID / PW 찾기</button>
+					<button type="button" onclick="join()" id="join">회원가입</button>
+				</div>
+			</div>
+
+
+
+
+
+			<!--
+			<div class="panel">
+			<h4>로그인</h4>
+			 <div class="col-md-5 col-sm-5" id="loginForm">
 	<div id="box">
 		<form role="form" id="login_frm" method="post">
 			<div class="form-group">
@@ -82,7 +107,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-</div>
+</div> -->
 </c:if>
 
 

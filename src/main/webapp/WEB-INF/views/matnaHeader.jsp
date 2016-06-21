@@ -613,8 +613,8 @@
             </div>
 			
 			<!--================== 로그인폼  =============================================-->
-           <!--  <div class="col-md-5 col-sm-5" id="loginForm">
-                <div id="box">
+            <div class="col-md-5 col-sm-5" id="loginForm">
+           <!--      <div id="box">
 			        <form id="login_frm">
 			           <input type="text" name=login_id placeholder="USERNAME" />
 			           <input type="text" name=login-pass placeholder="PASSWORD" />
@@ -627,6 +627,7 @@
 			   <div class="panel"> -->
 			   <!-- 절취 선 -->
   <%@include file="/WEB-INF/views/main/header/login/login.jsp" %>
+  </div>
  <!-- 절취 선 -->
 			   </div>
 		    </div>
