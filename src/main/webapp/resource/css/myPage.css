@@ -44,8 +44,8 @@ footer {
 
 #tabs {
    text-align: center;
-   background-color: #ff7359; /* tomato button color */
-   border: 1px solid #ff7359; /* tomato button color */
+   background-color: #9de0f7; /* tomato button color */
+   border: 1px solid #e8f8fd; /* tomato button color */
    font-size: 0;
 }
 
@@ -59,8 +59,8 @@ footer {
 }
 
 .tab-link:hover {
-   background-color: white;
-   color: black;
+   background-color: #b9eeff;
+   color: white;
 }
 
 .tab-link ~ .tab-link {
@@ -68,8 +68,8 @@ footer {
 }
 
 .tab-switch:target+.tab-link {
-   background-color: white;
-   color: black;
+   background-color: #44d0ff;
+   color: white;
 }
 
 .tab-content {
@@ -109,13 +109,13 @@ fieldset {
       to(#f9fdff));
    background: -webkit-linear-gradient(#fff, #f9fdff);
    padding: 20px;
-   border-color: #ff7359; /* tomato button color */
+   border-color: #44d0ff; /* tomato button color */
 }
 
 input {
    color: #373737;
    background: #fff;
-   border: 1px solid #ff7359; /* tomato button color */
+   border: 2px solid #9de0f7; /* tomato button color */
    color: #aaa;
    font-size: 14px;
    line-height: 1.2em;
@@ -189,10 +189,10 @@ input[name="addr"]:focus {
 }
 
 #cancel, #modify, #withdrawal {
-   background: #ff7359; /* tomato button color */
+   background: #9de0f7; /* tomato button color */
    border: none;
    text-transform: uppercase;
-   color: #eee;
+   color: white;
    cursor: pointer;
    font-size: 20px;
    margin: 5px 0;
@@ -221,15 +221,15 @@ fieldset {
       to(#f9fdff));
    background: -webkit-linear-gradient(#fff, #f9fdff);
    padding: 50px;
-   border-color: #ff7359; /* tomato button color */
+   border-color: #44d0ff; /* tomato button color */
 }
 
 #mypageTable {
-   border: 3px solid #ff7359; /* tomato button color */
+   border: 3px solid #9de0f7; /* tomato button color */
    text-transform: uppercase;
    color:;
    cursor: pointer;
-   font-size: 20px;
+   font-size: 15px;
    -moz-border-radius: 4px;
    border-radius: 4px;
    -webkit-border-radius: 4px;
@@ -242,7 +242,7 @@ fieldset {
 }
 
 .button {
-   background: #ff7359; /* tomato button color */
+   background: #9de0f7; /* tomato button color */
    border: none;
    text-transform: uppercase;
    color: #eee;
@@ -258,10 +258,10 @@ fieldset {
 }
 
 #delete {
-   background: #ff7359; /* tomato button color */
+   background: #9de0f7;
    border: none;
    text-transform: uppercase;
-   color: #eee;
+   color: white;
    cursor: pointer;
    font-size: 20px;
    margin: 5px 0;
