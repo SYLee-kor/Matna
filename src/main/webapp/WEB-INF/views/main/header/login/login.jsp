@@ -62,25 +62,25 @@ $(document).ready(function() {
 <c:if test="${isLogin == null }">
 
 
-
+	<form role="form" id="login_frm" method="post">
 			<div class="box">
 				<h2 id="logintoregister">Login</h2>
 				<div class="group">
-					<input class="inputMaterial" type="text" required> 
-					<span class="highlight"></span> <span class="bar"></span> <label>Username</label>
+					<input class="inputMaterial" type="text" name="login_id" required>
+					<span class="highlight"></span> <span class="bar"></span> <label id="id">Username</label>
 				</div>
 				<div class="group">
-					<input class="inputMaterial" type="password" required>
-					<span class="highlight"></span> <span class="bar"></span> <label>Password</label>
+					<input class="inputMaterial" type="password" name="login_pass" required>
+					<span class="highlight"></span> <span class="bar"></span> <label id="pw">Password</label>
 				</div>
-					<div align="center">
-					<button id="login_bt">Login</button>
+	
+				<div align="center">
+					<button type="submit" id="login_bt">Login</button>
 					<button type="button" onclick="find()" id="find">ID / PW 찾기</button>
 					<button type="button" onclick="join()" id="join">회원가입</button>
 				</div>
-			</div>
-
-
+				</div>
+		</form>
 
 
 
@@ -114,9 +114,9 @@ $(document).ready(function() {
 <c:if test="${isLogin == true }">
 
 <form role="form" name="memberinfo" method="post">
-    <label class="nickname" name="nickname">
+    <label id="nickname" class="nickname" name="nickname">
     	${userNickname } 님 반갑습니다~~!!</label><br>
-    <label class="point" name="point">
+    <label id="point" class="point" name="point">
           POINT: ${userPoint } </label><br>
   <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
   <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
