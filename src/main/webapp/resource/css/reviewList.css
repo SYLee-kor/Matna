@@ -61,8 +61,8 @@ img { border: 0; max-width: 100%; }
  테이블 tr호버시 배경
 ================= */
 .list_lists a{ 
-  color: black;
-  font-weight: 300;
+  color: #3e3e3e;
+  font-weight: 400;
   
 }
 .list_lists:HOVER{ 
@@ -70,7 +70,7 @@ img { border: 0; max-width: 100%; }
   
 }
 .list_lists a:HOVER{
-	color: #d31101;
+	color: #d92702;
 }
 /* ======조회수 img======== */
 
