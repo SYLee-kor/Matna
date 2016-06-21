@@ -128,7 +128,7 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/test/admin/order/list";//주문리스트 뷰로이동
+		return "/main/admin/order/list";//주문리스트 뷰로이동
 	}
 	
 	@ResponseBody
@@ -164,7 +164,7 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/test/admin/info";//관리자 아이템 상세보기 뷰로 이동
+		return "/main/admin/item/info";//관리자 아이템 상세보기 뷰로 이동
 	}
 	
 	@RequestMapping("/itemlistall") //상품 전체 호출, 상품 검색 호출
@@ -185,13 +185,13 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/test/admin/list"; //상품 리스트 뷰로 이동
+		return "/main/admin/item/list"; //상품 리스트 뷰로 이동
 	}
 	
 	@RequestMapping(value="/item", method=RequestMethod.GET) //사진등록전 불러오기
 	public String upphoto(Model model){
 		model.addAttribute("action", "item");
-		return "/test/admin/info";//관리자 아이템 상세보기 뷰로 이동
+		return "/main/admin/item/info";//관리자 아이템 상세보기 뷰로 이동
 	}
 	
 	@RequestMapping(value="/item", method=RequestMethod.POST) //사진 등록 버튼 클릭

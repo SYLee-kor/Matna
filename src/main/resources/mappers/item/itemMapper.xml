@@ -78,12 +78,12 @@
 	
 	<!-- 검색 아이템 리스트 -->
 	<select id="itemSeach" resultType="com.kosta.matna.domain.item.ItemVO" parameterType="String">
-		select ino, photo, name, price, content
+		select ino, photo, name, price, content, state
 		from item
 		<if test="value != null">
 		where name like '%'||#{name}||'%'
 		</if>
-		order by ino desc
+		order by state desc, ino desc
 	</select>
 	
 	<!-- 아이템 구매전 구매자 정보확인 -->
