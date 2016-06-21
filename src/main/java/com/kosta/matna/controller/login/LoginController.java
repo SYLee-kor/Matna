@@ -24,6 +24,7 @@ import com.kosta.matna.service.member.MemberService;
 public class LoginController {
 	int c;
     int a;
+    int a1111;
 	@Inject
 	private MemberService memberService;
 	
