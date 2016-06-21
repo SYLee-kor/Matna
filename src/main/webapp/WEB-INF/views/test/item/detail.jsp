@@ -40,7 +40,7 @@
   <div class="tabBlock-content">
     <div class="tabBlock-pane">
     <c:choose>
-    	<c:when test="${detailItem.ino!=5000}">
+    	<c:when test="${detailItem.state!=3}">
     	<form action="/matna/item/buy">
     	</c:when>
     	<c:otherwise>
@@ -57,7 +57,7 @@
 		<!-- 1ino가 5천이 아닐때 -->
 		<tr>
 	<c:choose>
-		<c:when test="${detailItem.ino!=5000}">
+		<c:when test="${detailItem.state!=3}">
 			<td class="name">가격</td>
 			<td class="val"><input type="hidden" name="price" value="${detailItem.price }">${detailItem.price }</td>
 		</c:when>
@@ -69,7 +69,7 @@
 		</tr>
 		<tr>
 	<c:choose>
-		<c:when test="${detailItem.ino!=5000}">
+		<c:when test="${detailItem.state!=3}">
 			<td class="name">남은 수량</td>
 			<td class="val"><input type="hidden" name="ino" value="${detailItem.ino}">${detailItem.amount }</td>
 		</c:when>
@@ -96,14 +96,14 @@
 		</tr> -->
 	</table>
 	<br><br>
-	<c:if test="${detailItem.ino!=5000}">
+	<c:if test="${detailItem.state!=3}">
 		<input type="button" value="-" name="buyDown" onclick="buyCountChange(-1)">
 		<input type="text" value="1" name="buyCount" >
 		<input type="button" value="+" name="buyUp" onclick="buyCountChange(1)">
 	</c:if>
 	
 	<c:choose>
-		<c:when test="${detailItem.ino!=5000}">
+		<c:when test="${detailItem.state!=3}">
 			<input type="submit" value="구매">
 		</c:when>
 		<c:otherwise>
