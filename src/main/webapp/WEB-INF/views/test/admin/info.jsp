@@ -94,8 +94,9 @@ $(document).ready(function(){
 		<td>
 			<select name="state">
 				<option value="0">일반 상품</option>
-				<option value="1" selected="selected">신상품</option>
-				<option value="2">인기 상품</option>
+				<option value="1">인기 상품</option>
+				<option value="2" selected="selected">신상품</option>
+				<option value="3">포인트 등록</option>
 			</select>
 		</td>
 		</tr>

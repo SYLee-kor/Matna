@@ -76,6 +76,9 @@
 				<c:if test="${item.state==2}">
 					<c:set var="state" value="인기 상품"/>
 				</c:if>
+				<c:if test="${item.state==3}">
+					<c:set var="state" value="포인트"/>
+				</c:if>
 					<td class="val" id="cnt2">${state}</td>
 			</tr>
 			</c:forEach>	
