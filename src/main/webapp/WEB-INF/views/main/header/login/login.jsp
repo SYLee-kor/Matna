@@ -49,7 +49,7 @@ $(document).ready(function() {
 	}
 	
 	function mypage(){
-  		 window.open("/matna/mypage#tab-1","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1200,height=800");
+  		 window.open("/matna/mypage#tab-1","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=100, width=1000,height=800");
 	}
 	
 	function admin(){

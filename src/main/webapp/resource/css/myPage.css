@@ -101,6 +101,8 @@ footer {
 }
 
 fieldset {
+	width:100%;
+	text-align: center;
    border-radius: 4px;
    background: #fff;
    background: -moz-linear-gradient(#fff, #f9fdff);
@@ -109,6 +111,7 @@ fieldset {
       to(#f9fdff));
    background: -webkit-linear-gradient(#fff, #f9fdff);
    padding: 20px;
+   margin-right:2%;
    border-color: #44d0ff; /* tomato button color */
 }
 
@@ -212,17 +215,7 @@ input[name="addr"]:focus {
 }
 
 /* 상품리스트 조희 css 시작 */
-fieldset {
-   border-radius: 4px;
-   background: #fff;
-   background: -moz-linear-gradient(#fff, #f9fdff);
-   background: -o-linear-gradient(#fff, #f9fdff);
-   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff),
-      to(#f9fdff));
-   background: -webkit-linear-gradient(#fff, #f9fdff);
-   padding: 50px;
-   border-color: #44d0ff; /* tomato button color */
-}
+
 
 #mypageTable {
    border: 3px solid #9de0f7; /* tomato button color */
