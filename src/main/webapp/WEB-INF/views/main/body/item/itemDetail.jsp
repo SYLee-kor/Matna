@@ -23,7 +23,7 @@
 	<div id="accordian">
 		<c:choose>
     		<c:when test="${detailItem.state!=3}">
-    			<form action="/matna/item/buy">
+    			<form action="/matna/item/itembuy">
     		</c:when>
     		<c:otherwise>
     			<form action="/matna/item/gift">

@@ -55,15 +55,17 @@ public class ItemController {
 		//return "/main/body/item/detail";
 	}
 	
-	@RequestMapping(value="/itembuy", method=RequestMethod.GET)//상품구매 페이지 //post는 url호출이 아닌 내부적 호출
-	public String buypage(Model model, int no, int num, int ino){
+	@RequestMapping("/itembuy")//상품구매 페이지 //post는 url호출이 아닌 내부적 호출
+	public String buypage(Model model, HttpSession session, int buyCount, int ino){
 		try{
-			model.addAttribute("detailMember", service.readMember(3));//service.readMember(no)); 회원 넘버
+			int userno = (int) session.getAttribute("userNo");
+			model.addAttribute("detailMember", service.readMember(userno));//service.readMember(no)); 회원 넘버
 			model.addAttribute("detailItem", service.readItem(ino));//service.readItem(ino));
+			model.addAttribute("buyCount", buyCount);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/main/body/item/buy";
+		return "/main/body/item/finalOrder";
 	}
 	
 	@RequestMapping("/buy")//상품 구매

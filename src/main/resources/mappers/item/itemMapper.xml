@@ -88,7 +88,7 @@
 	
 	<!-- 아이템 구매전 구매자 정보확인 -->
 	<select id="detailMember" resultType="com.kosta.matna.domain.member.MemberVO">
-		select name, email, phone, post, addr, point, no
+		select name, email, phone, post, addr, point, no, nickname
 		from member
 		where no=#{no}
 	</select>
