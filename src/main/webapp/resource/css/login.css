@@ -208,7 +208,7 @@ html{
 	font-size:25px;
 }
 
-.box button{
+#login_bt, #find, #join{
 	background:#FF4747;
 	border:0;
 	color:#fff;
@@ -251,7 +251,7 @@ html{
 
 /* LABEL ======================================= */
 
-label 				 {
+#id,#pw 				 {
   color:#999; 
   font-size:17px;
   font-weight:normal;
@@ -265,7 +265,12 @@ label 				 {
 }
 
 /* active state */
-.inputMaterial:focus ~ label, .inputMaterial:valid ~ label 		{
+.inputMaterial:focus ~ #id, .inputMaterial:valid ~ #id 		{
+  top:-10px;
+  font-size:14px;
+  color:#FF0000;
+}
+.inputMaterial:focus ~ #pw, .inputMaterial:valid ~ #pw 		{
   top:-10px;
   font-size:14px;
   color:#FF0000;
