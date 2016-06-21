@@ -37,16 +37,12 @@ public class ItemController {
 	@Inject
 	private MemberService memberService;
 	
-/*	@RequestMapping("/itemlistall")//전체 상품뿌리기
+	@RequestMapping("/itemlistall")//전체 상품뿌리기
 	public String listall(Model model) { 
-			try {
-				model.addAttribute("list", service.listAll());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		return "test/item/list";
+			
+		return "/main/body/item/finalOrder";
 	}
-	*/
+	
 	@RequestMapping("/itemdetail")//상품 클릭 상세보기
 	public String detail(Model model, int ino){
 		try {
@@ -55,7 +51,8 @@ public class ItemController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "test/item/detail";
+		return "/main/body/item/itemDetail";
+		//return "/main/body/item/detail";
 	}
 	
 	@RequestMapping(value="/itembuy", method=RequestMethod.GET)//상품구매 페이지 //post는 url호출이 아닌 내부적 호출
@@ -66,7 +63,7 @@ public class ItemController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "test/item/buy";
+		return "/main/body/item/buy";
 	}
 	
 	@RequestMapping("/buy")//상품 구매
@@ -184,6 +181,6 @@ public class ItemController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return "test/item/list";
+	return "/main/body/item/list";
 	}
 }
