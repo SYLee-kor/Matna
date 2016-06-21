@@ -100,7 +100,7 @@
   border: none;
   height: 35px;
   position: relative;
-  z-index: 2;
+  z-index: -2;
   padding: 5px;
   background: none;
   /* color: #FE5F01; */
@@ -124,7 +124,7 @@
   right: 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  z-index: 1;
+  z-index: -2;
 }
 .form-group.focus:after {
   opacity: 1;
@@ -167,4 +167,153 @@
             transform: scale(2.5);
     opacity: 0;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500);
+
+html{
+  background-color: #333;
+  font-family: "Roboto";
+}
+
+/* BOX LOGIN */
+.box{
+	position: inherit;
+	height: 300px;
+	left: 0;
+	z-index: 0;
+	right: 0;
+	width:80%;
+	color:#666;
+	padding:10px 0px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+	border-top: 2px solid #C0C0C0;
+	border-bottom: 2px solid #F00;
+  margin-bottom: 10px;
+}
+#logintoregister{
+	text-align:center;
+	font-size:25px;
+}
+
+.box button{
+	background:#FF4747;
+	border:0;
+	color:#fff;
+	padding:10px;
+	font-size:15px;
+	margin-left : 20px;
+	cursor:pointer;
+    -webkit-transition: all 0.4s;
+	transition: all 0.4s;
+	border-radius: 10px;
+}
+
+.box button:active{
+	background:#27ae60;
+}
+
+.box button:hover{
+	background:#FF2020;
+    -webkit-transition: all 0.4s;
+	transition: all 0.4s;
+}
+
+
+.group 			  { 
+  position:relative; 
+  margin-bottom: 35px; 
+  margin-left: 40px;
+}
+
+.inputMaterial 				{
+  font-size:13px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+
+.inputMaterial:focus 		{ outline:none;}
+
+/* LABEL ======================================= */
+
+label 				 {
+  color:#999; 
+  font-size:17px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+.inputMaterial:focus ~ label, .inputMaterial:valid ~ label 		{
+  top:-10px;
+  font-size:14px;
+  color:#FF0000;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:315px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#FF0000; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+.inputMaterial:focus ~ .bar:before, .inputMaterial:focus ~ .bar:after {
+  width:50%;
+}
+
+
+/* active state */
+.inputMaterial:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+	from { background:#5264AE; }
+  to 	{ width:0; background:transparent; }
 }
