@@ -135,7 +135,7 @@ public class MypageController {
 			
 				int price = itemvo.getPrice();
 				Map<String, Integer> map = new HashMap<>();
-					map.put("price", price);
+					map.put("price", price*cnt);
 					map.put("no", no);
 			service.updatePoint(map); //포인트 복구
 			
