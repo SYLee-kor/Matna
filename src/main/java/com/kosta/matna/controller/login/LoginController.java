@@ -22,10 +22,7 @@ import com.kosta.matna.service.member.MemberService;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-	int c;
-    int a;
-    int a1111;
-    int d;
+
 	@Inject
 	private MemberService memberService;
 	
