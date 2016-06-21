@@ -30,59 +30,64 @@
   <table class="review_List" cellspacing="0" cellpadding="0">
     <thead>
       <tr>
-        <th><span>no</span></th>
-        <th><span>image</span></th>
-        <th><span>title</span></th>
-        <th><span>author</span></th>
-        <th><span>조회수</span></th>
-        <th><span>좋아요!</span></th>
-        <th><span>싫어요!</span></th>
-        <th><span>date</span></th>
+        <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
+        <th style="text-align: center;"><span>image</span></th>
+        <th style="text-align: center;"><span>title</span></th>
+        <th style="text-align: center;"><span>author</span></th>
+        <th style="width: 80px;padding: 0px;text-align: center;">조회수</th>
+        <th style="width: 80px;padding: 0px;text-align: center;">좋아요!</th>
+        <th style="width: 80px;padding: 0px;text-align: center;">hate!></th>
+        <th style="text-align: center;"><span>date</span></th>
         
       </tr>
     </thead>
     <tbody>
-      <tr>
-         <td>4</td>
-         <td><img src="/matna/resource/images/AD_pizza.jpg" class="image" /></td>
-         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [5]</td>  <!-- title,조회수 -->
+      <tr class="list_lists">
+         <td style="width: 50px;padding: 0px;">4</td>
+         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
+         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으</a>
+             <span class="reply_num">
+               <img alt="댓글" src="/matna/resource/images/next.png" class="reply_num_img" />
+               <span class="reply_num_text">53</span>
+             </span>
+         </td>  <!-- title,조회수 -->
          <td>배고푸다배고프다</td>
-         <td>2</td>   <!-- 댓글수 -->
-         <td>10</td>  <!-- 좋아요 -->
-         <td>3</td>  <!-- 싫어요 -->
+         <td class="list_small">2</td>   <!-- 댓글수 -->
+         <td class="list_small">10</td>  <!-- 좋아요 -->
+         <td class="list_small">3</td>  <!-- 싫어요 -->
          <td>2016-06-09 12:25</td>
       </tr>
 
-      <tr>
-         <td>3</td>
+      <tr class="list_lists">
+         <td style="width: 50px;padding: 0px;">3</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
-         <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [1]</td>
-         <td>배고푸다배고프다</td>
-         <td>2</td> 
-         <td>10</td>
-         <td>3</td>
+         <td><a href=#>가디에 콩국수 맛집을 찾았어요!!</a> [1]</td>
+         <td>배고푸다</td>
+         <td class="list_small">2</td> 
+         <td class="list_small">10</td>
+         <td class="list_small">3</td>
          <td>2016-06-09 12:25</td>
       </tr>
 
-      <tr>
-         <td>2</td>
+      <tr class="list_lists">
+         <td style="width: 50px;padding: 0px;">2</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [2]</td>
-         <td>배고푸다배고프다</td>
-         <td>2</td> 
-         <td>10</td>
-         <td>3</td>
+         <td>맥도날드드</td>
+         <td class="list_small">2</td> 
+         <td class="list_small">10</td>
+         <td class="list_small">3</td>
          <td>2016-06-09 12:25</td>
       </tr>
       
-      <tr>
-         <td>1</td>
+      <tr class="list_lists">
+         <td style="width: 50px;padding: 0px;">12345678</td>
          <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=#>맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디</a> [3]</td>
          <td>배고푸다배고프다</td>
-         <td>2</td> 
-         <td>10</td>
-         <td>3</td>
+         <td class="list_small">2</td> 
+         <td class="list_small">10</td>
+         <td class="list_small">3</td>
          <td>2016-6-9</td>
       </tr>
     </tbody>

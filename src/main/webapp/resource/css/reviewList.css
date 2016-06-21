@@ -19,36 +19,31 @@ img { border: 0; max-width: 100%; }
 .review_List {
   margin: 0 auto;
   font-size: 1.5em;
+ 
   margin-bottom: 15px;
 }
 
 
 .review_List thead {
-  cursor: pointer;
+  cursor: default;
   background: #fdbda8;
 }
 .review_List thead tr th { 
   font-weight: bold;
-  padding: 12px 30px;
-  padding-left: 2%;
+  padding: 19px 30px;
 }
 .review_List thead tr th span { 
   /* padding-right: 5px; */
   text-align: center;
   background-repeat: no-repeat;
   background-position: 100% 100%;
+  
 }
 
 .review_List thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
   background: #ffc6bb;
 }
 
-.review_List thead tr th.headerSortUp span {
-  background-image: url('http://i.imgur.com/SP99ZPJ.png');
-}
-.review_List thead tr th.headerSortDown span {
-  background-image: url('http://i.imgur.com/RkA9MBo.png');
-}
 
 
 .review_List tbody tr { 
@@ -62,9 +57,36 @@ img { border: 0; max-width: 100%; }
   text-align: left;
 }
 
-===========================
+
+
+/* =================
+ 테이블 tr호버시 배경
+================= */
+.list_lists:HOVER{ 
+  background-color: #f0faff;
+  
+}
+
+/* =======img위에 text======== */
+
+.reply_num_img{
+	position:relative;
+	margin-left: 10px;
+}
+
+ .reply_num_text{
+	position: absolute;
+	top:185px;
+	left: 250;
+	width: 50px;
+	color: red;
+	z-index: 0;
+}
+
+
+/* ===========================
   페이징
-===========================
+=========================== */
 .pagination {
   list-style: none;
   display: inline-block;
@@ -271,7 +293,7 @@ img { border: 0; max-width: 100%; }
 	}
 	
 	
-	=================
+/* 	=================
 	   글쓰기버튼
 	=================
-	
+	 */
