@@ -38,6 +38,8 @@
 	<script src="/matna/resource/js/jquery.lightbox.js"></script>
 	<script src="/matna/resource/js/templatemo_custom.js"></script>
     <script src="/matna/resource/js/jquery-git2.js"></script>
+    <!-- 광고 -->
+	<script src="/matna/resource/js/ad.js"></script>    
 
 	<script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
    
@@ -585,29 +587,9 @@
         	<div class="col-md-7 col-sm-7">
             	<div class="main-slider">
 				<div class="flexslider">
-					<!-- <ul class="slides">
-						<li> -->
-							<div class="slider-caption">
+							<div class="slider-caption" id="AD">
+							<!-- <img src="/matna/resource/images/AD_chicken.jpg" alt="Slide 1"> -->
 							</div>
-							<img src="/matna/resource/images/AD_chicken.jpg" alt="Slide 1">
-						<!-- </li>
-
-						<li>
-							<div class="slider-caption"></div>
-							<img src="/matna/resource/images/AD_bugerking.jpg" alt="Slide 2">
-						</li>
-
-                        <li>
-							<div class="slider-caption"></div>
-							<img src="/matna/resource/images/AD_pizza.jpg" alt="Slide 3">
-						</li>
-                        
-                        <li>
-							<div class="slider-caption"></div>
-							<img src="/matna/resource/images/slide4.jpg" alt="Slide 4">
-						</li>
-
-					</ul> -->
 				</div>
 			</div>
             </div>
