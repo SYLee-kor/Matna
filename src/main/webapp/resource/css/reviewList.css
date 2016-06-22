@@ -258,12 +258,12 @@ img { border: 0; max-width: 100%; }
   padding: 2px 5px;
   margin-top:2%;
   margin-left:2%;
-  width:41em;
+  width:31em;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
 }
-
+ 
 
 .searchform2 input, .searchform2 button {
 	float: left;
