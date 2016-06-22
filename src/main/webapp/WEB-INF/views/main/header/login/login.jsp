@@ -41,7 +41,7 @@ $(document).ready(function() {
 	}
 	
 	function findIdPW(){
-    window.open("/matna/find","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=700,height=400");
+    window.open("/matna/find#tab-1","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=150,left=400, width=700,height=400");
 	}
 	
 	function message(){

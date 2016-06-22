@@ -35,11 +35,6 @@ h1 {
    text-align: center;
 }
 
-footer {
-   margin-top: 20px;
-   text-align: center;
-}
-
 #tabs {
    text-align: center;
    background-color: #ff7359; /* tomato button color */
@@ -72,7 +67,6 @@ footer {
 
 .tab-content {
    background-color: white;
-   padding: 35px;
    font-size: 13px;
    border-radius:4px;
     background: #fff; 
@@ -80,13 +74,13 @@ footer {
     background: -o-linear-gradient(#fff, #f9fdff);
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff));
     background: -webkit-linear-gradient(#fff, #f9fdff);
-    padding:50px;
+    padding-top:40px;
     border: 3px solid #ff7359;
 }
 
 .tab-content p {
    line-height: 1.65;
-   font-size:20px;
+   font-size:17px;
 }
 
 .tab-content ul, .tab-content ol {
@@ -110,7 +104,7 @@ input {
        border: none;
        text-transform:uppercase;
        cursor: pointer;
-       font-size: 20px;
+       font-size: 17px;
        margin: 5px 0;
        -moz-border-radius: 4px;
        border-radius: 4px;
