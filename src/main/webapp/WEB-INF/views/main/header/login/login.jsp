@@ -90,11 +90,11 @@ $(document).ready(function() {
 <c:if test="${isLogin == true }">
 
 <form role="form" name="memberinfo" method="post">
-<div class="box" style="padding-top: 50px">
+<div align="center" class="box" style="padding-top: 50px">
     <label id="nickname" class="nickname" name="nickname">
-    	${userNickname } 님이 로그인하였습니다.</label><br>
+    	${userNickname } 님이 로그인하였습니다.</label><br><br>
     <label id="point" class="point" name="point">
-          POINT: ${userPoint } </label><br>
+          POINT: ${userPoint } </label><br><br>
   <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
   <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
   <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
