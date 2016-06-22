@@ -36,6 +36,7 @@ $(document).ready(function(){
  });
 </script>
 </head>
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 <body>
 <br><br><br>
 	<center>

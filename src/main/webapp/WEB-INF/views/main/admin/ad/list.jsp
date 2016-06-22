@@ -10,6 +10,7 @@
 <title>관리자</title>
 
 </head>
+<%@include file="/WEB-INF/views/main/admin/adminHeader.jsp" %>
 <body>
 <center>
 <br><br>
