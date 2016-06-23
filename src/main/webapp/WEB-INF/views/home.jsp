@@ -11,7 +11,7 @@
 		 }
 </style>
 <script type="text/javascript">
-var TabBlock = {
+/* var TabBlock = {
 		  s: {
 		    animLen: 200
 		  },
@@ -63,7 +63,7 @@ var TabBlock = {
 
 		$(function() {
 		  TabBlock.init();
-		});
+		}); */
 </script>
 </head>
 <body> 

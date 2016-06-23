@@ -6,14 +6,7 @@
    <meta name="description" content="">
    <meta name="keywords" content="" />
    <meta name="viewport" content="initial-scale=1">
-   
-<style type="text/css">
-.image{
-   width :100px;
-   height: 70px;
-} 
 
-</style>
 
 <script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
@@ -82,9 +75,9 @@
   <h1>Review</h1><br>
   <figure class="tabBlock">
   <ul class="tabBlock-tabs">
-    <li class="tabBlock-tab is-active">식사</li>
-    <li class="tabBlock-tab">디저트</li>
-    <li class="tabBlock-tab">주류</li>
+    <li class="tabBlock-tab is-active">자유게시판</li>
+    <li class="tabBlock-tab">만남게시판</li>
+    <li class="tabBlock-tab">익명게시판</li>
   </ul>
   <div class="tabBlock-content">
     <div class="tabBlock-pane">
@@ -92,7 +85,6 @@
     <thead>
       <tr>
         <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
-        <th style="text-align: center;"><span>image</span></th>
         <th style="text-align: center;"><span>title</span></th>
         <th style="text-align: center;width: 150px;"><span>작성자</span></th>
         <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
@@ -105,7 +97,6 @@
     <tbody>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">10</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -118,7 +109,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">9</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -131,7 +121,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">8</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -144,7 +133,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">7</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -157,7 +145,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">6</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -170,7 +157,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">5</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -183,7 +169,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">4</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">첫번째탭입니다^-^</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -196,7 +181,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">3</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">가디에 콩국수 맛집을 찾았어요!!</a>
              <input type="button" readonly="readonly" class="reply_num"  value="13"  style="cursor: default;" ></td>
          <td>배고푸다</td>
@@ -208,7 +192,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">2</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="3"  style="cursor: default;" ></td>
          <td>맥도날드드</td>
@@ -219,8 +202,7 @@
       </tr>
       
       <tr class="list_lists">
-         <td style="width: 50px;padding: 0px;">12345678</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
+         <td style="width: 50px;padding: 0px;">1</td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디디비디비디디디딥</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -254,6 +236,31 @@
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a href="#"><span><b>글 쓰기</b></span></a>  
   </div> 
+  
+  <!-- =============검색================== -->
+    <table>
+      <tr>
+       <td>
+       <span include="form-input-select2()">
+       <select required>
+			    <option value=""  hidden> == 전체 == </option>
+			    normal options
+			    <option value="1"> == 전체 == </option>
+			    <option value="2">작성자+글제목</option>
+			    <option value="3">작성자</option>
+			    <option value="4">글제목</option>
+			  </select>
+			  </span>
+       </td>
+       <td>
+           <form class="searchform2 cf">
+			  <span><input type="text" placeholder="검색해보세요!^_^"></span>
+			  <span><button type="button" class="list_searchbt">검색</button></span>
+		   </form>
+       </td>
+     </tr>
+   </table> 
+  
   </center>
   </div>
     
@@ -264,7 +271,6 @@
     <thead>
       <tr>
         <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
-        <th style="text-align: center;"><span>image</span></th>
         <th style="text-align: center;"><span>title</span></th>
         <th style="text-align: center;width: 150px;"><span>작성자</span></th>
         <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
@@ -277,7 +283,6 @@
     <tbody>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">10</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -289,7 +294,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">9</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -301,7 +305,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">8</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -313,7 +316,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">7</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -325,7 +327,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">6</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -337,7 +338,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">5</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -349,7 +349,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">4</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">두번째탭입니당</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -362,7 +361,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">3</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">가디에 콩국수 맛집을 찾았어요!!</a>
              <input type="button" readonly="readonly" class="reply_num"  value="13"  style="cursor: default;" ></td>
          <td>배고푸다</td>
@@ -374,7 +372,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">2</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="3"  style="cursor: default;" ></td>
          <td>맥도날드드</td>
@@ -385,8 +382,7 @@
       </tr>
       
       <tr class="list_lists">
-         <td style="width: 50px;padding: 0px;">12345678</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
+         <td style="width: 50px;padding: 0px;">1</td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디디비디비디디디딥</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -420,6 +416,31 @@
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a href="#"><span><b>글 쓰기</b></span></a>  
   </div> 
+  
+  <!-- =============검색================== -->
+    <table>
+      <tr>
+       <td>
+       <span include="form-input-select2()">
+       <select required>
+			    <option value=""  hidden> == 전체 == </option>
+			    normal options
+			    <option value="1"> == 전체 == </option>
+			    <option value="2">작성자+글제목</option>
+			    <option value="3">작성자</option>
+			    <option value="4">글제목</option>
+			  </select>
+			  </span>
+       </td>
+       <td>
+           <form class="searchform2 cf">
+			  <span><input type="text" placeholder="검색해보세요!^_^"></span>
+			  <span><button type="button" class="list_searchbt">검색</button></span>
+		   </form>
+       </td>
+     </tr>
+   </table> 
+  
   </center>
   </div>
   <!-- ===============================세번째탭=========================================== -->  
@@ -428,7 +449,6 @@
     <thead>
       <tr>
         <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
-        <th style="text-align: center;"><span>image</span></th>
         <th style="text-align: center;"><span>title</span></th>
         <th style="text-align: center;width: 150px;"><span>작성자</span></th>
         <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
@@ -443,7 +463,6 @@
      
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">10</td>
-         <td><img src="/matna/resource/images/point1.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -454,7 +473,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">9</td>
-         <td><img src="/matna/resource/images/gift-icon.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -465,7 +483,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">8</td>
-         <td><img src="/matna/resource/images/gift-icon.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -476,7 +493,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">7</td>
-         <td><img src="/matna/resource/images/gift-icon.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -487,7 +503,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">6</td>
-         <td><img src="/matna/resource/images/gift-icon.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -498,7 +513,6 @@
       </tr>
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">5</td>
-         <td><img src="/matna/resource/images/gift-icon.png" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">세번째 탭입니다!!!</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -510,7 +524,6 @@
     
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">4</td>
-         <td><img src="/matna/resource/images/쉑쉑.png" class="image" /></td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으</a>
            <input type="button" readonly="readonly" class="reply_num"  value="53" style="cursor: default;" >
          </td> 
@@ -523,7 +536,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">3</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">가디에 콩국수 맛집을 찾았어요!!</a>
              <input type="button" readonly="readonly" class="reply_num"  value="13"  style="cursor: default;" ></td>
          <td>배고푸다</td>
@@ -535,7 +547,6 @@
 
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">2</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg"  class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="3"  style="cursor: default;" ></td>
          <td>맥도날드드</td>
@@ -547,7 +558,6 @@
       
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">1</td>
-         <td><img src="/matna/resource/images/AD_bugerking.jpg" class="image" alt="" /></td>
          <td><a href=# style="font-size:13px;">맥도나아ㅏ아아아아아앙아아아아알드으으으으으 베토디베토디베토디디비디비디디디딥</a> 
              <input type="button" readonly="readonly" class="reply_num"  value="27"  style="cursor: default;" ></td>
          <td>배고푸다배고프다</td>
@@ -582,12 +592,36 @@
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a href="#"><span><b>글 쓰기</b></span></a>  
   </div> 
+  
+  <!-- =============검색================== -->
+    <table>
+      <tr>
+       <td>
+       <span include="form-input-select2()">
+       <select required>
+			    <option value=""  hidden> == 전체 == </option>
+			    normal options
+			    <option value="1"> == 전체 == </option>
+			    <option value="2">작성자+글제목</option>
+			    <option value="3">작성자</option>
+			    <option value="4">글제목</option>
+			  </select>
+			  </span>
+       </td>
+       <td>
+           <form class="searchform2 cf">
+			  <span><input type="text" placeholder="검색해보세요!^_^"></span>
+			  <span><button type="button" class="list_searchbt">검색</button></span>
+		   </form>
+       </td>
+     </tr>
+   </table> 
+  
   </center>
   </div>
     </div>
 </figure>
 </div>   
 </div>
-  
 
 <%@include file="/WEB-INF/views/footer.jsp" %>

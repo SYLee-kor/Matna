@@ -38,6 +38,12 @@ public class ViewTest {
 		return "/main/body/review/menu/all/list";
 	}
 	
+	
+	@RequestMapping("/test/comm/list")
+	public String commuListTest(){
+		return "/main/body/community/all/list_comm";
+	}
+	
 	@RequestMapping("/test")
 	public String testView(){
 		return "test/review_tab";

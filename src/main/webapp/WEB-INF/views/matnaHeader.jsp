@@ -40,6 +40,7 @@
     <script src="/matna/resource/js/jquery-git2.js"></script>
     <!-- 광고 -->
 	<script src="/matna/resource/js/ad.js"></script>    
+	<script src="/matna/resource/js/tab.js"></script>    
 
 	<script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
    
@@ -348,8 +349,7 @@
       ]);
     });
     
-    
-    
+ 
     </script>
     
     <title>우리지금 Matna!!</title>

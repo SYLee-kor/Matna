@@ -19,22 +19,26 @@ img { border: 0; max-width: 100%; }
 .review_List {
   margin: 0 auto;
   margin-bottom: 15px;
+  
 }
 
 
 .review_List thead {
   cursor: default;
   background: #fdbda8;
+  
 }
 .review_List thead tr th { 
   font-weight: bold;
   padding: 19px 30px;
+
 }
 .review_List thead tr th span { 
   /* padding-right: 5px; */
   text-align: center;
   background-repeat: no-repeat;
   background-position: 100% 100%;
+  
   
 }
 
@@ -46,6 +50,7 @@ img { border: 0; max-width: 100%; }
 
 .review_List tbody tr { 
   color: #555;
+  
 }
 .review_List tbody tr td {
   text-align: center;
@@ -312,8 +317,8 @@ img { border: 0; max-width: 100%; }
 }
 
 #reviewlist_write_bt{
-	bottom:10.5%;
-    left:85%; 
+    bottom:6%;
+    left:85%;  
 }
 
 /* Icons */
