@@ -144,27 +144,6 @@ public class MessageController {
 	}
 	
 	
-	@RequestMapping(value="jq", method=RequestMethod.GET)	//메시지 쓰기
-    public String jqplot(Model model)throws Exception{
-		logger.info("jqplot GET 요청..");	
-		
-		List<String> list = memberService.selectGbGender(62);
-		int mcount=0;
-		int wcount=0;
-		for(int i=0;i<list.size();i++){
-			if(list.get(i).equals("남")){
-				mcount++;
-			}else if(list.get(i).equals("여")){
-				wcount++;
-			}
-		}
-		System.out.println(mcount+","+wcount);
-		
-		model.addAttribute("mcount", mcount);
-		model.addAttribute("wcount", wcount);
-		
-	   return "test/jqplot";
-	}
 	
 }
 
