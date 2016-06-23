@@ -154,5 +154,10 @@ public class MemberDAOImpl implements MemberDAO{
 		   
 		   session.update("member.updatePW",map);
 	}
+
+	@Override
+	public List<String> selectGbGender(int rno) throws Exception {
+		return session.selectList("member.selectGbGender", rno);
+	}
 	
 }

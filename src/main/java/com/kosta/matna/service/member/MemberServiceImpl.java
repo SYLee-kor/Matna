@@ -99,5 +99,10 @@ public class MemberServiceImpl implements MemberService {
 		public void updatePW(String id, String email, String pw) throws Exception {
 			memberDAO.updatePW(id, email, pw);
 		}
+
+		@Override
+		public List<String> selectGbGender(int rno) throws Exception {
+			return memberDAO.selectGbGender(rno);
+		}
 	
 }
