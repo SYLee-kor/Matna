@@ -120,6 +120,8 @@ $(function(){
 </script>
 </head>
 <body> 
+	<div class="regdiv" style="margin-left: 17%;padding-left:50px ;margin-right: 20%;border: 1px solid #999;" >
+	
     <%session.setAttribute("userNo", 1); %>    
 	<form name="reviewForm" class="reviewF" id="frm" method="POST">
 	<c:if test="${action == 'modify'}">
@@ -136,17 +138,18 @@ $(function(){
      리뷰를 작성하는 페이지 입니다.
      글 작성 전, 공지사항에서 룰을 먼저 필독 해 주세요^_^♥
     </p> 
+    
 
       <!-- 주소입력란 -->
-      <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label></p> 
+      <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label> 
       <span id="guSpan"></span>
       <span id="dongSpan"></span>
-      <input type="text" id="addr" name="addr" required tabindex="4" 
-                style="margin-bottom: 10px;" placeholder="상세주소입력란">
+      <input type="text" id="addr" name="addr" required tabindex="4"
+                style="margin-bottom: 10px;" placeholder="상세주소입력란"></p>
   
   
       <!--주차장여부 입력란 -->
-	  <p class="inputfield"><label for="park">주차장 여부</label></p> 
+	  <p class="inputfield"><label for="park">주차장 여부</label></p>
 	    <div class="toggle-radio">
 	      <input type="radio" id="yes" name="parking" value="1" checked>
 	      <input type="radio" id="no" name="parking" value="0">
@@ -156,22 +159,30 @@ $(function(){
 	        <span></span>
 	      </div>
 	    </div>
-	 
+	 <div class="new-select">
+    <div class="selection">
+        <p>
+            <span></span>
+            <i></i>
+        </p>
+        <span></span>
+    </div>
+</div>
   
       <!--메뉴 선택란 -->  
-      <p class="inputfield"><label for="menu">메뉴 </label></p> 
-      <select name="menu">
+      <p class="inputfield"><label for="menu">메뉴 </label> 
+      <select name="menu" id="menu">
               <option value="menu"> == 메뉴를 선택해주세요 == </option>
               <option value="food">식사</option>
               <option value="desert">디저트</option>
               <option value="drink">주류</option>
-      </select>
+      </select></p>
   
   
       <!-- 별점매기기  -->  
-     <p class="inputfield"><label for="score">평점 </label></p> 
           <div class="rating left">
             <div class="stars right">
+     		  <label for="score" id="score">평점 </label> 
               <a class="star rated" data-score="1"></a>
               <a class="star rated" data-score="2"></a>
               <a class="star rated" data-score="3"></a>
@@ -182,8 +193,8 @@ $(function(){
   	 <input type="hidden" name="score" value=3>
   	 
       <!-- 1인비용 선택  -->
-     <p class="inputfield"><label for="price">1인 비용 </label></p> 
-         <select name="price">
+     <p class="inputfield"><label for="price">1인 비용 </label> 
+         <select name="price" id="price">
                 <option selected="selected" value="0,0"> == 1인 비용 == </option>
                 <option value="0,5">5천원 이하</option>
                 <option value="5,10" >5천원~1만원</option>
@@ -192,21 +203,21 @@ $(function(){
                 <option value="30,50">3만원~5만원</option>
                 <option value="50,70">5만원~7만원</option>
                 <option value="70,100">7만원 이상</option>
-         </select>
+         </select></p>
   
       <!-- 전화번호 입력란 -->
-	  <p class="inputfield"><label for="phone">전화번호</label></p> 
+	  <p class="inputfield"><label for="phone">전화번호</label> 
 	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="color: #fff;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
-	  
+	  </p>
       <!-- 추천메뉴 입력란 -->
-       <p class="inputfield"><label for="recommend">추천메뉴</label></p> 
-       <input type="text" name="recommend" id="recommend"> 
+       <p class="inputfield"><label for="recommend">추천메뉴</label>
+       <input type="text" name="recommend" id="recommend"> </p>
           
  
        <!--제목입력란 -->       
-       <p class="inputfield"><label for="review_title">제목</label></p> 
-       <input type="text" id="review_title" name="title" placeholder="제목을 입력해주세요~" 
-              required tabindex="4" style="margin-bottom: 10px;"/> <br/>
+       <p class="inputfield"><label for="review_title">제목</label>
+       <input type="text" id="review_title" name="title" placeholder="제목을 입력해주세요~"
+              required tabindex="4" style="margin-bottom: 10px;"/> </p>
   
        <!--SmartEditor입력란 -->
        <textarea cols="100" rows="35" name="content"
@@ -218,7 +229,8 @@ $(function(){
        <input name="submit" type="submit" id="submit" tabindex="5" value="등록" />
        <input type="button" id="cancel" value="  취소  ">
     </form>
-                 
+            
+    </div>
            
     <!-- footer start -->
     <%@include file="/WEB-INF/views/footer.jsp" %>

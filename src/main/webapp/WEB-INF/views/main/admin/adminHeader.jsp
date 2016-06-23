@@ -30,6 +30,11 @@
 			formObj.submit();
 		});
 		
+		$('#ad').click(function() {
+			formObj.attr("action", "/matna/admin/AD/list");
+			formObj.submit();
+		});
+		
 	});
 	
 </script>
@@ -41,6 +46,7 @@
 		<input type="submit" id="order" name="order" value="주문관리"> 
 		<input type="submit" id="item" name="item" value="상품관리"> 
 		<input type="submit" id="message" name="message" value="쪽지관리"> 
+		<input type="submit" id="ad" name="ad" value="광고관리">
 	</form>
 </body>
 </html>
