@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.message.MessageVO;
+import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.message.MessageService;
+import com.kosta.test.JqplotTest;
 
 @Controller
 @RequestMapping("/message")
@@ -32,6 +34,9 @@ public class MessageController {
 	
 	@Inject
 	private MessageService messageService;
+	
+	@Inject
+	private MemberService memberService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)	//메시지 쓰기
     public String writeMessage()throws Exception{
@@ -136,6 +141,27 @@ public class MessageController {
 			messageService.updateState(no);
 		}
 	   return "redirect:/message/listAll";
+	}
+	
+	
+	@RequestMapping(value="jq", method=RequestMethod.GET)	//메시지 쓰기
+    public String jqplot()throws Exception{
+		logger.info("jqplot GET 요청..");	
+		
+		List<String> list = memberService.selectGbGender(1);
+		int mcount=0;
+		int wcount=0;
+		for(int i=0;i<list.size();i++){
+			if(list.get(i).equals("남")){
+				mcount++;
+			}else if(list.get(i).equals("여")){
+				wcount++;
+			}
+		}
+		
+		System.out.println(mcount+","+wcount);
+		
+	   return "test/jqplot";
 	}
 	
 }

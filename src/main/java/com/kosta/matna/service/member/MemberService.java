@@ -25,4 +25,6 @@ public interface MemberService {
 	
 	public void updatePW(String id,String email, String pw)throws Exception;
 	
+	public List<String> selectGbGender(int rno)throws Exception;
+	
 }
