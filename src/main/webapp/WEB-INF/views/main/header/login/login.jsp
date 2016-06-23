@@ -145,7 +145,7 @@ $(document).ready(function() {
   <a onclick="message()"><img src="/matna/resource/img/message1.png" width="60" height="50" id="msg"/></a>
   
   <c:if test="${userGrade == '1' }">
-  	<input class="admin" onclick="admin()" type="button" id="adm" name="adm" value="관리자">
+  	<a onclick="admin()"><img src="/matna/resource/img/admin.png" width="50" height="50" id="adm"/></a>
   </c:if>
   </div>
 </form>
