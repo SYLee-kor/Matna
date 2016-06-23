@@ -95,19 +95,19 @@ $(document).ready(function() {
 <table id="state" style="border: 1px;">
 	<tr><td rowspan="3" width="110px">
 		<c:if test="${userGrade == '1' }">
-			<img src="/matna/resource/img/5.png"  width="60" height="60"/>
+			<img src="/matna/resource/img/lv5.jpg"  width="60" height="60"/>
 		</c:if>
 		<c:if test="${userGrade == '2' }">
-			<img src="/matna/resource/img/4.png"  width="60" height="60"/>
+			<img src="/matna/resource/img/lv4.jpg"  width="60" height="60"/>
 		</c:if>
 		<c:if test="${userGrade == '3' }">
-			<img src="/matna/resource/img/3.png"  width="60" height="60"/>
+			<img src="/matna/resource/img/lv3.jpg"  width="60" height="60"/>
 		</c:if>
 		<c:if test="${userGrade == '4' }">
-			<img src="/matna/resource/img/2.png"  width="60" height="60"/>
+			<img src="/matna/resource/img/lv2.jpg"  width="60" height="60"/>
 		</c:if>
 		<c:if test="${userGrade == '5' }">
-			<img src="/matna/resource/img/1.png"  width="60" height="60"/>
+			<img src="/matna/resource/img/lv1.jpg"  width="60" height="60"/>
 		</c:if>
 		</td>
 		
