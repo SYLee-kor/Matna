@@ -92,12 +92,34 @@ $(document).ready(function() {
 <form role="form" name="memberinfo" method="post">
 <div align="center" class="box" style="padding-top: 50px">
     <label id="nickname" class="nickname" name="nickname">
-    	${userNickname } 님이 로그인하였습니다.</label><br><br>
+    	닉네임: ${userNickname }</label><br>
+    	
+    <c:if test="${userGrade == '1' }">
+    	<label id="grade" class="grade" name="grade">
+    	등급: 관리자</label><br>
+    </c:if>
+    <c:if test="${userGrade == '2' }">
+   		<label id="grade" class="grade" name="grade">
+    	등급: 부관리자</label><br>
+    </c:if>
+    <c:if test="${userGrade == '3' }">
+    	<label id="grade" class="grade" name="grade">
+    	등급: 특별회원</label><br>
+    </c:if>
+    <c:if test="${userGrade == '4' }">
+    	<label id="grade" class="grade" name="grade">
+    	등급: 우수회원</label><br>
+    </c:if>
+    <c:if test="${userGrade == '5' }">
+    	<label id="grade" class="grade" name="grade">
+    	등급: 일반회원</label><br>
+    </c:if>
+    
     <label id="point" class="point" name="point">
           POINT: ${userPoint } </label><br><br>
-  <input class="logout" type="submit" id="logout"  name="logout" value="로그아웃">
-  <input class="mypage" type="button" id="myPage" onclick="mypage()" name="myPage" value="마이페이지">
-  <input class="message" onclick="message()" type="button" id="msg" name="msg" value="쪽지">
+  <input class="logout" type="submit" id="logout"  name="logout" value="logout">
+  <a onclick="mypage()"><img src="/matna/resource/img/mypage2.png" width="60" height="50" id="myPage"/></a>
+  <a onclick="message()"><img src="/matna/resource/img/message1.png" width="60" height="50" id="msg"/></a>
   
   <c:if test="${userGrade == '1' }">
   	<input class="admin" onclick="admin()" type="button" id="adm" name="adm" value="관리자">
