@@ -15,7 +15,7 @@
         background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f9fdff));
         background: -webkit-linear-gradient(#fff, #f9fdff);
         padding:20px;
-        border-color:rgba(4, 129, 177, 0.4);
+        border-color:#ff7359;
     }
     input {
         color: #373737;
@@ -98,7 +98,7 @@
         width:380px;
         }
     #cancel,#join{
-        background: #00b8e6;
+        background: #ff7359;
         border: none;
         text-transform:uppercase;
         color: #eee;
