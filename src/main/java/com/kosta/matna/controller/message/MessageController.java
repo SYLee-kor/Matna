@@ -148,7 +148,7 @@ public class MessageController {
     public String jqplot(Model model)throws Exception{
 		logger.info("jqplot GET ฟไรป..");	
 		
-		List<String> list = memberService.selectGbGender(1);
+		List<String> list = memberService.selectGbGender(62);
 		int mcount=0;
 		int wcount=0;
 		for(int i=0;i<list.size();i++){
@@ -158,6 +158,7 @@ public class MessageController {
 				wcount++;
 			}
 		}
+		System.out.println(mcount+","+wcount);
 		
 		model.addAttribute("mcount", mcount);
 		model.addAttribute("wcount", wcount);
