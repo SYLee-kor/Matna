@@ -443,7 +443,7 @@
             <div class="col-md-4 col-sm-4">
             	<form id="search_form">
             		<div class="templatemo_search">
-                    	<input name="search" type="text" placeholder="Search here .... " id="search">
+                    	<input name="search" type="text" placeholder="Search here .... " id="main_search">
                     </div>
                 </form>
             </div>
@@ -470,11 +470,12 @@
                      </a>
                      <div class="navigation responsive_menu">
                         <ul>
-                           <li><a class="show-1 templatemo_home" href="#">Main
-                                 Page</a></li>
-                           <li><a class="show-2 templatemo_page2" href="#">Service</a></li>
-                           <li><a class="show-3 templatemo_page3" href="#">Portfolio</a></li>
-                           <li><a class="show-5 templatemo_page5" href="#">Contact</a></li>
+                           <li><a class="show-1 templatemo_home" href="#">공지사항</a></li>
+                           <li><a class="show-2 templatemo_page2" href="#">리뷰</a></li>
+                           <li><a class="show-3 templatemo_page3" href="#">랭킹</a></li>
+                           <li><a class="show-5 templatemo_page5" href="#">레시피</a></li>
+                           <li><a class="show-5 templatemo_page5" href="#">게시판</a></li>
+                           <li><a class="show-5 templatemo_page5" href="#">상품</a></li>
                         </ul>
                      </div>
                      <!-- /.responsive_menu -->
