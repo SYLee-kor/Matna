@@ -93,7 +93,7 @@ $(document).ready(function() {
 <form role="form" name="memberinfo" method="post">
 <div align="center" class="box" style="padding-top: 50px">
 <table id="state" style="border: 1px;">
-	<tr><td rowspan="3" width="130px">
+	<tr><td rowspan="3" width="110px">
 		<c:if test="${userGrade == '1' }">
 			<img src="/matna/resource/img/5.png"  width="60" height="60"/>
 		</c:if>
