@@ -678,6 +678,12 @@ a.menu_toggle-btn i {
   -webkit-transition: all .01s ease-in-out;
 
 }
+#main_search:focus{
+		outline: none;
+		box-shadow:0 0 4px #ff6a4a inset;
+		-moz-box-shadow:0 0 4px #ff6a4a inset;
+		-webkit-box-shadow:0 0 4px #ff6a4a inset;
+}
 
 .search_bt{
   position:relative;
