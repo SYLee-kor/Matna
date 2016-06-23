@@ -10,7 +10,9 @@
 		   height: 70px;
 		 }
 </style>
-
+<script type="text/javascript">
+ if('${param.login}'!='') alert('먼저 로그인 해주세요.');
+</script>
 </head>
 <body> 
 

@@ -42,7 +42,6 @@ public class CommunityController {
 	
 	@RequestMapping("/submit")
 	public void submit(HttpServletRequest request, String editor){
-	    System.out.println("¿¡µğÅÍ ÄÁÅÙÃ÷°ª:"+request.getParameter("editor"));
 	    System.out.println("¿¡µğÅÍ ÄÁÅÙÃ÷°ª(String):"+editor);
 	}
 	

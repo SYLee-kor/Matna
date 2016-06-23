@@ -146,7 +146,6 @@
 					
   </div>	
  </form>
-	<%session.setAttribute("userNo", 01); %>
 	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>

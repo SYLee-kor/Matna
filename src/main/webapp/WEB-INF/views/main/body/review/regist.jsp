@@ -122,7 +122,6 @@ $(function(){
 <body> 
 	<div class="regdiv" style="margin-left: 17%;padding-left:50px ;margin-right: 20%;border: 1px solid #999;" >
 	
-    <%session.setAttribute("userNo", 1); %>    
 	<form name="reviewForm" class="reviewF" id="frm" method="POST">
 	<c:if test="${action == 'modify'}">
 		<input type="hidden" name="no" value="${review.no }">

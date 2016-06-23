@@ -37,14 +37,9 @@ public class ADController {
 	
 	@RequestMapping(value="/change", method = RequestMethod.POST) //관리자 발송전 주문취소 
 	public String setAD(Model model, int no) throws Exception{
-		
-		logger.info("광고 변경");
-		
-			AD ad = service.selectView(no);
-			model.addAttribute("total", service.total());
-			model.addAttribute("AD",ad);
-			System.out.println("광고번호 : " + ad.getNo());
-		
+		AD ad = service.selectView(no);
+		model.addAttribute("total", service.total());
+		model.addAttribute("AD",ad);
 		
 		return "main/header/ad/setAD";
 	}
@@ -83,7 +78,6 @@ public class ADController {
 		
 		try {
 			String imgName = file.getOriginalFilename();
-			System.out.println("사진값: "+imgName);
 			
 			if(imgName.equals("")){
 				service.insertAD(ad);
@@ -113,7 +107,6 @@ public class ADController {
 		
 		try {
 			String imgName = file.getOriginalFilename();
-			System.out.println("사진값: "+imgName);
 			
 			if(imgName.equals("")){
 				service.updateAD(ad);
