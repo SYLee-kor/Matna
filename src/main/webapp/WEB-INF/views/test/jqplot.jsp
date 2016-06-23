@@ -14,9 +14,13 @@
 
 
 <script>
-$(function(){
 
-	$.jqplot ('graph', [[['남자', 8], ['여자', 7]]], 
+$(document).ready(function(){
+	
+	var man=${mcount};
+	var woman=${wcount};
+	
+	$.jqplot ('graph', [[['남자', man], ['여자', woman]]], 
 	        { 
 	          seriesDefaults: {
 	            //원형으로 렌더링

@@ -145,7 +145,7 @@ public class MessageController {
 	
 	
 	@RequestMapping(value="jq", method=RequestMethod.GET)	//메시지 쓰기
-    public String jqplot()throws Exception{
+    public String jqplot(Model model)throws Exception{
 		logger.info("jqplot GET 요청..");	
 		
 		List<String> list = memberService.selectGbGender(1);
@@ -159,7 +159,8 @@ public class MessageController {
 			}
 		}
 		
-		System.out.println(mcount+","+wcount);
+		model.addAttribute("mcount", mcount);
+		model.addAttribute("wcount", wcount);
 		
 	   return "test/jqplot";
 	}
