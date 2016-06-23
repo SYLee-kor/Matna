@@ -196,32 +196,31 @@ $(document).ready(function(){
 
 <!-- =======================HTML시작======================= -->
 
-<div class="book"><!-- 북전체 시작 -->
+<div class="book" style="background-image: url(/matna/resource/images/과일.jpg)"><!-- 북전체 시작 -->
 
   <div class="page" id="page1">
       <div class="subpage">
       
-        <div class="front">
-          <h4 class="header"> 쉑쉑버거 요리법</h4>
+        <div class="front" style="background-color: #ff6666;">
+          <h2 class="header"> 쉑쉑버거 요리법</h2><br><br>
           <div class="content">
           	<center>
-            <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="300px" height="300px"></p>
+            <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="50%" height="50%"></p>
             <p> 쉑쉑버거</p>
             <p> 조리시간: 5분 양: 3인분 좋아요: 99</p>
           	</center>
           </div>
-          <div class="pageNumber">1</div>
         </div>
         
         <div class="back">
-          <h4 class="header">Page 2</h4>
+          <h4 class="header">완성 사진</h4>
           <div class="content">
           	<center>
           	 <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="400px" height="400px">
           	 <input type="file"> </p>
           	</center>
            </div>
-          <div class="pageNumber">2</div>
+          <div class="pageNumber">1</div>
         </div>
         
       </div>
@@ -231,32 +230,72 @@ $(document).ready(function(){
       <div class="subpage">
       
         <div class="front">
-          <h4 class="header">Page 1</h4>
+          <h4 class="header">프리뷰</h4>
           <div class="content">
-            <p> 재료</p>
-            <p> 가격</p>
-            <p> 조리시간</p>
-            <p> 난이도 <select><option>상</option></select> </p>
-            <p> 양 <select><option>1인분</option></select> </p>
-            <p>요리 이름</p>
-            <p>요리 설명</p>
-            <p>내용</p>
+            <p> 재료: 상추, 토마토, 빵, 고기</p>
+            <p> 가격: 5000원</p>
+            <p> 조리시간: 5분</p>
+            <p> 난이도 
+            	<select>
+            		<option>상</option>
+            		<option>중</option>
+            		<option>하</option>
+            	</select>
+            </p>
+            <p> 양 
+            	<select>
+            		<option>1인분</option>
+            		<option>2인분</option>
+            		<option>3인분</option>
+            	</select>
+            </p>
+            <p>요리 이름: 쉑쉑버거</p>
+            <p>요리 설명: 수제햄버거</p>
+            <p>내용: 집에서도 간단한 수제 햄버거를!!!</p>
           </div>
-          <div class="pageNumber">3</div>
+          <div class="pageNumber">2</div>
         </div>
         
         <div class="back">
-          <h4 class="header">STEP 1</h4>
+          <h4 class="header">완 성 사 진</h4>
           <div class="content">
-          	<p><textarea rows="" cols=""></textarea> </p>
+          	<center>
+          	 <p> 
+          	 	<img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="400px" height="400px">
+          		<input type="file"> 
+          	 </p>
+          	</center>
            </div>
-          <div class="pageNumber">2</div>
+          <div class="pageNumber">3</div>
         </div>
         
       </div>
   </div>
-  
-</div><!-- 북전체 끝 -->
+
+		<div class="page" id="page3">
+			<div class="subpage">
+
+				<div class="front">
+					<h4 class="header">만드는 법</h4>
+					<div class="content">
+						<p>여기에다가 진도 스마트에디터 놓으면됨</p>
+					</div>
+					<div class="pageNumber">4</div>
+				</div>
+
+				<div class="back" style="background: #ff6666">
+					<h4 class="header"></h4>
+					<div class="content">
+						<p>
+							책뒷표지
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div><!-- 북전체 끝 -->
 <center>
 <br><br>
 <div class="controls">
