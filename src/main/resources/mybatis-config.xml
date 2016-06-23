@@ -20,5 +20,6 @@
 		<typeAlias type="com.kosta.matna.domain.message.MessageVO"
 			alias="message" />
 		<typeAlias type="com.kosta.matna.domain.admin.AD" alias="ad" />
+		<typeAlias type="com.kosta.matna.domain.recipe.RecipeVO" alias="recipe" />
 	</typeAliases>
 </configuration>

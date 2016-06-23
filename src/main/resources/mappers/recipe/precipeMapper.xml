@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="precipe">
+	<!-- Insert -->
+	<insert id="insert">
+	<![CDATA[
+		insert into precipe (no, ingredient, price, time, difficulty, per, foodName, foodDetail)
+		values (recipe_seq.currval,#{ingredient},#{price},#{time},#{difficulty},#{per},#{foodName},#{foodDetail})
+	]]>
+	</insert>
+	
+	<update id="update">
+	<![CDATA[
+		update precipe set ingredient = #{ingredient}, price=#{price},  foodName=#{foodName}, foodDetail=#{foodDetail}
+			time= #{time}, difficulty=#{difficulty}, per=#{per}
+		where no = #{no}
+	]]>
+	</update>
+	
+	<delete id="delete">
+		delete from precipe
+		where no=#{no}
+	</delete>
+
+	<select id="selectOne" resultType="recipe">
+		select * from precipe 
+		where no=#{no}
+	</select>
+</mapper>
