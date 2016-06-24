@@ -32,6 +32,11 @@ public class ViewTest {
 		return "main/body/review/menu/all/write";
 	}
 	
+	@RequestMapping("/test/content")
+	public String contentTest(){
+		return "main/body/review/content";
+	}
+	
 	
 	@RequestMapping("/test/review/list")
 	public String reviewListTest(){
@@ -42,6 +47,12 @@ public class ViewTest {
 	@RequestMapping("/test/comm/list")
 	public String commuListTest(){
 		return "/main/body/community/all/list_comm";
+	}
+	
+	
+	@RequestMapping("/test/comm/content")
+	public String commuContentTest(){
+		return "/main/body/community/all/content_comm";
 	}
 	
 	@RequestMapping("/test")

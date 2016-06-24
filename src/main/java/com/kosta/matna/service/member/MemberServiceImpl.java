@@ -104,5 +104,20 @@ public class MemberServiceImpl implements MemberService {
 		public List<String> selectGbGender(int rno) throws Exception {
 			return memberDAO.selectGbGender(rno);
 		}
+
+		@Override
+		public boolean updatePoint(int userNo, int point) throws Exception {
+			return memberDAO.updatePoint(userNo, point);
+		}
+
+		@Override
+		public boolean updateAllPoint(int userNo, int point) throws Exception {
+			return memberDAO.updateAllPoint(userNo, point);
+		}
+
+		@Override
+		public boolean updateGrade(int userNo, int grade) throws Exception {
+			return memberDAO.updateGrade(userNo, grade);
+		}
 	
 }

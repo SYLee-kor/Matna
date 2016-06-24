@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 <!-- services 라이브러리 불러오기 -->
+<link rel="stylesheet" href="/matna/resource/jqplot/jquery.jqplot.min.css">
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d57f90536554e1d1025bdf0836b0ed4f&libraries=services"></script>
 <script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 <script src="/matna/resource/jqplot/jquery.jqplot.min.js"/></script>
@@ -100,8 +101,11 @@
 		<input type="hidden" name="pageType" value="${pageType }"/>
 		<input type="hidden" name="tabType" value="${tabType }"/>
 		
-		<div id="preview"> 
-    <p id ='one'>
+		<div id="preview">
+		<table>
+			<tr>
+				<td>
+				 <p id ='one' style="margin-left: 50px">
 	    <label class="fa fa-user fa-2x"></label>
 	    <label class="preview_la">&nbsp; 작성자:</label>
 	                  &nbsp;&nbsp;<b>${review.nickName }</b></br>
@@ -124,8 +128,26 @@
 	    <label class="preview_la">&nbsp; 연락처:</label>
 	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
      </p>
-     <p id="map"></p>
-     <div id="graph" style="width:300px; height:300px;"></div>
+				</td>
+				<td>
+				  	<c:if test="${isCount==true }">
+     					<div id="graph" style="width:300px; height:300px; margin-left: 120px"></div>
+     				</c:if>
+     				<c:if test="${isCount==false }">
+     					<div><img alt="" src="/matna/resource/img/chart.jpg" style="width:290px; height:290px; margin-left: 120px"> </div>
+     				</c:if>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+				<br><br><br>
+    				 <p id="map"></p>
+				</td>
+			</tr>
+		</table> 
+   
+   
+     
   </div> <%--preview,map --%>
 		  
 	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
@@ -138,10 +160,10 @@
 	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
-		<input type="button" value="수정" onclick="updateReview('${review.no}');">
-		<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
+		<input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
+		<input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
 		</c:if>
-		<input type="button" value="  목록으로  " 
+		<input id="reviewli" type="button" value="목록" 
 		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
 					
   </div>	

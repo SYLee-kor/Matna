@@ -227,147 +227,149 @@
                <input type="hidden" name="duplicated" id="duplicated" />
                <input type="hidden" name="gender" id="gender" />
                   <div style="float:left;">
-                     아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
+                     아이디:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> <input type="text"
                         id="id" name="id" placeholder="ID" class="tf1" maxlength="15" value="${memberVO.id}"
-                        path="id" readonly="readonly" /> 
+                        path="id" readonly="readonly" style="margin-left:18px;" /> 
                   </div>
                   <div>
                      <form:errors path="id" />
 
                      <html:messages id="msg" property="errID">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     패스워드:&nbsp;&nbsp;&nbsp; <input type="password" name="pw" id="pw" value="${memberVO.pw}"
-                        placeholder="Password" maxlength="15" class="tf1" /> <label
-                        class="la" style="margin-left: 20px">*특수문자, 숫자, 영문자
-                        혼합사용가능</label>
+                     패스워드:<!-- &nbsp;&nbsp;&nbsp;  --><input type="password" name="pw" id="pw" value="${memberVO.pw}"
+                        placeholder="Password" maxlength="15" class="tf1"  style="margin-left:10px;"/> <label
+                        class="la" style="margin-left: 20px">*특수문자, 숫자, 영문자  혼합사용가능</label>
 
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errPw">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!--                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
                      <input type="password" maxlength="15" name="confirmpass"
-                        placeholder="Password 확인" class="tf1" />
+                        placeholder="Password 확인" class="tf1"  style="margin-left:68px;"/>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errPass2">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     닉네임:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" value="${memberVO.nickname}"
+                     닉네임:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --><input type="text" value="${memberVO.nickname}"
                         id="nickname" name="nickname" placeholder="nickname" class="tf1"
-                        maxlength="15" path="nickname" /> <input type="button"
+                        maxlength="15" path="nickname" style="margin-left:22px;"/> <input type="button"
                         id="confirmnick" name="confirmnick" value="중복확인"
                         style="margin-left: 20px; background-color: #9de0f7; color: white;" />
                      <label class="la" style="margin-left: 20px">*공백없이 입력</label>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errNick">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+              <!--  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     이름:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-                        type="text" maxlength="30" name="name" placeholder="이름" value="${memberVO.name}"
-                        class="tf1" /> <label class="la" style="margin-left: 20px">*공백없이
-                        입력</label>
+                     이름:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --><input
+                        type="text" maxlength="30" name="name" placeholder="이름" value="${memberVO.name}" class="tf1" style="margin-left:35px;" /> 
+                        <label class="la" style="margin-left: 20px">*공백없이  입력</label>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errName">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" value="${memberVO.email}"
-                        name="email" maxlength="50" placeholder="Email" class="tf1" />
+                     email:<!-- &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --><input type="text" value="${memberVO.email}"
+                        name="email" maxlength="50" placeholder="Email" class="tf1" style="margin-left:25px;"/>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errEmail">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
 
                   <div style="float:left;">
-                     생년월일:&nbsp;&nbsp;&nbsp; <input type="text" name="birth" value="${memberVO.birth}"
-                        placeholder="생년월일" maxlength="6" class="tf1" readonly="readonly"/> <label
-                        class="la" style="margin-left: 20px">* - 없이 6자리
-                        입력(YYMMDD)</label>
+                     생년월일:<!-- &nbsp;&nbsp;&nbsp;  --><input type="text" name="birth" value="${memberVO.birth}"
+                        placeholder="생년월일" maxlength="6" class="tf1" readonly="readonly"  style="margin-left:10px;"/> 
+                        <label class="la" style="margin-left: 20px">* - 없이 6자리  입력(YYMMDD)</label>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errBirth">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     Tel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <input type="text" maxlength="11" width="10" name="phone" value="${memberVO.phone}"
-                        id="firsttel"> - , 공백 없이 숫자만 입력
+                     Tel:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                     <input type="text" maxlength="11" width="10" name="phone" 
+                          value="${memberVO.phone}" id="firsttel" style="margin-left:39px;"> - , 공백 없이 숫자만 입력
                      <!-- <input type="text" maxlength="4" width="10" name="phone2"
                   class="tel">- <input type="text" maxlength="4" width="10"
                   name="phone3" class="tel"> -->
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errPhone">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     우편번호:&nbsp;&nbsp;&nbsp; <input type="text" name="post" value="${memberVO.post}"
-                        placeholder="우편번호" class="tf1" maxlength="5" /> <label
-                        class="la" style="margin-left: 20px">*- , 공백 없이 숫자 5자리
+                     우편번호:<!-- &nbsp;&nbsp;&nbsp;  --><input type="text" name="post" value="${memberVO.post}"
+                        placeholder="우편번호" class="tf1" maxlength="5"  style="margin-left:10px;"/> 
+                        <label class="la" style="margin-left: 20px">*- , 공백 없이 숫자 5자리
                         입력</label>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errPost">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
                   <br>
                   <div style="float:left;">
-                     상세주소:&nbsp;&nbsp;&nbsp; <input type="text" name="addr" value="${memberVO.addr}"
-                        placeholder="상세주소" maxlength="50" /> <label class="la"
-                        style="margin-left: 20px">*50자 이내</label>
+                     상세주소:<!-- &nbsp;&nbsp;&nbsp;  --><input type="text" name="addr" value="${memberVO.addr}"
+                        placeholder="상세주소" maxlength="50"  style="margin-left:10px;"/> 
+                        <label class="la" style="margin-left: 20px">*50자 이내</label>
                   </div>
                   <div style="float:left;">
                      <html:messages id="msg" property="errAddr">
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp;
-               <font color="red"><bean:write name="msg" /><br></font>
+               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp; -->
+               		<font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
+                  <br><br>
+                  <div style="float:left;">
+					누적point:
+					<input type="text" id="allpoint" value="${memberVO.allpoint}" readonly="readonly" name="allpoint" class="tf1" path="allpoint"/>
+				  </div>
                   <br> <br> <br>
                   
                   <div style="float:left; margin-left:215px;">
@@ -381,6 +383,7 @@
             </div>
          </div>
          </fieldset>
+         
 </body>
 
 <script>

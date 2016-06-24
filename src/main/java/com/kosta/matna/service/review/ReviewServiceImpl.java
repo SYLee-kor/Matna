@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 import com.kosta.matna.persistence.review.ReviewDAO;
 
 @Transactional
@@ -94,6 +95,11 @@ public class ReviewServiceImpl implements ReviewService {
 		resultMap.put("gbNum", dao.getGBNo(map));
 		resultMap.put("gbType", (String)map.get("gbType"));
 		return resultMap;
+	}
+
+	@Override
+	public List<ReviewVO> searchList(SearchKeyWord cri) throws Exception {
+		return dao.searchList(cri);
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.kosta.matna.domain.message;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MessageVO {
   //no, senderno, receiverno, title,content, senddate, state

@@ -100,5 +100,19 @@
 	     select gender from member where no IN (select userno from gbcheck where rno=#{rno})
 	</select>
     
+    <update id="updatePoint" parameterType="java.util.Map">
+       update member set point=point+#{point}
+	    where no=#{userNo} 
+   </update>
+   
+    <update id="updateAllPoint" parameterType="java.util.Map">
+       update member set allpoint=allpoint+#{point}
+	    where no=#{userNo}
+   </update>
+
+    <update id="updateGrade" parameterType="java.util.Map">
+       update member set grade=#{grade}
+	    where no=#{userNo}
+   </update>
    
 </mapper>
