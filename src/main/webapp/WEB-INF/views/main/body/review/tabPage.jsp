@@ -47,7 +47,7 @@ function showContents(no) {
          <td>${review.no }</td>
          <td onclick="showContents(${review.no})" class="reviewPhoto">${review.photo }</td>
          <td><a onclick="showContents(${review.no})" class="reviewTitle">${review.title }</a> [${review.replyCnt }]</td>  <!-- title,댓글수 -->
-         <td>${review.nickName }</td>
+         <td><img src="/matna/resource/img/lv${review.mGrade }.jpg"/>   ${review.nickName }</td>
          <td>${review.viewCnt }</td>   <!-- 조회수 -->
          <c:if test="${listType == null }"><!-- listType (null or mini) mini일땐 굿 배드 출력 X-->
          <td>${review.good }</td>  <!-- 좋아요 -->

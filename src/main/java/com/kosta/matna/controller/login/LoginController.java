@@ -102,13 +102,15 @@ public class LoginController {
 		application.setAttribute("loginList",loginList );
 		System.out.println("로그인중인 회원번호:"+application.getAttribute("loginList"));
 		
+		String gradeNames[] = {"일반 회원","우수 회원","특별 회원","부 관리자","관리자"};
+		
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());
 		session.setAttribute("userNickname", member.getNickname());
 		session.setAttribute("userPoint", member.getPoint());
 		session.setAttribute("isLogin", true);
 		session.setAttribute("userGrade", member.getGrade());
-		
+		session.setAttribute("gradeName", gradeNames[member.getGrade()-1]);
 	   return "redirect:/home";
 	}
 	@RequestMapping(value="login", method=RequestMethod.GET)	//로그인

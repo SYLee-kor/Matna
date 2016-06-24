@@ -14,7 +14,18 @@ public class ReviewVO {
 	private int good;
 	private int bad;
 	private String photo;
+	private int mGrade;
 	
+	
+	public int getmGrade() {
+		return mGrade;
+	}
+	public void setmGrade(int mGrade) {
+		this.mGrade = mGrade;
+	}
+	public void setReplyCnt(int replyCnt) {
+		this.replyCnt = replyCnt;
+	}
 	public int getWriter() {
 		return writer;
 	}

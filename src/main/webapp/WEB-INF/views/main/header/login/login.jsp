@@ -94,46 +94,16 @@ $(document).ready(function() {
 <div align="center" class="box" style="padding-top: 50px">
 <table id="state" style="border: 1px;">
 	<tr><td rowspan="3" width="110px">
-		<c:if test="${userGrade == '1' }">
-			<img src="/matna/resource/img/lv5.jpg"  width="60" height="60"/>
-		</c:if>
-		<c:if test="${userGrade == '2' }">
-			<img src="/matna/resource/img/lv4.jpg"  width="60" height="60"/>
-		</c:if>
-		<c:if test="${userGrade == '3' }">
-			<img src="/matna/resource/img/lv3.jpg"  width="60" height="60"/>
-		</c:if>
-		<c:if test="${userGrade == '4' }">
-			<img src="/matna/resource/img/lv2.jpg"  width="60" height="60"/>
-		</c:if>
-		<c:if test="${userGrade == '5' }">
-			<img src="/matna/resource/img/lv1.jpg"  width="60" height="60"/>
-		</c:if>
+		<img src="/matna/resource/img/lv${userGrade }.jpg"  width="60" height="60"/>
 		</td>
 		
     <td><label id="nickname" class="nickname" name="nickname">
     	닉네임: ${userNickname }</label></td></tr>
     	
-    <tr><td><c:if test="${userGrade == '1' }">
+    <tr><td>
     	<label id="grade" class="grade" name="grade">
-    	등급: 관리자</label><br>
-    </c:if>
-    <c:if test="${userGrade == '2' }">
-   		<label id="grade" class="grade" name="grade">
-    	등급: 부관리자</label><br>
-    </c:if>
-    <c:if test="${userGrade == '3' }">
-    	<label id="grade" class="grade" name="grade">
-    	등급: 특별회원</label><br>
-    </c:if>
-    <c:if test="${userGrade == '4' }">
-    	<label id="grade" class="grade" name="grade">
-    	등급: 우수회원</label><br>
-    </c:if>
-    <c:if test="${userGrade == '5' }">
-    	<label id="grade" class="grade" name="grade">
-    	등급: 일반회원</label><br>
-    </c:if></td></tr>
+    	등급: ${gradeName }</label><br>
+    </td></tr>
     <tr><td>
     <label id="point" class="point" name="point">
           POINT: ${userPoint } </label><br></td>
@@ -144,7 +114,7 @@ $(document).ready(function() {
   <a onclick="mypage()"><img src="/matna/resource/img/mypage2.png" width="60" height="50" id="myPage"/></a>
   <a onclick="message()"><img src="/matna/resource/img/message1.png" width="60" height="50" id="msg"/></a>
   
-  <c:if test="${userGrade == '1' }">
+  <c:if test="${userGrade == '5' }">
   	<a onclick="admin()"><img src="/matna/resource/img/admin.png" width="50" height="50" id="adm"/></a>
   </c:if>
   </div>

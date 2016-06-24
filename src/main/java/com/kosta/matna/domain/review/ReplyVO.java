@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ReplyVO {
 	private int no;
-	private int rNo;
+	private int reviewNo;
 	private int writer;
 	private String nickName;
 	private String content;
@@ -16,11 +16,12 @@ public class ReplyVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public int getrNo() {
-		return rNo;
+	
+	public int getReviewNo() {
+		return reviewNo;
 	}
-	public void setrNo(int rNo) {
-		this.rNo = rNo;
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
 	}
 	public int getWriter() {
 		return writer;

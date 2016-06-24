@@ -15,7 +15,7 @@ create table member(
 	addr varchar2(200) not null,
 	point number default 0,
 	regdate date default sysdate,
-	grade number default 5
+	grade number default 1
 );
 
 drop sequence member_seq;

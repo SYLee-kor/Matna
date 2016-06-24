@@ -54,7 +54,8 @@ create table review_reply(
 drop table gbCheck();
 create table gbCheck(
 	rNo number references review(no),
-	userNo number references member(no)
+	userNo number references member(no),
+	gbType varchar2(5)
 );
 
 drop table matnaAddr;
