@@ -34,7 +34,7 @@ public class ViewTest {
 	
 	@RequestMapping("/test/content")
 	public String contentTest(){
-		return "main/body/review/menu/all/content";
+		return "main/body/review/content";
 	}
 	
 	

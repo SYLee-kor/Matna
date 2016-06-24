@@ -273,7 +273,7 @@
                    else
                    {
                        //alert( 'popup out click' );
-                       $(this).hide("fast");
+                       $(this).hide();
                    }
                }
            });
@@ -282,7 +282,7 @@
 
        /* 레이어 팝업창 보이기 */
        function show_popup(){
-           $('.layer').show("fast");
+           $('.layer').show();
        }
     
     
