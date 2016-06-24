@@ -10,6 +10,28 @@
 <!-- =======================css시작======================= -->
 <style type="text/css">
 
+#submit:hover { /*마우스 올라가면 색변경 */
+   background-color:#777;
+}
+
+#submit,#cancel{/* 등록 취소버튼 이름변경 */
+   display: inline;
+   width: 50px;
+  font-size: 14px;
+   background-color:#6cb4ce;
+   color: #fff;
+   padding: 5px 0px;
+   margin: 10px 0px 0px 0px;
+   border-radius: 7px;
+   -moz-border-radius: 5px;
+}
+
+.inputfield { /* 재료 같은 이름명 파랑 */
+   font-family: 'Lato', sans serif;
+   font-weight: 300;
+   color: #5DACCA; 
+   font-size: 13px; 
+}
 
 .book {
   width: 1000px;
@@ -232,6 +254,9 @@ $(document).ready(function(){
         <div class="front"  style="background:url('/matna/resource/images/book_right.jpg');  background-size : 100% 100%;">
           <h4 class="header">프리뷰</h4>
           <div class="content">
+          
+          	<!-- 재료입력란 -->
+      		<p class="inputfield"><label for="item">재료</label></p> 
             <p> 
             	<input type="text" id="addr" name="item" required tabindex="4" style="margin-bottom: 10px;" placeholder="재료입력">
       			<input type="button" value="등록" onclick="registItem()"/>
