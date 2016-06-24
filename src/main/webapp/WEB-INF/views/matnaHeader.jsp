@@ -121,7 +121,7 @@
   -webkit-transition: .1s ease-out;
   transition: .1s ease-out;
   cursor: pointer;
-  border:1px solid black;
+  border:1px solid lightgray;
   display: inline-block;
   vertical-align: middle;
   border-color: #dadada;
@@ -152,28 +152,31 @@
 .selectholder:hover,
 .activeselectholder {
   background-color: #fe795c;
+  color:white;
 }
 
 .selectholder:hover .pulldown,
 .activeselectholder .pulldown {
   background-color: #fe795c;
   background-image: url("http://supereightstudio.com/img/pulldown_hover.png");
+  color:white;
 }
 
-.selectholder .selectdropdown {
+.selectholder .selectdropdown { /* select 옵션메뉴 수정 */
   position: relative;
   top: 0;
   left: 0;
-  background: black;
-  color: white;
+  background: white;
+  color: #ff4a2b; /* tomato button color */
   font-size:10px;
   display: none;
   clear: both;
+  border: 1px solid lightgray;
 }
 
 .selectholder .selectdropdown span {
   display: block;
-  border-bottom: solid 1px #555;
+  border-bottom: solid 1px lightgray;
   padding-left: .8em;
   line-height: 2.4em;
   width: 100%;
@@ -253,16 +256,35 @@
              });
     
     
-    var cc=0
-    function showHide(id) {//select detail button menu 생성
-        if (cc==0) {
-            cc=1
-            document.getElementById(id).style.display="block";
-        } else {
-            cc=0
-            document.getElementById(id).style.display="none";
-        }
-    }
+    // 레이어창 생성 & 외부창 클릭시 close
+    $(document).ready(function(){
+       $(document).mousedown(function(e){
+       $('.layer').each(function(){
+               if( $(this).css('display') == 'block'){
+                   var l_position = $(this).offset();
+                   l_position.right = parseInt(l_position.left) + ($(this).width());
+                   l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                   if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                       && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
+                   {
+                       //alert( 'popup in click' );
+                   }
+                   else
+                   {
+                       //alert( 'popup out click' );
+                       $(this).hide("fast");
+                   }
+               }
+           });
+       }); 
+       })
+
+       /* 레이어 팝업창 보이기 */
+       function show_popup(){
+           $('.layer').show("fast");
+       }
+    
     
     
     // select 버튼 javascript
@@ -366,13 +388,12 @@
         	
         	<%--상세검색 --%>
         	<div class="col-md-2 col-sm-2">
-                <a href="#layer" onclick="showHide('layer');return false;">
+                <a href="javascript:show_popup();">
                 <button id="search_detail">search detail</button></a>
                
                <%-- 전체보기 레이어띄우는 창 --%>
                
-      <div id="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1;display:none; width:400px; height:250px; border:3px solid #ff7359;">
-      
+     <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:250px; border:3px solid #ff7359; border-radius:20px;">
       
       
       <div class="center-on-page" align="center" style="margin-top:2%;">

@@ -7,7 +7,7 @@
 
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 
-<body id="itemorder_bd">
+<body>
 <div id="finalize_order">
 	<div id="accordian">
 		
@@ -23,8 +23,8 @@
 		<div class="order_content" id="final_products">
 			<div class="left" id="ordered">
 				<div class="products">
-					<div class="product_image">
-						<img src="/matna/resource/img/${detailItem.photo}"id="order_img"/>
+					<div class="product_image" >
+						<img src="/matna/resource/img/${detailItem.photo}" id="order_img" style="width:150px;height:150px;margin-left: -10px;"/>
 					</div>
 					<div class="product_details">
 						<span class="product_name">&nbsp;&nbsp;&nbsp;&nbsp;${detailItem.name }</span>
@@ -59,9 +59,9 @@
 	  </div>	
 	</div>
   </div>
-    
+    <br>
     <!-- 주문/취소 -->
-    <div class="order_bt">   
+    <div class="order_bt" >   
     	<form action="/matna/item/buy">
 		<input type="submit" id="order_ok" value="주문">
 		<input type="button" id="order_cancle" value="취소" onclick="javascript:location.href='/matna/item/itemSearch'">

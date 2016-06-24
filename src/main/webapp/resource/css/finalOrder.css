@@ -3,35 +3,18 @@
   -webkit-box-sizing:border-box;
   -moz-box-sizing:border-box;
 }
-#itemorder_bd{
-  padding:0;
-  margin:0;
-  background: url(http://subtlepatterns.com/patterns/scribble_light.png) #FFF;
-  font-size:62.5%;
-  font-family: 'Open Sans', sans-serif;
-}
+
 #order_img{
   max-width: 100%;
 }
 #finalize_order{
   width:80%;
-  margin:20px auto;
+  /* margin:20px auto; */
+  margin-left: 14%;
 }
-#accordian{
-  width:100%;
-}
-#accordian .number{
-  width:50px;
-  height:50px;
-  background:#fff;
-  color:#888;
-  font-size:40px;
-  text-align: center;
-  border-radius:50%;
-  float:left;
-}
+
 #accordian .step{
-  width:100%;
+  width:85%;
   height:63px;
   background: #ff7359;
   color:#FFF;
@@ -41,17 +24,9 @@
   border-radius:2px;
   float:left;
 }
-#accordian .order_title{
-  float:left;
-  width:80%;
-  height:50px;
-  margin-left:1%;
-  font-size:1.5em; /*finalize order fontªÁ¿Ã¡Ó*/
-  font-weight:300;
-}
 
 #accordian .order_title label{
-  font-size:3em;
+  font-size:1.5em;
   font-weight:400;
   margin-top:15px;
 
@@ -75,7 +50,7 @@
   padding-left:1em;
 }
 #accordian .products{
-  width:100%;
+  width:85%;
   float:left;
   padding-bottom:3px;
   border-bottom:3px solid #aaa;
@@ -95,19 +70,19 @@
   display:table-cell;
   vertical-align: middle;
   margin-top:30%;
-  font-size: 2.5em;
+  font-size: 1.5em;
   color:#aaa;
 }
 
 #accordian .totals{
-  width:100%;
+  width:85%;
   float:left;
   border-bottom:3px solid #aaa;
   margin-top:1%;
   margin-margin:1%;
 }
 #accordian .totals .subtitle {
-  font-size:3.3em;
+  font-size:1.7em;
   display:block;
   text-align: right;
   color:#aaa;
@@ -122,10 +97,11 @@
 #accordian .final{
   width:100%;
   float:left;
-  font-size:3.5em;
-  text-align: right;
+  font-size:2em;
+  text-align: left;
   color:#888;
-   margin-top:1%;
+  margin-top:1.2%;
+  margin-left:62%;
 }
 #accordian .final .title{
   width:95%;
@@ -145,17 +121,17 @@
   width:100%;
   float:left;
   border-top:1px solid #aaa;
-  margin-top:3%;
+  margin-top:4%;
   margin-bottom:4%;
 }
 .order_info{
-  font-size:2.5em;
+  font-size:1.5em;
   display:block;
   text-align: left;
   color:#aaa;
   width:100%;
   margin-top:2%;
-  margin-left:10%;
+  margin-right:20%;
 }
 .order_info2 ,.title{
   color: #ff9e02;
@@ -167,26 +143,23 @@
  #order_ok, #order_cancle {
   display: inline-block;
   margin: 1.5rem;
-  padding: 1.5rem 2.2rem;
+  padding: 1.1rem 2rem;
   border: none;
-  border-radius: 0.1875rem;
+  border-radius: 1rem;
   outline: none;
   background-color: tomato;
   color: white;
   font-family: inherit;
-  font-size: 3.5em;
-  font-weight: 300;
+  font-size: 1.3em;
+  font-weight: 500;
   line-height: 1.5rem;
   text-decoration: none;
   cursor: pointer;
   -webkit-transition: all 150ms ease-out;
   transition: all 150ms ease-out;
 }
-.order_bt{
-  margin-left:40%;
-  margin-bottom: 5%;
-  margin-top:7%;
-}
+
+
 #order_ok:focus, #order_ok:hover, #order_cancle:focus, #order_cancle:hover {
   background-color: #ff7359;
   box-shadow: 0 0 0 0.1875rem white, 0 0 0 0.375rem #ff7359;
