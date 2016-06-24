@@ -131,7 +131,7 @@
 				</td>
 				<td>
 				  	<c:if test="${isCount==true }">
-     					<div id="graph" style="width:350px; height:350px; margin-left: 120px"></div>
+     					<div id="graph" style="width:300px; height:300px; margin-left: 120px"></div>
      				</c:if>
      				<c:if test="${isCount==false }">
      					<div><img alt="" src="/matna/resource/img/차트.jpg" style="width:290px; height:290px; margin-left: 120px"> </div>
