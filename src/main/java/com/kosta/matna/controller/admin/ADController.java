@@ -29,7 +29,7 @@ public class ADController {
 	
 	private static final Logger logger
     = LoggerFactory.getLogger(ADController.class);
-
+ 
 	@Inject
 	private AdService service;
 	String uploadPath;
