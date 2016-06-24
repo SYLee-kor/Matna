@@ -7,8 +7,12 @@ import org.apache.ibatis.session.RowBounds;
 
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 
 public interface ReviewService {
+	
+	List<ReviewVO> searchList(SearchKeyWord cri) throws Exception;
+	
 	boolean registReview(ReviewVO review, PreviewVO preview) throws Exception;
 	boolean modifyReview(ReviewVO review, PreviewVO preview) throws Exception;
 	

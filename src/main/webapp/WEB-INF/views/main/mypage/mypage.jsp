@@ -362,9 +362,14 @@
                      <html:messages id="msg" property="errAddr">
                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp; -->
-               <font color="red"><bean:write name="msg" /><br></font>
+               		<font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
+                  <br><br>
+                  <div style="float:left;">
+					누적point:
+					<input type="text" id="allpoint" value="${memberVO.allpoint}" readonly="readonly" name="allpoint" class="tf1" path="allpoint"/>
+				  </div>
                   <br> <br> <br>
                   
                   <div style="float:left; margin-left:215px;">
@@ -378,6 +383,7 @@
             </div>
          </div>
          </fieldset>
+         
 </body>
 
 <script>

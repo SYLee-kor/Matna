@@ -30,4 +30,5 @@ public interface MemberService {
 	public boolean updatePoint(int userNo , int point)throws Exception ;
 	public boolean updateAllPoint(int userNo , int point)throws Exception ;
 	
+	public boolean updateGrade(int userNo , int grade)throws Exception ;
 }

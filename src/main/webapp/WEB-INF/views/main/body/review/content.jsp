@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 <!-- services 라이브러리 불러오기 -->
+<link rel="stylesheet" href="/matna/resource/jqplot/jquery.jqplot.min.css">
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d57f90536554e1d1025bdf0836b0ed4f&libraries=services"></script>
 <script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
 <script src="/matna/resource/jqplot/jquery.jqplot.min.js"/></script>
@@ -100,8 +101,11 @@
 		<input type="hidden" name="pageType" value="${pageType }"/>
 		<input type="hidden" name="tabType" value="${tabType }"/>
 		
-		<div id="preview"> 
-    <p id ='one'>
+		<div id="preview">
+		<table>
+			<tr>
+				<td>
+				 <p id ='one' style="margin-left: 50px">
 	    <label class="fa fa-user fa-2x"></label>
 	    <label class="preview_la">&nbsp; 작성자:</label>
 	                  &nbsp;&nbsp;<b>${review.nickName }</b></br>
@@ -124,13 +128,24 @@
 	    <label class="preview_la">&nbsp; 연락처:</label>
 	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
      </p>
-     <p id="map"></p>
-     <c:if test="${isCount==true }">
-     	<div id="graph" style="width:300px; height:300px;"></div>
-     </c:if>
-     <c:if test="${isCount==false }">
-     	<label style="width:300px; height:300px;">아무도 좋아요를 하지 않았습니다.</label>
-     </c:if>
+				</td>
+				<td>
+				  	<c:if test="${isCount==true }">
+     					<div id="graph" style="width:300px; height:300px; margin-left: 120px"></div>
+     				</c:if>
+     				<c:if test="${isCount==false }">
+     					<div><img alt="" src="/matna/resource/img/차트.jpg" style="width:290px; height:290px; margin-left: 120px"> </div>
+     				</c:if>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+    				 <p id="map"></p>
+				</td>
+			</tr>
+		</table> 
+   
+   
      
   </div> <%--preview,map --%>
 		  
