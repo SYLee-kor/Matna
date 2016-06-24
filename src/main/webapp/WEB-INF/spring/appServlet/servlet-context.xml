@@ -36,7 +36,9 @@
 			<mapping path="/**/modify"/>
 			<mapping path="/**/update"/>
 			<mapping path="/**/buy"/>
+			<mapping path="/**/itembuy"/>
 			<mapping path="/**/gift"/>
+			<mapping path="/admin/**"/>
 			<beans:ref bean="LoginInterceptor"/>
 		</interceptor>
 	</interceptors>

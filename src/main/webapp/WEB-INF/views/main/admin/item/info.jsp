@@ -14,6 +14,20 @@ $(document).ready(function(){
 		document.location.href="/matna/admin/itemlistall";
 	});
 	
+	
+	//#아이템 스테이트 변경에서 포인트 등록일떄 가격, 수량 텍스트 필드 잠금
+	$('#itemState').change(function() {
+		if ( $(this).val()== 3 ) {
+			$('input[name=price]').attr('readonly','readonly');
+			$('input[name=amount]').attr('readonly','readonly');
+			$('input[name=price]').val(0);
+			$('input[name=amount]').val(0);
+		}else{
+			$('input[name=price]').removeAttr('readonly','readonly');
+			$('input[name=amount]').removeAttr('readonly','readonly');
+		};
+	});
+	
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
@@ -92,7 +106,7 @@ $(document).ready(function(){
 		<tr>
 		<td class="name">상품 상태</td>
 		<td>
-			<select name="state">
+			<select name="state" id="itemState">
 				<option value="0">일반 상품</option>
 				<option value="1">인기 상품</option>
 				<option value="2" selected="selected">신상품</option>
