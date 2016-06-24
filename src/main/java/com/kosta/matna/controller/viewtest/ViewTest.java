@@ -49,6 +49,12 @@ public class ViewTest {
 		return "/main/body/community/all/list_comm";
 	}
 	
+	
+	@RequestMapping("/test/comm/content")
+	public String commuContentTest(){
+		return "/main/body/community/all/content_comm";
+	}
+	
 	@RequestMapping("/test")
 	public String testView(){
 		return "test/review_tab";

@@ -47,36 +47,115 @@
 		reviewForm.attr("action",'/matna/review/modify');
 		reviewForm.submit();
 	} */
+	
+	window.onload = function() {
+		listReply('${board.no }');
+	}
+
+	function page_move(url) {
+		var f = document.frm;
+		$('#frm').prop("action",url)
+		f.submit();
+	}
 </script>
 </head>
 
 <body>
-	<form name="reviewForm" id="reviewForm" class="reviewF">
-		<input type="hidden" name="no" value="${review.no }"/>
-		<input type="hidden" name="page" value="${page }"/>
-		<input type="hidden" name="pageType" value="${pageType }"/>
-		<input type="hidden" name="tabType" value="${tabType }"/>
-	
+    <br>
+    <h1 style="width: 80%;margin-left: 10%;">자유게시판</h1>
+
+	<form name="frm" id="frm" method="post">
+		<input type="hidden" name="type" id="type" value="free" />
+			<input type="hidden" name="no" id="no" value="${board.no }" />
+			<input type='hidden' name='page' id='page' value ="${cri.page}">
+   		    <input type='hidden' name='perPageNum' id='perPageNum' value ="${cri.perPageNum}">
+   		    <input type='hidden' name='searchType' id='searchType' value ="${cri.searchType}">
+   		    <input type='hidden' name='keyword' id='keyword' value ="${cri.keyword}">
 		  
-	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
-	  <div id="content" >${review.content }</div>
+		 <!--  <div class="community_info" style="margin-top: 2%;color: gray;">
+		  <div class="row" style="margin-left: 50px; font-size: 15px;font-weight:300;">
+		    <div class="col-md-offset-2 col-md-2">
+		       no: 23
+		    </div>
+		    <div class="col-md-3">
+		               작성자: 황은지지지지은지
+		    </div>
+		    <div class="col-md-2">
+			      작성일: 2016.06.25
+		    </div>
+		  </div>
+		  <div class="row" style="padding: 1%;font-size: 16px;font-weight:500; margin-left: 35px;margin-bottom:20px;">
+		    <div class="col-md-offset-2 col-md-8">글제목: 안녕하세요여러분안녕하세요안녕하세요하이루루루루!!!!</div>
+		  </div>
+		 </div>  -->
+		 <div class="row"></div>
+		 <table style="margin-left: 20%;">
+		   <tr>
+		      <td colspan="4" style="padding: 1%;font-size: 16px;font-weight:500; margin-left: 35px;margin-bottom:20px;">
+		                   글제목: 안녕하세요여러분안녕하세요안녕하세요하이루루루루!!!!
+		      </td>
+		   </tr>
+		   <tr style="font-size: 15px;font-weight:300;">
+		     <td>no: 123</td>
+		     <td>작성자: 황은지은지지지은지</td>
+		     <td>작성일: 2016.06.24</td>
+		     <td>조회수: 140</td>
+		   </tr>
+		 </table>
+		  
+		  <div class="row">
+					<div class="col-md-offset-2 col-md-8" 
+					style="width: 850px; height: 500px;background-color:lightgray; overflow: scroll;">
+						ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+						ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ${board.content }</div>
+				</div>
+				
+				
+		  
+		  
+		  <%-- <table id="contentTable">
+				<tr align="center">
+					<td align="center" width="200">글번호</td>
+					<td width="800">${board.no }20</td>
+				</tr>
+				<tr align="center">
+					<td align="center">작성자</td>
+					<td>황은지은지은지${board.writer }</td>
+				</tr>
+				<tr align="center">
+					<td align="center">작성일</td>
+					<td>2016.06.24${board.regdate }</td>
+				</tr>
+				<tr align="center">
+					<td align="center">제목</td>
+					<td>자유 게시판입니다${board.title }</td>
+				</tr>
+				<tr> --%>
+				<%-- <div class="row">
+					<div class="col-md-offset-2 col-md-8" 
+					style="width: 850px; height: 500px;background-color:lightgray; overflow: scroll;">
+						ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
+						ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ${board.content }</div>
+				</div> --%>
+				<!-- </tr>
+			</table> -->
+		  
+		  <%--  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
+	            <div id="content" >${review.content }</div> --%>
 			
 			<%--버튼으로 바꿀예정!! --%>
 	  <div id="like_hate">
-	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good.PNG"></a> :  
-	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
-	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
-        <c:if test="${ userNo == review.writer }">
-		<input type="button" value="수정" onclick="updateReview('${review.no}');">
-		<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
-		</c:if>
-		<input type="button" value="  목록으로  " 
-		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
-					
-  </div>	
+	    
+		<input type=button value="수정" 
+		       onclick="javascript:page_move('/matna/community/update');">
+		<input type=button value="삭제" 
+		       onclick="javascript:page_move('/matna/community/delete');">
+		<input type=button value="목록으로" 
+		       onclick="javascript:page_move('/matna/community/listPage');"> 		
+      </div>	
  </form>
-	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
-	<%@include file="/WEB-INF/views/footer.jsp" %>
+
+	<%@include file="/WEB-INF/views/main/body/community/all/replyPage.jsp" %>
+    <%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>
