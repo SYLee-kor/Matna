@@ -15,6 +15,7 @@ public class MemberVO {
 	private int point;
     private String regdate;
     private int grade;
+    private int allpoint;
     
     public MemberVO() {
 		// TODO Auto-generated constructor stub
@@ -36,6 +37,14 @@ public class MemberVO {
 		this.no = no;
 		this.point = point;
 		this.nickname = nickname;
+	}
+
+	public int getAllpoint() {
+		return allpoint;
+	}
+
+	public void setAllpoint(int allpoint) {
+		this.allpoint = allpoint;
 	}
 
 	public String getId() {
