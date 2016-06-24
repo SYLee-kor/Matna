@@ -20,8 +20,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		Object userNo = session.getAttribute("userNo");
 		HandlerMethod method = (HandlerMethod)handler;
-		MethodParameter params[] = method.getMethodParameters();
-		params[0].getParameterName();
+//		MethodParameter params[] = method.getMethodParameters();
+//		params[0].getParameterName();
 		
 		logger.info("실행 메소드 : "+method.getMethod());
 		logger.info("로그인 유저번호 : "+userNo);

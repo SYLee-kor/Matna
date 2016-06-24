@@ -16,6 +16,7 @@ public class ReplyVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
 	public int getrNo() {
 		return rNo;
 	}

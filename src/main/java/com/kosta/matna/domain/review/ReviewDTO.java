@@ -13,7 +13,14 @@ public class ReviewDTO {
 	private String photo;
 	private int parking;
 	private String recommend;
+	private int mGrade;
 	
+	public int getMGrade() {
+		return mGrade;
+	}
+	public void setMGrade(int mGrade) {
+		this.mGrade = mGrade;
+	}
 	public int getNo() {
 		return no;
 	}

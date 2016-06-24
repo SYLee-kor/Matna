@@ -26,6 +26,6 @@ create table precipe(
 	foodName varchar2(30) not null,
 	price number not null,
 	time number not null,
-	level char(3),
+	difficulty char(3),
 	per number default 2
 );
