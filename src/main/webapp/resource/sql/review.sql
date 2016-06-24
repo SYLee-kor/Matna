@@ -1,6 +1,6 @@
+drop table gbCheck;
 drop table preview;
 drop table review_reply;
-drop table reviewGB;
 drop table review;
 
 drop sequence review_seq;
@@ -51,7 +51,6 @@ create table review_reply(
 	regdate date default sysdate
 );
 
-drop table gbCheck();
 create table gbCheck(
 	rNo number references review(no),
 	userNo number references member(no),
@@ -67,3 +66,6 @@ rename column ds_gugun to gu;
 
 alter table matnaAddr
 rename column ds_dong to dong;
+
+alter table review_reply
+rename column reviewNo to rNo;
