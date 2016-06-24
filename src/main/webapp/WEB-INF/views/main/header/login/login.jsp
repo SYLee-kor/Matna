@@ -114,7 +114,7 @@ $(document).ready(function() {
   <a onclick="mypage()"><img src="/matna/resource/img/mypage2.png" width="60" height="50" id="myPage"/></a>
   <a onclick="message()"><img src="/matna/resource/img/message1.png" width="60" height="50" id="msg"/></a>
   
-  <c:if test="${userGrade == '5' }">
+  <c:if test="${userGrade == '5' || userGrade=='4' }">
   	<a onclick="admin()"><img src="/matna/resource/img/admin.png" width="50" height="50" id="adm"/></a>
   </c:if>
   </div>

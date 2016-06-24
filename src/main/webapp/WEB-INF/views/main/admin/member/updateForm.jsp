@@ -175,17 +175,21 @@
 					<input type="text" id="nickname" value="${memberVO.point}" name="point" placeholder="point" class="tf1" maxlength="15" path="point"/>
 					<label class="la" style="margin-left: 20px">*숫자만 입력</label>
 				</div>
+				
+				<c:if test="${userGrade == '5'}">
 				<br>
 				<div>
 					회원등급:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					<select name = "grade" id="grade" path="grade">
-  						<option value="1" ${1 == memberVO.grade  ? 'selected="selected"' : '' }>일반회원</option>>
+  						<option value="1" ${1 == memberVO.grade  ? 'selected="selected"' : '' }>일반회원</option>
   						<option value="2" ${2 == memberVO.grade  ? 'selected="selected"' : '' }>우수회원</option>
   						<option value="3" ${3 == memberVO.grade  ? 'selected="selected"' : '' }>특별회원</option>
   						<option value="4" ${4 == memberVO.grade  ? 'selected="selected"' : '' }>부관리자</option>
   						<option value="5" ${5 == memberVO.grade  ? 'selected="selected"' : '' }>관리자</option>
   					</select>
 				</div>
+				</c:if>
+				
 				<br>
 				<br>
 				<div align="center">
