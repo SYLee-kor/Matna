@@ -45,7 +45,7 @@ create table preview(
 
 create table review_reply(
 	no number primary key,
-	reviewNo number references review(no),
+	rNo number references review(no),
 	writer number,
 	content varchar2(300),
 	regdate date default sysdate

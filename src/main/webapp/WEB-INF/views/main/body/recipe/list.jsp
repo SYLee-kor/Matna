@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
-<link href="/matna/resource/css/recipe/list.css" rel="stylesheet">
+<!-- <link href="/matna/resource/css/recipe/list.css" rel="stylesheet"> -->
 <script type="text/javascript">
 	var heart = false;
 	$('.lv').click(function() {

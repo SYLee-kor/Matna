@@ -142,7 +142,7 @@ public class RecipeController {
 			e.printStackTrace();
 			return "error";
 		}
-		return path+"content";
+		return "test/book";
 	}
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
@@ -185,6 +185,6 @@ public class RecipeController {
 		String savedName = uid.toString()+"_"+photoName;
 		File target = new File(uploadPath,savedName); 
 		FileCopyUtils.copy(fileData, target);
-		return "<img src='/matna/resource/recipe_images/"+savedName+"'>";
+		return "<img src='/matna/resource/images/recipe/"+savedName+"'>";
 	}
 }

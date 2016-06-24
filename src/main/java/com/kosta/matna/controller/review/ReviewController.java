@@ -180,6 +180,7 @@ public class ReviewController {
 	@RequestMapping("list") 
 	public String listReview(Model model, String pageType
 			, String tabType, String page){
+		System.out.println("list 실행");
 		int nowPage = ( page==null ) ? 1 : Integer.parseInt(page);
 		tabType = ( tabType == null ) ? "food" : tabType;
 		pageType = ( pageType == null ) ? "review" : pageType;
@@ -220,11 +221,37 @@ public class ReviewController {
 			model.addAttribute("pageType", typeMap.get("pageType"));
 			model.addAttribute("listType", typeMap.get("listType"));
 			model.addAttribute("page", page);
+			System.out.println("tabPage list.size() : "+list.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
 		}
 		return path+"tabPage";
+	}
+	@RequestMapping("mini")
+	public String miniPage(String pageType, String tabType, String listType, 
+			Model model) {
+		try {
+			pageType = (pageType==null)?"review":pageType;
+			tabType = (tabType==null)?"food":tabType;
+			
+			// # 페이지 타입 review/ranking 과 탭타입 food/desert/drink
+			Map<String,String> typeMap = new HashMap<>();
+			typeMap.put("pageType", pageType);
+			typeMap.put("tabType",tabType);
+			
+			// # 해당 탭의 총 리뷰 개수 구하기
+			List<ReviewVO> list = 
+					service.readList(typeMap, new RowBounds(0, 3));
+			System.out.println("mini list.size() : "+list.get(0).getGood());
+			model.addAttribute("miniList", list);
+			model.addAttribute("tabType", typeMap.get("tabType"));
+			model.addAttribute("pageType", typeMap.get("pageType"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
+		return path+"miniTab";
 	}
 	
 	@RequestMapping("guList")

@@ -15,20 +15,16 @@
 </script>
 </head>
 <body> 
-
-  <%@include file="/WEB-INF/views/main/body/review/menu/all/miniList.jsp" %>  
- 
-
+  <%@include file="/WEB-INF/views/main/body/review/miniList.jsp" %>  
+  <%--  <!-- Review miniList 영역 -->
    <div class="container">
     	<div class="row">
-   <!-- Review miniList 영역 -->
-<%--    <div class="col-md-6 col-sm-6">
-    	<% pageContext.setAttribute("listType", "mini"); %>
+   <div class="col-md-6 col-sm-6">
     	<% pageContext.setAttribute("pageType", "review"); %>
     	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
-   </div> --%>
+   </div>
    <!-- Review Ranking miniList 영역 -->
-<%--    <div class="col-md-6 col-sm-6">
+   <div class="col-md-6 col-sm-6">
     	<% pageContext.setAttribute("pageType", "ranking"); %>
     	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
    </div> --%>

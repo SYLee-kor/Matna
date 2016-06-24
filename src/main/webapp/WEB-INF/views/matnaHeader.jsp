@@ -471,9 +471,12 @@
                      <div class="navigation responsive_menu">
                         <ul>
                            <li><a class="show-1 templatemo_home" href="#">공지사항</a></li>
-                           <li><a class="show-2 templatemo_page2" href="#">리뷰</a></li>
-                           <li><a class="show-3 templatemo_page3" href="#">랭킹</a></li>
-                           <li><a class="show-5 templatemo_page5" href="#">레시피</a></li>
+                           <li><a class="show-2 templatemo_page2" 
+                          		href="/matna/review/list">리뷰</a></li>
+                           <li><a class="show-3 templatemo_page3" 
+                           		href="/matna/review/list?pageType=ranking">랭킹</a></li>
+                           <li><a class="show-5 templatemo_page5" 
+                           		href="/matna/recipe/list">레시피</a></li>
                            <li><a class="show-5 templatemo_page5" href="#">게시판</a></li>
                            <li><a class="show-5 templatemo_page5" href="#">상품</a></li>
                         </ul>
@@ -516,12 +519,12 @@
                               <li class="dropdown dropdown-submenu">
                               <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
                                  <ul id="submenu" class="dropdown-menu">
-                                    <li><a href="#">식사</a></li>
-                                    <li><a href="#">디저트</a></li>
-                                    <li><a href="#">주류</a></li>
+                                    <li><a href="/matna/review/list?tabType=food">식사</a></li>
+                                    <li><a href="/matna/review/list?tabType=desert">디저트</a></li>
+                                    <li><a href="/matna/review/list?tabType=drink">주류</a></li>
                                  </ul>
-                                 <li><a href="#">랭킹</a></li>
-                                 <li><a href="#">레시피</a></li>
+                                 <li><a href="/matna/review/list?pageType=ranking">랭킹</a></li>
+                                 <li><a href="/matna/recipe/list">레시피</a></li>
                            </ul>
                        </div>
                     </div>
