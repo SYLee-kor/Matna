@@ -18,7 +18,7 @@
 </script>
 </head>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
-<body id="itemorder_bd">
+<body>
 <div id="finalize_order">
 	<div id="accordian">
 		<c:choose>
@@ -39,14 +39,14 @@
 	    </div>
 	        
 	           <div class="row">
-	           <div class="col-md-6 col-sm-6">
+	           <div class="col-md-5 col-sm-5">
                   <div>
                      <!-- <img src="/matna/resource/images/쉑쉑.png" id="order_img"/> -->
                      <img alt="사진1" src="/matna/resource/img/${detailItem.photo}" id="order_img" >
 		          </div>			
 		       </div>
 		       
-		       <div class="col-md-6 col-sm-6">
+		       <div class="col-md-5 col-sm-5">
           		  <div class="sub_content"> 
 				     <span class="subtitle" id="item_name">이름:&nbsp;&nbsp;<input type="hidden" name="name" value="${detailItem.name }"> ${detailItem.name } </span><br><br>
 			   <c:choose>

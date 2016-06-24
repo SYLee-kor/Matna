@@ -7,7 +7,7 @@
 
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 
-<body id="itemorder_bd">
+<body>
 <div id="finalize_order">
 	<div id="accordian">
 		
@@ -59,9 +59,9 @@
 	  </div>	
 	</div>
   </div>
-    
+    <br>
     <!-- 주문/취소 -->
-    <div class="order_bt">   
+    <div class="order_bt" >   
     	<form action="/matna/item/buy">
 		<input type="submit" id="order_ok" value="주문">
 		<input type="button" id="order_cancle" value="취소" onclick="javascript:location.href='/matna/item/itemSearch'">

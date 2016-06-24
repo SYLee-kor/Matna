@@ -32,6 +32,11 @@ public class ViewTest {
 		return "main/body/review/menu/all/write";
 	}
 	
+	@RequestMapping("/test/content")
+	public String contentTest(){
+		return "main/body/review/menu/all/content";
+	}
+	
 	
 	@RequestMapping("/test/review/list")
 	public String reviewListTest(){
