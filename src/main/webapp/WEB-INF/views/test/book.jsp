@@ -10,11 +10,30 @@
 <!-- =======================css시작======================= -->
 <style type="text/css">
 
-#submit:hover { /*마우스 올라가면 색변경 */
+select[name="per"],select[name="difficulty"]{
+  padding: .3em .5em; /* �뿬諛깆쑝濡� �넂�씠 �꽕�젙 */
+  font-family: inherit;  /* �룿�듃 �긽�냽 */
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* �꽕�씠�떚釉� �솕�궡�몴 ��泥� */  
+  border: 1px solid #999; 
+  border-radius: 4px; /* iOS �뫁洹쇰え�꽌由� �젣嫄� */
+  -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */
+  -moz-appearance: none;
+  appearance: none;
+  width: 150px;
+}
+
+.recipetext{
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  height: 18px;
+  width:280px;
+}
+
+#submit:hover, #ingr:hover { /*마우스 올라가면 색변경 */
    background-color:#777;
 }
 
-#submit,#cancel{/* 등록 취소버튼 이름변경 */
+#submit,#cancel, #ingr{/* 등록 취소버튼 이름변경 */
    display: inline;
    width: 50px;
   font-size: 14px;
@@ -258,17 +277,17 @@ $(document).ready(function(){
           	<!-- 재료입력란 -->
       		<p class="inputfield"><label for="item">재료</label></p> 
             <p> 
-            	<input type="text" id="addr" name="item" required tabindex="4" style="margin-bottom: 10px;" placeholder="재료입력">
-      			<input type="button" value="등록" onclick="registItem()"/>
+            	<input type="text" class="recipetext" id="addr" name="item" required tabindex="4" style="margin-bottom: 10px;" placeholder="재료입력">
+      			<input type="button" value="등록" onclick="registItem()" id="ingr"/>
       		</p>
       		
       		 <!-- 가격 입력란 -->
             <p class="inputfield"><label for="price">가격 </label></p>
-  	  		<p><input type="text" name="price" placeholder="가격을 입력해주세요."> 원</p>
+  	  		<p><input type="text" class="recipetext" name="price" placeholder="가격을 입력해주세요."> 원</p>
   	  		
         	 <!-- 조리시간 입력란 -->
   	  		<p class="inputfield"><label for="time">조리 시간(분 단위) </label></p>
-  	 		<p><input type="text" name="time" placeholder="조리 시간을 분 단위로 입력해주세요."> 분</p>
+  	 		<p><input type="text" class="recipetext" name="time" placeholder="조리 시간을 분 단위로 입력해주세요."> 분</p>
         	
   	  		<!-- 난이도 선택란 -->
   	  		<p class="inputfield"><label for="difficulty">난이도 </label></p>
@@ -280,20 +299,20 @@ $(document).ready(function(){
             
       		<!-- 인분 선택란 -->  
       		<p class="inputfield"><label for="per">인분 </label></p> 
-      		<select name="per">
+      		<p><select name="per">
               		<option value="1" selected="selected">1인분</option>
               		<option value="2">2인분</option>
               		<option value="3">3인분</option>
               		<option value="4">4인분</option>
-      		</select>
+      		</select></p>
             
   	 		<!-- 요리이름 입력란 -->
   	  		<p class="inputfield"><label for="foodName">요리이름 </label></p>
-  	  		<input type="text" name="foodName" placeholder="요리 이름을 입력해주세요.">
+  	  		<p><input type="text" class="recipetext" name="foodName" placeholder="요리 이름을 입력해주세요."></p>
             
   	  		<!-- 요리 상세내용 입력란 -->
   	  		<p class="inputfield"><label for="foodDetail">요리설명 </label></p>
-  	  		<input type="text" name="foodDetail" placeholder="요리 설명을 입력해주세요.">
+  	  		<p><input type="text" class="recipetext" name="foodDetail" placeholder="요리 설명을 입력해주세요."></p>
   	  
           </div>
           <div class="pageNumber">2</div>
@@ -324,7 +343,7 @@ $(document).ready(function(){
 					
 						<!--제목입력란 -->       
        					<p class="inputfield"><label for="recipe_title">제목</label></p> 
-       					<input type="text" id="recipe_title" name="title" placeholder="제목을 입력해주세요~" 
+       					<input type="text" class="recipetext" id="recipe_title" name="title" placeholder="제목을 입력해주세요~" 
               			required tabindex="4" style="margin-bottom: 10px;"/> <br/>
   
        					<!--SmartEditor입력란 -->
