@@ -160,10 +160,10 @@
 	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
-		<input type="button" value="수정" onclick="updateReview('${review.no}');">
-		<input type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
+		<input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
+		<input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
 		</c:if>
-		<input type="button" value="  목록으로  " 
+		<input id="reviewli" type="button" value="목록" 
 		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
 					
   </div>	

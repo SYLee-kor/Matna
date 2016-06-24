@@ -41,3 +41,19 @@
   margin-top: 3%;
   margin-left: 40%;
 }
+
+#reviewdel, #reviewli, #reviewup{
+	display: inline;
+   width: 50px;
+  font-size: 14px;
+   background-color:#6cb4ce;
+   color: #fff;
+   padding: 5px 0px;
+   margin: 10px 0px 0px 0px;
+   border-radius: 3px;
+   -moz-border-radius: 5px;
+}
+
+#reviewup:hover , #reviewli:hover, #reviewdel:hover{
+   background-color:#777;
+}
