@@ -114,5 +114,10 @@ public class MemberServiceImpl implements MemberService {
 		public boolean updateAllPoint(int userNo, int point) throws Exception {
 			return memberDAO.updateAllPoint(userNo, point);
 		}
+
+		@Override
+		public boolean updateGrade(int userNo, int grade) throws Exception {
+			return memberDAO.updateGrade(userNo, grade);
+		}
 	
 }

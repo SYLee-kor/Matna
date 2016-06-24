@@ -180,5 +180,15 @@ public class MemberDAOImpl implements MemberDAO{
 		if (session.update("member.updateAllPoint", map)>0) return true;
 		return false;
 	}
+
+	@Override
+	public boolean updateGrade(int userNo, int grade) throws Exception {
+			Map<String, Integer> map = new HashMap<>();
+			   map.put("userNo",userNo);
+			   map.put("grade", grade);
+			
+		if (session.update("member.updateGrade", map)>0) return true;
+		return false;
+	}
 	
 }

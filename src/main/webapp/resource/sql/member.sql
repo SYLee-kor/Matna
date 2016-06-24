@@ -1,6 +1,13 @@
 select * from member;
 alter table member add (allpoint number default 0);
 
+update member set allpoint=0
+	    where no=7;
+update member set allpoint=500
+	    where no=7;
+update member set allpoint=3000
+	    where no=7;
+
 drop table member;
 create table member(
 	no number primary key,

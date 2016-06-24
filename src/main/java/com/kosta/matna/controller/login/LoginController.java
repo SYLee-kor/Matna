@@ -76,8 +76,6 @@ public class LoginController {
 			HttpSession session, HttpServletRequest request)throws Exception{
 		logger.info("로그인 Post 요청..");
 		
-		System.out.println(login_id+","+login_pass);
-		
 		MemberVO member = new MemberVO();
 		if(login_id!=null&&login_pass!=null)
 			member = memberService.selectIsMember(login_id, login_pass);
@@ -103,6 +101,18 @@ public class LoginController {
 		System.out.println("로그인중인 회원번호:"+application.getAttribute("loginList"));
 		
 		String gradeNames[] = {"일반 회원","우수 회원","특별 회원","부 관리자","관리자"};
+		
+		
+		if(member.getGrade()==1 && member.getAllpoint()>=500 && member.getAllpoint()<3000){
+				memberService.updateGrade(member.getNo(), 2);
+				member = memberService.selectIsMember(login_id, login_pass);
+		}else if(member.getGrade()==1&& member.getAllpoint()>=3000){
+			memberService.updateGrade(member.getNo(), 3);
+			member = memberService.selectIsMember(login_id, login_pass);
+		}else if(member.getGrade()==2 && member.getAllpoint()>=3000){
+			memberService.updateGrade(member.getNo(), 3);
+			member = memberService.selectIsMember(login_id, login_pass);
+		}
 		
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());

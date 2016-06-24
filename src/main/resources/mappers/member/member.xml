@@ -109,5 +109,10 @@
        update member set allpoint=allpoint+#{point}
 	    where no=#{userNo}
    </update>
+
+    <update id="updateGrade" parameterType="java.util.Map">
+       update member set grade=#{grade}
+	    where no=#{userNo}
+   </update>
    
 </mapper>
