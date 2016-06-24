@@ -125,7 +125,13 @@
 	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
      </p>
      <p id="map"></p>
-     <div id="graph" style="width:300px; height:300px;"></div>
+     <c:if test="${isCount==true }">
+     	<div id="graph" style="width:300px; height:300px;"></div>
+     </c:if>
+     <c:if test="${isCount==false }">
+     	<label style="width:300px; height:300px;">아무도 좋아요를 하지 않았습니다.</label>
+     </c:if>
+     
   </div> <%--preview,map --%>
 		  
 	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
@@ -133,7 +139,7 @@
 			
 			<%--버튼으로 바꿀예정!! --%>
 	  <div id="like_hate">
-	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good.PNG"></a> :  
+	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
 	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
 	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
