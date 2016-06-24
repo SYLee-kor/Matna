@@ -24,7 +24,7 @@ import com.kosta.matna.domain.admin.SearchKeyWord;
 import com.kosta.matna.service.admin.AdService;
 
 @Controller
-@RequestMapping("/admin/AD")
+@RequestMapping("/admin/AD") 
 public class ADController {
 	
 	private static final Logger logger
