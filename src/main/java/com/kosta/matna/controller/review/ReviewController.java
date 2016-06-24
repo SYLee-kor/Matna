@@ -20,8 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.domain.review.PreviewVO;
-import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.review.ReviewService;
 
 @RequestMapping("/review/")
@@ -30,6 +30,9 @@ public class ReviewController {
 	
 	@Inject
 	ReviewService service;
+	
+	@Inject
+	MemberService memberService;
 	
 	// # 뷰들의 위치 잡아주기.
 	private String path = "/main/body/review/"; // # WEB-INF/views/ {path} 
@@ -135,6 +138,20 @@ public class ReviewController {
 			price = (prices[1].equals("7만원 이상")) ? prices[1] : price;
 			preview.setPrice(price);
 			
+			// # 그래프 띄워주기
+			List<String> list = memberService.selectGbGender(((ReviewVO)reviews[0]).getNo());
+			int mcount=0;
+			int wcount=0;
+			for(int i=0;i<list.size();i++){
+				if(list.get(i).equals("남")){
+					mcount++;
+				}else if(list.get(i).equals("여")){
+					wcount++;
+				}
+			}
+			
+			model.addAttribute("mcount", mcount);
+			model.addAttribute("wcount", wcount);
 			model.addAttribute("review",reviews[0]);
 			model.addAttribute("preview",preview);
 		} catch (Exception e) {

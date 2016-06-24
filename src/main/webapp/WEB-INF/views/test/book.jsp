@@ -123,14 +123,14 @@
   left: 20px;
 }
 
-.page .front {
+/* .page .front {
   background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #fff), color-stop(1, #cacaca));
     background-image:-webkit-linear-gradient(right, #fff 95%, #cacaca 100%);
     background-image:-moz-linear-gradient(right, #fff 95%, #cacaca 100%);
     background-image:-ms-linear-gradient(right, #fff 95%, #cacaca 100%);
     background-image:-o-linear-gradient(right, #fff 95%, #cacaca 100%);
     background-image:linear-gradient(right, #fff 95%, #cacaca 100%);
-}
+} */
 
 .page .back {
   background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
@@ -196,32 +196,31 @@ $(document).ready(function(){
 
 <!-- =======================HTML시작======================= -->
 
-<div class="book"><!-- 북전체 시작 -->
+<div class="book" style="background:url('/matna/resource/images/도마2.png');  background-size : 100% 100%;"><!-- 북전체 시작 -->
 
   <div class="page" id="page1">
       <div class="subpage">
       
-        <div class="front">
-          <h4 class="header"> 쉑쉑버거 요리법</h4>
+        <div class="front"  style="background:url('/matna/resource/images/book_front.jpg');  background-size : 100% 100%;">
+          <h2 class="header"> 쉑쉑버거 요리법</h2><br><br>
           <div class="content">
           	<center>
-            <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="300px" height="300px"></p>
+            <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="50%" height="50%"></p>
             <p> 쉑쉑버거</p>
             <p> 조리시간: 5분 양: 3인분 좋아요: 99</p>
           	</center>
           </div>
-          <div class="pageNumber">1</div>
         </div>
         
-        <div class="back">
-          <h4 class="header">Page 2</h4>
+        <div class="back"  style="background:url('/matna/resource/images/book_left.jpg');  background-size : 100% 100%;">
+          <h4 class="header">완성 사진</h4>
           <div class="content">
           	<center>
           	 <p> <img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="400px" height="400px">
           	 <input type="file"> </p>
           	</center>
            </div>
-          <div class="pageNumber">2</div>
+          <div class="pageNumber">1</div>
         </div>
         
       </div>
@@ -230,38 +229,107 @@ $(document).ready(function(){
     <div class="page" id="page2">
       <div class="subpage">
       
-        <div class="front">
-          <h4 class="header">Page 1</h4>
+        <div class="front"  style="background:url('/matna/resource/images/book_right.jpg');  background-size : 100% 100%;">
+          <h4 class="header">프리뷰</h4>
           <div class="content">
-            <p> 재료</p>
-            <p> 가격</p>
-            <p> 조리시간</p>
-            <p> 난이도 <select><option>상</option></select> </p>
-            <p> 양 <select><option>1인분</option></select> </p>
-            <p>요리 이름</p>
-            <p>요리 설명</p>
-            <p>내용</p>
+            <p> 
+            	<input type="text" id="addr" name="item" required tabindex="4" style="margin-bottom: 10px;" placeholder="재료입력">
+      			<input type="button" value="등록" onclick="registItem()"/>
+      		</p>
+      		
+      		 <!-- 가격 입력란 -->
+            <p class="inputfield"><label for="price">가격 </label></p>
+  	  		<p><input type="text" name="price" placeholder="가격을 입력해주세요."> 원</p>
+  	  		
+        	 <!-- 조리시간 입력란 -->
+  	  		<p class="inputfield"><label for="time">조리 시간(분 단위) </label></p>
+  	 		<p><input type="text" name="time" placeholder="조리 시간을 분 단위로 입력해주세요."> 분</p>
+        	
+  	  		<!-- 난이도 선택란 -->
+  	  		<p class="inputfield"><label for="difficulty">난이도 </label></p>
+  	  		<p><select name="difficulty">
+  	  			<option value="상">복잡</option>
+  	  			<option value="중">보통</option>
+  	  			<option value="하" selected="selected">간단</option>
+  	  		</select></p>
+            
+      		<!-- 인분 선택란 -->  
+      		<p class="inputfield"><label for="per">인분 </label></p> 
+      		<select name="per">
+              		<option value="1" selected="selected">1인분</option>
+              		<option value="2">2인분</option>
+              		<option value="3">3인분</option>
+              		<option value="4">4인분</option>
+      		</select>
+            
+  	 		<!-- 요리이름 입력란 -->
+  	  		<p class="inputfield"><label for="foodName">요리이름 </label></p>
+  	  		<input type="text" name="foodName" placeholder="요리 이름을 입력해주세요.">
+            
+  	  		<!-- 요리 상세내용 입력란 -->
+  	  		<p class="inputfield"><label for="foodDetail">요리설명 </label></p>
+  	  		<input type="text" name="foodDetail" placeholder="요리 설명을 입력해주세요.">
+  	  
           </div>
-          <div class="pageNumber">3</div>
+          <div class="pageNumber">2</div>
         </div>
         
-        <div class="back">
-          <h4 class="header">STEP 1</h4>
+        <div class="back" style="background:url('/matna/resource/images/book_left.jpg');  background-size : 100% 100%;">
+          <h4 class="header">완 성 사 진</h4>
           <div class="content">
-          	<p><textarea rows="" cols=""></textarea> </p>
+          	<center>
+          	 <p> 
+          	 	<img alt="완성사진" src="/matna/resource/images/쉑쉑.png" width="400px" height="400px">
+          		<input type="file"> 
+          	 </p>
+          	</center>
            </div>
-          <div class="pageNumber">2</div>
+          <div class="pageNumber">3</div>
         </div>
         
       </div>
   </div>
+
+		<div class="page" id="page3">
+			<div class="subpage">
+
+				<div class="front" style="background:url('/matna/resource/images/book_right.jpg');  background-size : 100% 100%;">
+					<h4 class="header">만드는 법</h4>
+					<div class="content">
+					
+						<!--제목입력란 -->       
+       					<p class="inputfield"><label for="recipe_title">제목</label></p> 
+       					<input type="text" id="recipe_title" name="title" placeholder="제목을 입력해주세요~" 
+              			required tabindex="4" style="margin-bottom: 10px;"/> <br/>
   
-</div><!-- 북전체 끝 -->
+       					<!--SmartEditor입력란 -->
+       					<textarea cols="100" rows="35" name="content"
+						id="recipe_content" style="width: 400px; height: 350px;"></textarea>
+	  
+       					 <!-- 버튼 -->
+       					<input name="submit" type="submit" id="submit" tabindex="5" value="등록" />
+      					 <input type="button" id="cancel" value="  취소  ">
+										
+					</div>
+					<div class="pageNumber">4</div>
+				</div>
+
+				<div class="back" style="background:url('/matna/resource/images/book_back.jpg');  background-size : 100% 100%;">
+					<h4 class="header"></h4>
+					<div class="content">
+					<p>뒷표지</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div><!-- 북전체 끝 -->
 <center>
 <br><br>
 <div class="controls">
-  <button id="prevPage">이전</button>
-  <button id="nextPage">다음</button>
+  <input type="image" id="prevPage" src="/matna/resource/images/previous.png">
+  <input type="image" id="nextPage" src="/matna/resource/images/next.png">
 </div>
 </center>
 

@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.message.MessageVO;
+import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.message.MessageService;
+import com.kosta.test.JqplotTest;
 
 @Controller
 @RequestMapping("/message")
@@ -32,6 +34,9 @@ public class MessageController {
 	
 	@Inject
 	private MessageService messageService;
+	
+	@Inject
+	private MemberService memberService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)	//메시지 쓰기
     public String writeMessage()throws Exception{
@@ -137,6 +142,8 @@ public class MessageController {
 		}
 	   return "redirect:/message/listAll";
 	}
+	
+	
 	
 }
 

@@ -133,11 +133,12 @@ public class AdminController {
 	
 	@ResponseBody
 	@RequestMapping("/itemdelete") // 상품 삭제 (완료)
-	public void itemDelete(int ino){
+	public String itemDelete(int ino){
 		try {
 			service.deleteItem(ino);
+			return "success";
 		} catch (Exception e) {
-			e.printStackTrace();
+			return "fail";
 		}
 	}
 	

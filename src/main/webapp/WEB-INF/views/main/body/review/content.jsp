@@ -5,12 +5,32 @@
 <!-- services 라이브러리 불러오기 -->
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d57f90536554e1d1025bdf0836b0ed4f&libraries=services"></script>
 <script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
+<script src="/matna/resource/jqplot/jquery.jqplot.min.js"/></script>
+<script type="text/javascript" src="/matna/resource/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		if(!('${preview.gu}'=='구' || '${preview.dong}'=='동')){
 			showMap('${preview.gu} ${preview.dong} ${preview.addr}');
 		}
 		listReply('${review.no}');
+		
+		var man=${mcount};
+		var woman=${wcount};
+		
+		$.jqplot ('graph', [[['남자', man], ['여자', woman]]], 
+		        { 
+		          seriesDefaults: {
+		            //원형으로 렌더링
+		            renderer: $.jqplot.PieRenderer,
+		            //원형상단에 값보여주기(알아서 %형으로 변환)
+		            rendererOptions: {
+		              showDataLabels: true
+		            }
+		          },
+		          //우측 색상별 타이틀 출력
+		          legend: { show:true, location: 'e' }
+		        }
+		);
 	}
 	
 	function gbCheck(gbType,rNo,userNo) {
@@ -104,7 +124,8 @@
 	    <label class="preview_la">&nbsp; 연락처:</label>
 	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
      </p>
-     <p id="map" ></p>
+     <p id="map"></p>
+     <div id="graph" style="width:300px; height:300px;"></div>
   </div> <%--preview,map --%>
 		  
 	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
@@ -125,7 +146,6 @@
 					
   </div>	
  </form>
-	<%session.setAttribute("userNo", 01); %>
 	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>

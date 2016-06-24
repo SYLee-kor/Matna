@@ -96,6 +96,9 @@
     	where name=#{name} and email=#{email} and id=#{id}
     </select>
     
+   <select id="selectGbGender" resultType="String" parameterType="int">
+	     select gender from member where no IN (select userno from gbcheck where rno=#{rno})
+	</select>
     
    
 </mapper>

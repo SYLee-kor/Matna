@@ -34,8 +34,12 @@
 						data:{
 							ino: $(this).val()
 						},
-						success:function(){
-							document.location.href = "/matna/admin/itemlistall";
+						success:function(result){
+							if(result=='success'){
+								document.location.href = "/matna/admin/itemlistall";
+							}else if(result=='fail')
+								alert('상품을 주문한 회원이 있습니다.');
+								$('input[name=ck]:checked').each(function(){ this.checked = false;});
 						}
 					});
 				});
