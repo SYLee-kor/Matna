@@ -140,6 +140,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
+				<br><br><br>
     				 <p id="map"></p>
 				</td>
 			</tr>
