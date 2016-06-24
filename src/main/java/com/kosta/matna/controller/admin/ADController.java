@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kosta.matna.controller.community.CommunityController;
 import com.kosta.matna.domain.admin.AD;
 import com.kosta.matna.domain.admin.PageMaker;
 import com.kosta.matna.domain.admin.SearchKeyWord;
@@ -29,7 +28,7 @@ import com.kosta.matna.service.admin.AdService;
 public class ADController {
 	
 	private static final Logger logger
-    = LoggerFactory.getLogger(CommunityController.class);
+    = LoggerFactory.getLogger(ADController.class);
 
 	@Inject
 	private AdService service;
@@ -37,9 +36,14 @@ public class ADController {
 	
 	@RequestMapping(value="/change", method = RequestMethod.POST) //관리자 발송전 주문취소 
 	public String setAD(Model model, int no) throws Exception{
-		AD ad = service.selectView(no);
-		model.addAttribute("total", service.total());
-		model.addAttribute("AD",ad);
+		
+		logger.info("광고 변경");
+		
+			AD ad = service.selectView(no);
+			model.addAttribute("total", service.total());
+			model.addAttribute("AD",ad);
+			System.out.println("광고번호 : " + ad.getNo());
+		
 		
 		return "main/header/ad/setAD";
 	}
@@ -74,16 +78,19 @@ public class ADController {
 		logger.info("AD insert");
 		logger.info("AD::"+ad); 
 		//String uploadPath = request.getSession().getServletContext().getRealPath("/img");
-		uploadPath = session.getServletContext().getRealPath("/resource/images/admin/ad");
-		
+		uploadPath = session.getServletContext().getRealPath("/resource/images/admin/ad2");
+
 		try {
 			String imgName = file.getOriginalFilename();
+			System.out.println("사진값: "+imgName);
 			
 			if(imgName.equals("")){
 				service.insertAD(ad);
 			}else{
+				if(!new File(uploadPath).exists()){
+				new File(uploadPath).mkdir();
+				}
 				String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-				String fileName = file.getName();
 				ad.setPhoto(savedName);
 			//System.out.println("사진 원래이름 : "+file.getOriginalFilename()); 확장자처리 안함/jpg,png,gif
 			//System.out.println("사진 확장자명: "+fileName.substring(fileName.lastIndexOf(".")+1));
@@ -107,6 +114,7 @@ public class ADController {
 		
 		try {
 			String imgName = file.getOriginalFilename();
+			System.out.println("사진값: "+imgName);
 			
 			if(imgName.equals("")){
 				service.updateAD(ad);

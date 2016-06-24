@@ -38,6 +38,8 @@
 	<script src="/matna/resource/js/jquery.lightbox.js"></script>
 	<script src="/matna/resource/js/templatemo_custom.js"></script>
     <script src="/matna/resource/js/jquery-git2.js"></script>
+     <!-- 상세 검색 -->
+    <script src="/matna/resource/js/searchDetail.js"></script> 
     <!-- 광고 -->
 	<script src="/matna/resource/js/ad.js"></script>    
 	<script src="/matna/resource/js/tab.js"></script>    
@@ -230,9 +232,7 @@
     
 
         <%--상세 검색 --%>
-   
-    
-    <script type="text/javascript">
+  <script type="text/javascript">
     $(document).ready(
              function() {//class="dropdown-menu"
                 $('div.main_menu div.col-md-2').hover(
@@ -256,41 +256,23 @@
              });
     
     
-    // 레이어창 생성 & 외부창 클릭시 close
-    $(document).ready(function(){
-       $(document).mousedown(function(e){
-       $('.layer').each(function(){
-               if( $(this).css('display') == 'block'){
-                   var l_position = $(this).offset();
-                   l_position.right = parseInt(l_position.left) + ($(this).width());
-                   l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
-
-                   if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
-                       && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
-                   {
-                       //alert( 'popup in click' );
-                   }
-                   else
-                   {
-                       //alert( 'popup out click' );
-                       $(this).hide();
-                   }
-               }
-           });
-       }); 
-       })
-
-       /* 레이어 팝업창 보이기 */
-       function show_popup(){
-           $('.layer').show();
-       }
-    
+    var cc=0
+    function showHide(id) {//select detail button menu 생성
+        if (cc==0) {
+            cc=1
+            document.getElementById(id).style.display="block";
+        } else {
+            cc=0
+            document.getElementById(id).style.display="none";
+        }
+    }
     
     
     // select 버튼 javascript
     var selectText=['구','동','가격대']; // 변수를 한번 더 지정해줌
     
     $(document).ready(function(){
+    	
         $(':selected').each(function(){
           var pp =$(this).parent().parent();
           //pp.prepend($(this).val()) //prepend는 원래 있던 변수를 같이 읽어줌.
@@ -311,6 +293,7 @@
                 $drop.append('<span>'+name+'</span>');
              }
           });
+         
           // on click, show dropdown
           $(this).click(function(){
              if($(this).hasClass('activeselectholder')) {
@@ -363,22 +346,22 @@
           });
        });
        
-       // preload hover images
+     /*   // preload hover images
       preload([
         'http://supereightstudio.com/img/radio_tick.png',
         'http://supereightstudio.com/img/pulldown.png',
         'http://supereightstudio.com/img/pulldown_hover.png'
-      ]);
+      ]); */
     });
     
- 
-    </script>
     
+    
+    </script>
     <title>우리지금 Matna!!</title>
 </head>
 <body>
-
 <!-- title start -->
+    <form action="/matna/main/review/list" method="post">         
   	<div class="container">
     	<div class="row">
         	<div class="col-md-4 col-sm-4">
@@ -388,70 +371,76 @@
         	
         	<%--상세검색 --%>
         	<div class="col-md-2 col-sm-2">
-                <a href="javascript:show_popup();">
+                <a href="#layer" onclick="showHide('layer');return false;">
                 <button id="search_detail">search detail</button></a>
                
                <%-- 전체보기 레이어띄우는 창 --%>
-               
      <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:250px; border:3px solid #ff7359; border-radius:20px;">
       
       
+      
       <div class="center-on-page" align="center" style="margin-top:2%;">
-         <input type="radio" name="rb" id="rb1" class="detail_rb" checked="checked" />
-         <label for="rb1" class="detail_lb">전체</label>
-         <input type="radio" name="rb" id="rb2" class="detail_rb"/>
-         <label for="rb2" class="detail_lb">식사</label>
-         <input type="radio" name="rb" id="rb3" class="detail_rb" />
+         <input type="radio" name="rb" id="rb1" class="detail_rb" value="" checked="checked" />
+         <label for="rb1" class="detail_lb" >전체</label>
+         <input type="radio" name="rb" id="rb2" class="detail_rb" value="food"/>
+         <label for="rb2" class="detail_lb" >식사</label>
+         <input type="radio" name="rb" id="rb3" class="detail_rb" value="desert"/>
          <label for="rb3" class="detail_lb">디저트</label>
-         <input type="radio" name="rb" id="rb4" class="detail_rb" />
+         <input type="radio" name="rb" id="rb4" class="detail_rb" value="drink"/>
          <label for="rb4" class="detail_lb">주류</label>
       </div>
       
-      <div class="selectH" style="position: relative;z-index:2;">
-      <div class="selectholder" align="center">
-      <select class="select">
+      <div class="selectH" style="position: relative;z-index:2;" >
+      <div class="selectholder" align="center" id="guSel">
+<!--       <span id="guSpan"></span> -->
+<!--       <select class="select">
         <option value="구" ></option>
         <option value="강서구"></option>
         <option value="양천구"></option>
         <option value="영등포구"></option>
-      </select>
+      </select> -->
       </div>
       
-      <div class="selectholder" align="center" >
-      <select class="select">
+      <div class="selectholder" align="center" id="dongSel">
+<!--       <span id="dongSpan"></span> -->
+<!--      <select class="select">
         <option value="동"></option>
         <option value="신월동"></option>
         <option value="화곡동"></option>
         <option value="여의도동"></option>
-      </select>
+      </select> -->
       </div>
       
       <div class="selectholder" align="center" >
-      <select class="select">
-        <option value="가격대" ></option>
-        <option value="5000~10000"></option>
-        <option value="10000~20000"></option>
-        <option value="20000~30000"></option>
+      <select class="select" name="money">
+        <option value="전체"></option>
+        <option value="5천원 이하"></option>
+        <option value="5천원~1만원"></option>
+        <option value="1만원~2만원"></option>
+        <option value="2만원~3만원"></option>
+        <option value="3만원~5만원"></option>
+        <option value="5만원~7만원"></option>
+        <option value="7만원 이상"></option>
       </select>
       </div>
       </div>
       
       <div class="center-on-page" align="center" >
-         <input type="radio" name="parking" id="parkinglot1" class="detail_rb" checked="checked"/>
+         <input type="radio" name="parking" id="parkinglot1" class="detail_rb" checked="checked" value=""/>
          <label for="parkinglot1" class="detail_lb">전체</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot2" class="detail_rb" />
+         <input type="radio" name="parking" id="parkinglot2" class="detail_rb" value="1"/>
          <label for="parkinglot2" class="detail_lb">주차장있음</label>&nbsp;
-         <input type="radio" name="parking" id="parkinglot3" class="detail_rb" />
+         <input type="radio" name="parking" id="parkinglot3" class="detail_rb" value="0"/>
          <label for="parkinglot3" class="detail_lb">주차장없음</label>
       </div>
       
       <div class="center-on-page" align="center">
-         <input type="radio" name="date" id="date1" class="detail_rb" checked="checked"/>
+         <input type="radio" name="date" id="date1" class="detail_rb" checked="checked" value=""/>
          <label for="date1" class="detail_lb">전체</label>&nbsp;
-         <input type="radio" name="date" id="date2" class="detail_rb" />
+         <input type="radio" name="date" id="date2" class="detail_rb" value="7"/>
          <label for="date2" class="detail_lb">최근 일주일</label>&nbsp;
-         <input type="radio" name="date" id="date3" class="detail_rb" />
-         <label for="date3" class="detail_lb">한달</label>
+         <input type="radio" name="date" id="date3" class="detail_rb" value="30"/>
+         <label for="date3" class="detail_lb">최근 30일</label>
       </div>
 
       <input name="search_detail bt" id="searchBt" type="submit" value="검색" style="margin-left:80%; padding-top:2px; padding-down:2px; padding-left:10px; padding-right:10px;"/>
@@ -464,7 +453,7 @@
             <div class="col-md-4 col-sm-4">
             	<form id="search_form">
             		<div class="templatemo_search">
-                    	<input name="search" type="text" placeholder="Search here .... " id="main_search">
+                    	<input name="search" type="text" placeholder="Search here .... " id="search">
                     </div>
                 </form>
             </div>
@@ -475,8 +464,11 @@
             </div>
         </div>
     </div>
+    </form>
   <!-- title end -->
-  
+  <script type="text/javascript">
+  printGu();
+  </script>
   	<div class="site-header">
 		<div class="main-navigation">
 			
