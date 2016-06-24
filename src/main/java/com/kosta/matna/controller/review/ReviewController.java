@@ -150,6 +150,12 @@ public class ReviewController {
 				}
 			}
 			
+			if(mcount!=0 || wcount!=0){
+				model.addAttribute("isCount", true);
+			}else{
+				model.addAttribute("isCount", false);
+			}
+			
 			model.addAttribute("mcount", mcount);
 			model.addAttribute("wcount", wcount);
 			model.addAttribute("review",reviews[0]);

@@ -42,8 +42,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="review">
-		select no,title,content,writer,(select grade from member where no=writer) mGrade,
-		(select nickName from member where no=writer) nickName,regdate,replyCnt,viewCnt,good,bad,photo 
+		select no,title,content,writer,(select nickName from member where no=writer) nickName,regdate,replyCnt,viewCnt,good,bad,photo 
 		from review where no=#{no}
 	</select>
 	
@@ -107,4 +106,39 @@
 		</if>
 		where no=#{rNo}
 	</update>
+	
+	<!-- select no,title,writer,(select nickName from member where no=writer)
+	nickName,replycnt,photo,viewcnt,regdate,good,bad
+	from review natural join preview
+	where menu like '%'|| '' ||'%' and
+	gu like '%'|| '' ||'%' and	
+	dong like '%'|| '' ||'%' and
+	price like '%'|| '10,20' ||'%' and
+	parking like '%'|| '' ||'%' and
+	title like '%'|| '1' ||'%'
+	and regdate >= sysdate-7
+	order by no desc --> 	
+	
+	<select id="search" resultType="review">
+	<![CDATA[
+	select no,title,writer,(select nickName from member where no=writer)
+	nickName,replycnt,photo,viewcnt,regdate,good,bad
+	from review natural join preview
+	where menu like '%'||#{rb}||'%' and
+	gu like '%'||#{gu}||'%' and	
+	dong like '%'||#{dong}||'%' and
+	price like '%'||#{money}||'%' and
+	parking like '%'||#{parking}||'%' and
+	title like '%'||#{search}||'%'
+	]]> 	
+	<choose>
+		<when test="date=='7'">
+			and regdate >= sysdate-7
+		</when>
+		<when test="date=='30'">
+			and regdate >= sysdate-30
+		</when>
+	</choose>
+	order by no desc
+	</select>	
 </mapper>

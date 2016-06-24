@@ -26,7 +26,7 @@
             <c:forEach begin="${i.index*3 }" end="${i.index*3+2 }" var="itemVO" items="${list}">
            <a href="/matna/item/itemdetail?ino=${itemVO.ino}">
            <div class="col-md-3 col-sm-4 templatemo_servicegap" ><!-- 1번째꺼 -->
-            <img src="/matna/resource/img/${itemVO.photo}" alt="10,000포인트">
+            <img src="/matna/resource/img/${itemVO.photo}" alt="10,000포인트" width="230px" height="210px">
                <div class="templatemo_email"> <!-- 동그라미 돌아가는거 class명 안바꿔도됨 -->
                    <a href="/matna/item/itemdetail?ino=${itemVO.ino}"><div class="fa fa-gift"></div></a>
                 </div>

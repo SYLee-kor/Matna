@@ -6,10 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 
 import com.kosta.matna.domain.review.PreviewVO;
-import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 
 public interface ReviewDAO {
+	List<ReviewVO> searchList(SearchKeyWord cri) throws Exception;
+	
 	boolean insertReview(ReviewVO vo) throws Exception;
 	boolean insertPreview(PreviewVO vo) throws Exception;
 	

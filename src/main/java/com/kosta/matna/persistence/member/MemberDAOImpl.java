@@ -159,5 +159,36 @@ public class MemberDAOImpl implements MemberDAO{
 	public List<String> selectGbGender(int rno) throws Exception {
 		return session.selectList("member.selectGbGender", rno);
 	}
+
+	@Override
+	public boolean updatePoint(int userNo, int point) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+		   map.put("userNo",userNo);
+		   map.put("point", point);
+		
+		if (session.update("member.updatePoint", map)>0) return true;
+		return false;
+	}
+
+	@Override
+	public boolean updateAllPoint(int userNo, int point) throws Exception {
+		Map<String, Object> map = new HashMap<>();
+		   map.put("userNo",userNo);
+		   map.put("point", point);
+		
+		if (session.update("member.updateAllPoint", map)>0) return true;
+		return false;
+	}
+
+	@Override
+	public boolean updateGrade(int userNo, int grade) throws Exception {
+			Map<String, Integer> map = new HashMap<>();
+			   map.put("userNo",userNo);
+			   map.put("grade", grade);
+			
+		if (session.update("member.updateGrade", map)>0) return true;
+		return false;
+	}
 	
 }

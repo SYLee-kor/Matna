@@ -10,9 +10,12 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.kosta.matna.domain.review.Criteria;
+import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 
 @Repository
 public class ReviewDAOImpl implements ReviewDAO {
@@ -121,4 +124,35 @@ public class ReviewDAOImpl implements ReviewDAO {
 		if(session.update("review.gbUpdate", map)==1)return true;
 		return false;
 	}
+
+	@Override
+	public List<ReviewVO> searchList(SearchKeyWord cri) throws Exception {
+		System.out.println("cri : " + cri);
+		System.out.println("pageMaker : " + cri.toStringPM());
+		System.out.println(cri.getPerPageNum());
+		System.out.println(cri.getPageStart());
+		return session.selectList("review.search", cri, new RowBounds(cri.getStartPage(),cri.getPerPageNum()));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
