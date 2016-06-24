@@ -106,12 +106,15 @@ public class LoginController {
 		if(member.getGrade()==1 && member.getAllpoint()>=500 && member.getAllpoint()<3000){
 				memberService.updateGrade(member.getNo(), 2);
 				member = memberService.selectIsMember(login_id, login_pass);
+				attr.addFlashAttribute("msg", "upgrade");
 		}else if(member.getGrade()==1&& member.getAllpoint()>=3000){
 			memberService.updateGrade(member.getNo(), 3);
 			member = memberService.selectIsMember(login_id, login_pass);
+			attr.addFlashAttribute("msg", "upgrade");
 		}else if(member.getGrade()==2 && member.getAllpoint()>=3000){
 			memberService.updateGrade(member.getNo(), 3);
 			member = memberService.selectIsMember(login_id, login_pass);
+			attr.addFlashAttribute("msg", "upgrade");
 		}
 		
 		session.setAttribute("userNo", member.getNo());

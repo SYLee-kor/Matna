@@ -134,5 +134,8 @@ $(document).ready(function() {
     if(result == 'false'){
     	alert("이미 로그인 중입니다.");
     }
+    if(result == 'upgrade'){
+    	alert("회원등급이 상승하였습니다.");
+    }
     
 </script>
