@@ -1,4 +1,5 @@
 select * from member;
+alter table member add (allpoint number default 0);
 
 drop table member;
 create table member(
@@ -15,7 +16,8 @@ create table member(
 	addr varchar2(200) not null,
 	point number default 0,
 	regdate date default sysdate,
-	grade number default 1
+	grade number default 1,
+	allpoint number default 0
 );
 
 drop sequence member_seq;
