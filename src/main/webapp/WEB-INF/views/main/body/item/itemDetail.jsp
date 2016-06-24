@@ -42,7 +42,7 @@
 	           <div class="col-md-5 col-sm-5">
                   <div>
                      <!-- <img src="/matna/resource/images/쉑쉑.png" id="order_img"/> -->
-                     <img alt="사진1" src="/matna/resource/img/${detailItem.photo}" id="order_img" >
+                     <img alt="사진1" src="/matna/resource/img/${detailItem.photo}" id="order_img">
 		          </div>			
 		       </div>
 		       
@@ -55,8 +55,13 @@
 					 <span class="subtitle" id="item_amount">수량:&nbsp;&nbsp;<input type="hidden" name="ino" value="${detailItem.ino}">${detailItem.amount }개</span>   <br><br>
 				  </c:when>
 				  <c:otherwise>
-					 <span class="subtitle" id="item_price">수령자 닉네임:&nbsp;&nbsp;<input type="text" name="taker" ></span><br><br>
-					<div include="form-input-select()">
+					 <span class="subtitle" id="item_price">수령자 닉네임:&nbsp;&nbsp;</span>
+					    <span id="nick_input">
+					    	<input type="text" name="taker" placeholder="NickName" required />
+						</span><br><br>
+						
+					 <span class="subtitle" id="item_price">선물할 포인트:&nbsp;&nbsp;</span>	
+					<span include="form-input-select()">
 			  			<select required name="point">
 			    			<option value="500">500 POINT</option>
 			    			<option value="1000">1,000 POINT</option>
@@ -64,7 +69,7 @@
 			   				<option value="10000">10,000 POINT</option>
 			  			</select>
 
-		    		</div>
+		    		</span>
 				  </c:otherwise>
 			   </c:choose>
                      <span class="subtitle" id="item_content">정보:&nbsp;&nbsp;<input type="hidden" name="content" value="${detailItem.content }">${detailItem.content }</span>   <br>
@@ -75,8 +80,8 @@
 	
     </div>
       <div style="border-top: 1px solid #d9d9d9;margin-top: 3%;">
-       <div id="item_order" style="margin-left:23%; float:left; margin-top:3%; padding: 3%;">
-           <div style="padding-left: 20%;">
+       <div id="item_order" style="margin-left:20%; float:left; margin-top:3%; padding: 3%;">
+           <div>
             <!-- <input type="button" id="up" value="업"> 
            <a href="#"><img alt="arrow_up" src="/matna/resource/images/arrow1_1.PNG" ></a> &nbsp;&nbsp;
            <a href="#"><img alt="arrow_up" src="/struts/images/arrow2_1.PNG"></a>
@@ -85,9 +90,12 @@
            <input type="button" id="down" value="다운" > 
             <a href="#"><img alt="arrow_up" src="/struts/images/arrow2_2.PNG"></a> -->
            		<c:if test="${detailItem.state!=3}">
-					<input type="button" value="-" name="buyDown" onclick="buyCountChange(-1)">
+           		<span><a href="javascript:buyCountChange(-1)" name="buyDown"><img alt="arrow_down" src="/matna/resource/images/arrow1_2.PNG" ></a></span>
+           		<span><input type="text" id="amount" value="1" name="buyCount" style="width: 40px;height: 30px;text-align: center;font-size: 20px;"></span> 
+				<span><a href="javascript:buyCountChange(1)" name="buyUp"><img alt="arrow_up" src="/matna/resource/images/arrow1_1.PNG"></a></span>
+					<!-- <input type="button" value="-" name="buyDown" onclick="buyCountChange(-1)">
 					<input type="text" value="1" name="buyCount" >
-					<input type="button" value="+" name="buyUp" onclick="buyCountChange(1)">
+					<input type="button" value="+" name="buyUp" onclick="buyCountChange(1)"> -->
 				</c:if>
            </div>
        </div>

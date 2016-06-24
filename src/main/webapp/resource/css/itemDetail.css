@@ -6,8 +6,8 @@
 }
 
 #order_img{
-  width: 85%;
-  height:80%;
+  width: 300px;
+  height:300px;
   margin-top: 8%;
   margin-left: 10%;
 }
@@ -87,31 +87,22 @@
 ====================================================================
 
 /*======닉네임입력======*/
-
-#nick_input {
-  position: relative;
-  width: 90%;
-  margin: 15px auto;
-  margin-left: 35%;
-  margin-top: 5%;
-}
+ 
 #nick_input span {
-  position: absolute;
-  display: block;
+  display: inline-block;
   color: #ffe7e6 ;
-  left: 100px;
-  top: 8px;
   font-size: 20px;
-}
+} 
 #nick_input input {
-  width: 20%;
-  padding: 10px 5px 10px 40px;
-  display: block;
+  width: 50%;
+  height:20%;
+  padding: 10px 5px 10px 30px;
+  display: inline-block;
   border: 2px solid #ffd7d5;
   border-radius: 4px;
   transition: 0.2s ease-out;
   color: #a1a1a1;
-  margin-left: 30%;
+  margin-left: 12px;
 }
 #nick_input input:focus {
   padding: 10px 5px 10px 10px;
@@ -134,7 +125,7 @@
   font-size: 1.5em;
   margin-top: 9px;
   margin-bottom: 15px;
-  width: 20%;
+  width: 33%;
 }
 
 [include*="form-input-select()"] select {
@@ -148,9 +139,9 @@
   border: 1px solid transparent;
   font-size: 13px;
   outline: none;
-  position: absolute;
+   position: absolute;
   top: -4.2em;
-  right:-260%;
+  right:-119%; 
   /* Focus style */
 }
 [include*="form-input-select()"] select:focus {
@@ -212,15 +203,15 @@
   border-width: 0 6.5px 8px 6.5px;
   border-bottom-color: #ff5951 ;
   position: absolute;
-  top: -2.1em;
-  right:-250%;
+  top: -1.98em;
+  right:-110%; 
 }
 [include*="form-input-select()"]::after {
   border-width: 8px 6.5px 0 6.5px;
   border-top-color: #ff5951 ;
   position: absolute;
-  top: -1.5em;
-  right:-250%;
+  top: -1.4em;
+  right:-110%; 
 }
 @-moz-document url-prefix() {
   [include*="form-input-select()"] {

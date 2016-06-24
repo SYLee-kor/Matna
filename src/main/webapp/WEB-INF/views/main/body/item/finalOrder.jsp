@@ -23,8 +23,8 @@
 		<div class="order_content" id="final_products">
 			<div class="left" id="ordered">
 				<div class="products">
-					<div class="product_image">
-						<img src="/matna/resource/img/${detailItem.photo}"id="order_img"/>
+					<div class="product_image" >
+						<img src="/matna/resource/img/${detailItem.photo}" id="order_img" style="width:150px;height:150px;margin-left: -10px;"/>
 					</div>
 					<div class="product_details">
 						<span class="product_name">&nbsp;&nbsp;&nbsp;&nbsp;${detailItem.name }</span>
