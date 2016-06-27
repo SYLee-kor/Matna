@@ -34,6 +34,10 @@
 				alert('비밀번호와 비번확인 값이 서로 일치하지 않습니다.');
 				return false;
 			}
+			if( !emailFlag ){
+				alert('이메일을 인증해주시기 바랍니다.');
+				return false;
+			}
 			formObj.attr("action", "/matna/join/joinSuccess");
 			formObj.attr("action2","null");
 			formObj.submit();
@@ -88,6 +92,12 @@
 			    });
 		});
 		
+		var emailFlag = false;
+		// # 이메일 내용이 바뀔때 emailFlag false
+		$('[name=email]').change(function() {
+			emailFlag = false;
+		});
+		// # 이메일 인증 작업.. 인증 성공시 emailFlag true
 		$('#tryConfirmEmail').click(function() {
 			$.ajax({
 			      type: "POST",
@@ -99,8 +109,10 @@
 			      success:function(data) {
 					alert(data.result);
 					
-					if(data.confirm =='success')
-			    	$('#emailConfirm').hide();
+					if(data.confirm =='success'){
+				    	$('#emailConfirm').hide();
+						emailFlag = true;					
+					}
 			      }
 			    });
 		});
