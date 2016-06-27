@@ -64,11 +64,17 @@
 								<td style="width: 50px; padding: 0px;">${list.no}</td>
 								<td>
 								<c:choose> 
-						    		<c:when test="${userNo eq list.writer &&type eq 'suggest'}">
-										<a href="/matna/community/listOne?no=${list.no}&type=${type}&page=${pageMaker.cri.page}&searchType=${pageMaker.cri.searchType}&keyword=${pageMaker.cri.keyword}"
+						    		<c:when test="${type eq 'suggest'}">
+						    			<c:if test="${userNo eq list.writer || userGrade > 3}">
+						    			<a href="/matna/community/listOne?no=${list.no}&type=${type}&page=${pageMaker.cri.page}&searchType=${pageMaker.cri.searchType}&keyword=${pageMaker.cri.keyword}"
 										 style="font-size: 13px;">${list.title }</a>
 											<input type="button" readonly="readonly" class="reply_num"
 											value="${list.replyCnt }" style="cursor: default;">
+						    			</c:if>
+						    			<c:if test="${userNo != list.writer && userGrade < 4}">
+						    			${list.title } <input type="button" readonly="readonly" class="reply_num"
+											value="${list.replyCnt }" style="cursor: default;">
+						    			</c:if>
 									</c:when>
 									<c:when test="${type != 'suggest' }">
 										<a href="/matna/community/listOne?no=${list.no}&type=${type}&page=${pageMaker.cri.page}&searchType=${pageMaker.cri.searchType}&keyword=${pageMaker.cri.keyword}"
@@ -76,10 +82,6 @@
 											<input type="button" readonly="readonly" class="reply_num"
 											value="${list.replyCnt }" style="cursor: default;">
 									</c:when>
-						    		<c:otherwise>
-						 	   			${list.title } <input type="button" readonly="readonly" class="reply_num"
-											value="${list.replyCnt }" style="cursor: default;">
-						    		</c:otherwise>
 								</c:choose>
 								</td>
 								<td>
