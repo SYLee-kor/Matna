@@ -36,9 +36,13 @@ public class ADController {
 	
 	@RequestMapping(value="/change", method = RequestMethod.POST) //관리자 발송전 주문취소 
 	public String setAD(Model model, int no) throws Exception{
-		AD ad = service.selectView(no);
-		model.addAttribute("total", service.total());
-		model.addAttribute("AD",ad);
+		
+		
+			AD ad = service.selectView(no);
+			model.addAttribute("total", service.total());
+			model.addAttribute("AD",ad);
+		
+		
 		return "main/header/ad/setAD";
 	}
 	
@@ -55,6 +59,7 @@ public class ADController {
 	
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public String read(int no, Model model,@ModelAttribute("cri") SearchKeyWord cri)throws Exception{
+		logger.info("AD read");
 		AD ad = service.select(no);
 		model.addAttribute("AD", ad);		
 		return "main/admin/ad/info";
@@ -71,7 +76,7 @@ public class ADController {
 		logger.info("AD insert");
 		logger.info("AD::"+ad); 
 		//String uploadPath = request.getSession().getServletContext().getRealPath("/img");
-		uploadPath = session.getServletContext().getRealPath("/resource/images/admin/ad2");
+		uploadPath = session.getServletContext().getRealPath("/resource/images/admin/ad");
 
 		try {
 			String imgName = file.getOriginalFilename();
@@ -127,7 +132,13 @@ public class ADController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public @ResponseBody void delete(int no)throws Exception{
+	public @ResponseBody void delete(HttpSession session,int no)throws Exception{
+		
+		if(new File(session.getServletContext().getRealPath("/resource/images/admin/ad/")+service.select(no).getPhoto()).delete()){
+			System.out.println("삭제 성공");
+		}else
+			System.out.println("삭제 실패");
+		
 		service.deleteAD(no);
 	}
 	

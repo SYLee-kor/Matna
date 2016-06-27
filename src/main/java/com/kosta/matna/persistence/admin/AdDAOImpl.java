@@ -51,7 +51,6 @@ public class AdDAOImpl implements AdDAO {
 
 	@Override
 	public AD selectView(int no) throws Exception {
-		System.out.println(no);
 		Map<String, Object> map = new HashMap<>();
 		map.put("start", no);
 		map.put("end", no);

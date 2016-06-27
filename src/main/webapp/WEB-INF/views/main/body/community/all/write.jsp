@@ -40,7 +40,7 @@
 	<br>
 	<br>
 	<form id="frm" action="/matna/community/write" method="post">
-		<input type="hidden" name="type" id="type" value="free"/>
+		<input type="hidden" name="type" id="type" value="${type }"/>
 		<input type="hidden" name="writer" id="writer" value="${userNo}"/>
 		<table align="center" border="1" style="width:100%; height: 100%;">
 			<tr>
@@ -55,7 +55,7 @@
 		</table>
 		<div style="width: 80%; margin: 20px;" align="right">
 			<button id="submmit">등록</button>
-			<button id="exit" onclick="javascript:location.href='/matna/community/list';">취소</button>
+			<button id="exit" onclick="javascript:location.href='/matna/community/list?type=${type};">취소</button>
 		</div>
 	</form>
 </body>

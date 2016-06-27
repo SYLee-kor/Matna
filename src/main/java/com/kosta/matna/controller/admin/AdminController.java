@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.item.ItemVO;
@@ -133,8 +131,12 @@ public class AdminController {
 	
 	@ResponseBody
 	@RequestMapping("/itemdelete") // 상품 삭제 (완료)
-	public String itemDelete(int ino){
+	public String itemDelete(HttpSession session,int ino){
 		try {
+			if(new File(session.getServletContext().getRealPath("/resource/images/admin/item/")+service.readItem(ino).getPhoto()).delete()){
+				System.out.println("아이템 사진 삭제 완료");
+			}else
+				System.out.println("아이템 사진 삭제 실패");
 			service.deleteItem(ino);
 			return "success";
 		} catch (Exception e) {
@@ -198,7 +200,7 @@ public class AdminController {
 	@RequestMapping(value="/item", method=RequestMethod.POST) //사진 등록 버튼 클릭
 	public String upphoto(HttpSession session,MultipartFile file, String name, String price, String amount, String content, int state){
 		//String uploadPath = request.getSession().getServletContext().getRealPath("/img");
-		uploadPath = session.getServletContext().getRealPath("/resource/img");
+		uploadPath = session.getServletContext().getRealPath("/resource/images/admin/item");
 		
 		try {
 			String imgName = file.getOriginalFilename();
@@ -212,8 +214,10 @@ public class AdminController {
 				item.setContent(content);
 			service.insertItem(item);
 			}else{
+				if(!new File(uploadPath).exists()){
+					new File(uploadPath).mkdir();
+					}
 				String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-				String fileName = file.getName();
 				ItemVO item = new ItemVO();
 				item.setName(name);
 				item.setPrice(Integer.parseInt(price));
