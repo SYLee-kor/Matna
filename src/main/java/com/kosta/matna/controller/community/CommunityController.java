@@ -19,6 +19,7 @@ import com.kosta.matna.domain.community.Criteria;
 import com.kosta.matna.domain.community.PageMaker;
 import com.kosta.matna.domain.community.SearchVO;
 import com.kosta.matna.service.community.CommunityService;
+import com.kosta.matna.validator.MatnaValidator;
 
 
 @Controller
@@ -81,9 +82,17 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVO board,RedirectAttributes attr) throws Exception{
+	public String writePOST(BoardVO board,RedirectAttributes attr, Model model) throws Exception{
 		logger.info("register POST요청...");	
 		logger.info("BoardVO::"+ board);
+		
+		// # 유효성 검사
+		if( !MatnaValidator.isValid(board, "BoardVO") ){
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("board", board);
+			return "main/body/community/all/write";
+		}
+		
 		service.regist(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
@@ -98,9 +107,17 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(BoardVO board,RedirectAttributes attr) throws Exception{
+	public String modify(BoardVO board,RedirectAttributes attr,Model model) throws Exception{
 		logger.info("update POST요청...");	
 		logger.info("BoardVO::"+ board);
+		
+		// # 유효성 검사
+		if( !MatnaValidator.isValid(board, "BoardVO") ){
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("board", board);
+			return "main/body/community/all/update";
+		}
+		
 		service.modify(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");

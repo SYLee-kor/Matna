@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.service.member.MemberService;
+import com.kosta.matna.validator.MatnaValidator;
 
 @Controller
 @RequestMapping("/join")//°øÅëURLÁ¤ÀÇ
@@ -47,7 +48,8 @@ public class JoinController {
 	   if(action2.equals("confirmNick")){
 		   System.out.println("´Ð³×ÀÓ Áßº¹ È®ÀÎ : "+ nickname);
 		   int key=0;
-		   if (memberService.checkNickname(nickname)) {
+		   if (memberService.checkNickname(nickname) || nickname.equals("") 
+				   || !nickname.matches("[a-zA-Z¤¡-ÆR0-9]{2,8}")) {
 			   key = 1;
 			   model.addAttribute("result", "»ç¿ë ÇÒ ¼ö ¾ø´Â ´Ð³×ÀÓ ÀÔ´Ï´Ù");// »ç¿ë ÇÒ¼ö ¾ø´Â ´Ð³×ÀÓ
 			   model.addAttribute("resultKey", key);
@@ -70,7 +72,7 @@ public class JoinController {
 		if(action2.equals("confirmid")){
 			System.out.println("¾ÆÀÌµð Áßº¹ È®ÀÎ : "+ id);
 			int key=0;
-			if (memberService.checkID(id)) {
+			if (memberService.checkID(id) || id.equals("") || !id.matches("[a-zA-Z]{1}[a-zA-Z0-9]{4,9}")) {
 				key = 1;
 				model.addAttribute("result", "»ç¿ë ÇÒ ¼ö ¾ø´Â ¾ÆÀÌµð ÀÔ´Ï´Ù");// »ç¿ë ÇÒ¼ö ¾ø´Â ¾ÆÀÌµð
 				model.addAttribute("resultKey", key);
@@ -90,14 +92,14 @@ public class JoinController {
     		@ModelAttribute("member") MemberVO member,
     		Model model, BindingResult bindingResult)throws Exception{
 		
+		if(!MatnaValidator.isValid(member, "MemberVO") ) { 
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("member", member);
+			model.addAttribute("action2", action2);
+			return "main/join/joinForm";
+		}
+		
 	   logger.info("joinSuccess ¿äÃ»...");
-	   
-	   /*validator.validate(member, bindingResult);
-	   if(bindingResult.hasErrors()){
-		   model.addAttribute("member",member);
-		   return "main/join/joinFrom";
-	   }*/
-	   
 	   memberService.insertMember(member);
        return "main/join/joinSuccess";//½ºÇÁ¸µ¿¡°Ô ºäÁ¤º¸ Àü´Þ!!	
     }

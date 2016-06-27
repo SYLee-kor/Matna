@@ -81,7 +81,18 @@
       
       //주문리스트쪽
       
+      $('[name=nickname]').change(function() {
+		nickFlag = false;
+	  });
       $('#modify').click(function() {
+    	 if( !nickFlag ){
+    		 alert('닉네임 중복확인 해주세요.');
+    		 return false;
+    	 }
+    	 if( $('[name=pw]').val() != $('[name=confirmpass]').val() ){
+    		 alert('비밀번호와 비번확인이 서로 일치하지 않습니다.');
+    		 return false;
+    	 }
          formObj.attr("action", "/matna/mypage/modifySuccess");
          formObj.submit();
       });
@@ -90,23 +101,8 @@
          formObj.attr("action", "/matna/mypage/withdraw");
          formObj.submit();
       });
-
-      $('#confirmid').click(function() {
-         $.ajax({
-            type : "POST",
-            url : "/matna/join/confirmId",
-            data : {
-               action : "join",
-               action2 : "confirmid",
-               id : $('#id').val()
-            },
-            success : function(result) {
-               var s = result;
-               alert(s);
-               $("#duplicated").val(s);
-            }
-         });
-      });
+	
+      var nickFlag = false;
 
       $('#confirmnick').click(function() {
          $.ajax({
@@ -121,6 +117,7 @@
                var s = result;
                alert(s);
                $("#duplicated").val(s);
+               nickFlag=true;
             }
          });
       });
@@ -213,8 +210,33 @@
             </div>
          </fieldset>
       </div>
-
-
+<!-- ======================== 회원 수정 탭 ============================================ -->
+<script>
+if('${errMsgs.isValid}'=='invalid'){
+	var objs = [$('[name=id]'),$('[name=pw]'),
+	            $('[name=nickname]'),$('[name=name]'),$('[name=email]'),
+	            $('[name=gender]'),$('[name=birth]'),$('[name=phone]'),
+	            $('[name=post]'),$('[name=addr]')];
+	
+	var values = ['${memberVO.id}','${memberVO.pw}',
+	              '${memberVO.nickname}','${memberVO.name}','${memberVO.email}',
+	              '${memberVO.gender}','${memberVO.birth}','${memberVO.phone}',
+	              '${memberVO.post}','${memberVO.addr}'];
+	
+	var errMsgs = ['${errMsgs.e_id}','${errMsgs.e_pw}',
+	               '${errMsgs.e_nickname}','${errMsgs.e_name}','${errMsgs.e_email}',
+	               '${errMsgs.e_gender}','${errMsgs.e_birth}','${errMsgs.e_phone}',
+	               '${errMsgs.e_post}','${errMsgs.e_addr}'];
+	for (var int = objs.length-1; int >= 0 ; int--) {
+		objs[int].val(values[int]); // @ 기본 데이터 세팅
+		if(errMsgs[int] != null && errMsgs[int] != ''){ // @ 에러발생부분 칸 비우기
+			alert(errMsgs[int]);
+			objs[int].val('');
+			objs[int].focus(); // 포커스 가져가기
+		}
+	}
+}	
+</script>
       <span id="tab-2" class="tab-switch"></span> <a href="#tab-2"
          class="tab-link"><h4>회원정보수정</h4></a>
       <div class="tab-content">
@@ -225,7 +247,6 @@
                <input type="hidden" name="action" id="action" value="join" />
                <input type="hidden" name="action2" id="action2" value="join" />
                <input type="hidden" name="duplicated" id="duplicated" />
-               <input type="hidden" name="gender" id="gender" />
                   <div style="float:left;">
                      아이디:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> <input type="text"
                         id="id" name="id" placeholder="ID" class="tf1" maxlength="15" value="${memberVO.id}"
@@ -242,7 +263,7 @@
                   </div>
                   <br>
                   <div style="float:left;">
-                     패스워드:<!-- &nbsp;&nbsp;&nbsp;  --><input type="password" name="pw" id="pw" value="${memberVO.pw}"
+                     비밀번호:<!-- &nbsp;&nbsp;&nbsp;  --><input type="password" name="pw" id="pw" value="${memberVO.pw}"
                         placeholder="Password" maxlength="15" class="tf1"  style="margin-left:10px;"/> <label
                         class="la" style="margin-left: 20px">*특수문자, 숫자, 영문자  혼합사용가능</label>
 
@@ -296,19 +317,13 @@
                <font color="red"><bean:write name="msg" /><br></font>
                      </html:messages>
                   </div>
-                  <br>
+                  <br><br>
                   <div style="float:left;">
                      email:<!-- &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  --><input type="text" value="${memberVO.email}"
                         name="email" maxlength="50" placeholder="Email" class="tf1" style="margin-left:25px;"/>
                   </div>
-                  <div style="float:left;">
-                     <html:messages id="msg" property="errEmail">
-               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;&nbsp; -->
-               <font color="red"><bean:write name="msg" /><br></font>
-                     </html:messages>
-                  </div>
-                  <br>
+                  <br><br><br><br><br>
+                  
 
                   <div style="float:left;">
                      생년월일:<!-- &nbsp;&nbsp;&nbsp;  --><input type="text" name="birth" value="${memberVO.birth}"

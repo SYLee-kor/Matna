@@ -66,6 +66,3 @@ rename column ds_gugun to gu;
 
 alter table matnaAddr
 rename column ds_dong to dong;
-
-alter table review_reply
-rename column reviewNo to rNo;

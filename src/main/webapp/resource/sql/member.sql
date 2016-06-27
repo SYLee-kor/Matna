@@ -1,6 +1,8 @@
 select * from member;
 alter table member add (allpoint number default 0);
 
+alter table member modify(grade number default 1);
+
 update member set allpoint=0
 	    where no=7;
 update member set allpoint=500

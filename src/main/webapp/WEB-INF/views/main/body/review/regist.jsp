@@ -26,32 +26,31 @@ jQuery(document).ready(function($) {
     /*Save your rate*/
     /*TODO*/
   });
-  alert('${errMsgs.isValid}');
-  // # 수정 일 경우 수정 창 세팅
-  if('${action}'=='modify'){
-      // # 별 데이터 세팅
-      $("[name=score]").val('${preview.score}');
-      var thisStar = $('[data-score=${preview.score}]');
-      thisStar.removeClass('to_rate').addClass('rated');
-      thisStar.parent().find('.star:lt(' + $(this).index() + ')').removeClass('to_rate').addClass('rated');
-      thisStar.parent().find('.star:gt(' + $(this).index() + ')').removeClass('no_to_rate').removeClass('rated');
-   
-      $('[name=parking][value=${preview.parking}]').attr('checked',true);
-      $("[name=menu]").val('${preview.menu}');
-      $("[name=price]").val('${preview.price}');
-      $("[name=addr]").val('${preview.addr}');
-      $("[name=recommend]").val('${preview.recommend}');
-      $("[name=phone]").val('${preview.phone}');
-      $("[name=title]").val('${review.title}');
-      $("[name=content]").val('${review.content}');
-   }
-
-	var errMsgs = ['${errMsgs.addr}','${errMsgs.phone}','${errMsgs.recommend}'
-	               ,'${errMsgs.title}','${errMsgs.content}'];
-	var objs = [$('[name=addr]'),$('[name=phone]'),$('[name=recommend]')
-	            ,$('[name=title]'),$('[name=content]')];
+  // # 수정 또는 입력 오류일 경우 수정 창 세팅
+  if('${action}'=='modify' || '${errMsgs.isValid}' =='invalid'){
+		// # 별 데이터 세팅
+		$("[name=score]").val('${preview.score}');
+		var thisStar = $('[data-score=${preview.score}]');
+		thisStar.removeClass('to_rate').addClass('rated');
+		thisStar.parent().find('.star:lt(' + $(this).index() + ')').removeClass('to_rate').addClass('rated');
+		thisStar.parent().find('.star:gt(' + $(this).index() + ')').removeClass('no_to_rate').removeClass('rated');
+	
+		$('[name=parking][value=${preview.parking}]').attr('checked',true);
+		$("[name=menu]").val('${preview.menu}');
+		$("[name=price]").val('${preview.price}');
+		$("[name=addr]").val('${preview.addr}');
+		$("[name=recommend]").val('${preview.recommend}');
+		$("[name=phone]").val('${preview.phone}');
+		$("[name=title]").val('${review.title}');
+		$("[name=content]").val('${review.content}');
+	}
+  	
+  	var errMsgs = ['${errMsgs.addr}','${errMsgs.phone}','${errMsgs.recommend}'
+  	               ,'${errMsgs.title}','${errMsgs.content}'];
+  	var objs = [$('[name=addr]'),$('[name=phone]'),$('[name=recommend]')
+  	            ,$('[name=title]'),$('[name=content]')];
 	for (var int = errMsgs.length-1; int >= 0; int--) {
-			alert('errMsgs[] = '+errMsgs[int]);
+			/* alert('errMsgs[] = '+errMsgs[int]); */
 		if( errMsgs[int]=='' ) {
 		/* 	objs[int].val();
 			objs[int].focus(); */
@@ -152,14 +151,14 @@ $(function(){
     
 
       <!-- 주소입력란 -->
-      <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label>
-      &nbsp;&nbsp;&nbsp; 
+      <font color='red' face="bold">${errMsgs["e_gu"] }  ${errMsgs["e_dong"] }</font>
+      <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label> 
       <span id="guSpan"></span>
       <span id="dongSpan"></span>
       <br> ${errMsgs.e_gu }  ${errMsgs.e_dong }
       <input type="text" id="addr" name="addr" required tabindex="4"
-                style="margin-bottom:10px; margin-left:18%;" placeholder="상세주소입력란"></p>
-  
+                style="margin-bottom: 10px;" placeholder="상세주소입력란">
+      </p>
   
       <!--주차장여부 입력란 -->
      <p class="inputfield"><label for="park">주차장 여부</label></p>
@@ -189,8 +188,10 @@ $(function(){
               <option value="food">식사</option>
               <option value="desert">디저트</option>
               <option value="drink">주류</option>
-      </select></p>
-  
+      </select>
+      <font color="red" face="bold">${errMsgs.e_menu }</font>
+      </p>
+  	  
   
       <!-- 별점매기기  -->  
           <div class="rating left">
@@ -216,28 +217,35 @@ $(function(){
                 <option value="30,50">3만원~5만원</option>
                 <option value="50,70">5만원~7만원</option>
                 <option value="70,100">7만원 이상</option>
-         </select></p>
-  
-      <!-- 전화번호 입력란 -->
-     <p class="inputfield"><label for="phone">전화번호</label> 
-     <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="margin-left:3.7%;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3"/> 
+         </select>
+      	 <font color="red" face="bold">${errMsgs.e_price }</font>
      </p>
+      
+      <!-- 전화번호 입력란 -->
+	  <p class="inputfield"><label for="phone">전화번호</label> 
+	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="color: #fff;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
+	  <font color="red" face="bold">${errMsgs.e_phone }</font>
+	  </p>
       <!-- 추천메뉴 입력란 -->
        <p class="inputfield"><label for="recommend">추천메뉴</label>
-       <input type="text" name="recommend" id="recommend" style="margin-left:3.7%;"> </p>
+       <input type="text" name="recommend" id="recommend"> 
+       <font color="red" face="bold">${errMsgs.e_recommend }</font>
+       </p>
           
  
        <!--제목입력란 -->       
-       <p class="inputfield"><label for="review_title">제목</label>
+       <p class="inputfield"><label for="review_title">제목</label> 
+       <font color="red" face="bold" >${errMsgs["e_title"] }</font>
        <input type="text" id="review_title" name="title" placeholder="제목을 입력해주세요~"
               required tabindex="4" style="margin-bottom: 10px; margin-left:3%;"/> </p>
   
        <!--SmartEditor입력란 -->
+       <font color="red">${errMsgs["e_content"] }</font>
        <textarea cols="100" rows="35" name="content"
-            id="review_content" style="width: 750px; height: 400px;"></textarea>
-      <!-- <textarea cols="100" rows="35" name="content" 
-                id="review_content" style="width: 700px; height: 500px;"></textarea><br/> -->
-     
+				id="review_content" style="width: 700px; height: 350px;"></textarea>
+	   <!-- <textarea cols="100" rows="35" name="content" 
+	             id="review_content" style="width: 700px; height: 500px;"></textarea><br/> -->
+	  
         <!-- 버튼 -->
        <input name="submit" type="submit" id="submit" tabindex="5" value="등록" style="margin-left:79%;" />
        <input type="button" id="cancel" value="  취소  ">

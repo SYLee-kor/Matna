@@ -3,15 +3,17 @@ package com.kosta.matna.validator;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.kosta.matna.domain.community.BoardVO;
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
 
 public class MatnaValidator {
 
-	private static Map<String,String> errMsgs = new HashMap<>();
+	private static Map<String,String> errMsgs;
 
 	public static boolean isValid(Object vo, String voName) {
+		errMsgs = new HashMap<>();
 		// # ÀÔ·Â ¹ŞÀº voName °ªÀ» ÅëÇØ À¯È¿¼º °Ë»ç ¿µ¿ªÀ» ³ª´©°í ÇØ´ç °Ë»ç ÀÛ¾÷ ½ÇÇà ÈÄ
 		// errMsgs(¿¡·¯¸Ş¼¼Áö) ¸¦ ¸®ÅÏÇØÁØ´Ù.
 		System.out.println("Validator ½ÇÇà  - "+voName);
@@ -28,6 +30,10 @@ public class MatnaValidator {
 			if( pVO.getDong().equals("µ¿") ) errMsgs.put("e_dong", "µ¿À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
 			if( isNullOrEmpty(pVO.getAddr()) ) errMsgs.put("e_addr", "»ó¼¼ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			if( isNullOrEmpty(pVO.getPhone()) ) errMsgs.put("e_phone", "ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if( pVO.getMenu()== null || pVO.getMenu().equals("menu"))
+				errMsgs.put("e_menu", "¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
+			if( pVO.getPrice()==null || pVO.getPrice().equals("0,0"))
+				errMsgs.put("e_price", "°¡°İÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
 			break;
 		case "MemberVO" : // # MemberVO : id, pw, name, nickname, birth, email, phone, post, addr
 			MemberVO mVO = (MemberVO) vo;
@@ -37,26 +43,31 @@ public class MatnaValidator {
 				errMsgs.put("e_pw", "ºñ¹Ğ¹øÈ£´Â 5~10ÀÚ¸®ÀÇ ¿µ¹®,¼ıÀÚ,Æ¯¼ö¹®ÀÚÀÇ Á¶ÇÕÀÌ¾î¾ß ÇÕ´Ï´Ù.");
 			if( mVO.getName()==null || !mVO.getName().matches("[a-zA-Z¤¡-ÆR]{2,6}"))
 				errMsgs.put("e_name", "ÀÌ¸§Àº ÇÑ±Û ¶Ç´Â ¿µ¹®À¸·Î ÃÖ¼Ò 2~6 ±ÛÀÚ·Î ÀÔ·Â ÇØÁÖ¼¼¿ä.");
-			if( mVO.getNickname()==null || !mVO.getNickname().matches("[a-zA-Z¤¡-ÆR0-9]{3,6}"))
-				errMsgs.put("e_nickName", "´Ğ³×ÀÓÀº ÇÑ±Û,¿µ¹®,¼ıÀÚ Á¶ÇÕÀ¸·Î 3~6 ±ÛÀÚ ÀÌ¾î¾ß ÇÕ´Ï´Ù.");
+			if( mVO.getNickname()==null || !mVO.getNickname().matches("[a-zA-Z¤¡-ÆR0-9]{2,8}"))
+				errMsgs.put("e_nickname", "´Ğ³×ÀÓÀº ÇÑ±Û,¿µ¹®,¼ıÀÚ Á¶ÇÕÀ¸·Î 2~8 ±ÛÀÚ ÀÌ¾î¾ß ÇÕ´Ï´Ù.");
 			if( mVO.getBirth()==null || !mVO.getBirth().matches("[0-9]{6}"))
 				errMsgs.put("e_birth", "»ı³â¿ùÀÏÀº 6ÀÚ¸® ¼ıÀÚ·Î¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
-			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z]{1}[a-zA-Z0-9]{0,7}[@]{1}[a-zA-Z]{3,8}[.]{1}[a-zA-Z]{5}"))
+			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9]{0,7}[@][a-zA-Z]{3,8}[.][a-zA-Z]{2,5}"))
 				errMsgs.put("e_email", "ÀÌ¸ŞÀÏÀº ¿µ¹®, ¼ıÀÚÀÇ Á¶ÇÕÀ¸·Î ¹İµå½Ã @¸¦ Æ÷ÇÔÇØ¾ß ÇÕ´Ï´Ù. ¿¹½Ã) matna@kosta.com");
-			if( mVO.getPhone()==null || !mVO.getPhone().matches("[0-9]{2,3}[-]{1}[0-9]{3,4}[-]{1}[0-9]{4}"))
-				errMsgs.put("e_phone", "¿¬¶ôÃ³´Â ¿µ¹®°ú '-'ÀÇ Á¶ÇÕÀÌ¾î¾ß ÇÕ´Ï´Ù. ¿¹½Ã)02-213-3535");
+			if( mVO.getPhone()==null || !mVO.getPhone().matches("[0-9]{9,12}"))
+				errMsgs.put("e_phone", "¿¬¶ôÃ³´Â 9~12 ÀÚ¸®ÀÇ ¼ıÀÚ¸¸ ÀÔ·Â°¡´É ÇÕ´Ï´Ù. ¿¹½Ã)02-213-3535");
 			if( mVO.getPost()==null || !mVO.getPost().matches("[0-9]{5}"))
 				errMsgs.put("e_post", "¿ìÆí¹øÈ£´Â ¼ıÀÚ 5ÀÚ¸®¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
 			if( isNullOrEmpty(mVO.getAddr()) ) errMsgs.put("e_addr", "ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			break;
+		case "BoardVO" : // # BoardVO : title, content
+			BoardVO board = (BoardVO) vo;
+			if( isNullOrEmpty(board.getTitle()) ) errMsgs.put("e_title", "Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if( isNullOrEmpty(board.getContent()) ) errMsgs.put("e_content", "³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			break;
 		}
 		// @ errMsgs ¸ÊÀÌ ºó°ªÀÌ ¾Æ´Ò‹š.. ( Áï À¯È¿¼º °Ë»ç¿¡ °É¸° °ªÀÌ ÀÖ´Ù¸é ) false ¸®ÅÏ.
 		System.out.println("Validator_isEmpty  : "+errMsgs.isEmpty());
 		if ( !errMsgs.isEmpty() ) {
-			errMsgs.put("isVaild", "invalid"); 
+			errMsgs.put("isValid", "invalid"); 
 			return false; 
 		}else{
-			errMsgs.put("isVaild", "valid"); 
+			errMsgs.put("isValid", "valid"); 
 			return true;
 		}
 	}
@@ -68,11 +79,8 @@ public class MatnaValidator {
 	}
 	
 	public static Map<String,String> getErrMsgs(){
-		System.out.println("errMsgs = "+errMsgs.values());
+		System.out.println("errMsgs = "+errMsgs.keySet());
+		System.out.println("errMsgs[val] = "+errMsgs.values());
 		return errMsgs;
-	}
-	
-	public static void mapClear(){
-		errMsgs.clear();
 	}
 }
