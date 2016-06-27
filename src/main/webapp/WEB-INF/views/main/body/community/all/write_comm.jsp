@@ -37,7 +37,6 @@ $(function() {
 </head>
 <body> 
 	<br>
-	<br>
 	<div class="regdiv" style="margin-left: 17%;padding-left:50px ;margin-right: 20%;border: 1px solid #999;" >
 	<form id="frm" action="/matna/community/write" method="post">
 		<input type="hidden" name="type" id="type" value="free"/>

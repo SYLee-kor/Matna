@@ -95,6 +95,7 @@
 </c:forEach>
 
 <body>
+ <h1 style="width: 70%;margin-left: 15%;margin-top: 2%;">Review게시판</h1>
 	<form name="reviewForm" id="reviewForm" class="reviewF">
 		<input type="hidden" name="no" value="${review.no }"/>
 		<input type="hidden" name="page" value="${page }"/>
@@ -130,18 +131,7 @@
      </p>
 				</td>
 				<td>
-				  	<c:if test="${isCount==true }">
-     					<div id="graph" style="width:300px; height:300px; margin-left: 120px"></div>
-     				</c:if>
-     				<c:if test="${isCount==false }">
-     					<div><img alt="" src="/matna/resource/img/chart.jpg" style="width:290px; height:290px; margin-left: 120px"> </div>
-     				</c:if>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-				<br><br><br>
-    				 <p id="map"></p>
+				  	 <p id="map"></p>
 				</td>
 			</tr>
 		</table> 
@@ -150,14 +140,24 @@
      
   </div> <%--preview,map --%>
 		  
-	  <div id="content_title"><font size="3"><b>${review.title }</b></font></div>
-	  <div id="content" >${review.content }</div>
-			
+    <br><br>
+	<table style="margin-left: 18%;width: 64%;">
+         <tr class="comm_tr">
+            <td class="comm_td">
+                  <input type="button" readonly="readonly" value="글제목" id="review_img">  
+                  ${review.title } 
+            </td>
+         </tr>
+    </table>
+	  <%-- <div id="content_title"><font size="3"><b>${review.title }</b></font></div> --%>
+	  <div id="review_content">
+	    <div id="review_content2" >${review.content }</div>
+	  </div>
 			<%--버튼으로 바꿀예정!! --%>
 	  <div id="like_hate">
-	  LIKE &nbsp;<a href='javascript:gbCheck("good",${review.no },${userNo })'><i class="fa fa-thumbs-o-up fa-3x"></i></a> :  
+	  <a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good_content.PNG"></a> :  
 	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-	  HATE &nbsp;<a href='javascript:gbCheck("bad",${review.no },${userNo })' ><i class="fa fa-thumbs-o-down fa-3x"></i></a> :
+	 <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><img alt="bad" src="/matna/resource/images/bad_content.PNG"></a> :
 	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
 		<input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
@@ -167,7 +167,22 @@
 		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
 					
   </div>	
+  <c:if test="${isCount==true }">
+                    <div style="position: absolute;margin-left: 66%;margin-top:-5%; ">
+                        <a style="color: gray;font-weight: 400;font-size: 15px;margin-left: 20%;margin-bottom: 10px">남 VS 여 선호도</a>
+     					<div id="graph" style="width:200px; height:200px;/* margin-left: 120px */"></div>
+     				</div>
+     				</c:if>
+     				<c:if test="${isCount==false }">
+     				<div style="position: absolute;margin-left: 66%;margin-top:-5%;">
+     				    <a style="color: gray;font-weight: 400;font-size: 15px;margin-left:20%;margin-bottom: 10px">남 VS 여 선호도</a>
+     					<div><img alt="" src="/matna/resource/img/chart.jpg" style="width:180px; height:180px;"> </div>
+     				</div>
+     				</c:if>
+     			
  </form>
+ 
+    
 	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
 	<%@include file="/WEB-INF/views/footer.jsp" %>
 </body>

@@ -22,7 +22,6 @@
 </head>
 
 <body>
-    <br>
     <h1 style="width: 70%;margin-left: 15%;margin-top: 2%;">자유게시판</h1>
 
    <form name="frm" id="frm" method="post">
@@ -36,8 +35,8 @@
        <br>
        <div class="row"></div>
        <table style="margin-left: 20%;width: 60%;">
-         <tr class="comm_tr">
-            <td colspan="4" class="comm_td">
+         <tr class="review_tr">
+            <td colspan="4" class="review_td">
                   <input type="button" readonly="readonly" value="글제목" id="comm_img">    
                     ${board.title }
             </td>

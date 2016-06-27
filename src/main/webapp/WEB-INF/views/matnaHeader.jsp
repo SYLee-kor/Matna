@@ -518,7 +518,7 @@
                         </div>
                      </div>
 
-                     <div class="dropdown">
+                    <div class="dropdown">
                         <div class="col-md-2">
                            <button class="btn btn-primary dropdown-toggle" type="button"
                               data-toggle="dropdown">
@@ -529,12 +529,12 @@
                               <li class="dropdown dropdown-submenu">
                               <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
                                  <ul id="submenu" class="dropdown-menu">
-                                    <li><a href="#">식사</a></li>
-                                    <li><a href="#">디저트</a></li>
-                                    <li><a href="#">주류</a></li>
+                                    <li><a href="/matna/review/list?tabType=food">식사</a></li>
+                                    <li><a href="/matna/review/list?tabType=desert">디저트</a></li>
+                                    <li><a href="/matna/review/list?tabType=drink">주류</a></li>
                                  </ul>
-                                 <li><a href="#">랭킹</a></li>
-                                 <li><a href="#">레시피</a></li>
+                                 <li><a href="/matna/review/list?pageType=ranking">랭킹</a></li>
+                                 <li><a href="/matna/recipe/list">레시피</a></li>
                            </ul>
                        </div>
                     </div>

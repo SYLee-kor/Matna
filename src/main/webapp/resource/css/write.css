@@ -51,6 +51,31 @@ h2 {
    -moz-border-radius: 0 0 5px 5px;
 }
 
+/* 6월 27일 12시 34분 수정 */
+input {
+   border: 1px solid #CCCCCC;
+}
+#phone,#review_title,#addr,#recommend{
+   font-size:14px;
+   padding: 5px 0px 5px 10px;
+   margin: 5px 0px 5px 0px;
+   border-radius: 3px;
+   border: 1px solid #999;
+}
+#phone:focus,#review_title:focus,#addr:focus,#recommend:focus{
+   background:#f5fcfe;
+   padding: 5px 0px 5px 10px;
+   border-color:#ccc;
+   box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+   opacity:0.8;
+}
+#addr{
+   width:350px;
+}
+/* 6월 27일 12시 34분 수정 */
+
+
+/*
 #phone,#review_title,#addr,#recommend {
    display: inline;
    font-size: 14px;
@@ -65,7 +90,8 @@ h2 {
 }
 #addr{
 	width:350px;
-}
+}*/
+
 #review_title{
 	width:650px;
 }

@@ -1,7 +1,7 @@
 #preview{
   width:100%; 
   margin-top:2%; 
-  margin-left: 20%; 
+  margin-left: 15%; 
 }
 #one{
   display:inline-block;
@@ -16,11 +16,11 @@
 #map{
   /* display:inline-block; */
   position : relative;
-  height:300px;
-  width:700px;
+  height:250px;
+  width:500px;
   padding:1em;
-  background-color:#44c4e7;
-  margin-left: 5%;
+  background-color:white;
+  margin-left: 100px;
   margin-bottom: 0%;
 /* width:500px;height:250px;background-color: #44c4e7;margin-left: 50px;margin-bottom: 0px; */
 }
@@ -59,7 +59,31 @@
 }
 
 
+#review_content{
+ /*  width:100%;  */
+  margin-left: 18%; 
+  display:inline-block;
+  width:863px;
+  height:650px;
+  margin-top:0.1% ;
+  /* border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;  */
+  padding:1em;
+  background:white;
+  border:solid 1px #dddddd;
+}
 
+#review_content2{
+   width: 840px; 
+   height: 620px;
+   background-color:#fdffff;
+   overflow: scroll;"
+}
+
+
+#replyAddDiv_review{
+   margin-left: 18%;
+   font-weight: 400;
+}
 /*============== community content ===============*/
 .comm_img{
    width: 65px;
@@ -78,10 +102,19 @@
    color: white;
    font-size: 17px;
 }
-.comm_td{
+#review_img{
+   width: 65px;
+   height: 40px;
+   cursor: default;
+   background-color: #abe8fe;
+   border-color:#abe8fe; 
+   color: white;
+   font-size: 17px;
+}
+.comm_td,.review_td{
    border: 1px solid #dddddd;
 }
-.comm_tr{
+.comm_tr,.review_tr{
    font-size: 15px;
    font-weight:300;
 }
@@ -97,7 +130,6 @@
   padding:1em;
   background:white;
   border:solid 5px #ff938a;
-  
 }
 
 #comm_content2{
@@ -107,8 +139,9 @@
    background-color:#fff9f9;
    overflow: scroll;"
 }
-#comm_write{
- /*  width:100%;  */
+
+/* #comm_write{
+  width:100%; 
   margin-top:1%; 
   display:inline-block;
   width:750px;
@@ -121,7 +154,7 @@
   border:solid 5px #ff938a;
   
 }
-
+ */
 
 #comm_bt {
   display: inline-block;

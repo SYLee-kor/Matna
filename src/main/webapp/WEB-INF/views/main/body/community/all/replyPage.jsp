@@ -4,7 +4,7 @@
 <div id="replyAddDiv">
    <!-- 입력폼 -->
    
-   <h4 style="font-weight: 500; font-size: 25px;">댓글쓰기</h4>
+   <h4 style="font-weight: 500; font-size: 20px;">댓글쓰기</h4>
    <input type="hidden" name="replyWriter" size="10" value="${userNo }" id="replyWriter">
    <input type="hidden" name="type" id="type" value="free" />
    <textarea rows="3" cols="50" name="replyContent" tabindex="0" id="replyContent"></textarea>
