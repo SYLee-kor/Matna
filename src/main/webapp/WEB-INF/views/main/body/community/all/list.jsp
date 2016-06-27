@@ -102,7 +102,7 @@
 					<!-- ------ paging 처리--------- -->
 					<center>
 						<ul class="pagination modal-1" id="pagination">
-							<li><a href="#" class="prev">&laquo</a></li>
+							<li><a href="#" id="goStart" class="prev">&laquo</a></li>
 							<c:if test="${pageMaker.prev}">
 							<li><a name="page" href="${pageMaker.startPage - 1}">Prev</a></li>
 							</c:if>
@@ -113,19 +113,29 @@
 							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 								<li><a name="page" href="${pageMaker.endPage +1}">Next</a></li>
 							</c:if>
-							<li><a href="#" class="next">&raquo;</a></li>
+							<li><a href="#" id="goEnd" class="next">&raquo;</a></li>
 						</ul>
 						<br>
 						<c:choose> 
-						    		<c:when test="${type eq 'faq'}">
+						    		<c:when test="${type eq 'faq' || type eq 'notice'}">
+						    			<c:if test="${userGrade > 3 && isLogin == true}">
+							    			<div class="list_write_bt" id="reviewlist_write_bt">
+											<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+											</div>
+										</c:if>
 						    		</c:when>
-						    		<c:when test="${type eq 'notice'}">
+						    		<c:when test="${type eq 'meeting' }">
+						    			<c:if test="${userGrade > 2 && isLogin == true}">
+							    			<div class="list_write_bt" id="reviewlist_write_bt">
+											<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+											</div>
+										</c:if>
 						    		</c:when>
-						    		<c:otherwise>
-						 	   			<div class="list_write_bt" id="reviewlist_write_bt">
+						    		<c:when test="${isLogin == true }">
+						    			<div class="list_write_bt" id="reviewlist_write_bt">
 										<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
 										</div>
-						    		</c:otherwise>
+						    		</c:when>
 						</c:choose>
 						
 
@@ -133,12 +143,12 @@
 						<table>
 							<tr>
 								<td><span include="form-input-select2()">
-								<select required name="searchSel" id="searchTSel">
+								<select required name="searchType" id="searchType">
 								<option value="title"
-								<c:out value="${pageMaker.cri.searchType eq 'title'?'selected':''}"/>>
+								<c:out value="${cri.searchType eq 'title'?'selected':''}"/>>
 								제목</option>
 								<option value="writer"
-								<c:out value="${pageMaker.cri.searchType eq 'writer'?'selected':''}"/>>
+								<c:out value="${cri.searchType eq 'writer'?'selected':''}"/>>
 								작성자</option>
 								</select>
 								</span></td>
@@ -166,8 +176,8 @@
 		$('#page').val('1');
 				self.location = "list"
 						+ '${pageMaker.makeQuery(1)}'
-						+ "&searcType="
-						+ $("#searchSel").val()
+						+ "&searchType="
+						+ $("#searchType > option:selected").val()
 						+ "&keyword=" + $('#keywordInput').val()
 						+ "&type="
 						+ '${type}';
@@ -180,6 +190,20 @@
 			f.find("[name='page']").val(targetPage);
 			f.submit();
 		});
+	$("#goStart").on("click", function(event) {
+		event.preventDefault();
+		var targetPage = $(this).attr("href");
+		var f = $("#pageData");
+		f.find("[name='page']").val('1');
+		f.submit();
+	});
+	$("#goEnd").on("click", function(event) {
+		event.preventDefault();
+		var targetPage = $(this).attr("href");
+		var f = $("#pageData");
+		f.find("[name='page']").val('${pageMaker.end}');
+		f.submit();
+	});
 	</script>
 
 	<%@include file="/WEB-INF/views/footer.jsp"%>

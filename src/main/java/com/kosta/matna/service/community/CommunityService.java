@@ -11,6 +11,7 @@ import com.kosta.matna.domain.community.SearchVO;
 public interface CommunityService {
 	public void regist(BoardVO board)throws Exception;
 	public BoardVO read(int no,BoardTypeVO type)throws Exception;
+	public BoardVO update(int no,BoardTypeVO type)throws Exception;
 	public void modify(BoardVO board)throws Exception;
 	public void remove(int no,BoardTypeVO type)throws Exception;
 	public List<BoardVO> listAll(BoardTypeVO type)throws Exception;

@@ -19,7 +19,6 @@ import com.kosta.matna.domain.community.Criteria;
 import com.kosta.matna.domain.community.PageMaker;
 import com.kosta.matna.domain.community.SearchVO;
 import com.kosta.matna.service.community.CommunityService;
-import com.kosta.matna.validator.MatnaValidator;
 
 
 @Controller
@@ -38,8 +37,8 @@ public class CommunityController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, SearchVO cri,String type) throws Exception{
-		System.out.println("검색어 : " + cri.getKeyword());
+	public String list(Model model, @ModelAttribute("cri") SearchVO cri,String type) throws Exception{
+		System.out.println("검색어 : " + cri.getKeyword()+", 겁색 타입 : "+ cri.getSearchType());
 		logger.info("전체list 요청..."+ model);	
 		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO(type)));
 		PageMaker maker = new PageMaker();
@@ -51,15 +50,15 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
-	public String listPage(Model model, SearchVO cri) throws Exception{
+	public String listPage(Model model, @ModelAttribute("cri") SearchVO cri,String type) throws Exception{
 		System.out.println("페이지 : " + cri.getPage());
+		System.out.println("list page type : "+type);
 		logger.info("특정 페이지 list 요청..."+ model);	
 		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO("free")));
 		PageMaker maker = new PageMaker();
 		  maker.setCri(cri);
 		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO("free")));
 		model.addAttribute("pageMaker", maker);
-		String type = "free";
 		model.addAttribute("type", type);
 		return "main/body/community/all/list";
 	}
@@ -71,77 +70,49 @@ public class CommunityController {
 		System.out.println("검색어 : " + cri.getKeyword()+", "+cri.getSearchType());
 		System.out.println("페이지 정보 : "+cri.getPage());
 		model.addAttribute("board",service.read(no,new BoardTypeVO(type)));
-		
+		model.addAttribute("type", type);
 		return "main/body/community/all/content";
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
-	public String writeGet(){
+	public String writeGet(@ModelAttribute("type") String type){
 		
 		return "main/body/community/all/write";
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVO board,RedirectAttributes attr, Model model) throws Exception{
+	public String writePOST(BoardVO board,RedirectAttributes attr) throws Exception{
 		logger.info("register POST요청...");	
 		logger.info("BoardVO::"+ board);
-		
-		// # 유효성 검사
-		if( !MatnaValidator.isValid(board, "BoardVO") ){
-			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
-			model.addAttribute("board", board);
-			return "main/body/community/all/write";
-		}
-		
 		service.regist(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/community/list";
+		return "redirect:/community/list?type="+board.getType();
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(int no,String type,Model model) throws Exception{
-		model.addAttribute("board",service.read(no,new BoardTypeVO(type)));
+	public String update(int no,@ModelAttribute("type") String type,Model model,@ModelAttribute("cri") SearchVO cri) throws Exception{
+		model.addAttribute("board",service.update(no,new BoardTypeVO(type)));
 		
 		return "main/body/community/all/update";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(BoardVO board,RedirectAttributes attr,Model model) throws Exception{
+	public String modify(BoardVO board,RedirectAttributes attr,@ModelAttribute("cri") SearchVO cri) throws Exception{
 		logger.info("update POST요청...");	
 		logger.info("BoardVO::"+ board);
-		
-		// # 유효성 검사
-		if( !MatnaValidator.isValid(board, "BoardVO") ){
-			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
-			model.addAttribute("board", board);
-			return "main/body/community/all/update";
-		}
-		
 		service.modify(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/community/list";
+		return "redirect:/community/list?page="+cri.getPage()+"&perPageNum="+cri.getPerPageNum()+"&type="+board.getType()+"&SearchType="+cri.getSearchType()+"&Keyword="+cri.getKeyword();
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(int no,String type,RedirectAttributes attr) throws Exception{
+	public String delete(int no,String type,RedirectAttributes attr,@ModelAttribute("cri") SearchVO cri) throws Exception{
 		logger.info("delete POST요청...");	
 		service.remove(no, new BoardTypeVO(type));
 		attr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/community/list";
-	}
-	@RequestMapping(value="/slist", method=RequestMethod.GET)
-	public String listPage(@ModelAttribute("cri") SearchVO key, Model model)throws Exception{
-		 logger.info("검색리스트 요청: "+ key);
-		 
-		 model.addAttribute("list", service.listSearchCriteria(key,new BoardTypeVO("free")));
-		 PageMaker maker = new PageMaker();
-		 maker.setCri(key);
-		 maker.setTotalCount(service.listSearchCount(key,new BoardTypeVO("free")));
-		 model.addAttribute("pageMaker", maker);  
-		 
-		 return "main/body/community/all/list";
+		return "redirect:/community/list?page="+cri.getPage()+"&perPageNum="+cri.getPerPageNum()+"&type="+type+"&SearchType="+cri.getSearchType()+"&Keyword="+cri.getKeyword();
 	}
 	
 }
