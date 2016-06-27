@@ -26,9 +26,9 @@ jQuery(document).ready(function($) {
     /*Save your rate*/
     /*TODO*/
   });
-	
-  // # 수정 일 경우 수정 창 세팅
-  if('${action}'=='modify'){
+  alert('${errMsgs.isValid}');
+  // # 수정 또는 입력 오류일 경우 수정 창 세팅
+  if('${action}'=='modify' || '${errMsgs.isValid}' =='invalid'){
 		// # 별 데이터 세팅
 		$("[name=score]").val('${preview.score}');
 		var thisStar = $('[data-score=${preview.score}]');
@@ -44,6 +44,18 @@ jQuery(document).ready(function($) {
 		$("[name=phone]").val('${preview.phone}');
 		$("[name=title]").val('${review.title}');
 		$("[name=content]").val('${review.content}');
+	}
+  	
+  	var errMsgs = ['${errMsgs.addr}','${errMsgs.phone}','${errMsgs.recommend}'
+  	               ,'${errMsgs.title}','${errMsgs.content}'];
+  	var objs = [$('[name=addr]'),$('[name=phone]'),$('[name=recommend]')
+  	            ,$('[name=title]'),$('[name=content]')];
+	for (var int = errMsgs.length-1; int >= 0; int--) {
+			alert('errMsgs[] = '+errMsgs[int]);
+		if( errMsgs[int]=='' ) {
+		/* 	objs[int].val();
+			objs[int].focus(); */
+		}
 	}
 });// document. ready
 function printGu() {
@@ -143,6 +155,7 @@ $(function(){
       <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label> 
       <span id="guSpan"></span>
       <span id="dongSpan"></span>
+      ${errMsgs.e_gu }  ${errMsgs.e_dong }
       <input type="text" id="addr" name="addr" required tabindex="4"
                 style="margin-bottom: 10px;" placeholder="상세주소입력란"></p>
   
@@ -205,22 +218,22 @@ $(function(){
          </select></p>
   
       <!-- 전화번호 입력란 -->
-	  <p class="inputfield"><label for="phone">전화번호</label> 
+	  <p class="inputfield"><label for="phone">전화번호</label> ${errMsgs.e_phone } 
 	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="color: #fff;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
 	  </p>
       <!-- 추천메뉴 입력란 -->
-       <p class="inputfield"><label for="recommend">추천메뉴</label>
+       <p class="inputfield"><label for="recommend">추천메뉴</label> ${errMsgs.e_recommend }
        <input type="text" name="recommend" id="recommend"> </p>
           
  
        <!--제목입력란 -->       
-       <p class="inputfield"><label for="review_title">제목</label>
+       <p class="inputfield"><label for="review_title">제목</label> ${errMsgs.e_title }
        <input type="text" id="review_title" name="title" placeholder="제목을 입력해주세요~"
               required tabindex="4" style="margin-bottom: 10px;"/> </p>
   
        <!--SmartEditor입력란 -->
        <textarea cols="100" rows="35" name="content"
-				id="review_content" style="width: 700px; height: 350px;"></textarea>
+				id="review_content" style="width: 700px; height: 350px;">${errMsgs.e_content }</textarea>
 	   <!-- <textarea cols="100" rows="35" name="content" 
 	             id="review_content" style="width: 700px; height: 500px;"></textarea><br/> -->
 	  

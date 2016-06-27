@@ -2,10 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
+<!-- 
 .image{
    width :150px;
    height: 100px;
-} 
+} -->
 .prev,.next,.pageIndex,.reviewPhoto,.reviewTitle{
 	cursor: pointer;
 }
@@ -51,7 +52,6 @@ function showContents(no) {
     </c:forEach>
     </tbody>
   </table> 
-  <c:if test="${listType != 'mini' }">
   <!-- ------ paging 처리--------- -->
    <center>
   <ul class="pagination modal-1" id="pagination">
@@ -73,4 +73,3 @@ function showContents(no) {
   </c:if>
 </ul><br>
   </center>
-</c:if>

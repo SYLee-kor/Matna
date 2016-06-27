@@ -15,7 +15,12 @@
 			else if (changeNum > Number('${detailItem.amount}')) changeNum = Number('${detailItem.amount}');
 			buyCount.val( changeNum );
 	}
-	
+	$(document).ready(function() {
+		$('[type=submit]').submit(function() {
+			if( !$('[name=buyCount]').val().inNan() ) alert('숫자만 입력해주세요.');
+			return false;
+		});
+	})
 </script>
 <body>
 	<figure class="tabBlock">

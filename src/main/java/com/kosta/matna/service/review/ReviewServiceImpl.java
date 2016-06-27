@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kosta.matna.domain.review.PreviewVO;
-import com.kosta.matna.domain.review.ReviewDTO;
 import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.domain.review.SearchKeyWord;
+import com.kosta.matna.persistence.member.MemberDAO;
 import com.kosta.matna.persistence.review.ReviewDAO;
 
 @Transactional
@@ -22,10 +22,13 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Inject
 	ReviewDAO dao;
+	@Inject
+	MemberDAO mDao;
 	
 	@Override
 	public boolean registReview(ReviewVO review, PreviewVO preview) throws Exception {
-		if(dao.insertReview(review) && dao.insertPreview(preview))return true;
+		if(dao.insertReview(review) && dao.insertPreview(preview)
+				&& mDao.updateAllPoint(review.getWriter(), 100))return true;
 		return false;
 	}
 	

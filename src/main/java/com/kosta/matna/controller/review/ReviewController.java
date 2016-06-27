@@ -23,6 +23,7 @@ import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.review.ReviewService;
+import com.kosta.matna.validator.MatnaValidator;
 
 @RequestMapping("/review/")
 @Controller
@@ -46,9 +47,19 @@ public class ReviewController {
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
-			, String pageType, String page){
+			, String pageType, String page, Model model){
+		if(!MatnaValidator.isValid(review, "ReviewVO") 
+				|| !MatnaValidator.isValid(preview, "PreviewVO")){
+			System.out.println("Review_regist - invalid");
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("review", review);
+			model.addAttribute("preview", preview);
+			model.addAttribute("action", "regist");
+			MatnaValidator.mapClear();
+			return path+"regist";
+		}
+		System.out.println("Validator 통과");
 		try {
-			System.out.println("ddddd");
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
 			Matcher match = pattern.matcher(review.getContent());
@@ -94,8 +105,15 @@ public class ReviewController {
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
-			, String pageType, String tabType, String page){
-		System.out.println("review_modify 실행 [page : "+page+" / tabType : "+tabType+" / pageType : "+pageType);
+			, String pageType, String tabType, String page, Model model){
+		if(MatnaValidator.isValid(review, "ReviewVO") 
+				&& MatnaValidator.isValid(preview, "PreviewVO")){
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("review", review);
+			model.addAttribute("preview", preview);
+			MatnaValidator.mapClear();
+			return "/matna/modify";
+		}
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");

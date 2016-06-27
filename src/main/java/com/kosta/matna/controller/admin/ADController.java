@@ -36,15 +36,9 @@ public class ADController {
 	
 	@RequestMapping(value="/change", method = RequestMethod.POST) //관리자 발송전 주문취소 
 	public String setAD(Model model, int no) throws Exception{
-		
-		logger.info("광고 변경");
-		
-			AD ad = service.selectView(no);
-			model.addAttribute("total", service.total());
-			model.addAttribute("AD",ad);
-			System.out.println("광고번호 : " + ad.getNo());
-		
-		
+		AD ad = service.selectView(no);
+		model.addAttribute("total", service.total());
+		model.addAttribute("AD",ad);
 		return "main/header/ad/setAD";
 	}
 	
@@ -61,7 +55,6 @@ public class ADController {
 	
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public String read(int no, Model model,@ModelAttribute("cri") SearchKeyWord cri)throws Exception{
-		logger.info("AD read");
 		AD ad = service.select(no);
 		model.addAttribute("AD", ad);		
 		return "main/admin/ad/info";
