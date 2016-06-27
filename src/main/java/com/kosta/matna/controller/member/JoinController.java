@@ -1,6 +1,10 @@
 package com.kosta.matna.controller.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kosta.matna.admin.email.EmailSender;
+import com.kosta.matna.domain.admin.Email;
+import com.kosta.matna.domain.admin.RandomPassword;
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.validator.MatnaValidator;
@@ -24,6 +32,8 @@ public class JoinController {
 	
 	@Inject
 	private MemberService memberService;
+	@Inject
+	private EmailSender emailSender;
 	
 	//@Autowired
 	//private MemberValidator validator;
@@ -84,6 +94,41 @@ public class JoinController {
 		}
 		
 		return "main/join/confirmID";
+	}
+	
+	@RequestMapping(value="/confirmEmail",  method=RequestMethod.POST)//id 중복확인
+	public String confirmEmail(HttpSession session,Model model, String email)throws Exception{
+			RandomPassword Rpw = new RandomPassword();
+			String emailKey = Rpw.randomPassword(6);
+			session.setAttribute("confirmEmail", emailKey);
+			session.setMaxInactiveInterval(180);
+			logger.info("confirmEmail 요청...");
+			
+			Email mail = new Email();
+			mail.setContent(Rpw.makeConfirmEmail(emailKey));
+			mail.setReceiver(email);
+			mail.setSubject("이메일 인증 번호 입니다.");
+			
+			emailSender.SendEmail(mail);
+			
+			model.addAttribute("result", "인증번호가 발송되었습니다.");
+			
+			return "main/join/confirmEmail";
+	}
+	
+	@RequestMapping(value="/tryConfirmEmail",  method=RequestMethod.POST)//id 중복확인
+	public @ResponseBody Map<String,String> tryConfirmEmail(HttpSession session,Model model,String confirmNum)throws Exception{
+			Map resultMap = new HashMap();
+			
+			if(confirmNum.trim().equals(session.getAttribute("confirmEmail"))){
+				resultMap.put("result", "인증되었습니다.");
+				resultMap.put("confirm", "success");			
+			}else{
+				resultMap.put("result", "인증 실패하였습니다.");
+				resultMap.put("confirm", "fail");
+			}
+			return resultMap;
+			
 	}
 	
 	@RequestMapping(value="/joinSuccess",  method=RequestMethod.POST)//회원가입폼
