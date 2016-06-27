@@ -62,8 +62,14 @@ function showContents(no) {
   <li><a class="prev"
   	onclick="showPage_${pageType }('${tabType}',${pageMaker.prevPage})">prev</a></li>
   <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
-	  <li><a style="cursor: pointer;" id="pIndex${stat.index }"
+	<c:if test="${pageMaker.cri.page == stat.index }">
+	<li><a style="cursor: pointer;" id="pIndex${stat.index }" class="active"
 	  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
+	</c:if> 
+	<c:if test="${pageMaker.cri.page != stat.index }">
+	<li><a style="cursor: pointer;" id="pIndex${stat.index }"
+	  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
+	</c:if> 
   </c:forEach>
   <li><a class="next"
  	 onclick="showPage_${pageType }('${tabType}',${pageMaker.nextPage})">next</a></li>

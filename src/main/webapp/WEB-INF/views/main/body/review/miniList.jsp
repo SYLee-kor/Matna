@@ -4,7 +4,7 @@
 <!-- ================== mini리뷰  =====================   -->
 <div class="row">
 	<div class="col-md-offset-1 col-md-5">
-<h1>Review</h1><br>
+<a href="/matna/review/list?pageType=review"><h1>Review</h1></a><br>
 		<figure class="tabBlock">
 		<ul class="tabBlock-tabs">
 			<li class="tabBlock-tab is-active" onclick="showMini_review('food')">식사</li>
@@ -26,7 +26,7 @@
 	</script>
 	<!-- ================================= Ranking ============================= -->
 	<div class=" col-md-5">
-	<h1>Ranking</h1><br>
+	<a href="/matna/review/list?pageType=ranking"><h1>Ranking</h1></a><br>
 		<figure class="tabBlock">
 		<ul class="tabBlock-tabs">
 			<li class="tabBlock-tab is-active" onclick="showMini_ranking('food')">식사</li>

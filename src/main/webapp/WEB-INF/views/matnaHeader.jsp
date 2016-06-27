@@ -107,104 +107,6 @@
   transition: .25s all ease;
 }
 
-/* select option의 시작 */
-@import url(http://fonts.googleapis.com/css?family=Gudea);
-
-
-/* .selectholder {
-  width:120px;
-  background: white; 
-  margin-bottom: 1em;
-  font-size: 0.9em;
-  height: 2.4em;
-  -o-transition: .1s ease-out;
-  -ms-transition: .1s ease-out;
-  -moz-transition: .1s ease-out;
-  -webkit-transition: .1s ease-out;
-  transition: .1s ease-out;
-  cursor: pointer;
-  border:1px solid lightgray;
-  display: inline-block;
-  vertical-align: middle;
-  border-color: #dadada;
-}
-
-.selectholder .desc {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: .8em;
-  line-height: 2.4em;
-}
-
-.selectholder .pulldown {
-  float: right;
-  vertical-align: middle;
-  width: 2em;
-  height: 100%;
-  background-color: #fe957e; 
-  background-image: url("http://supereightstudio.com/img/pulldown.png");
-  background-size: cover;
-  -o-transition: .1s ease-out;
-  -ms-transition: .1s ease-out;
-  -moz-transition: .1s ease-out;
-  -webkit-transition: .1s ease-out;
-  transition: .1s ease-out;
-}
-
-.selectholder:hover,
-.activeselectholder {
-  background-color: #fe795c;
-  color:white;
-}
-
-.selectholder:hover .pulldown,
-.activeselectholder .pulldown {
-  background-color: #fe795c;
-  background-image: url("http://supereightstudio.com/img/pulldown_hover.png");
-  color:white;
-}
-
-.selectholder .selectdropdown { 
-  position: relative;
-  top: 0;
-  left: 0;
-  background: white;
-  color: #ff4a2b;
-  font-size:10px;
-  display: none;
-  clear: both;
-  border: 1px solid lightgray;
-}
-
-.selectholder .selectdropdown span {
-  display: block;
-  border-bottom: solid 1px lightgray;
-  padding-left: .8em;
-  line-height: 2.4em;
-  width: 100%;
-  -o-transition: background-color .1s ease-out;
-  -ms-transition: background-color .1s ease-out;
-  -moz-transition: background-color .1s ease-out;
-  -webkit-transition: background-color .1s ease-out;
-  transition: background-color .1s ease-out;
-}
-
-.selectholder .selectdropdown span:last-child {
-  border-bottom: none;
-}
-
-.selectholder .selectdropdown span.active {
-  background-color: #fe795c;
-  background-image: url("http://supereightstudio.com/img/radio_tick.png");
-  background-repeat: no-repeat;
-  background-size: 1.6em 1.6em;
-  background-position: 98% 50%;
-}
-
-.selectholder .selectdropdown span:hover {
-  background-color: #fe795c; 
-} */
-
 .selectH{
    width: 100%;
    text-align: center;
@@ -249,9 +151,6 @@ select[name="menu"], #guSel, #dongSel{
 }
 </style>
    
-    
-    
-
         <%--상세 검색 --%>
   <script type="text/javascript">
     $(document).ready(
@@ -304,94 +203,6 @@ select[name="menu"], #guSel, #dongSel{
         $('.layer').show();
     }
 
-    
-   /*  // select 버튼 javascript
-    var selectText=['구','동','가격대']; // 변수를 한번 더 지정해줌
-    
-    $(document).ready(function(){
-       
-        $(':selected').each(function(){
-          var pp =$(this).parent().parent();
-          //pp.prepend($(this).val()) //prepend는 원래 있던 변수를 같이 읽어줌.
-          //pp.text($(this).val()) //text가 select option 모두 초기화
-       }) 
-       // set up select boxes
-       $('.selectholder').each(function(i){
-          $(this).children().hide();
-          var description = $(this).children('label').text();
-          $(this).append('<span class="desc">'+description+selectText[i]+'</span>'); // span에다가 변수 삽입
-          $(this).append('<span class="pulldown"></span>');
-          // set up dropdown element
-          $(this).append('<div class="selectdropdown"></div>');
-         $(this).children('select').children('option').each(function(){
-             if($(this).attr('value') != '0') {
-                $drop = $(this).parent().siblings('.selectdropdown');
-                var name = $(this).attr('value');
-                $drop.append('<span>'+name+'</span>');
-             }
-          });
-         
-          // on click, show dropdown
-          $(this).click(function(){
-             if($(this).hasClass('activeselectholder')) {
-                // roll up roll up
-                $(this).children('.selectdropdown').slideUp(200);
-                $(this).removeClass('activeselectholder');
-                // change span back to selected option text
-                if($(this).children('select').val() != '0') {
-                   $(this).children('.desc').fadeOut(100, function(){
-                      $(this).text($(this).siblings("select").val());
-                       $(this).fadeIn(100);
-                   });
-                }
-             }
-             else {
-                // if there are any other open dropdowns, close 'em
-                $('.activeselectholder').each(function(){
-                   $(this).children('.selectdropdown').slideUp(200);
-                   // change span back to selected option text
-                   if($(this).children('select').val() != '0') {
-                      $(this).children('.desc').fadeOut(100, function(){
-                         $(this).text($(this).siblings("select").val());
-                         $(this).fadeIn(100);
-                      });
-                   }
-                   //$(this).removeClass('activeselectholder');
-                });         
-                // roll down
-                $(this).children('.selectdropdown').slideDown(200);
-                $(this).addClass('activeselectholder');
-                // change span to show select box title while open
-                if($(this).children('select').val() != '0') {
-                   $(this).children('.desc').fadeOut(100, function(){
-                      $(this).text($(this).siblings("select").children("option[value=0]").text());
-                      $(this).fadeIn(100);
-                   });
-                }
-             }
-          });
-       });
-       // select dropdown click action
-       $('.selectholder .selectdropdown span').click(function(){
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-          var value = $(this).text();
-          $(this).parent().siblings('select').val(value);
-          $(this).parent().siblings('.desc').fadeOut(100, function(){
-             $(this).text(value);
-             $(this).fadeIn(100);
-          });
-       });
-       
-        // preload hover images
-      preload([
-        'http://supereightstudio.com/img/radio_tick.png',
-        'http://supereightstudio.com/img/pulldown.png',
-        'http://supereightstudio.com/img/pulldown_hover.png'
-      ]); 
-    }); */
-    
-    
     
     </script>
     <title>우리지금 Matna!!</title>
@@ -482,9 +293,6 @@ select[name="menu"], #guSel, #dongSel{
       </div>
       </div>
            <%-- 전체보기 레이어 } --%>
-                       
-           
-           
             <div class="col-md-4 col-sm-4">
                <form id="search_form">
                   <div class="templatemo_search">
@@ -567,9 +375,9 @@ select[name="menu"], #guSel, #dongSel{
                               <li class="dropdown dropdown-submenu">
                               <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
                                  <ul id="submenu" class="dropdown-menu">
-                                    <li><a href="/matna/review/list?tabType=food">식사</a></li>
-                                    <li><a href="/matna/review/list?tabType=desert">디저트</a></li>
-                                    <li><a href="/matna/review/list?tabType=drink">주류</a></li>
+                                    <li><a href="/matna/review/list?tabType=food&pageType=review">식사</a></li>
+                                    <li><a href="/matna/review/list?tabType=desert&pageType=review">디저트</a></li>
+                                    <li><a href="/matna/review/list?tabType=drink&pageType=review">주류</a></li>
                                  </ul>
                                  <li><a href="/matna/review/list?pageType=ranking">랭킹</a></li>
                                  <li><a href="/matna/recipe/list">레시피</a></li>
@@ -647,17 +455,6 @@ select[name="menu"], #guSel, #dongSel{
          
          <!--================== 로그인폼  =============================================-->
             <div class="col-md-5 col-sm-5" id="loginForm">
-           <!--      <div id="box">
-                 <form id="login_frm">
-                    <input type="text" name=login_id placeholder="USERNAME" />
-                    <input type="text" name=login-pass placeholder="PASSWORD" />
-                 </form>
-                  <a href="#" name="find_idpass">forgot ID / PASS ?</a>
-                  <input name="login_bt" type="submit" value="LOGIN !"/>
-            <div class="signup">
-            <p>not a member ? <a href="#">sign up</a></p>
-            </div>
-            <div class="panel"> -->
             <!-- 절취 선 -->
   <%@include file="/WEB-INF/views/main/header/login/login.jsp" %>
   </div>

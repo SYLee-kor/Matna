@@ -14,39 +14,36 @@
 //======================================== Review 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
 function showPage_review(type,page) {
-	type = ( type==null ) ? "food" : type ;
 	$("#tab_"+type+"_review").load('/matna/review/tabPage?&tabType='+type
-			+'&pageType=review&listType=${listType}&page='+page+'&perPageNum=5');
+			+'&pageType=review&page='+page+'&perPageNum=5');
 	
 	var types=["food","desert","drink"];
 	for (var int = 0; int < types.length; int++) {
-		if(type == types[int]) 
-			$('#rtab_'+type+'_review').attr("class","tabBlock-tab is-active");
-		else{
-			alert('type = '+type);
-			$('#rtab_'+type+'_review').removeAttr("class");
-			$('#rtab_'+type+'_review').attr("class","tabBlock-tab");
-		} 
+		if(type == types[int]){
+			$('#tab_'+types[int]+'_review').show();
+			$('#rtab_'+types[int]+'_review').attr("class","tabBlock-tab is-active");
+		}else{
+			$('#tab_'+types[int]+'_review').hide();
+			$('#rtab_'+types[int]+'_review').attr("class","tabBlock-tab");
+		}
 	}
-	/* $('#pIndex'+page).attr("class","active"); */
 }
 //======================================== Ranking 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
 function showPage_ranking(type,page) {
-	type = ( type==null ) ? "food" : type ;
 	$("#tab_"+type+"_ranking").load('/matna/review/tabPage?&tabType='+type
-			+'&pageType=${pageType}&listType=${listType}&page='+page+'&perPageNum=5');
+			+'&pageType=ranking&page='+page+'&perPageNum=5');
 	
 	var types=["food","desert","drink"];
 	for (var int = 0; int < types.length; int++) {
-		if(type == types[int]) 
-			$('#rtab_'+type+'_ranking').attr("class","tabBlock-tab is-active");
-		else {
-			$('#rtab_'+type+'_ranking').removeAttr("class");
-			$('#rtab_'+type+'_ranking').attr("class","tabBlock-tab");
-		}
+		if(type == types[int]){
+			$('#tab_'+types[int]+'_ranking').show();
+			$('#rtab_'+types[int]+'_ranking').attr("class","tabBlock-tab is-active");
+		}else{
+			$('#tab_'+types[int]+'_ranking').hide();
+			$('#rtab_'+types[int]+'_ranking').attr("class","tabBlock-tab");
+		} 
 	}
-	/* $('#pIndex'+page).attr("class","active"); */
 }
 </script>
  <div class="col-md-1 col-sm-1"></div>
