@@ -14,16 +14,39 @@
 //======================================== Review 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
 function showPage_review(type,page) {
+	type = ( type==null ) ? "food" : type ;
 	$("#tab_"+type+"_review").load('/matna/review/tabPage?&tabType='+type
 			+'&pageType=review&listType=${listType}&page='+page+'&perPageNum=5');
-	 $('#pIndex'+page).attr("class","active");
+	
+	var types=["food","desert","drink"];
+	for (var int = 0; int < types.length; int++) {
+		if(type == types[int]) 
+			$('#rtab_'+type+'_review').attr("class","tabBlock-tab is-active");
+		else{
+			alert('type = '+type);
+			$('#rtab_'+type+'_review').removeAttr("class");
+			$('#rtab_'+type+'_review').attr("class","tabBlock-tab");
+		} 
+	}
+	/* $('#pIndex'+page).attr("class","active"); */
 }
 //======================================== Ranking 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
 function showPage_ranking(type,page) {
+	type = ( type==null ) ? "food" : type ;
 	$("#tab_"+type+"_ranking").load('/matna/review/tabPage?&tabType='+type
 			+'&pageType=${pageType}&listType=${listType}&page='+page+'&perPageNum=5');
-	 $('#pIndex'+page).attr("class","active");
+	
+	var types=["food","desert","drink"];
+	for (var int = 0; int < types.length; int++) {
+		if(type == types[int]) 
+			$('#rtab_'+type+'_ranking').attr("class","tabBlock-tab is-active");
+		else {
+			$('#rtab_'+type+'_ranking').removeAttr("class");
+			$('#rtab_'+type+'_ranking').attr("class","tabBlock-tab");
+		}
+	}
+	/* $('#pIndex'+page).attr("class","active"); */
 }
 </script>
  <div class="col-md-1 col-sm-1"></div>
@@ -37,9 +60,9 @@ function showPage_ranking(type,page) {
   </c:if>
   <figure class="tabBlock">
   <ul class="tabBlock-tabs">
-    <li class="tabBlock-tab is-active" onclick="showPage_${pageType}('food',1)">식사</li>
-    <li class="tabBlock-tab" onclick="showPage_${pageType}('desert',1)">디저트</li>
-    <li class="tabBlock-tab" onclick="showPage_${pageType}('drink',1)">주류</li>
+    <li class="tabBlock-tab is-active" id="rtab_food_${pageType }" onclick="showPage_${pageType}('food',1)">식사</li>
+    <li class="tabBlock-tab" id="rtab_desert_${pageType }" onclick="showPage_${pageType}('desert',1)">디저트</li>
+    <li class="tabBlock-tab" id="rtab_drink_${pageType }" onclick="showPage_${pageType}('drink',1)">주류</li>
   </ul>
   <div class="tabBlock-content">
     <div class="tabBlock-pane" id="tab_food_${pageType }"></div>
