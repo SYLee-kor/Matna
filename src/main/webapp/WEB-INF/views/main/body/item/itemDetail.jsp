@@ -79,7 +79,7 @@
 	          </div>
 	
     </div>
-      <div style="border-top: 1px solid #d9d9d9;margin-top: 3%;">
+      <div style="border-top: 1px solid #d9d9d9;margin-top: 3%; width: 85%">
        <div id="item_order" style="margin-left:20%; float:left; margin-top:3%; padding: 3%;">
            <div>
             <!-- <input type="button" id="up" value="업"> 
