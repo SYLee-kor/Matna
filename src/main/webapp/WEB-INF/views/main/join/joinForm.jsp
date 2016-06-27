@@ -12,6 +12,7 @@
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$(emailconfirm).hide();
 		var formObj = $("form[role='form']");
 		var idFlag = false;
 		var nickFlag = false;
@@ -72,6 +73,14 @@
 		    });
 		});
 		
+		$('#confirmemail').click(function() {
+			$(emailconfirm).show();
+		});
+		
+		$('#confirmemail2').click(function() {
+			$(emailconfirm).hide();
+		});
+		
 		if('${errMsgs.isValid}'=='invalid'){
 			var objs = [$('[name=id]'),$('[name=pw]'),
 			            $('[name=nickname]'),$('[name=name]'),$('[name=email]'),
@@ -95,6 +104,7 @@
 				}
 			}		}
 	});
+
 </script>
 </head>
 <%-- joinForm.jsp --%>
@@ -147,8 +157,14 @@
 				<div>
 					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
 						name="email" maxlength="50" placeholder="Email" class="tf1" />
+						<input type="button" id="confirmemail" name="confirmemail" value="이메일인증" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_email }</font>
+				<div id="emailconfirm">
+					인증번호:&nbsp; &nbsp;&nbsp;<input type="text"
+						name="confirmnum" maxlength="10" placeholder="인증번호" class="tf1" />
+					<input type="button" id="confirmemail2" name="confirmemail2" value="인증하기" style="margin-left: 20px" />
+				</div>
 				<br>
 				<div>
 					성별: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
