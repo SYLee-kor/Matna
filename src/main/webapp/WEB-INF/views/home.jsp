@@ -29,7 +29,7 @@
     	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
    </div> --%>
     	<!--============== free게시판 ================-->
-   <div class="col-md-6 col-sm-6">
+   <div class="col-md-offset-1 col-md-5 col-sm-5">
             	
        <div id="freetable">
 		  <h1>Free Board</h1>
@@ -38,7 +38,7 @@
 		    <thead>
 		      <tr>
 		        <th><span>title</span></th>
-		        <th><span>author</span></th>
+		        <th><span>작성자</span></th>
 		        <th><span>조회수</span></th>
 		      </tr>
 		    </thead>
@@ -54,7 +54,7 @@
        </div>
             
             <!--============== Meeting게시판 ================-->
-        	<div class="col-md-6 col-sm-6">
+        	<div class="col-md-5 col-sm-5">
               <div id="meetingtable">
 			  <h1>Meeting Board</h1>
 			  
@@ -62,7 +62,7 @@
 			    <thead>
 			      <tr>
 			        <th><span>title</span></th>
-			        <th><span>author</span></th>
+			        <th><span>작성자</span></th>
 			        <th><span>조회수</span></th>
 		          </tr>
 			    </thead>

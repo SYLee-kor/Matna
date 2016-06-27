@@ -15,6 +15,13 @@ aside, nav, article, figure {
    font-size: 13px; 
 }
 
+#intro,#inputfield{
+   font-family: 'Lato', sans serif;
+   font-weight: 200;
+   color: #fe7a7a; 
+   font-size: 13px; 
+}
+
 #score{
 	font-family: 'Lato', sans serif;
    font-weight: bold;
@@ -44,6 +51,31 @@ h2 {
    -moz-border-radius: 0 0 5px 5px;
 }
 
+/* 6월 27일 12시 34분 수정 */
+input {
+   border: 1px solid #CCCCCC;
+}
+#phone,#review_title,#addr,#recommend{
+   font-size:14px;
+   padding: 5px 0px 5px 10px;
+   margin: 5px 0px 5px 0px;
+   border-radius: 3px;
+   border: 1px solid #999;
+}
+#phone:focus,#review_title:focus,#addr:focus,#recommend:focus{
+   background:#f5fcfe;
+   padding: 5px 0px 5px 10px;
+   border-color:#ccc;
+   box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+   opacity:0.8;
+}
+#addr{
+   width:350px;
+}
+/* 6월 27일 12시 34분 수정 */
+
+
+/*
 #phone,#review_title,#addr,#recommend {
    display: inline;
    font-size: 14px;
@@ -58,7 +90,8 @@ h2 {
 }
 #addr{
 	width:350px;
-}
+}*/
+
 #review_title{
 	width:650px;
 }
@@ -66,27 +99,38 @@ h2 {
 .inputfield {
   font-weight: 400;
 }
-/* 검색창, item구매시 nickname placeholder 흰색으로바뀜
+/* 寃��깋李�, item援щℓ�떆 nickname placeholder �씛�깋�쑝濡쒕컮��
 
 ::-webkit-input-placeholder {
   color: #999999;
   font-weight: 300;
 }
  */
-#submit,#cancel{
+#submit,#cancel,#comm_submit,#exit{
    display: inline;
    width: 50px;
   font-size: 14px;
-   background-color:#6cb4ce;
    color: #fff;
    padding: 5px 0px;
-   margin: 10px 0px 0px 0px;
+   margin-top:3%;
+   margin-bottom:2%;
+   margin-left:1%;
    border-radius: 3px;
    -moz-border-radius: 5px;
 }
+#submit,#cancel{
+   background-color:#6cb4ce;
+}
+#submit:hover,#cancel:HOVER {
+   background-color:#56a8c7;
+}
 
-#submit:hover {
-   background-color:#777;
+#comm_submit,#exit{
+   background-color:#fe8476;
+}
+
+#comm_submit:hover,#exit:HOVER {
+   background-color:#fd514d;
 }
 
 
@@ -95,12 +139,12 @@ h2 {
 select[name="menu"],
 select[name="price"]{
 	
-  padding: .3em .5em; /* 여백으로 높이 설정 */
-  font-family: inherit;  /* 폰트 상속 */
-  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */  
+  padding: .3em .5em; /* �뿬諛깆쑝濡� �넂�씠 �꽕�젙 */
+  font-family: inherit;  /* �룿�듃 �긽�냽 */
+  background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* �꽕�씠�떚釉� �솕�궡�몴 ��泥� */  
   border: 1px solid #999; 
-  border-radius: 4px; /* iOS 둥근모서리 제거 */
-  -webkit-appearance: none; /* 네이티브 외형 감추기 */
+  border-radius: 4px; /* iOS �뫁洹쇰え�꽌由� �젣嫄� */
+  -webkit-appearance: none; /* �꽕�씠�떚釉� �쇅�삎 媛먯텛湲� */
   -moz-appearance: none;
   appearance: none;
 }
@@ -115,7 +159,7 @@ select[name="price"]{
 }
 
 
-/*라디오버튼*/
+/*�씪�뵒�삤踰꾪듉*/
 
   .switch {
     position: relative;
@@ -123,7 +167,7 @@ select[name="price"]{
     width: 150px;
     height: 35px;
     text-align: center;
-    margin: -30px 0 0 -75px;
+    margin: -45px 20px 15px -70px;
     background: #6cb4ce;
     transition: all 0.2s ease;
     border-radius: 25px;
@@ -170,7 +214,7 @@ select[name="price"]{
     right: 0px;
   }
   #no:checked ~ .switch {
-    background: #bcdce9;
+    background: #ff513e;
     /* background: #ec4257; */
   }
   #no:checked ~ .switch span {
@@ -191,7 +235,7 @@ select[name="price"]{
   }
 
 
-/*별점*/
+/*蹂꾩젏*/
 
 .rating .stars {
   margin-right: 15px;

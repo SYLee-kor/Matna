@@ -4,51 +4,51 @@
 <html>
 <head>
     <meta name="description" content="">
-	<meta name="keywords" content="" />
+   <meta name="keywords" content="" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="initial-scale=1">
-	
-	
-	
-	
+   <meta name="viewport" content="initial-scale=1">
+   
+   
+   
+   
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <!-- finalOrder때 추가 --> <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/matna/resource/css/animate.css">
-	<link rel="stylesheet" href="/matna/resource/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/matna/resource/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/matna/resource/css/templatemo_misc.css">
-	<link rel="stylesheet" href="/matna/resource/css/templatemo_style.css">
+   <link rel="stylesheet" href="/matna/resource/css/animate.css">
+   <link rel="stylesheet" href="/matna/resource/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/matna/resource/css/font-awesome.min.css">
+   <link rel="stylesheet" href="/matna/resource/css/templatemo_misc.css">
+   <link rel="stylesheet" href="/matna/resource/css/templatemo_style.css">
     <link rel="stylesheet" href="/matna/resource/css/miniList.css"> 
     <link rel="stylesheet" href="/matna/resource/css/write.css"> 
     <link rel="stylesheet" href="/matna/resource/css/content.css"> 
     <link rel="stylesheet" href="/matna/resource/css/finalOrder.css"> 
     <link rel="stylesheet" href="/matna/resource/css/reviewList.css"> 
     <link rel="stylesheet" href="/matna/resource/css/itemDetail.css"> 
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
-	<script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
-	<script src="/matna/resource/js/jquery.singlePageNav.js"></script>
-	<script src="/matna/resource/js/jquery.flexslider.js"></script>
-	<!-- 절취 선 -->
-	<script type="text/javascript" src="/matna/resource/js/login_script.js"></script>
-	<link rel="stylesheet" href="/matna/resource/css/login.css">
-	<!--  절취 선 -->
-	<script src="/matna/resource/js/custom.js"></script>
-	<script src="/matna/resource/js/jquery.lightbox.js"></script>
-	<script src="/matna/resource/js/templatemo_custom.js"></script>
+   <script src="/matna/resource/js/jquery-1.10.2.min.js"></script>
+   <script src="/matna/resource/js/jquery.singlePageNav.js"></script>
+   <script src="/matna/resource/js/jquery.flexslider.js"></script>
+   <!-- 절취 선 -->
+   <script type="text/javascript" src="/matna/resource/js/login_script.js"></script>
+   <link rel="stylesheet" href="/matna/resource/css/login.css">
+   <!--  절취 선 -->
+   <script src="/matna/resource/js/custom.js"></script>
+   <script src="/matna/resource/js/jquery.lightbox.js"></script>
+   <script src="/matna/resource/js/templatemo_custom.js"></script>
     <script src="/matna/resource/js/jquery-git2.js"></script>
      <!-- 상세 검색 -->
     <script src="/matna/resource/js/searchDetail.js"></script> 
     <!-- 광고 -->
-	<script src="/matna/resource/js/ad.js"></script>    
-	<script src="/matna/resource/js/tab.js"></script>    
+   <script src="/matna/resource/js/ad.js"></script>    
+   <script src="/matna/resource/js/tab.js"></script>    
 
-	<script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
+   <script type="text/javascript" src="/matna/resource/SE2/js/HuskyEZCreator.js" charset="utf-8"></script>
    
    <%--content부분 --%>
-	<script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
-	<script type="text/javascript" src="/matna/resource/js/reply.js"></script>
+   <script type="text/javascript" src="/matna/resource/js/jquery2.js"></script>
+   <script type="text/javascript" src="/matna/resource/js/reply.js"></script>
     
     
     <style type="text/css">
@@ -111,7 +111,7 @@
 @import url(http://fonts.googleapis.com/css?family=Gudea);
 
 
-.selectholder {
+/* .selectholder {
   width:120px;
   background: white; 
   margin-bottom: 1em;
@@ -164,12 +164,12 @@
   color:white;
 }
 
-.selectholder .selectdropdown { /* select 옵션메뉴 수정 */
+.selectholder .selectdropdown { 
   position: relative;
   top: 0;
   left: 0;
   background: white;
-  color: #ff4a2b; /* tomato button color */
+  color: #ff4a2b;
   font-size:10px;
   display: none;
   clear: both;
@@ -203,7 +203,7 @@
 
 .selectholder .selectdropdown span:hover {
   background-color: #fe795c; 
-}
+} */
 
 .selectH{
    width: 100%;
@@ -225,6 +225,27 @@
    -webkit-border-radius: 4px;
    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
    margin-right: 30px;
+}
+
+/* 추가 부분 */
+.selectH{
+   width: 100%;
+   text-align: center;
+}
+select[name="menu"], #guSel, #dongSel{
+   font-family: inherit;
+   background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+   border: 1px solid #999; 
+   background: white; 
+   margin-bottom: 1em;
+   font-size: 1em;
+   height: 2.5em;
+   border:2px solid #fe957e;
+   width: 110px;
+}
+
+.holder{
+   display: inline-block;
 }
 </style>
    
@@ -253,26 +274,42 @@
                          $(this).children('.dropdown-menu').stop(true, true)
                                .delay(50).fadeOut(100);
                       }); 
+             
+                 $(document).mousedown(function(e){
+                     $('.layer').each(function(){
+                             if( $(this).css('display') == 'block'){
+                                 var l_position = $(this).offset();
+                                 l_position.right = parseInt(l_position.left) + ($(this).width());
+                                 l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                                 if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                                     && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
+                                 {
+                                     //alert( 'popup in click' );
+                                 }
+                                 else
+                                 {
+                                     //alert( 'popup out click' );
+                                     $(this).hide();
+                                 }
+                             }
+                         });
+                     }); 
+
+             
              });
     
     
-    var cc=0
-    function showHide(id) {//select detail button menu 생성
-        if (cc==0) {
-            cc=1
-            document.getElementById(id).style.display="block";
-        } else {
-            cc=0
-            document.getElementById(id).style.display="none";
-        }
+    function show_popup(){
+        $('.layer').show();
     }
+
     
-    
-    // select 버튼 javascript
+   /*  // select 버튼 javascript
     var selectText=['구','동','가격대']; // 변수를 한번 더 지정해줌
     
     $(document).ready(function(){
-    	
+       
         $(':selected').each(function(){
           var pp =$(this).parent().parent();
           //pp.prepend($(this).val()) //prepend는 원래 있던 변수를 같이 읽어줌.
@@ -346,13 +383,13 @@
           });
        });
        
-     /*   // preload hover images
+        // preload hover images
       preload([
         'http://supereightstudio.com/img/radio_tick.png',
         'http://supereightstudio.com/img/pulldown.png',
         'http://supereightstudio.com/img/pulldown_hover.png'
-      ]); */
-    });
+      ]); 
+    }); */
     
     
     
@@ -362,17 +399,17 @@
 <body>
 <!-- title start -->
     <form action="/matna/main/review/list" method="post">         
-  	<div class="container">
-    	<div class="row">
-        	<div class="col-md-4 col-sm-4">
-            	<div class="templatemo_title"><a href="/matna/home">Matna</a></div>
+     <div class="container">
+       <div class="row">
+           <div class="col-md-4 col-sm-4">
+               <div class="templatemo_title"><a href="/matna/home">Matna</a></div>
                 <div class="templatemo_subtitle">우리지금맛나</div>
             </div>
-        	
-        	<%--상세검색 --%>
-        	<div class="col-md-2 col-sm-2">
-                <a href="#layer" onclick="showHide('layer');return false;">
-                <button id="search_detail">search detail</button></a>
+           
+           <%--상세검색 --%>
+           <div class="col-md-2 col-sm-2">
+                <a href="javascript:show_popup();" >
+                <label id="search_detail">search detail</label></a>
                
                <%-- 전체보기 레이어띄우는 창 --%>
      <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:250px; border:3px solid #ff7359; border-radius:20px;">
@@ -390,10 +427,12 @@
          <label for="rb4" class="detail_lb">주류</label>
       </div>
       
-      <div class="selectH" style="position: relative;z-index:2;" >
-      <div class="selectholder" align="center" id="guSel">
-<!--       <span id="guSpan"></span> -->
-<!--       <select class="select">
+      
+      <!-- 바꾼부분 -->
+      <div class="selectH" style="position:relative;z-index:2;">
+      <div class="holder" align="center" id="guSel">
+      <!--   <span id="guSpan"></span> -->
+   <!-- <select class="select">
         <option value="구" ></option>
         <option value="강서구"></option>
         <option value="양천구"></option>
@@ -401,7 +440,7 @@
       </select> -->
       </div>
       
-      <div class="selectholder" align="center" id="dongSel">
+      <div class="holder" align="center" id="dongSel">
 <!--       <span id="dongSpan"></span> -->
 <!--      <select class="select">
         <option value="동"></option>
@@ -411,19 +450,17 @@
       </select> -->
       </div>
       
-      <div class="selectholder" align="center" >
-      <select class="select" name="money">
-        <option value="전체"></option>
-        <option value="5천원 이하"></option>
-        <option value="5천원~1만원"></option>
-        <option value="1만원~2만원"></option>
-        <option value="2만원~3만원"></option>
-        <option value="3만원~5만원"></option>
-        <option value="5만원~7만원"></option>
-        <option value="7만원 이상"></option>
-      </select>
+      <div class="holder" align="center">
+      <p class="inputfield"><label for="menu"></label> 
+      <select name="menu" id="menu">
+              <option value="가격대">&nbsp;== 가격대  == </option>
+              <option value="5000~10000">5000~10000</option>
+              <option value="10000~20000">10000~20000</option>
+              <option value="20000~30000">20000~30000</option>
+      </select></p>
       </div>
       </div>
+      <!-- 바꾼부분 -->
       
       <div class="center-on-page" align="center" >
          <input type="radio" name="parking" id="parkinglot1" class="detail_rb" checked="checked" value=""/>
@@ -446,21 +483,21 @@
       <input name="search_detail bt" id="searchBt" type="submit" value="검색" style="margin-left:80%; padding-top:2px; padding-down:2px; padding-left:10px; padding-right:10px;"/>
       </div>
       </div>
-		     <%-- 전체보기 레이어 } --%>
-				        	
-        	
-        	
+           <%-- 전체보기 레이어 } --%>
+                       
+           
+           
             <div class="col-md-4 col-sm-4">
-            	<form id="search_form">
-            		<div class="templatemo_search">
-                    	<input name="search" type="text" placeholder="Search here .... " id="search">
+               <form id="search_form">
+                  <div class="templatemo_search">
+                       <input name="search" type="text" placeholder="Search here .... " id="search">
                     </div>
                 </form>
             </div>
             <div class="col-md-2 col-sm-2">
-            	<div class="search_bt">
-				  <button class="icon-search"><div class="fa fa-search"></div></button>
-				</div>
+               <div class="search_bt">
+              <button class="icon-search"><div class="fa fa-search"></div></button>
+            </div>
             </div>
         </div>
     </div>
@@ -469,11 +506,11 @@
   <script type="text/javascript">
   printGu();
   </script>
-  	<div class="site-header">
-		<div class="main-navigation">
-			
-			
-		 <div class="container">
+     <div class="site-header">
+      <div class="main-navigation">
+         
+         
+       <div class="container">
             <div class="row">
                <div class="col-md-12">
                   <!-- This one in here is responsive menu for tablet and mobiles -->
@@ -483,7 +520,7 @@
                      </a>
                      <div class="navigation responsive_menu">
                         <ul>
-                           <li><a class="show-1 templatemo_home" href="#">공지사항</a></li>
+                           <li><a class="show-1 templatemo_home" href="/matna/community/list?type=notice">공지사항</a></li>
                            <li><a class="show-2 templatemo_page2" 
                           		href="/matna/review/list">리뷰</a></li>
                            <li><a class="show-3 templatemo_page3" 
@@ -516,12 +553,12 @@
                               <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu">
-                              <li><a href="#">공지사항</a></li>
+                              <li><a href="/matna/community/list?type=notice">공지사항</a></li>
                            </ul> 
                         </div>
                      </div>
 
-                     <div class="dropdown">
+                    <div class="dropdown">
                         <div class="col-md-2">
                            <button class="btn btn-primary dropdown-toggle" type="button"
                               data-toggle="dropdown">
@@ -550,10 +587,9 @@
                               <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu">
-                              <li><a href="#">자유 게시판</a>
-                              <li><a href="#">만남 게시판</a>
-                              <li><a href="#">익명 게시판</a>
-                           
+                              <li><a href="/matna/community/list?type=free">자유 게시판</a>
+                              <li><a href="/matna/community/list?type=meeting">만남 게시판</a>
+                              <li><a href="/matna/community/list?type=noname">익명 게시판</a>
                            </ul>
                         </div>
                      </div>
@@ -578,8 +614,8 @@
                               <span class="caret"></span>
                            </button>
                            <ul class="dropdown-menu">
-                              <li><a href="#">FAQ</a></li>
-                              <li><a href="#">건의사항</a></li>
+                              <li><a href="/matna/community/list?type=faq">FAQ</a></li>
+                              <li><a href="/matna/community/list?type=suggest">건의사항</a></li>
                            </ul>
                         </div>
                      </div>
@@ -590,46 +626,46 @@
          </div>
       </div>
    </div>
-	</div>
-	
-	
-	  <div id="menu-container">
+   </div>
+   
+   
+     <div id="menu-container">
 
-	<div class="divs">
+   <div class="divs">
 
     <!--========================= 광고페이지 ===================================-->
-	<div class="content homepage" id="menu-1"> 
-	<div class="container">
-    	<div class="row">
-        	<div class="col-md-7 col-sm-7">
-            	<div class="main-slider">
-				<div class="flexslider">
-							<div class="slider-caption" id="AD">
-							<!-- <img src="/matna/resource/images/AD_chicken.jpg" alt="Slide 1"> -->
-							</div>
-				</div>
-			</div>
+   <div class="content homepage" id="menu-1"> 
+   <div class="container">
+       <div class="row">
+           <div class="col-md-7 col-sm-7">
+               <div class="main-slider">
+            <div class="flexslider">
+                     <div class="slider-caption" id="AD">
+                     <!-- <img src="/matna/resource/images/AD_chicken.jpg" alt="Slide 1"> -->
+                     </div>
             </div>
-			
-			<!--================== 로그인폼  =============================================-->
+         </div>
+            </div>
+         
+         <!--================== 로그인폼  =============================================-->
             <div class="col-md-5 col-sm-5" id="loginForm">
            <!--      <div id="box">
-			        <form id="login_frm">
-			           <input type="text" name=login_id placeholder="USERNAME" />
-			           <input type="text" name=login-pass placeholder="PASSWORD" />
-			        </form>
-			         <a href="#" name="find_idpass">forgot ID / PASS ?</a>
-			         <input name="login_bt" type="submit" value="LOGIN !"/>
-				<div class="signup">
-				<p>not a member ? <a href="#">sign up</a></p>
-				</div>
-			   <div class="panel"> -->
-			   <!-- 절취 선 -->
+                 <form id="login_frm">
+                    <input type="text" name=login_id placeholder="USERNAME" />
+                    <input type="text" name=login-pass placeholder="PASSWORD" />
+                 </form>
+                  <a href="#" name="find_idpass">forgot ID / PASS ?</a>
+                  <input name="login_bt" type="submit" value="LOGIN !"/>
+            <div class="signup">
+            <p>not a member ? <a href="#">sign up</a></p>
+            </div>
+            <div class="panel"> -->
+            <!-- 절취 선 -->
   <%@include file="/WEB-INF/views/main/header/login/login.jsp" %>
   </div>
  <!-- 절취 선 -->
-			   </div>
-		    </div>
+            </div>
+          </div>
            </div>
           </div>
          </div>
