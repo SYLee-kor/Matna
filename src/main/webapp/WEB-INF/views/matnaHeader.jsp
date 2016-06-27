@@ -412,7 +412,7 @@ select[name="menu"], #guSel, #dongSel{
                 <label id="search_detail">search detail</label></a>
                
                <%-- 전체보기 레이어띄우는 창 --%>
-     <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:250px; border:3px solid #ff7359; border-radius:20px;">
+     <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:210px; border:3px solid #ff7359; border-radius:20px;">
       
       
       
@@ -479,8 +479,6 @@ select[name="menu"], #guSel, #dongSel{
          <input type="radio" name="date" id="date3" class="detail_rb" value="30"/>
          <label for="date3" class="detail_lb">최근 30일</label>
       </div>
-
-      <input name="search_detail bt" id="searchBt" type="submit" value="검색" style="margin-left:80%; padding-top:2px; padding-down:2px; padding-left:10px; padding-right:10px;"/>
       </div>
       </div>
            <%-- 전체보기 레이어 } --%>
