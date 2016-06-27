@@ -15,19 +15,8 @@
 </script>
 </head>
 <body> 
-  <%@include file="/WEB-INF/views/main/body/review/miniList.jsp" %>  
-  <%--  <!-- Review miniList 영역 -->
-   <div class="container">
-    	<div class="row">
-   <div class="col-md-6 col-sm-6">
-    	<% pageContext.setAttribute("pageType", "review"); %>
-    	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
-   </div>
-   <!-- Review Ranking miniList 영역 -->
-   <div class="col-md-6 col-sm-6">
-    	<% pageContext.setAttribute("pageType", "ranking"); %>
-    	<%@include file="/WEB-INF/views/main/body/review/list.jsp" %>
-   </div> --%>
+	<!-- review 게시판 -->
+  	<%@include file="/WEB-INF/views/main/body/review/miniList.jsp" %>  
     	<!--============== free게시판 ================-->
    <div class="col-md-offset-1 col-md-5 col-sm-5">
             	

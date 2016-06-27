@@ -116,14 +116,15 @@ public class LoginController {
 			member = memberService.selectIsMember(login_id, login_pass);
 			attr.addFlashAttribute("msg", "upgrade");
 		}
-		
+		System.out.println("LoginControler - userGrade : "+member.getGrade());
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());
 		session.setAttribute("userNickname", member.getNickname());
 		session.setAttribute("userPoint", member.getPoint());
 		session.setAttribute("isLogin", true);
-		session.setAttribute("userGrade", member.getGrade());
-		session.setAttribute("gradeName", gradeNames[member.getGrade()-1]);
+		int userGrade = member.getGrade() < 1 ? 1 : member.getGrade();
+		session.setAttribute("userGrade", userGrade);
+		session.setAttribute("gradeName", gradeNames[userGrade-1]);
 	   return "redirect:/home";
 	}
 	@RequestMapping(value="login", method=RequestMethod.GET)	//·Î±×ÀÎ
