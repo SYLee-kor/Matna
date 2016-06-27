@@ -57,3 +57,204 @@
 #reviewup:hover , #reviewli:hover, #reviewdel:hover{
    background-color:#777;
 }
+
+
+
+/*============== community content ===============*/
+.comm_img{
+   width: 65px;
+   height: 40px;
+   cursor: default;
+   background-color: #feb1ab;
+   color: white;
+   padding: 2%;
+   font-size: 17px;
+}
+#comm_img{
+   width: 65px;
+   height: 40px;
+   cursor: default;
+   background-color: #feb1ab;
+   color: white;
+   font-size: 17px;
+}
+.comm_td{
+   border: 1px solid #dddddd;
+}
+.comm_tr{
+   font-size: 15px;
+   font-weight:300;
+}
+#comm_content{
+ /*  width:100%;  */
+  margin-top:1%; 
+  margin-left: 19%; 
+  display:inline-block;
+  width:850px;
+  height:450px;
+  margin-top:3% ;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:1em;
+  background:white;
+  border:solid 5px #ff938a;
+  
+}
+
+#comm_content2{
+   width: 800px; 
+   height: 400px;
+   margin-left:10px;
+   background-color:#fff9f9;
+   overflow: scroll;"
+}
+#comm_write{
+ /*  width:100%;  */
+  margin-top:1%; 
+  display:inline-block;
+  width:750px;
+  height:450px;
+  margin-top:3% ;
+  margin-bottom:5% ;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  padding:1em;
+  background:white;
+  border:solid 5px #ff938a;
+  
+}
+
+
+#comm_bt {
+  display: inline-block;
+  position:relative;
+  margin-left:70%;
+  margin-top:5%;
+  -ms-transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+}
+
+/* Icons */
+
+.comm_bt {
+  color:#fff;
+  background: #ff846f;
+  border-radius:4px;
+  text-align:center;
+  text-decoration:none;
+  font-family:fontawesome;
+  position: relative;
+  display: inline-block;
+  width:50px;
+  height:50px;
+  padding-top:12px;
+  margin:0 15px;
+  font-size:25px;
+  -o-transition:all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+   -webkit-font-smoothing: antialiased;
+}
+
+.comm_bt:hover {
+  background: #ff5f42;
+  color: white;
+}
+
+/* pop-up text */
+
+.comm_bt span {
+  color:#666;
+  position:absolute;
+  font-family:sans-serif;
+  bottom:0;
+  left:-25px;
+  right:-25px;
+  padding:5px 7px;
+  z-index:-1;
+  font-size:15px;
+  font-weight:500;
+  border-radius:2px;
+  background:#fff;
+  visibility:hidden;
+  opacity:0;
+  -o-transition:all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* pop-up text arrow */
+
+.comm_bt span:before {
+  content:'';
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+  position:absolute;
+  bottom:-5px;
+  left:40px;
+}
+
+/* text pops up when icon is in hover state */
+
+.comm_bt:hover span {
+  bottom:50px;
+  visibility:visible;
+  opacity:1;
+}
+
+/* font awesome icons */
+
+.comm_bt:nth-of-type(1):before {
+content:'\f044';
+}
+.comm_bt:nth-of-type(2):before {
+content:"\f014";
+}
+.comm_bt:nth-of-type(3):before {
+content:"\f0ca";
+}
+
+/*------¥Ò±€√¢---------*/
+#replyAddDiv{
+   margin-left: 21%;
+   font-weight: 400;
+}
+#comment{
+  width: 50px; 
+  height: 100px;
+  font-size: 20px;
+  background-color: #7ed5fe;
+  color:white;
+  border-radius:3px;
+}
+
+#comment:HOVER{
+  background-color: #50c6fe;
+  color:white;
+  border-radius:3px;
+}
+
+#replyContent {
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+  padding: 8px 0px 5px 8px;
+  border: 1px solid #cacaca;
+  width: 500px;
+  height: 100px;
+}
+
+#replyContent:focus {
+  -moz-box-shadow: 0 0 5px #51cbee;
+  -webkit-box-shadow: 0 0 5px #51cbee;
+  box-shadow: 0 0 5px #51cbee;
+  padding: 8px 0px 5px 8px;
+  border: 1px solid #51cbee;
+}
+
