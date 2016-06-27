@@ -64,14 +64,14 @@
 								<td style="width: 50px; padding: 0px;">${list.no}</td>
 								<td>
 								<c:choose> 
-						    		<c:when test="${type eq 'suggest'}">
-						    			<c:if test="${userNo eq list.writer || userGrade > 3}">
+						    		<c:when test="${type eq 'suggest' }">
+						    			<c:if test="${(userNo eq list.writer || userGrade > 3) && isLogin == true}">
 						    			<a href="/matna/community/listOne?no=${list.no}&type=${type}&page=${pageMaker.cri.page}&searchType=${pageMaker.cri.searchType}&keyword=${pageMaker.cri.keyword}"
 										 style="font-size: 13px;">${list.title }</a>
 											<input type="button" readonly="readonly" class="reply_num"
 											value="${list.replyCnt }" style="cursor: default;">
 						    			</c:if>
-						    			<c:if test="${userNo != list.writer && userGrade < 4}">
+						    			<c:if test="${(userNo != list.writer && userGrade < 4) || isLogin != true}">
 						    			${list.title } <input type="button" readonly="readonly" class="reply_num"
 											value="${list.replyCnt }" style="cursor: default;">
 						    			</c:if>
