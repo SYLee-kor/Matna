@@ -11,12 +11,13 @@ public class BoardVO {
 	private int viewCnt;
 	private int replyCnt;
 	private Date regdate;
-	
+	private String nickName;
+
 	public BoardVO() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	public BoardVO(String type, int no, String title, int writer, String content, int viewCnt, int replyCnt, Date regdate) {
+	public BoardVO(String type, int no, String title, int writer, String content, int viewCnt, int replyCnt,
+			Date regdate, String nickName) {
+		this.type = type;
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
@@ -24,6 +25,14 @@ public class BoardVO {
 		this.viewCnt = viewCnt;
 		this.replyCnt = replyCnt;
 		this.regdate = regdate;
+		this.nickName = nickName;
+	}
+
+	public String getnickName() {
+		return nickName;
+	}
+	public void setnickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getType() {
@@ -89,10 +98,11 @@ public class BoardVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "[boardVO no : "+no+", type : "+type+", title : "+title+", content : "+ content+", writer : "+writer+"]";
+		return "[boardVO no : " + no + ", type : " + type + ", title : " + title + ", content : " + content
+				+ ", writer : " + writer + "]";
 	}
 
 }

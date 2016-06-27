@@ -31,43 +31,20 @@ public class CommunityController {
 	@Inject
 	private CommunityService service;
 	
-	public CommunityController() {
-	System.out.println("생성");
+	@RequestMapping(value="/test/list")
+	public String list_t(){
+		return "main/body/community/all/content_comm";
 	}
-	
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String inputTest()throws Exception{
-		return "SETest/editorTest";
-	}
-	
-	@RequestMapping("/submit")
-	public void submit(HttpServletRequest request, String editor){
-	    System.out.println("에디터 컨텐츠값(String):"+editor);
-	}
-	
-//	@RequestMapping(value="/slist", method=RequestMethod.GET)
-//	public String listPage(@ModelAttribute("cri") SearchVO key, Model model)throws Exception{
-//		 logger.info("검색리스트 요청: "+ key);
-//		 
-//		 model.addAttribute("list", service.listSearchCriteria(key,new BoardTypeVO("free")));
-//		 PageMaker maker = new PageMaker();
-//		 maker.setCri(key);
-//		 maker.setTotalCount(service.listSearchCount(key,new BoardTypeVO("free")));
-//		 model.addAttribute("pageMaker", maker);  
-//		 
-//		 return "main/body/community/all/list";
-//	}
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, SearchVO cri) throws Exception{
+	public String list(Model model, SearchVO cri,String type) throws Exception{
 		System.out.println("검색어 : " + cri.getKeyword());
 		logger.info("전체list 요청..."+ model);	
-		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO("free")));
+		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO(type)));
 		PageMaker maker = new PageMaker();
 		  maker.setCri(cri);
-		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO("free")));
+		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO(type)));
 		model.addAttribute("pageMaker", maker);
-		String type = "free";
 		model.addAttribute("type", type);
 		return "main/body/community/all/list";
 	}

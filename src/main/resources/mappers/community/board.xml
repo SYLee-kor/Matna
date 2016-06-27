@@ -53,17 +53,46 @@
       insert into 
       <include refid="type"/>
       (no,title,writer,content)
-      values (board_free_seq.nextval, #{title},#{writer},#{content})
+      <choose>
+         <when test="type=='free'.toString()">
+           values (board_free_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='meeting'.toString()">
+           values (board_meeting_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='noname'.toString()">
+           values (board_noname_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='suggest'.toString()">
+           values (board_suggest_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='faq'.toString()">
+           values (board_faq_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
+       <choose>
+         <when test="type=='notice'.toString()">
+           values (board_notice_seq.nextval, #{title},#{writer},#{content})
+         </when>
+       </choose>
    </insert>
    
    <select id="listAll" resultType="board">
-      select no,title,writer,content,regdate,viewcnt,replycnt
+      select no,title,writer,content,regdate,viewcnt,replycnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       order by no desc
    </select>
    
    <select id="read" resultType="board">
-      select no,title,content,writer
+      select no,title,content,writer,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no=#{no}
    </select>
@@ -95,7 +124,7 @@
    </select>
    
    <select id="listSearch" resultType="board">
-      select no,title,content,writer,regdate,viewcnt
+      select no,title,content,writer,regdate,viewcnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no>0     
       <include refid="search"/>
@@ -108,7 +137,7 @@
       <include refid="search"/>
    </select>
    
-   <select id="searchNick" resultType="String">
+   <select id="searchnickName" resultType="String">
    	  select nickName from member where no=#{no}
    </select>
    
