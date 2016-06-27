@@ -111,7 +111,7 @@
 @import url(http://fonts.googleapis.com/css?family=Gudea);
 
 
-.selectholder {
+/* .selectholder {
   width:120px;
   background: white; 
   margin-bottom: 1em;
@@ -164,12 +164,12 @@
   color:white;
 }
 
-.selectholder .selectdropdown { /* select 옵션메뉴 수정 */
+.selectholder .selectdropdown { 
   position: relative;
   top: 0;
   left: 0;
   background: white;
-  color: #ff4a2b; /* tomato button color */
+  color: #ff4a2b;
   font-size:10px;
   display: none;
   clear: both;
@@ -203,7 +203,7 @@
 
 .selectholder .selectdropdown span:hover {
   background-color: #fe795c; 
-}
+} */
 
 .selectH{
    width: 100%;
@@ -225,6 +225,27 @@
    -webkit-border-radius: 4px;
    -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
    margin-right: 30px;
+}
+
+/* 추가 부분 */
+.selectH{
+   width: 100%;
+   text-align: center;
+}
+select[name="menu"], #guSel, #dongSel{
+   font-family: inherit;
+   background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+   border: 1px solid #999; 
+   background: white; 
+   margin-bottom: 1em;
+   font-size: 1em;
+   height: 2.5em;
+   border:2px solid #fe957e;
+   width: 110px;
+}
+
+.holder{
+   display: inline-block;
 }
 </style>
    
@@ -253,22 +274,38 @@
                          $(this).children('.dropdown-menu').stop(true, true)
                                .delay(50).fadeOut(100);
                       }); 
+             
+                 $(document).mousedown(function(e){
+                     $('.layer').each(function(){
+                             if( $(this).css('display') == 'block'){
+                                 var l_position = $(this).offset();
+                                 l_position.right = parseInt(l_position.left) + ($(this).width());
+                                 l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                                 if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                                     && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
+                                 {
+                                     //alert( 'popup in click' );
+                                 }
+                                 else
+                                 {
+                                     //alert( 'popup out click' );
+                                     $(this).hide();
+                                 }
+                             }
+                         });
+                     }); 
+
+             
              });
     
     
-    var cc=0
-    function showHide(id) {//select detail button menu 생성
-        if (cc==0) {
-            cc=1
-            document.getElementById(id).style.display="block";
-        } else {
-            cc=0
-            document.getElementById(id).style.display="none";
-        }
+    function show_popup(){
+        $('.layer').show();
     }
+
     
-    
-    // select 버튼 javascript
+   /*  // select 버튼 javascript
     var selectText=['구','동','가격대']; // 변수를 한번 더 지정해줌
     
     $(document).ready(function(){
@@ -346,13 +383,13 @@
           });
        });
        
-     /*   // preload hover images
+        // preload hover images
       preload([
         'http://supereightstudio.com/img/radio_tick.png',
         'http://supereightstudio.com/img/pulldown.png',
         'http://supereightstudio.com/img/pulldown_hover.png'
-      ]); */
-    });
+      ]); 
+    }); */
     
     
     
@@ -371,8 +408,8 @@
            
            <%--상세검색 --%>
            <div class="col-md-2 col-sm-2">
-                <a href="#layer" onclick="showHide('layer');return false;">
-                <button id="search_detail">search detail</button></a>
+                <a href="javascript:show_popup();" >
+                <label id="search_detail">search detail</label></a>
                
                <%-- 전체보기 레이어띄우는 창 --%>
      <div class="layer" style="position:absolute; background-color:white; left:15px; top:100px; z-index:1; display:none; width:400px; height:250px; border:3px solid #ff7359; border-radius:20px;">
@@ -418,7 +455,7 @@
       <select name="menu" id="menu">
               <option value="가격대">&nbsp;== 가격대  == </option>
               <option value="5000~10000">5000~10000</option>
-              <option value="10000~20000">10000~20000<option>
+              <option value="10000~20000">10000~20000</option>
               <option value="20000~30000">20000~30000</option>
       </select></p>
       </div>
