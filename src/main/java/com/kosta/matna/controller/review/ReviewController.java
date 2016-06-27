@@ -50,12 +50,11 @@ public class ReviewController {
 			, String pageType, String page, Model model){
 		if(!MatnaValidator.isValid(review, "ReviewVO") 
 				|| !MatnaValidator.isValid(preview, "PreviewVO")){
-			System.out.println("Review_regist - invalid");
 			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			System.out.println("MatnaValidator.getErrMsgs()::::::"+MatnaValidator.getErrMsgs());
 			model.addAttribute("review", review);
 			model.addAttribute("preview", preview);
 			model.addAttribute("action", "regist");
-			MatnaValidator.mapClear();
 			return path+"regist";
 		}
 		System.out.println("Validator 통과");
@@ -106,13 +105,13 @@ public class ReviewController {
 	@RequestMapping(value="modify",method=RequestMethod.POST)
 	public String modifyReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String pageType, String tabType, String page, Model model){
-		if(MatnaValidator.isValid(review, "ReviewVO") 
-				&& MatnaValidator.isValid(preview, "PreviewVO")){
+		if( !(MatnaValidator.isValid(review, "ReviewVO") 
+				&& MatnaValidator.isValid(preview, "PreviewVO")) ){
 			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
 			model.addAttribute("review", review);
 			model.addAttribute("preview", preview);
-			MatnaValidator.mapClear();
-			return "/matna/modify";
+			model.addAttribute("action", "modify");
+			return path+"regist";
 		}
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
@@ -205,9 +204,9 @@ public class ReviewController {
 	public String listReview(Model model, String pageType
 			, String tabType, String page){
 		System.out.println("list 실행");
-		int nowPage = ( page==null ) ? 1 : Integer.parseInt(page);
-		tabType = ( tabType == null ) ? "food" : tabType;
-		pageType = ( pageType == null ) ? "review" : pageType;
+		int nowPage = ( page==null || page.trim().equals("")) ? 1 : Integer.parseInt(page);
+		tabType = ( tabType == null || tabType.trim().equals("")) ? "food" : tabType;
+		pageType = ( pageType == null || pageType.trim().equals("")) ? "review" : pageType;
 		
 		model.addAttribute("page", nowPage);
 		model.addAttribute("tabType", tabType);

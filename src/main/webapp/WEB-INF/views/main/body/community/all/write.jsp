@@ -31,6 +31,21 @@
 			oEditors.getById["free_content"].exec("UPDATE_CONTENTS_FIELD", []);
 			$("#frm").submit();
 		});
+		
+		// # 유효성 검사
+		if('${errMsgs.isValid}'=='invalid'){
+			var values = ['${board.title}','${board.content}'];
+			var errMsgs = ['$errMsgs.e_title}','${errMsgs.e_content}'];
+			var objs = [$('[name=title]'),$('[name=content]')];
+		
+			for (var int = objs.length-1; int >= 0; int--) {
+				objs[int].val(values[int]);				
+				if( errMsgs[int] != '' ){
+					objs[int].val('');
+					objs[int].focus();
+				}
+			}
+		}
 	});
 
 </script>
@@ -45,11 +60,17 @@
 		<table align="center" border="1" style="width:100%; height: 100%;">
 			<tr>
 				<th>제목</th>
-				<td><input type="text"  name="title" style="width: 100%"></td>
+				<td>
+					<input type="text"  name="title" style="width: 100%">
+					<font color="red" size="2">${errMsgs.e_title }</font>
+				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td rowspan="2"><textarea name="content" id="free_content" style="width: 930px; height: 500px;"></textarea></td>
+				<td rowspan="2">
+					<textarea name="content" id="free_content" style="width: 930px; height: 500px;"></textarea>
+					<font color="red" size="2">${errMsgs.e_content }</font>
+				</td>
 			</tr>
 
 		</table>

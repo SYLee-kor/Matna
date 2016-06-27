@@ -27,6 +27,7 @@ import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.service.admin.AdminService;
 import com.kosta.matna.service.member.MemberService;
+import com.kosta.matna.validator.MatnaValidator;
 
 @Controller
 @RequestMapping("/mypage")//공통URL정의
@@ -60,6 +61,14 @@ public class MypageController {
 			//model.addAttribute("search",search);
 	   		
 	   }
+	   Map<String,String> errMsgs = (Map<String,String>)session.getAttribute("errMsgs");
+	   if(errMsgs != null && errMsgs.get("isValid") != null){
+		   MemberVO member = (MemberVO)session.getAttribute("member_err");
+		   model.addAttribute("memberVO", member);
+		   model.addAttribute("errMsgs", errMsgs);
+		   session.removeAttribute("errMsgs");
+		   session.removeAttribute("member_err");
+	   }
 	   
        return "/main/mypage/mypage";//스프링에게 뷰정보 전달!!	
     }
@@ -68,7 +77,13 @@ public class MypageController {
     public String modifySuccess(String confirmpass,HttpSession session,
     		RedirectAttributes attr, MemberVO member, Model model)throws Exception{
 	   logger.info("modifySuccess 요청...");
-
+	   
+	   if(!MatnaValidator.isValid(member, "MemberVO") ) { 
+			session.setAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			session.setAttribute("member_err", member);
+			return "redirect:/mypage#tab-2";
+		}
+	   System.out.println("수정작업 밸리데이터 통과");
 	   int userNo=(int)session.getAttribute("userNo");
 	   
 	   boolean equalPw=(member.getPw().equals(confirmpass));	//수정폼의 두 비번이 일치하는지

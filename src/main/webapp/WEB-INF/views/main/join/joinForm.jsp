@@ -13,11 +13,26 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
+		var idFlag = false;
+		var nickFlag = false;
+		
+		// # 아이디 또는 닉네임 값이 변경 될때 다시 중복확인 하지 않으면 가입 불가하도록 .... 
+		$('[name=id]').change(function() {
+			idFlag = false;
+		});
+		$('[name=nickname]').change(function() {
+			nickFlag = false;
+		});
 		
 		$('#join').click(function() {
-			/* 
-			$("#gender").val($("input[name='sex']:checked").val());
-			 */
+			if( !(idFlag && nickFlag) ) {
+				alert('아이디 및 닉네임 중복 확인을 해주세요.');
+				return false;
+			}
+			if( $('[name=pw]').val() != $('[name=confirmpass]').val() ){
+				alert('비밀번호와 비번확인 값이 서로 일치하지 않습니다.');
+				return false;
+			}
 			formObj.attr("action", "/matna/join/joinSuccess");
 			formObj.attr("action2","null");
 			formObj.submit();
@@ -35,6 +50,7 @@
 		    	    var s = result;
 		        	alert(s);
 		        	$("#duplicated").val(s);
+		        	idFlag = true;
 		      }
 		    });
 		});
@@ -51,9 +67,33 @@
 		    	    var s = result;
 		        	alert(s);
 		        	$("#duplicated").val(s);
+		        	nickFlag=true;
 		      }
 		    });
 		});
+		
+		if('${errMsgs.isValid}'=='invalid'){
+			var objs = [$('[name=id]'),$('[name=pw]'),
+			            $('[name=nickname]'),$('[name=name]'),$('[name=email]'),
+			            $('[name=gender]'),$('[name=birth]'),$('[name=phone]'),
+			            $('[name=post]'),$('[name=addr]')];
+			
+			var values = ['${member.id}','${member.pw}',
+			              '${member.nickname}','${member.name}','${member.email}',
+			              '${member.gender}','${member.birth}','${member.phone}',
+			              '${member.post}','${member.addr}'];
+			
+			var errMsgs = ['${errMsgs.e_id}','${errMsgs.e_pw}',
+			               '${errMsgs.e_nickname}','${errMsgs.e_name}','${errMsgs.e_email}',
+			               '${errMsgs.e_gender}','${errMsgs.e_birth}','${errMsgs.e_phone}',
+			               '${errMsgs.e_post}','${errMsgs.e_addr}'];
+			for (var int = objs.length-1; int >= 0 ; int--) {
+				objs[int].val(values[int]); // @ 기본 데이터 세팅
+				if(errMsgs[int] != null && errMsgs[int] != ''){ // @ 에러발생부분 칸 비우기
+					objs[int].val('');
+					objs[int].focus(); // 포커스 가져가기
+				}
+			}		}
 	});
 </script>
 </head>
@@ -64,116 +104,66 @@
 			<input type="hidden" name="action" id="action" value="join" />
 			<input type="hidden" name="action2" id="action2" value="join" />
 			<input type="hidden" name="duplicated" id="duplicated"/>
-			<input type="hidden" name="gender" id="gender" />
 			<fieldset>
 				<div>
 					아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 					<input type="text" id="id"	name="id" placeholder="ID" class="tf1" maxlength="15" path="id"/>
 					<input type="button" id="confirmid"	name="confirmid" value="중복확인" style="margin-left: 20px" />
 				</div>
+				<font color="red" size="2">${errMsgs.e_id }</font>
 				<div>
 				<form:errors path="id"/>
-				
-				<html:messages id="msg" property="errID">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
 				</div>
 				<br>
 				<div>
-					패스워드:&nbsp;&nbsp;&nbsp; <input type="password" name="pw" id="pw"
+					비밀번호:&nbsp;&nbsp;&nbsp; <input type="password" name="pw" id="pw"
 						placeholder="Password" maxlength="15" class="tf1" /> <label
 						class="la" style="margin-left: 20px">*특수문자, 숫자, 영문자 혼합사용가능</label>
 
 				</div>
-				<div>
-				<html:messages id="msg" property="errPw">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_pw }</font>
 				<br>
 				<div>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					비번확인:&nbsp;&nbsp;&nbsp;
 					<input type="password" maxlength="15" name="confirmpass" placeholder="Password 확인"
 						class="tf1" />
-				</div>
-				<div>
-				<html:messages id="msg" property="errPass2">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
 				</div>
 				<br>
 				<div>
 					닉네임:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type="text" id="nickname"	name="nickname" placeholder="nickname" class="tf1" maxlength="15" path="nickname"/>
+					<input type="text" id="nickname"	name="nickname" placeholder="nickname" class="tf1" maxlength="8" path="nickname"/>
 					<input type="button" id="confirmnick" name="confirmnick" value="중복확인" style="margin-left: 20px" />
-					<label class="la" style="margin-left: 20px">*공백없이 입력</label>
+					<label class="la" style="margin-left: 20px">*공백없이 2~8글자 입력</label>
 				</div>
-				<div>
-				<html:messages id="msg" property="errNick">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_nickname }</font>
 				<br>
 				<div>
 					이름:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
-						type="text" maxlength="30" name="name" placeholder="이름" class="tf1" />
+						type="text" maxlength="24" name="name" placeholder="이름" class="tf1" />
 					<label class="la" style="margin-left: 20px">*공백없이 입력</label>
 				</div>
-				<div>
-				<html:messages id="msg" property="errName">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_name }</font>
 				<br>
 				<div>
 					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
 						name="email" maxlength="50" placeholder="Email" class="tf1" />
 				</div>
-				<div>
-				<html:messages id="msg" property="errEmail">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_email }</font>
 				<br>
 				<div>
-					성별: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="radio"
-						name="gender" value="남" >남 <input type="radio" name="gender"
-						value="여">여
+					성별: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					<input type="radio" name="gender" value="남" checked="checked">남
+					<input type="radio" name="gender" value="여">여
 				</div>
-				
-				<div>
-				<html:messages id="msg" property="errGender">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_gender }</font>
 				<br>
 	
 				<div>
 					생년월일:&nbsp;&nbsp;&nbsp; <input type="text" name="birth"
 						placeholder="생년월일" maxlength="6" class="tf1" />
 						<label class="la" style="margin-left: 20px">* - 없이 6자리 입력(YYMMDD)</label>
-				</div>
-				<div>
-				<html:messages id="msg" property="errBirth">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				</div> 
+				<font color="red" size="2">${errMsgs.e_birth }</font>
 				<br>
 				<div>
 					Tel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
@@ -182,39 +172,21 @@
 						class="tel">- <input type="text" maxlength="4" width="10"
 						name="phone3" class="tel"> -->
 				</div>
-				<div>
-				<html:messages id="msg" property="errPhone">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_phone }</font>
 				<br>
 				<div>
 					우편번호:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="post"
 						placeholder="우편번호" class="tf1" maxlength="5"/> <label
 						class="la" style="margin-left: 20px">*- , 공백 없이 숫자 5자리 입력</label>
 				</div>
-				<div>
-				<html:messages id="msg" property="errPost">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_post }</font>
 				<br>
 				<div>
 					상세주소:&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="addr"
 						placeholder="상세주소" maxlength="50"/> <label class="la" style="margin-left: 20px">*50자
 						이내</label>
 				</div>
-				<div>
-				<html:messages id="msg" property="errAddr">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
+				<font color="red" size="2">${errMsgs.e_addr }</font>
 				<br>
 				<br>
 				<br>
