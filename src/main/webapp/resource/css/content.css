@@ -38,8 +38,8 @@
 }
 
 #like_hate{
-  margin-top: 3%;
-  margin-left: 40%;
+  margin-top: 4%;
+  margin-left: 39%;
 }
 
 #reviewdel, #reviewli, #reviewup{
@@ -155,7 +155,7 @@
   
 }
  */
-
+/*------------community & reveiw content bt ----------*/
 #comm_bt {
   display: inline-block;
   position:relative;
@@ -165,12 +165,22 @@
   -webkit-transform:translate(-50%,-50%);
   transform:translate(-50%,-50%);
 }
+#review_bt{
+	margin-left: 23%;
+	position: relative;
+}
+.review_bt {
+  display: inline-block;
+  position:relative;
+  -ms-transform:translate(-50%,-50%);
+  -webkit-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+}
 
 /* Icons */
 
 .comm_bt {
   color:#fff;
-  background: #ff846f;
   border-radius:4px;
   text-align:center;
   text-decoration:none;
@@ -188,15 +198,45 @@
   transition: all .3s;
    -webkit-font-smoothing: antialiased;
 }
-
+.review_bt{
+  color:#fff;
+  border-radius:4px;
+  text-align:center;
+  text-decoration:none;
+  font-family:fontawesome;
+  position: relative;
+  display: inline-block;
+  width:45px;
+  height:45px;
+  padding-top:8px;
+  margin:0 13px;
+  font-size:23px;
+  -o-transition:all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+   -webkit-font-smoothing: antialiased;
+}
+.comm_bt{
+  background: #ff846f;
+}
 .comm_bt:hover {
   background: #ff5f42;
   color: white;
 }
 
+.review_bt{
+  background: #93d9ff;
+}
+.review_bt:hover {
+  background: #04baff;
+  color: white;
+}
+
 /* pop-up text */
 
-.comm_bt span {
+.comm_bt span ,
+.review_bt span {
   color:#666;
   position:absolute;
   font-family:sans-serif;
@@ -219,7 +259,8 @@
 
 /* pop-up text arrow */
 
-.comm_bt span:before {
+.comm_bt span:before,
+.review_bt span:before {
   content:'';
   width: 0; 
   height: 0; 
@@ -233,7 +274,8 @@
 
 /* text pops up when icon is in hover state */
 
-.comm_bt:hover span {
+.comm_bt:hover span,
+.review_bt:hover span {
   bottom:50px;
   visibility:visible;
   opacity:1;
@@ -241,13 +283,16 @@
 
 /* font awesome icons */
 
-.comm_bt:nth-of-type(1):before {
+.comm_bt:nth-of-type(2):before,
+.review_bt:nth-of-type(2):before {
 content:'\f044';
 }
-.comm_bt:nth-of-type(2):before {
+.comm_bt:nth-of-type(3):before,
+.review_bt:nth-of-type(3):before {
 content:"\f014";
 }
-.comm_bt:nth-of-type(3):before {
+.comm_bt:nth-of-type(1):before ,
+.review_bt:nth-of-type(1):before {
 content:"\f0ca";
 }
 
@@ -291,3 +336,19 @@ content:"\f0ca";
   border: 1px solid #51cbee;
 }
 
+
+.reply_bt{
+  width: 35px; 
+  height: 25px;
+  margin-bottom:5px;
+  font-size: 13px;
+  background-color: #a3e0fe;
+  border-color: #a3e0fe;
+  color:#909090;
+  border-radius:3px;
+}
+.reply_bt:HOVER{
+	background-color: #50c6fe;
+	border-bottom-color: #50c6fe;
+	color: white; 
+}
