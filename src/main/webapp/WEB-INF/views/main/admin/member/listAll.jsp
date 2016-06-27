@@ -149,6 +149,9 @@
     if(result == 'SUCCESS'){
     	alert("처리가 완료되었습니다.");
     }
+    if(result == 'undelete'){
+    	alert("최고관리자는 삭제 불가능합니다.");
+    }
     
     </script>
 

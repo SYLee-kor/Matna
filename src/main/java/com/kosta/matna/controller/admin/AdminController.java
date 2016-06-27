@@ -297,6 +297,12 @@ public class AdminController {
 	public String delete(@RequestParam("check") int check, 
 			RedirectAttributes attr)throws Exception{
 		int memberNo = check;
+		
+		if(memberService.selectNo(memberNo).getGrade()==5){
+			attr.addFlashAttribute("msg","undelete");
+			return "redirect:/admin/memberList";
+		}
+		
 		logger.info("["+memberNo +"] 회원 삭제.");
 		memberService.delete(memberNo);
 		attr.addFlashAttribute("msg","SUCCESS");
