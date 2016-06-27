@@ -9,6 +9,7 @@ public class PageMaker {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
+	private int end;
 
 	private int displayPageNum = 10;
 	private Criteria cri;
@@ -33,6 +34,8 @@ public class PageMaker {
 			endPage = tempEndPage;
 		prev = startPage == 1 ? false : true;
 		next = endPage * cri.getPerPageNum() >= totalCount ? false : true;
+		
+		end = totalCount/10+1;
 	}
 
 	public String makeQuery(int page) {
@@ -97,4 +100,13 @@ public class PageMaker {
 		this.cri = cri;
 	}
 
+	public int getEnd() {
+		return end;
+	}
+
+	public void setEnd(int end) {
+		this.end = end;
+	}
+	
+	
 }
