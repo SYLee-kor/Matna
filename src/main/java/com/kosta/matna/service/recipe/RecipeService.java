@@ -18,5 +18,5 @@ public interface RecipeService {
 	
 	int getTotalCount() throws Exception;
 	RecipeVO readRecipe(int no)throws Exception;
-	List<RecipeVO> readList(String pageType, int userNo, RowBounds rowBounds) throws Exception;
+	List<RecipeVO> readList(Map<String,Object> map, RowBounds rowBounds) throws Exception;
 }
