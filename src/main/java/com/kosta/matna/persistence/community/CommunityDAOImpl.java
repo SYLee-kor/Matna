@@ -62,7 +62,7 @@ public class CommunityDAOImpl implements CommunityDAO {
 
 	@Override
 	public List<BoardVO> listAll(BoardTypeVO type) throws Exception {
-		return session.selectList("board.listAll", type);
+		return session.selectList("board.listAll", type,new RowBounds(0, 5));
 	}
 
 	@Override

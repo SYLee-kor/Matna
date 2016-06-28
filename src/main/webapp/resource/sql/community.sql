@@ -1,6 +1,6 @@
  insert into BOARD_free (no,title,content,writer) (select board_free_seq.nextval, title,content,writer from BOARD_free);
  insert into ad (no,photo,title,comments,link) (select ad_seq.nextval,photo,title,comments,link from ad);
-
+ 
 drop sequence board_free_seq;
 create sequence board_free_seq
 start with 1

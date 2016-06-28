@@ -105,7 +105,7 @@ img { border: 0; max-width: 100%; }
   display: inline-block;
   padding: 0;
   margin-top: 5%;
-  margin-left: 20%;
+ /*  margin-left: 20%; */
 }
 
 .pagination li {
@@ -266,7 +266,7 @@ img { border: 0; max-width: 100%; }
   padding: 2px 5px;
   margin-top:2%;
   margin-left:2%;
-  width:31em;
+  width:32em;
   border-radius: 10px;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px
@@ -340,7 +340,6 @@ img { border: 0; max-width: 100%; }
   display: inline-block;
   width:45px;
   height:45px;
-  padding-top:10px;
   margin:0 2px;
   -o-transition:all .5s;
   -webkit-transition: all .5s;
@@ -407,7 +406,7 @@ content:'\f040';
 	 
 
 .comm_list_td{
-	width: 100px;
+	width: 80px;
 }	 
 	 
 

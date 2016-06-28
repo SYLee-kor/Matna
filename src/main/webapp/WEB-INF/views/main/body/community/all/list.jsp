@@ -90,12 +90,13 @@
 										익명
 									</c:when>
 						    		<c:otherwise>
+						 	   			<img src="/matna/resource/img/lv${list.mGrade }.jpg"/>
 						 	   			${list.nickName }
 						    		</c:otherwise>
 								</c:choose>
 								</td>
 								<td>${list.viewCnt}</td>
-								<td>${list.regdate }</td>
+								<td>${list.regDate }</td>
 							</tr>
 						</c:forEach>
 						</tbody>

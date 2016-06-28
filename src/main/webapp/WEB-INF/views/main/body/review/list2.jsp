@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %> 
    <meta name="description" content="">
    <meta name="keywords" content="" />
@@ -66,7 +67,6 @@ function showContents(no) {
 	    </tbody>
 	  </table> 
 	  <!-- ------ paging 처리--------- -->
-	   <center>
 	  <ul class="pagination modal-1" id="pagination">
 	  <c:if test="${pageMaker.prev }">
 	  	<li><a class="prev" 
@@ -85,7 +85,6 @@ function showContents(no) {
 	 	 	onclick="movePage(${pageMaker.afterPage})">&raquo;</a></li>
 	  </c:if>
 	</ul><br>
-	  </center>
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a id="goRegist" style="cursor: pointer;"><span><b>글 쓰기</b></span></a>  
   </div> 

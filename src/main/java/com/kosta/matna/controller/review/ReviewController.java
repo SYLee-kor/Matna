@@ -64,7 +64,8 @@ public class ReviewController {
 			Matcher match = pattern.matcher(review.getContent());
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
-			String photo = imgTag+" width=\"150\" height=\"90\">";
+			String photo = imgTag+"id='review_photo'>";
+//			 width=\"150\" height=\"90\"
 			photo = (imgTag.equals("")) ? "포토" : photo;
 			review.setPhoto(photo);
 			
@@ -119,7 +120,8 @@ public class ReviewController {
 			Matcher match = pattern.matcher(review.getContent());
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
-			String photo = imgTag+" width=\"150\" height=\"90\">";
+			String photo = imgTag+"id='review_photo'>";
+//			 width=\"150\" height=\"90\"
 			photo = (imgTag.equals("")) ? "포토" : photo;
 			review.setPhoto(photo);
 			

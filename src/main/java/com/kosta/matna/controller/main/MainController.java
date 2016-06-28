@@ -27,7 +27,7 @@ public class MainController {
 	public String list(Model model, SearchKeyWord cri) throws Exception{
 		System.out.println("전체 검색");
 		logger.info("전체 리뷰 검색 .."+cri);
-		
+		System.out.println("검색 결과 갯수 : "+service.searchList(cri).size());
 		model.addAttribute("review", service.searchList(cri));
 		model.addAttribute("cri", cri);
 		

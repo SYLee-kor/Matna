@@ -4,12 +4,12 @@
    <meta name="description" content="">
    <meta name="keywords" content="" />
    <meta name="viewport" content="initial-scale=1">
-<style type="text/css">
+<!-- <style type="text/css">
 .image{
    width :100px;
    height: 70px;
 } 
-</style>
+</style> -->
 <script type="text/javascript">
 //======================================== Review 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
@@ -65,9 +65,9 @@ function showPage_ranking(type,page) {
     <div class="tabBlock-pane" id="tab_food_${pageType }"></div>
     <div class="tabBlock-pane" id="tab_desert_${pageType }"></div>
     <div class="tabBlock-pane" id="tab_drink_${pageType }"></div>
-  <div class="list_write_bt" id="reviewlist_write_bt">
+  <!-- <div class="list_write_bt" id="reviewlist_write_bt">
        <a id="goRegist" style="cursor: pointer;"><span><b>글 쓰기</b></span></a>  
-  </div> 
+  </div> --> 
   </div>
   </figure>
 </div>
@@ -79,9 +79,9 @@ function showPage_ranking(type,page) {
 	// # 삽입 , 수정, 삭제 후 결과 출력.
 	if('${result}'=='success') alert('처리되었습니다.');
 	// # 글등록 버튼을 누르면 이동
-	$('#goRegist').click(function() {
+	/* $('#goRegist').click(function() {
 		document.location.href=
 			"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
-	})
+	}) */
 </script>
 <%@include file="/WEB-INF/views/footer.jsp" %>
