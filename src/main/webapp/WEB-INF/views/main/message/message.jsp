@@ -307,7 +307,7 @@
                         <div class="form-group">
                            <label for="exampleInputEmail1">To.</label> <input type="text"
                               name="receiverNickname" class="form-control"
-                              placeholder="Enter Receiver" style="margin-left:30px;">
+                              placeholder="Enter Receiver" style="margin-left:30px;" value="${toNickname}">
                         </div>
                         <div class="form-group">
                            <label for="exampleInputEmail1">From.</label> <input

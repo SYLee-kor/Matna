@@ -12,19 +12,20 @@
 }
 </style>
 <script type="text/javascript">
-$(document).ready(function() {//class="dropdown-menu"
+$(document).ready(function() {
  
      $(document).mousedown(function(e){
+    	 
          $('.pop').each(function(){
                  if( $(this).css('display') == 'block'){
                      var l_position = $(this).offset();
-                     l_position.right = parseInt(l_position.right) + ($(this).width());
+                     l_position.right = parseInt(l_position.left) + ($(this).width());
                      l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
 
                      if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
                          && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
                      {
-                         //alert( 'popup in click' );
+                        // alert( 'popup in click' );
                      }
                      else
                      {
@@ -49,10 +50,14 @@ $('#goRegist').click(function() {
 		"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
 })
 
-function show_popup(no){
+function show_pop(no){
 		var bno = '#'+no;
-	   $(bno).toggle();
+	   $(bno).show();
     }
+    
+function message(nick){
+    window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+}
 
 </script>
   <table class="review_List" cellspacing="0" cellpadding="0">
@@ -79,13 +84,13 @@ function show_popup(no){
          </td> 
          <td style="text-align: left;">
          	<img src="/matna/resource/img/lv${review.mGrade }.jpg"/>
-         	<a href="javascript:show_popup(${review.no });" style="font-size:13px;">
+         	<a href="javascript:show_pop(${review.no });" style="font-size:13px;">
          	${review.nickName }</a>
          	<div class="pop" id="${review.no }" style="position:absolute; background-color:white; z-index:1; display:none;
          		 width:150px; height:150px; border:3px solid #ff7359; border-radius:20px;">
          		 <table>
-         		 	<tr><td><a href="#" style="font-size:13px;">쪽지보내기</a></td></tr>
-         		 	<tr><td><a href="#" style="font-size:13px;">포인트선물</a></td></tr>
+         		 	<tr><td><a href="javascript:message('${review.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
+         		 	<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${review.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
          		 	<tr><td><a href="#" style="font-size:13px;">게시글보기</a></td></tr>
          		 </table>
          	</div>
