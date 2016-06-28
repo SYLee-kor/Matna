@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.item.ItemVO;
 import com.kosta.matna.domain.member.MemberVO;
@@ -70,7 +71,8 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/buy")//상품 구매
-	public String buy(Model model,int ino, int buyCount, int price, String name, HttpSession session ){
+	public String buy(Model model,int ino, int buyCount,
+			RedirectAttributes attr, int price, String name, HttpSession session ){
 		try {
 			
 			System.out.println("구매실행!@#");
@@ -78,11 +80,25 @@ public class ItemController {
 			int userno = (int) session.getAttribute("userNo");
 			//model.addAttribute("buyItem",service.updateItem(3, -2));//service.update(ino, num));// ino:상품 번호 num:상품 수량 //상품구매시 업데이트
 			//model.addAttribute("buyPoint", service.updatePoint(3, -1000));//service.updatePoint(no, price));// no:회원 번호 price:상품가//상품구매시 가격만큼 포인트 감소
+			
+			ItemVO item = service.readItem(ino);
+			
+			if(item.getAmount()-buyCount<0)
+			{
+				attr.addFlashAttribute("msg", "minusCnt");
+				return "redirect:/item/itemSearch";
+			}
+			
+			MemberVO member = service.readMember(userno); //service.readMember(int no);
+			if(member.getPoint()-(price*buyCount)<0){
+				attr.addFlashAttribute("msg", "minusPoint");
+				return "redirect:/item/itemSearch";
+			}
+			
 			service.updateItem(ino, -buyCount);
 			//int no = Integer.parseInt((String) (session.getAttribute("no")));
 			service.updatePoint(userno, -(price*buyCount));//service.updatePoint(no, -price);
 			
-			MemberVO member = service.readMember(userno); //service.readMember(int no);
 			String addr = member.getAddr();
 			
 			Member_orderVO order = new Member_orderVO();
