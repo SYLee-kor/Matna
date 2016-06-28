@@ -28,7 +28,7 @@ public class MainController {
 		System.out.println("전체 검색");
 		logger.info("전체 리뷰 검색 .."+cri);
 		
-		model.addAttribute("list", service.searchList(cri));
+		model.addAttribute("review", service.searchList(cri));
 		model.addAttribute("cri", cri);
 		
 		return "/main/body/review/list2";

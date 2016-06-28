@@ -54,10 +54,10 @@ public class CommunityController {
 		System.out.println("페이지 : " + cri.getPage());
 		System.out.println("list page type : "+type);
 		logger.info("특정 페이지 list 요청..."+ model);	
-		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO("free")));
+		model.addAttribute("list", service.listSearchCriteria(cri,new BoardTypeVO(type)));
 		PageMaker maker = new PageMaker();
 		  maker.setCri(cri);
-		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO("free")));
+		  maker.setTotalCount(service.listSearchCount(cri,new BoardTypeVO(type)));
 		model.addAttribute("pageMaker", maker);
 		model.addAttribute("type", type);
 		return "main/body/community/all/list";
