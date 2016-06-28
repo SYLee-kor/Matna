@@ -649,7 +649,6 @@ function readURL(input) {
 						style="background: url('/matna/resource/images/book_back.jpg'); background-size: 100% 100%;">
 						<h4 class="header"></h4>
 						<div class="content">
-							<p>뒷표지</p>
 						</div>
 					</div>
 

@@ -17,7 +17,7 @@ create table recipe(
 	replyCnt number default 0,
 	viewCnt number default 0,
 	likes number default 0,
-	photo varchar2(100) not null
+	photo varchar2(200) not null
 );
 
 create table precipe(

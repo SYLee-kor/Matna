@@ -72,7 +72,7 @@ a{
   <c:forEach items="${recipeList }" var="recipe">
    <!-- Recipe Start -->
 	<div class="recipe"> 
-		<div class="image">
+		<div class="image" style="width: 300px;height: 230px;">
 	    	${recipe.photo }
 	  		<div class="likes" onclick="likesUp(${recipe.no})">
 	    		<i class="fa fa-heart-o lv" id="heart${recipe.no }"></i>
