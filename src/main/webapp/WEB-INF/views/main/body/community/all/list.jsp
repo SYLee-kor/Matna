@@ -103,7 +103,11 @@
 
 					<!-- ------ paging 처리--------- -->
 					<center>
-						<ul class="pagination modal-1" id="pagination">
+					<table>
+					  <tr>
+					    <td style="width: 600px;">
+					    
+					    <ul class="pagination modal-1" id="pagination">
 							<li><a href="#" id="goStart" class="prev">&laquo</a></li>
 							<c:if test="${pageMaker.prev}">
 							<li><a name="page" href="${pageMaker.startPage - 1}">Prev</a></li>
@@ -117,7 +121,9 @@
 							</c:if>
 							<li><a href="#" id="goEnd" class="next">&raquo;</a></li>
 						</ul>
-						<br>
+					    </td>
+					 
+					    <td class="comm_list_td">
 						<c:choose> 
 						    		<c:when test="${type eq 'faq' || type eq 'notice'}">
 						    			<c:if test="${userGrade > 3 && isLogin == true}">
@@ -126,19 +132,26 @@
 											</div>
 										</c:if>
 						    		</c:when>
-						    		<c:when test="${type eq 'meeting' }">
+						
+						            <c:when test="${type eq 'meeting' }">
 						    			<c:if test="${userGrade > 2 && isLogin == true}">
 							    			<div class="list_write_bt" id="reviewlist_write_bt">
 											<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
 											</div>
 										</c:if>
 						    		</c:when>
-						    		<c:when test="${isLogin == true }">
+					
+						           <c:when test="${isLogin == true }">
 						    			<div class="list_write_bt" id="reviewlist_write_bt">
 										<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
 										</div>
 						    		</c:when>
+				
 						</c:choose>
+					    </td>
+					  </tr>
+					</table>
+						
 						
 
 						<!-- =============검색================== -->
