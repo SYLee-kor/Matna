@@ -17,7 +17,13 @@
 <hr style="border: 0.2% solid #dddddd;width: 64%;margin-left: 17%;margin-top: 1%;">
 <span id="reply${reply.no }"></span>
 </c:forEach>
-<c:forEach begin="1" end="${replyMaker.endPage }" varStatus="stat">
-	<a href="javascript:listReply(${rNo },${stat.index })">${stat.index }</a>
-</c:forEach>	
+<center>
+<div class="page">
+  <ul class="pagination modal-1" id="pagination">
+	<c:forEach begin="1" end="${replyMaker.endPage }" varStatus="stat">
+		<li><a href="javascript:listReply(${rNo },${stat.index })">${stat.index }</a></li>
+	</c:forEach>
+	</ul>
+</div>
+</center>
 </c:if>
