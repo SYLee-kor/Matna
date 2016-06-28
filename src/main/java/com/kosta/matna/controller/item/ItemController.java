@@ -44,10 +44,11 @@ public class ItemController {
 	}
 	
 	@RequestMapping("/itemdetail")//상품 클릭 상세보기
-	public String detail(Model model, int ino){
+	public String detail(Model model, int ino, String toNickname){
 		try {
 			ItemVO item= service.readItem(ino);
 			model.addAttribute("detailItem", item);
+			model.addAttribute("toNickname", toNickname);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

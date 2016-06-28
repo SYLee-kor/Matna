@@ -57,7 +57,7 @@
 				  <c:otherwise>
 					 <span class="subtitle" id="item_price">수령자 닉네임:&nbsp;&nbsp;</span>
 					    <span id="nick_input">
-					    	<input type="text" name="taker" placeholder="NickName" required />
+					    	<input type="text" name="taker" value="${toNickname}" placeholder="NickName" required />
 						</span><br><br>
 						
 					 <span class="subtitle" id="item_price">선물할 포인트:&nbsp;&nbsp;</span>	

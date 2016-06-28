@@ -50,10 +50,10 @@
 					<table class="review_List" cellspacing="0" cellpadding="0">
 						<thead>
 							<tr>
-								<th style="width: 50px; padding: 0px; text-align: center"><span>No</span></th>
-								<th style="text-align: center;"><span>Title</span></th>
-								<th style="text-align: center; width: 150px;"><span>작성자</span></th>
-								<th style="width: 70px; padding: 0px; text-align: center;">조회수</th>
+								<th style="width: 100px; padding: 0px; text-align: center"><span>No</span></th>
+								<th style="text-align: center;width:400px; "><span>Title</span></th>
+								<th style="text-align: center; width: 200px;"><span>작성자</span></th>
+								<th style="width: 100px; padding: 0px; text-align: center;">조회수</th>
 								<th style="text-align: center;"><span>date</span></th>
 
 							</tr>
@@ -106,7 +106,7 @@
 					<center>
 					<table>
 					  <tr>
-					    <td style="width: 600px;">
+					    <td style="width: 700px;"align="center">
 					    
 					    <ul class="pagination modal-1" id="pagination">
 							<li><a href="#" id="goStart" class="prev">&laquo</a></li>
@@ -129,7 +129,7 @@
 						    		<c:when test="${type eq 'faq' || type eq 'notice'}">
 						    			<c:if test="${userGrade > 3 && isLogin == true}">
 							    			<div class="list_write_bt" id="reviewlist_write_bt">
-											<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+											<a href="/matna/community/write?type=${type }" style="padding-top: 10px"><span><b>글 쓰기</b></span></a>
 											</div>
 										</c:if>
 						    		</c:when>
@@ -137,14 +137,14 @@
 						            <c:when test="${type eq 'meeting' }">
 						    			<c:if test="${userGrade > 2 && isLogin == true}">
 							    			<div class="list_write_bt" id="reviewlist_write_bt">
-											<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+											<a href="/matna/community/write?type=${type }" style="padding-top: 10px"><span><b>글 쓰기</b></span></a>
 											</div>
 										</c:if>
 						    		</c:when>
 					
 						           <c:when test="${isLogin == true }">
 						    			<div class="list_write_bt" id="reviewlist_write_bt">
-										<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+										<a href="/matna/community/write?type=${type }" style="padding-top: 10px"><span><b>글 쓰기</b></span></a>
 										</div>
 						    		</c:when>
 				
@@ -156,6 +156,7 @@
 						
 
 						<!-- =============검색================== -->
+						
 						<table>
 							<tr>
 								<td><span include="form-input-select2()">
@@ -180,8 +181,8 @@
 								</td>
 							</tr>
 						</table>
-
-					</center>
+                      </center>
+					
 				</div>
 			</div>
 		</div>

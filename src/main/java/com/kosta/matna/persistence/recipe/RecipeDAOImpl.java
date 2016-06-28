@@ -1,5 +1,6 @@
 package com.kosta.matna.persistence.recipe;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -67,8 +68,11 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public List<RecipeVO> readList(String pageType, RowBounds rowBounds) throws Exception {
-		return session.selectList("recipe.selectList", pageType, rowBounds);
+	public List<RecipeVO> readList(String pageType,int userNo, RowBounds rowBounds) throws Exception {
+		Map<String,Object> map = new HashMap<>();
+		map.put("pageType", pageType);
+		map.put("userNo", userNo);
+		return session.selectList("recipe.selectList", map, rowBounds);
 	}
 
 	@Override
@@ -79,5 +83,44 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public int getTotalCount() throws Exception {
 		return session.selectOne("recipe.totalCount");
+	}
+
+	@Override
+	public boolean likesUp(int no) throws Exception {
+		if( session.update("recipe.likesUp", no)==1 ) return true;
+		return false;
+	}
+
+	@Override
+	public boolean addLikes(int no, int userNo) throws Exception {
+		Map<String,Integer> map = new HashMap<>();
+		map.put("no",no);
+		map.put("userNo", userNo);
+		if( session.insert("recipe.addLikes",map) == 1) return true;
+		return false;
+	}
+
+	@Override
+	public boolean removeLikes(int no, int userNo) throws Exception {
+		Map<String,Integer> map = new HashMap<>();
+		map.put("no",no);
+		map.put("userNo", userNo);
+		if(session.delete("recipe.removeLikes", map) ==1 )return true;
+		return false;
+	}
+
+	@Override
+	public boolean findLikes(int no, int userNo) throws Exception {
+		Map<String,Integer> map = new HashMap<>();
+		map.put("no",no);
+		map.put("userNo", userNo);
+		if( (int)session.selectOne("recipe.findLikes", map) > 0 ) return true;
+		return false;
+	}
+
+	@Override
+	public boolean removeAllLikes(int no) throws Exception {
+		if(session.delete("recipe.removeAllLikes", no) ==1 )return true;
+		return false;
 	}
 }

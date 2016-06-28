@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
+import org.junit.runner.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -86,10 +87,11 @@ public class RecipeController {
 	public @ResponseBody String modifyRecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
 			, String pageType,  String page, MultipartFile file){
 		System.out.println("수정시 사진 값 : "+recipe.getPhoto());
+		System.out.println("파일 사진이름  : "+file.getOriginalFilename());
 		try {
 			// # 사진 세팅
 			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
-			if( file != null && !file.equals("") ){
+			if( file != null && file.getOriginalFilename().trim().length()!=0 ){
 				System.out.println("modifyRecipe 사진 생성");
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
@@ -127,28 +129,25 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("remove")
-	public String removerecipe(int no, RedirectAttributes rttr
-			, String pageType, String page,String action){
+	public @ResponseBody String removerecipe(int no, HttpSession session){
 		try {
-			if(service.removeRecipe(no))
-			rttr.addFlashAttribute("result", "success");
-			rttr.addAttribute("pageType", pageType);
-			rttr.addAttribute("page", page);
-			rttr.addAttribute("action", action);
+			if(service.removeRecipe(no)) return "success";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
 		}
-		return "redirect:/recipe/list";
+		return "fail";
 	}
 	
 	@RequestMapping("list") 
-	public String listrecipe(Model model, String pageType
-			, Criteria cri){
+	public String listrecipe(Model model, String pageType, HttpSession session,
+			Criteria cri){
 		try {
+		cri.setPerPageNum(6);
 		pageType = ( pageType == null ) ? "recipe" : pageType;
+		int userNo = session.getAttribute("userNo") != null ? (int)session.getAttribute("userNo") : 0;
 		List<RecipeVO> list = 
-				service.readList(pageType, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
+				service.readList(pageType,userNo, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
 		PageMaker pageMaker = new PageMaker(cri, service.getTotalCount());
 		model.addAttribute("page", cri.getPage());
 		model.addAttribute("pageType", pageType);
@@ -161,12 +160,23 @@ public class RecipeController {
 		return path+"list";
 	} // # list페이지로 가기 위한 메소드
 	
+	@RequestMapping(value="likesUp", method=RequestMethod.POST)
+	public @ResponseBody boolean likesUp(int no, String writer
+			,Model model){
+		try {
+			int writerInt = writer ==null || writer.equals("") ? 0 : Integer.parseInt(writer);
+			return service.likesUp(no, writerInt);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	private String uploadFile(String photoName, byte[] fileData)throws Exception{ //상품 UID_상품명 생성
 		UUID uid=UUID.randomUUID();
 		String savedName = uid.toString()+"_"+photoName;
 		File target = new File(uploadPath,savedName); 
 		FileCopyUtils.copy(fileData, target);
-		return "<img src='/matna/resource/images/recipe/"+savedName+"' width='400px' height='400px'>";
+		return "<img src='/matna/resource/images/recipe/"+savedName+"' width='400px' height='400px' class='photo'>";
 	}
 }

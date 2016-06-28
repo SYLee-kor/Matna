@@ -123,8 +123,8 @@ public class LoginController {
 		
 		//새로운 메세지가 있는가
 		session.setAttribute("isNewMessage",messageService.IsNewMessage(member.getNo()));
-		
-		System.out.println("LoginControler - userGrade : "+member.getGrade());
+		/*System.out.println(messageService.IsNewMessage(member.getNo()));
+		System.out.println("LoginControler - userGrade : "+member.getGrade());*/
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());
 		session.setAttribute("userNickname", member.getNickname());

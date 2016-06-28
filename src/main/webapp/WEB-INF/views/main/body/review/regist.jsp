@@ -157,7 +157,7 @@ $(function(){
       <span id="dongSpan"></span>
       <br> ${errMsgs.e_gu }  ${errMsgs.e_dong }
       <input type="text" id="addr" name="addr" required tabindex="4"
-                style="margin-bottom: 10px;" placeholder="상세주소입력란">
+                style="margin-bottom: 10px;margin-left: 15.5%;" placeholder="상세주소입력란">
       </p>
   
       <!--주차장여부 입력란 -->
@@ -223,12 +223,12 @@ $(function(){
       
       <!-- 전화번호 입력란 -->
 	  <p class="inputfield"><label for="phone">전화번호</label> 
-	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
+	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="margin-left:3.7%;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
 	  <font color="red" face="bold">${errMsgs.e_phone }</font>
 	  </p>
       <!-- 추천메뉴 입력란 -->
        <p class="inputfield"><label for="recommend">추천메뉴</label>
-       <input type="text" name="recommend" id="recommend"> 
+       <input type="text" name="recommend" id="recommend" style="margin-left:3.7%;"> 
        <font color="red" face="bold">${errMsgs.e_recommend }</font>
        </p>
           
