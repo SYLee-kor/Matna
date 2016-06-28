@@ -3,7 +3,7 @@ package com.kosta.matna.domain.review;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class PageMaker extends Criteria{ // # 게시판 하단에 페이징 처리해주는 클래스
+public class PageMaker{ // # 게시판 하단에 페이징 처리해주는 클래스
 	private int totalCount; // @ 전체 레코드 수
 	private int startPage; // @ 시작넘버
 	private int endPage; // @ 끝 넘버

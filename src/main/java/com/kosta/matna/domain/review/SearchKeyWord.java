@@ -1,6 +1,6 @@
 package com.kosta.matna.domain.review;
 
-public class SearchKeyWord extends PageMaker{
+public class SearchKeyWord extends Criteria{
 	private String rb;
 	private String gu;
 	private String dong;
@@ -8,11 +8,15 @@ public class SearchKeyWord extends PageMaker{
 	private String parking;
 	private String date;
 	private String search;
+	private String reviewType;
 	
 	public SearchKeyWord() {
 	}
 
-	public SearchKeyWord(String rb, String gu, String dong, String money, String parking, String date, String search) {
+	
+	
+	public SearchKeyWord(String rb, String gu, String dong, String money, String parking, String date, String search,
+			String reviewType) {
 		this.rb = rb;
 		this.gu = gu;
 		this.dong = dong;
@@ -20,8 +24,23 @@ public class SearchKeyWord extends PageMaker{
 		this.parking = parking;
 		this.date = date;
 		this.search = search;
+		this.reviewType = reviewType;
 	}
+
 	
+
+	public String getReviewType() {
+		return reviewType;
+	}
+
+
+
+	public void setReviewType(String reviewType) {
+		this.reviewType = reviewType;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "[rb : "+rb+", gu : "+gu+", dong : "+dong+", money : "+money+", parking : "+parking+", date : "+date+", search : "+search+"]";

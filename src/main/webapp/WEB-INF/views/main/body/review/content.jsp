@@ -167,7 +167,8 @@
       <input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
       </c:if>
       <input id="reviewli" type="button" value="목록" 
-      onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
+      onclick='javascript:document.location.href=history.back();'>
+      <%-- 'javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'> --%>
                
   </div>   
   <c:if test="${isCount==true }">

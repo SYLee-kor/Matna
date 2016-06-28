@@ -124,8 +124,8 @@ $(function(){
     		 form.submit();
       });
       $("#cancel").click(function() {
-		 document.location.href=
-			 '/matna/review/list?page=${page}&pageType=${pageType}&tabType=${tabType}';
+		 document.location.href=history.back();
+			 /* '/matna/review/list?page=${page}&pageType=${pageType}&tabType=${tabType}'; */
 	  })
 });
 </script>

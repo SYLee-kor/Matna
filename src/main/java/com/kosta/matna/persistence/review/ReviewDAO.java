@@ -11,6 +11,7 @@ import com.kosta.matna.domain.review.SearchKeyWord;
 
 public interface ReviewDAO {
 	List<ReviewVO> searchList(SearchKeyWord cri) throws Exception;
+	int searchListTotal(SearchKeyWord cri) throws Exception;
 	
 	boolean insertReview(ReviewVO vo) throws Exception;
 	boolean insertPreview(PreviewVO vo) throws Exception;

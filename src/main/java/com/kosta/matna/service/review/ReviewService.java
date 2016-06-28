@@ -12,6 +12,7 @@ import com.kosta.matna.domain.review.SearchKeyWord;
 public interface ReviewService {
 	
 	List<ReviewVO> searchList(SearchKeyWord cri) throws Exception;
+	int searchListTotal(SearchKeyWord cri) throws Exception;
 	
 	boolean registReview(ReviewVO review, PreviewVO preview) throws Exception;
 	boolean modifyReview(ReviewVO review, PreviewVO preview) throws Exception;
