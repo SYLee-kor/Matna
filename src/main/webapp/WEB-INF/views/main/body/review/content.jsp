@@ -153,50 +153,40 @@
 	  <div id="review_content">
 	    <div id="review_content2" >${review.content }</div>
 	  </div>
-			<%--버튼으로 바꿀예정!! --%>
-	  <div id="like_hate">
-	  <div style="margin-top: 30px;">
-	  <a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good.PNG" ></a> :  
-	   &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-	 <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><img alt="bad" src="/matna/resource/images/sad.PNG"></a> :
-	   &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
-       </div>
-       <%--  <c:if test="${ userNo == review.writer }">
-		<input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
-		<input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
-		</c:if>
-		<input id="reviewli" type="button" value="목록" 
-		onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
-			 --%>		
-	  <div id="review_bt">
-        <a href="#" onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"' class="review_bt"><span>목록으로</span></a>
-	    <c:if test="${ userNo == review.writer }">
-        <a href="#" onclick="updateReview('${review.no}');" class="review_bt"><span>수정하기</span></a>
-        <a href="#" onclick="deleteReview(${review.no},'${pageType }')" class="review_bt"><span>삭제하기</span></a>
-        </c:if>
-  
-      </div> 
-					
-	  </div>	
-					
-
+			
+			       
+	 <%--버튼으로 바꿀예정!! --%>
+     <div id="like_hate">
+     <a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good_content.PNG"></a> :  
+      &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
+    <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><img alt="bad" src="/matna/resource/images/bad_content.PNG"></a> :
+      &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
+        <c:if test="${ userNo == review.writer }">
+      
+      <input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
+      <input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
+      </c:if>
+      <input id="reviewli" type="button" value="목록" 
+      onclick='javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'>
+               
+  </div>   
   <c:if test="${isCount==true }">
-                    <div style="position: absolute;margin-left: 68%;margin-top:-4%; ">
+                    <div style="position: absolute;margin-left: 66%;margin-top:-5%; ">
                         <a style="color: gray;font-weight: 400;font-size: 15px;margin-left: 20%;margin-bottom: 10px">남 VS 여 선호도</a>
-     					<div id="graph" style="width:200px; height:200px;/* margin-left: 120px */"></div>
-     				</div>
-     				</c:if>
-     				<c:if test="${isCount==false }">
-     				<div style="position: absolute;margin-left:68%;margin-top:-4%;">
-     				    <a style="color: gray;font-weight: 400;font-size: 15px;margin-left:20%;margin-bottom: 10px">남 VS 여 선호도</a>
-     					<div><img alt="" src="/matna/resource/img/chart.jpg" style="width:180px; height:180px;"> </div>
-     				</div>
-     				</c:if>
-     			
+                    <div id="graph" style="width:200px; height:200px;/* margin-left: 120px */"></div>
+                 </div>
+                 </c:if>
+                 <c:if test="${isCount==false }">
+                 <div style="position: absolute;margin-left: 66%;margin-top:-5%;">
+                     <a style="color: gray;font-weight: 400;font-size: 15px;margin-left:20%;margin-bottom: 10px">남 VS 여 선호도</a>
+                    <div><img alt="" src="/matna/resource/img/chart.jpg" style="width:180px; height:180px;"> </div>
+                 </div>
+                 </c:if>
+              
  </form>
  
     
-	<%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
-	<%@include file="/WEB-INF/views/footer.jsp" %>
+   <%@include file="/WEB-INF/views/main/body/review/replyPage.jsp" %>
+   <%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
 </html>

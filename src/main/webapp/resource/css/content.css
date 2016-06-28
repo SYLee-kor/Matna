@@ -38,24 +38,27 @@
 }
 
 #like_hate{
-  margin-top: 4%;
-  margin-left: 39%;
+  margin-top: 2%;
+  margin-left: 30%;
+  margin-bottom: 3%;
 }
 
 #reviewdel, #reviewli, #reviewup{
-	display: inline;
+   display: inline;
    width: 50px;
-  font-size: 14px;
-   background-color:#6cb4ce;
+   font-size: 14px;
+   background-color:#8ad9ff;
+   border-color:#8ad9ff;
    color: #fff;
    padding: 5px 0px;
-   margin: 10px 0px 0px 0px;
+   margin: 10px 0px 0px 5px;
    border-radius: 3px;
    -moz-border-radius: 5px;
 }
 
 #reviewup:hover , #reviewli:hover, #reviewdel:hover{
-   background-color:#777;
+   background-color:#32b7fe;
+   border-color: #32b7fe;
 }
 
 
@@ -165,17 +168,6 @@
   -webkit-transform:translate(-50%,-50%);
   transform:translate(-50%,-50%);
 }
-#review_bt{
-	margin-left: 23%;
-	position: relative;
-}
-.review_bt {
-  display: inline-block;
-  position:relative;
-  -ms-transform:translate(-50%,-50%);
-  -webkit-transform:translate(-50%,-50%);
-  transform:translate(-50%,-50%);
-}
 
 /* Icons */
 
@@ -198,25 +190,7 @@
   transition: all .3s;
    -webkit-font-smoothing: antialiased;
 }
-.review_bt{
-  color:#fff;
-  border-radius:4px;
-  text-align:center;
-  text-decoration:none;
-  font-family:fontawesome;
-  position: relative;
-  display: inline-block;
-  width:45px;
-  height:45px;
-  padding-top:8px;
-  margin:0 13px;
-  font-size:23px;
-  -o-transition:all .3s;
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  transition: all .3s;
-   -webkit-font-smoothing: antialiased;
-}
+
 .comm_bt{
   background: #ff846f;
 }
@@ -225,18 +199,9 @@
   color: white;
 }
 
-.review_bt{
-  background: #93d9ff;
-}
-.review_bt:hover {
-  background: #04baff;
-  color: white;
-}
-
 /* pop-up text */
 
-.comm_bt span ,
-.review_bt span {
+.comm_bt span  {
   color:#666;
   position:absolute;
   font-family:sans-serif;
@@ -259,8 +224,7 @@
 
 /* pop-up text arrow */
 
-.comm_bt span:before,
-.review_bt span:before {
+.comm_bt span:before{
   content:'';
   width: 0; 
   height: 0; 
@@ -274,8 +238,7 @@
 
 /* text pops up when icon is in hover state */
 
-.comm_bt:hover span,
-.review_bt:hover span {
+.comm_bt:hover span{
   bottom:50px;
   visibility:visible;
   opacity:1;
@@ -283,17 +246,14 @@
 
 /* font awesome icons */
 
-.comm_bt:nth-of-type(2):before,
-.review_bt:nth-of-type(2):before {
+.comm_bt:nth-of-type(1):before {
+content:"\f0ca";
+}
+.comm_bt:nth-of-type(2):before {
 content:'\f044';
 }
-.comm_bt:nth-of-type(3):before,
-.review_bt:nth-of-type(3):before {
+.comm_bt:nth-of-type(3):before {
 content:"\f014";
-}
-.comm_bt:nth-of-type(1):before ,
-.review_bt:nth-of-type(1):before {
-content:"\f0ca";
 }
 
 /*------¥Ò±€√¢---------*/
