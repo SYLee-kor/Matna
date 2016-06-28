@@ -67,9 +67,9 @@ function page_move(url) {
            <td class="comm_td"> 
                 <input type="button" readonly="readonly" value="No." class="comm_img">   ${board.no }</td>
            <td class="comm_td"> 
-                <input type="button" readonly="readonly" value="작성자" class="comm_img">  ${board.nickName }</td>
+                <input type="button" readonly="readonly" value="작성자" class="comm_img">  <img src="/matna/resource/img/lv${board.mGrade }.jpg"/> ${board.nickName }</td>
            <td class="comm_td"> 
-                <input type="button" readonly="readonly" value="작성일"class="comm_img">   ${board.regdate }</td>
+                <input type="button" readonly="readonly" value="작성일"class="comm_img">   ${board.regDate }</td>
            <td class="comm_td"> 
                 <input type="button" readonly="readonly" value="조회수"class="comm_img">   ${board.viewCnt }</td>
          </tr>
