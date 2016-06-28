@@ -18,10 +18,7 @@ public class RecipeVO {
 	private String difficulty;
 	private int per;
 	private String foodName;
-	private String foodDetail;
 	private int likes;
-	
-	
 	
 	public int getLikes() {
 		return likes;
@@ -34,12 +31,6 @@ public class RecipeVO {
 	}
 	public void setFoodName(String foodName) {
 		this.foodName = foodName;
-	}
-	public String getFoodDetail() {
-		return foodDetail;
-	}
-	public void setFoodDetail(String foodDetail) {
-		this.foodDetail = foodDetail;
 	}
 	public String getPrice() {
 		return price;
@@ -129,5 +120,11 @@ public class RecipeVO {
 		this.replyCnt = replyCnt;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "no : "+no+"/ title : "+title+"/content : "+content
+				+"\n/writer : "+writer+"/ price : "+price+"/ ingredient : "+ingredient
+				+"\n/time : "+time+"/ difficulty : "+difficulty
+				+"\n/per : "+per+"/ foodName : "+foodName+"/ likes : "+likes;
+	}
 }

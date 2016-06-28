@@ -4,14 +4,14 @@
 	<!-- Insert -->
 	<insert id="insert">
 	<![CDATA[
-		insert into precipe (no, ingredient, price, time, difficulty, per, foodName, foodDetail)
-		values (recipe_seq.currval,#{ingredient},#{price},#{time},#{difficulty},#{per},#{foodName},#{foodDetail})
+		insert into precipe (no, ingredient, price, time, difficulty, per, foodName)
+		values (recipe_seq.currval,#{ingredient},#{price},#{time},#{difficulty},#{per},#{foodName})
 	]]>
 	</insert>
 	
 	<update id="update">
 	<![CDATA[
-		update precipe set ingredient = #{ingredient}, price=#{price},  foodName=#{foodName}, foodDetail=#{foodDetail}
+		update precipe set ingredient = #{ingredient}, price=#{price},  foodName=#{foodName},
 			time= #{time}, difficulty=#{difficulty}, per=#{per}
 		where no = #{no}
 	]]>
