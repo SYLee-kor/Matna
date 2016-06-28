@@ -4,20 +4,20 @@
 <div id="freetable">
 <a href="/matna/community/list?type=free"><h1>Free Board</h1></a>
 		  
-		  <table id="free_table" cellpadding="0">
+		  <table id="free_table" cellpadding="0" >
 		    <thead>
 		      <tr>
-		        <th><span>title</span></th>
-		        <th><span>작성자</span></th>
-		        <th><span>조회수</span></th>
+		        <th style="width: 300px;text-align: left;"><span>title</span></th>
+		        <th style="width: 150px;text-align: left;"><span>작성자</span></th>
+		        <th style="width: 80px;text-align: left;"><span>조회수</span></th>
 		      </tr>
 		    </thead>
 		    <tbody>
 		    <c:forEach var="list1" items="${list1}" varStatus="stat">
 		      <tr>
-		         <td><a href="/matna/community/listOne?no=${list1.no}&type=${type1}">${list1.title }</a>[${list1.replyCnt }]</td>
-		         <td>${list1.nickName }</td>
-		         <td>${list1.viewCnt}
+		         <td style="text-align: left;padding-left: 20px;"><a href="/matna/community/listOne?no=${list1.no}&type=${type1}">${list1.title }</a>[${list1.replyCnt }]</td>
+		         <td style="text-align: left;">${list1.nickName }</td>
+		         <td style="text-align: center;">${list1.viewCnt}
 		         </td>
 		      </tr>
 		    </c:forEach>

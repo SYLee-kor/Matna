@@ -94,7 +94,6 @@ function page_move(url) {
              onclick="javascript:page_move('/matna/community/listPage');">     -->   
       </div>   
  </form>
-		<br> <br>
 	<%@include file="/WEB-INF/views/main/body/community/all/replyPage.jsp" %>
     <%@include file="/WEB-INF/views/footer.jsp" %>
 </body>

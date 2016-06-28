@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#review_photo{
+  width: 80px;
+  height: 50px;
+}
+</style>
 <table id="review_table" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
