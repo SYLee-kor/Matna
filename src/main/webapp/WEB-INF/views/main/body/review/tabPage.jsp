@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 <!-- 
-.image{
-   width :150px;
-   height: 100px;
+#review_photo{
+   width :100px;
+   height: 70px;
 } -->
 .prev,.next,.pageIndex,.reviewPhoto,.reviewTitle{
 	cursor: pointer;
@@ -28,13 +28,13 @@ $('#goRegist').click(function() {
     <thead>
       <tr>
         <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
-        <th style="text-align: center;"><span>image</span></th>
-        <th style="text-align: center;"><span>title</span></th>
+        <th style="text-align: center;width: 110px;"><span>image</span></th>
+        <th style="text-align: center;width: 600px;"><span>title</span></th>
         <th style="text-align: center;width: 150px;"><span>작성자</span></th>
         <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
         <th style="width: 75px;padding: 0px;text-align: center;">좋아요!</th>
         <th style="width: 75px;padding: 0px;text-align: center;">싫어요!</th>
-        <th style="text-align: center;"><span>date</span></th>
+        <th style="text-align: center;width: 40px;"><span>date</span></th>
         
       </tr>
     </thead>
@@ -46,7 +46,7 @@ $('#goRegist').click(function() {
          <td><a href=# style="font-size:13px;" onclick="showContents(${review.no})">${review.title }</a>
            <input type="button" readonly="readonly" class="reply_num"  value="${review.replyCnt }" style="cursor: default;" >
          </td> 
-         <td>
+         <td style="text-align: left;">
          	<img src="/matna/resource/img/lv${review.mGrade }.jpg"/>
          	${review.nickName }
          </td>

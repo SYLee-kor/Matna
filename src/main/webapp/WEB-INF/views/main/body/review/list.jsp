@@ -4,12 +4,12 @@
    <meta name="description" content="">
    <meta name="keywords" content="" />
    <meta name="viewport" content="initial-scale=1">
-<style type="text/css">
+<!-- <style type="text/css">
 .image{
    width :100px;
    height: 70px;
 } 
-</style>
+</style> -->
 <script type="text/javascript">
 //======================================== Review 함수 =====================================	
 // # 지정 탭에 할당된 span 태그에 Ajax를 통해 출력할 페이지 가져오는 함수 ( tabPage.jsp )
