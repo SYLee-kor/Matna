@@ -145,4 +145,9 @@ public class MessageServiceImpl implements MessageService {
 		messageDAO.deleteSevenDays();
 	}
 
+	@Override
+	public int IsNewMessage(int receiverNo) throws Exception {
+		return messageDAO.IsNewMessage(receiverNo);
+	}
+
 }

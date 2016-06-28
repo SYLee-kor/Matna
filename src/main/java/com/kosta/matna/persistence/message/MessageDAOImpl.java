@@ -219,4 +219,9 @@ public class MessageDAOImpl implements MessageDAO {
 		session.delete("message.deleteSevenDays");
 	}
 
+	@Override
+	public int IsNewMessage(int receiverNo) throws Exception {
+		return session.selectOne("message.IsNewMessage", receiverNo);
+	}
+
 }
