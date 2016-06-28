@@ -84,4 +84,16 @@
     
 <%@include file="/WEB-INF/views/footer.jsp" %>
 </body>
+<script>
+    
+    var result = '${msg}';
+    
+    if(result == 'minusPoint'){
+    	alert("포인트가 부족합니다.");
+    }
+    if(result == 'minusCnt'){
+    	alert("상품 재고량이 부족합니다.");
+    }
+    
+</script>
 </html>

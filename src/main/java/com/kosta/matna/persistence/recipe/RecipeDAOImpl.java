@@ -69,10 +69,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
-	public List<RecipeVO> readList(String pageType,int userNo, RowBounds rowBounds) throws Exception {
-		Map<String,Object> map = new HashMap<>();
-		map.put("pageType", pageType);
-		map.put("userNo", userNo);
+	public List<RecipeVO> readList(Map<String,Object> map, RowBounds rowBounds) throws Exception {
+		System.out.println("searchKey : "+map.get("searchKey"));
+		System.out.println("keyword : "+map.get("keyword"));
 		return session.selectList("recipe.selectList", map, rowBounds);
 	}
 

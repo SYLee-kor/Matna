@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.kosta.matna.domain.community.BoardVO;
 import com.kosta.matna.domain.member.MemberVO;
+import com.kosta.matna.domain.recipe.RecipeVO;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
 
@@ -60,7 +61,13 @@ public class MatnaValidator {
 			if( isNullOrEmpty(board.getTitle()) ) errMsgs.put("e_title", "제목을 입력해주세요.");
 			if( isNullOrEmpty(board.getContent()) ) errMsgs.put("e_content", "내용을 입력해주세요.");
 			break;
+		
+		case "RecipeVO" : // # RecipeVO : ingredient, foodname, price, time, difficulty, per, title, content
+			RecipeVO recipe = (RecipeVO) vo;
+			if( isNullOrEmpty(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "재료를 입력해주세요.");
+			
 		}
+		
 		// @ errMsgs 맵이 빈값이 아닐떄.. ( 즉 유효성 검사에 걸린 값이 있다면 ) false 리턴.
 		System.out.println("Validator_isEmpty  : "+errMsgs.isEmpty());
 		if ( !errMsgs.isEmpty() ) {

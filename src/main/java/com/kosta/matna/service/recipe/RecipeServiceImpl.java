@@ -51,8 +51,8 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public List<RecipeVO> readList(String pageType,int userNo, RowBounds rowBounds) throws Exception {
-		return dao.readList(pageType,userNo, rowBounds);
+	public List<RecipeVO> readList(Map<String,Object> map, RowBounds rowBounds) throws Exception {
+		return dao.readList(map, rowBounds);
 	}
 
 	@Override

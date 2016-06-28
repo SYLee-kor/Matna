@@ -271,7 +271,6 @@ footer {
 }
 input{
    border: 3px solid #9de0f7;
-    text-transform:uppercase;
     color: ;
     cursor: pointer;
     font-size: 20px;
@@ -283,7 +282,6 @@ input{
 }
 .form-control{
    border: 3px solid #9de0f7;
-    text-transform:uppercase;
     cursor: pointer;
     font-size: 20px;
     -moz-border-radius: 4px;
@@ -293,7 +291,6 @@ input{
 }
 .form-control4{
    border: 3px solid #9de0f7;
-    text-transform:uppercase;
     color: ;
     cursor: pointer;
     font-size: 20px;
@@ -307,7 +304,6 @@ input{
 #send{
    background: #9de0f7;
     border: none;
-    text-transform:uppercase;
     color: white;
     cursor: pointer;
     font-size: 20px;
@@ -321,7 +317,6 @@ input{
 #send2{
    background: #9de0f7;
     border: none;
-    text-transform:uppercase;
     color: white;
     cursor: pointer;
     font-size: 20px;

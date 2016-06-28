@@ -83,16 +83,30 @@
 		from recipe natural join precipe
 		<choose>
 			<when test="pageType=='recipe'">
+				where 1=1
+				<include refid="search"></include>
 				order by no desc
 			</when>
 			<when test="pageType=='ranking'">
 				where regdate >= sysdate-7
+				<include refid="search"></include>
 				order by likes desc
 			</when>
 			<when test="pageType=='myRecipe'">
 				where no in((select no from recipeLikes where userNo=#{userNo}) )
+				<include refid="search"></include>
 				order by no desc
 			</when>
 		</choose>
 	</select>
+	
+	<!-- 검색 조건을 가진 sql 문 -->
+	<sql id="search">
+		<if test="searchKey=='writer'">
+			and writer in (select no from member where nickname like '%'||#{keyword}||'%')
+		</if>
+		<if test="searchKey=='foodName'">
+			and foodName like '%'||#{keyword}||'%'
+		</if>
+	</sql>
 </mapper>

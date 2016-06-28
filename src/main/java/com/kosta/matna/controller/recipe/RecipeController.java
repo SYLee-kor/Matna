@@ -1,14 +1,15 @@
 package com.kosta.matna.controller.recipe;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
-import org.junit.runner.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -49,7 +50,11 @@ public class RecipeController {
 		System.out.println(recipe);
 		try {
 			if(file!=null) {
-				uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
+				File folder = new File(session.getServletContext().getRealPath("/resource/images/recipe"));
+				if (!folder.exists() ){
+					if ( folder.mkdirs() ) System.out.println("폴더 생성!!");
+				}
+				uploadPath = folder.getPath();
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}else
@@ -92,7 +97,11 @@ public class RecipeController {
 			// # 사진 세팅
 			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
 			if( file != null && file.getOriginalFilename().trim().length()!=0 ){
-				System.out.println("modifyRecipe 사진 생성");
+				File folder = new File(session.getServletContext().getRealPath("/resource/images/recipe"));
+				if (!folder.exists() ){
+					if ( folder.mkdirs() ) System.out.println("폴더 생성!!");
+				}
+				uploadPath = folder.getPath();
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}
@@ -142,20 +151,31 @@ public class RecipeController {
 	
 	@RequestMapping("list") 
 	public String listrecipe(Model model, String pageType, HttpSession session,
-			Criteria cri){
+			Criteria cri, String searchKey, String keyword){
 		try {
 		cri.setPerPageNum(6);
 		pageType = ( pageType == null ) ? "recipe" : pageType;
+		searchKey = ( searchKey == null ) ? "foodName" : searchKey ;
+		keyword = ( keyword == null ) ? "" : keyword ;
+		
 		int userNo = session.getAttribute("userNo") != null ? (int)session.getAttribute("userNo") : 0;
+		Map<String,Object> map = new HashMap<>();
+		map.put("pageType", pageType);
+		map.put("userNo", userNo);
+		map.put("searchKey", searchKey);
+		map.put("keyword", keyword);
+		// # 리스트 가져오기
 		List<RecipeVO> list = 
-				service.readList(pageType,userNo, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
+				service.readList(map, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
 		PageMaker pageMaker = new PageMaker(cri, service.getTotalCount());
 		List<Integer> likeList = service.getLikeRecipies(userNo);
-		model.addAttribute("page", cri.getPage());
 		model.addAttribute("pageType", pageType);
 		model.addAttribute("recipeList", list);
 		model.addAttribute("likeList", likeList);
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("searchKey", searchKey);
+		model.addAttribute("keyword", keyword);
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
