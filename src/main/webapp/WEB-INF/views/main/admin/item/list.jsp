@@ -63,7 +63,7 @@
 				<th class="name">상품명</th>
 				<th class="name">가격</th>
 				<th class="name">수량</th>
-				<th class="name">신상/핫</th>
+				<th class="name">상품정보</th>
 				</tr>
 			<c:forEach items="${items}" var="item">
 			<tr>

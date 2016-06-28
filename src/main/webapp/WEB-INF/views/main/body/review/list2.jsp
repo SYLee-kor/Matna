@@ -78,6 +78,7 @@ function showContents(no) {
 	    </c:forEach>
 	    </tbody>
 	  </table> 
+	  <center>
 	  <!-- ------ paging 처리--------- -->
 	  <ul class="pagination modal-1" id="pagination">
 	  <c:if test="${pageMaker.prev }">
@@ -97,6 +98,7 @@ function showContents(no) {
 	 	 	onclick="movePage(${pageMaker.afterPage})">&raquo;</a></li>
 	  </c:if>
 	</ul><br>
+	</center>
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a id="goRegist" style="cursor: pointer;"><span><b>글 쓰기</b></span></a>  
   </div> 
