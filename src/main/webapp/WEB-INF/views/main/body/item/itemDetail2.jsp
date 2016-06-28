@@ -43,7 +43,7 @@ $( ".nick_input" ).focusin(function() {
 	           <div class="row">
 	           <div class="col-md-5 col-sm-5">
                   <div>
-                     <img src="/matna/resource/images/쉑쉑.png" id="order_img"/>
+                     <img src="/matna/resource/images/admin/item/쉑쉑.png" id="order_img"/>
 		          </div>			
 		       </div>
 		       
