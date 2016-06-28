@@ -17,6 +17,12 @@ function showContents(no) {
 			+"&pageType=${pageType}&tabType=${tabType}&page=${pageMaker.cri.page}";
 	document.location.href=moveUrl;
 }
+
+$('#goRegist').click(function() {
+	document.location.href=
+		"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
+})
+
 </script>
   <table class="review_List" cellspacing="0" cellpadding="0">
     <thead>
@@ -54,30 +60,43 @@ function showContents(no) {
   </table> 
   <!-- ------ paging 처리--------- -->
    <center>
-   <div class="page">
-  <ul class="pagination modal-1" id="pagination">
-  <c:if test="${pageMaker.prev }">
-  	<li><a class="prev" 
-  	onclick="showPage_${pageType }('${tabType}',${pageMaker.beforePage})">&laquo;</a></li>
-  </c:if>
-  <li><a class="prev"
-  	onclick="showPage_${pageType }('${tabType}',${pageMaker.prevPage})">prev</a></li>
-  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
-	<c:if test="${pageMaker.cri.page == stat.index }">
-	<li><a style="cursor: pointer;" id="pIndex${stat.index }" class="active"
-	  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
-	</c:if> 
-	<c:if test="${pageMaker.cri.page != stat.index }">
-	<li><a style="cursor: pointer;" id="pIndex${stat.index }"
-	  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
-	</c:if> 
-  </c:forEach>
-  <li><a class="next"
- 	 onclick="showPage_${pageType }('${tabType}',${pageMaker.nextPage})">next</a></li>
-  <c:if test="${pageMaker.next }">
- 	 <li><a class="next"
- 	 	onclick="showPage_${pageType }('${tabType}',${pageMaker.afterPage})">&raquo;</a></li>
-  </c:if>
-</ul><br>
-</div>
+   <table>
+      <tr>
+        <td style="width: 500px;">
+		   <div class="page" align="center">
+			  <ul class="pagination modal-1" id="pagination">
+			  <c:if test="${pageMaker.prev }">
+			  	<li><a class="prev" 
+			  	onclick="showPage_${pageType }('${tabType}',${pageMaker.beforePage})">&laquo;</a></li>
+			  </c:if>
+			  <li><a class="prev"
+			  	onclick="showPage_${pageType }('${tabType}',${pageMaker.prevPage})">prev</a></li>
+			  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
+				<c:if test="${pageMaker.cri.page == stat.index }">
+				<li><a style="cursor: pointer;" id="pIndex${stat.index }" class="active"
+				  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
+				</c:if> 
+				<c:if test="${pageMaker.cri.page != stat.index }">
+				<li><a style="cursor: pointer;" id="pIndex${stat.index }"
+				  	onclick="showPage_${pageType }('${tabType}',${stat.index})">${stat.index }</a></li>
+				</c:if> 
+			  </c:forEach>
+			  <li><a class="next"
+			 	 onclick="showPage_${pageType }('${tabType}',${pageMaker.nextPage})">next</a></li>
+			  <c:if test="${pageMaker.next }">
+			 	 <li><a class="next"
+			 	 	onclick="showPage_${pageType }('${tabType}',${pageMaker.afterPage})">&raquo;</a></li>
+			  </c:if>
+			</ul>
+			</div>
+        </td>
+        
+        <td class="comm_list_td">
+			  <div class="list_write_bt" id="reviewlist_write_bt">
+			       <a id="goRegist" style="cursor: pointer;padding-top:5px;"><span><b>글 쓰기</b></span></a>  
+			  </div>
+        </td>
+      </tr>
+   </table>
+
   </center>

@@ -105,7 +105,8 @@
 					<center>
 					<table>
 					  <tr>
-					    <td style="width: 600px;">
+					    <td style="width: 500px;">
+					  <center>
 					    
 					    <ul class="pagination modal-1" id="pagination">
 							<li><a href="#" id="goStart" class="prev">&laquo</a></li>
@@ -121,8 +122,8 @@
 							</c:if>
 							<li><a href="#" id="goEnd" class="next">&raquo;</a></li>
 						</ul>
+					 </center>
 					    </td>
-					 
 					    <td class="comm_list_td">
 						<c:choose> 
 						    		<c:when test="${type eq 'faq' || type eq 'notice'}">
@@ -143,7 +144,7 @@
 					
 						           <c:when test="${isLogin == true }">
 						    			<div class="list_write_bt" id="reviewlist_write_bt">
-										<a href="/matna/community/write?type=${type }"><span><b>글 쓰기</b></span></a>
+										<a href="/matna/community/write?type=${type }" style="padding-top:10px;"><span><b>글 쓰기</b></span></a>
 										</div>
 						    		</c:when>
 				
