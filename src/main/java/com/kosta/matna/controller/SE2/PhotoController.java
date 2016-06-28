@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ import com.kosta.matna.domain.photo.PhotoVO;
 public class PhotoController {
 	
 	@RequestMapping("/photoUpload")
-	public String photoUpload(HttpServletRequest request, PhotoVO vo){
+	public String photoUpload(HttpSession session,HttpServletRequest request, PhotoVO vo){
 	    String callback = vo.getCallback();
 	    String callback_func = vo.getCallback_func();
 	    String file_result = "";
@@ -31,7 +32,7 @@ public class PhotoController {
 	            String original_name = vo.getFiledata().getOriginalFilename();
 	            String ext = original_name.substring(original_name.lastIndexOf(".")+1);
 	            String defaultPath = request.getSession().getServletContext().getRealPath("/");
-	            String path = defaultPath + "resource" + File.separator + "photo_upload" + File.separator;              
+	            String path = defaultPath + "resource" + File.separator + "user" + File.separator + session.getAttribute("userNo")+ File.separator;              
 	            File file = new File(path);
 	            System.out.println("path:"+path);
 	            if(!file.exists()) {
@@ -39,7 +40,7 @@ public class PhotoController {
 	            }
 	            String realname = UUID.randomUUID().toString() + "." + ext;
 	            vo.getFiledata().transferTo(new File(path+realname));
-	            file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/matna/resource/photo_upload/"+realname;
+	            file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/matna/resource/user/"+ session.getAttribute("userNo")+"/"+realname;
 	        } else {
 	            file_result += "&errstr=error";
 	        }
@@ -53,14 +54,14 @@ public class PhotoController {
 	}
 	
 	@RequestMapping("/multiplePhotoUpload")
-	public void multiplePhotoUpload(HttpServletRequest request, HttpServletResponse response){
+	public void multiplePhotoUpload(HttpSession session,HttpServletRequest request, HttpServletResponse response){
 	    try {
 	         String sFileInfo = "";
 	         String filename = request.getHeader("file-name");
 	         String filename_ext = filename.substring(filename.lastIndexOf(".")+1);
 	         filename_ext = filename_ext.toLowerCase();
 	         String dftFilePath = request.getSession().getServletContext().getRealPath("/");
-	         String filePath = dftFilePath + "resource" + File.separator + "photo_upload" + File.separator;
+	         String filePath = dftFilePath + "resource" + File.separator + "user" + File.separator + session.getAttribute("userNo")+ File.separator;
 	         File file = new File(filePath);
 	         if(!file.exists()) {
 	            file.mkdirs();
@@ -84,7 +85,7 @@ public class PhotoController {
 	         os.close();
 	         sFileInfo += "&bNewLine=true";
 	         sFileInfo += "&sFileName="+ filename;;
-	         sFileInfo += "&sFileURL="+"/matna/resource/photo_upload/"+realFileNm;
+	         sFileInfo += "&sFileURL="+"/matna/resource/user/"+ session.getAttribute("userNo")+"/"+realFileNm;
 	         PrintWriter print = response.getWriter();
 	         print.print(sFileInfo);
 	         print.flush();
