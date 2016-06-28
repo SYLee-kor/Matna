@@ -6,7 +6,8 @@
    <meta name="keywords" content="" />
    <meta name="viewport" content="initial-scale=1">
 <style type="text/css">
-.image{
+
+#review_photo{
    width :100px;
    height: 70px;
 } 
@@ -48,13 +49,13 @@ function showContents(no) {
 	    <thead>
 	      <tr>
 	        <th style="width: 50px;padding: 0px;text-align: center"><span>no</span></th>
-	        <th style="text-align: center;"><span>image</span></th>
-	        <th style="text-align: center;"><span>title</span></th>
+	        <th style="text-align: center;width: 110px;"><span>image</span></th>
+	        <th style="text-align: center;width: 600px;"><span>title</span></th>
 	        <th style="text-align: center;width: 150px;"><span>작성자</span></th>
 	        <th style="width: 70px;padding: 0px;text-align: center;">조회수</th>
 	        <th style="width: 75px;padding: 0px;text-align: center;">좋아요!</th>
 	        <th style="width: 75px;padding: 0px;text-align: center;">싫어요!</th>
-	        <th style="text-align: center;"><span>date</span></th>
+	        <th style="text-align: center;width: 40px;"><span>date</span></th>
 	        
 	      </tr>
 	    </thead>
@@ -78,30 +79,41 @@ function showContents(no) {
 	    </c:forEach>
 	    </tbody>
 	  </table> 
-	  <center>
 	  <!-- ------ paging 처리--------- -->
-	  <ul class="pagination modal-1" id="pagination">
-	  <c:if test="${pageMaker.prev }">
-	  	<li><a class="prev" 
-	  	onclick="movePage(${pageMaker.beforePage})">&laquo;</a></li>
-	  </c:if>
-	  <li><a class="prev"
-	  	onclick="movePage(${pageMaker.prevPage})">prev</a></li>
-	  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
-		  <li><a style="cursor: pointer;" id="pIndex${stat.index }"
-		  	onclick="movePage(${stat.index})">${stat.index }</a></li>
-	  </c:forEach>
-	  <li><a class="next"
-	 	 onclick="movePage(${pageMaker.nextPage})">next</a></li>
-	  <c:if test="${pageMaker.next }">
-	 	 <li><a class="next"
-	 	 	onclick="movePage(${pageMaker.afterPage})">&raquo;</a></li>
-	  </c:if>
-	</ul><br>
+	  <center>
+	  <table>
+	    <tr>
+	      <td  style="width: 500px;">
+	         <div class="page" align="center">
+			  <ul class="pagination modal-1" id="pagination">
+			  <c:if test="${pageMaker.prev }">
+			  	<li><a class="prev" 
+			  	onclick="movePage(${pageMaker.beforePage})">&laquo;</a></li>
+			  </c:if>
+			  <li><a class="prev"
+			  	onclick="movePage(${pageMaker.prevPage})">prev</a></li>
+			  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
+				  <li><a style="cursor: pointer;" id="pIndex${stat.index }"
+				  	onclick="movePage(${stat.index})">${stat.index }</a></li>
+			  </c:forEach>
+			  <li><a class="next"
+			 	 onclick="movePage(${pageMaker.nextPage})">next</a></li>
+			  <c:if test="${pageMaker.next }">
+			 	 <li><a class="next"
+			 	 	onclick="movePage(${pageMaker.afterPage})">&raquo;</a></li>
+			  </c:if>
+			</ul>
+			</div>
+	      </td>
+	      
+	      <td class="comm_list_td">
+			  <div class="list_write_bt" id="reviewlist_write_bt">
+			       <a id="goRegist" style="cursor: pointer;padding-top:5px;"><span><b>글 쓰기</b></span></a>  
+			  </div> 
+	      </td>
+	    </tr>
+	  </table>
 	</center>
-  <div class="list_write_bt" id="reviewlist_write_bt">
-       <a id="goRegist" style="cursor: pointer;"><span><b>글 쓰기</b></span></a>  
-  </div> 
   </div>
   </figure>
 </div>

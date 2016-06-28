@@ -86,7 +86,8 @@ public class ADController {
 				service.insertAD(ad);
 			}else{
 				if(!new File(uploadPath).exists()){
-				new File(uploadPath).mkdir();
+					new File(uploadPath).mkdir();
+					System.out.println("폴더생성");
 				}
 				String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				ad.setPhoto(savedName);
