@@ -1,6 +1,6 @@
 package com.kosta.matna.domain.community;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardVO {
 	private String type;
@@ -10,13 +10,15 @@ public class BoardVO {
 	private String content;
 	private int viewCnt;
 	private int replyCnt;
-	private Date regdate;
+	private Date regDate;
 	private String nickName;
+	private int mGrade;
 
 	public BoardVO() {
 	}
+
 	public BoardVO(String type, int no, String title, int writer, String content, int viewCnt, int replyCnt,
-			Date regdate, String nickName) {
+			Date regDate, String nickName, int mGrade) {
 		this.type = type;
 		this.no = no;
 		this.title = title;
@@ -24,15 +26,35 @@ public class BoardVO {
 		this.content = content;
 		this.viewCnt = viewCnt;
 		this.replyCnt = replyCnt;
-		this.regdate = regdate;
+		this.regDate = regDate;
+		this.nickName = nickName;
+		this.mGrade = mGrade;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+
+	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
 
-	public String getnickName() {
-		return nickName;
+
+	public int getmGrade() {
+		return mGrade;
 	}
-	public void setnickName(String nickName) {
-		this.nickName = nickName;
+
+
+	public void setmGrade(int mGrade) {
+		this.mGrade = mGrade;
 	}
 
 	public String getType() {
@@ -89,14 +111,6 @@ public class BoardVO {
 
 	public void setReplyCnt(int replyCnt) {
 		this.replyCnt = replyCnt;
-	}
-
-	public Date getRegdate() {
-		return regdate;
-	}
-
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
 	}
 
 	@Override

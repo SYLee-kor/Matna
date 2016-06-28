@@ -48,7 +48,7 @@
      </if>
    </sql>
 
-   <!--  no,title,writer,content,viewcnt,replycnt,regdate -->
+   <!--  no,title,writer,content,viewcnt,replycnt,regDate -->
    <insert id="create">
       insert into 
       <include refid="type"/>
@@ -86,13 +86,13 @@
    </insert>
    
    <select id="listAll" resultType="board">
-      select no,title,writer,content,regdate,viewcnt,replycnt,(select nickName from member where no=writer) nickName
+      select (select grade from member where no=writer) mGrade,no,title,writer,content,regDate,viewcnt,replycnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       order by no desc
    </select>
    
    <select id="read" resultType="board">
-      select no,title,content,writer,viewCnt,replyCnt,(select nickName from member where no=writer) nickName
+      select (select grade from member where no=writer) mGrade,no,title,content,writer,regDate,viewCnt,replyCnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no=#{no}
    </select>
@@ -129,7 +129,7 @@
    </select>
    
    <select id="listSearch" resultType="board">
-      select no,title,content,writer,regdate,viewcnt,replyCnt,(select nickName from member where no=writer) nickName
+      select (select grade from member where no=writer) mGrade,no,title,content,writer,regDate,viewcnt,replyCnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no>0     
       <include refid="search"/>
