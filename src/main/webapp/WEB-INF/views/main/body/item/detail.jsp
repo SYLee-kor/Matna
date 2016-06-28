@@ -40,7 +40,7 @@
 	<table id="detailTable" border="0">
 		<tr>
 			<td rowspan="5" colspan="2" class="photo">
-			<img alt="사진1" src="/matna/resource/img/${detailItem.photo}" width="250" height="150"></td>
+			<img alt="사진1" src="/matna/resource/images/admin/item/${detailItem.photo}" width="250" height="150"></td>
 			<td class="name">이름</td>
 			<td class="val"><input type="hidden" name="name" value="${detailItem.name }"> ${detailItem.name }</td>
 		</tr>

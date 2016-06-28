@@ -105,6 +105,7 @@ img { border: 0; max-width: 100%; }
   display: inline-block;
   padding: 0;
   margin-top: 5%;
+  margin-left: 20%;
 }
 
 .pagination li {
@@ -312,17 +313,19 @@ img { border: 0; max-width: 100%; }
 	 */
 .list_write_bt {
   display: inline-block;
-  position:absolute;
   -ms-transform:translate(-50%,-50%);
   -webkit-transform:translate(-50%,-50%);
   transform:translate(-50%,-50%);
+  margin-bottom: -155%;
+  float: right;
+  
 }
 
-#reviewlist_write_bt{
+/* #reviewlist_write_bt{
     bottom:6%;
     left:85%;  
 }
-
+ */
 /* Icons */
 
 .list_write_bt a {
@@ -337,7 +340,7 @@ img { border: 0; max-width: 100%; }
   display: inline-block;
   width:45px;
   height:45px;
-  padding-top:5px;
+  padding-top:10px;
   margin:0 2px;
   -o-transition:all .5s;
   -webkit-transition: all .5s;
@@ -402,7 +405,10 @@ content:'\f040';
 	 
 	 
 	 
-	 
+
+.comm_list_td{
+	width: 100px;
+}	 
 	 
 
 /*---------------tab-list----------------*/	 

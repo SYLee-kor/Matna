@@ -198,7 +198,7 @@ input[name="addr"]:focus {
    text-transform: uppercase;
    color: white;
    cursor: pointer;
-   font-size: 20px;
+   font-size: 15px;
    margin: 5px 0;
    padding: 5px 22px;
    -moz-border-radius: 4px;
@@ -223,7 +223,7 @@ input[name="addr"]:focus {
    text-transform: uppercase;
    color:;
    cursor: pointer;
-   font-size: 15px;
+   font-size: 12px;
    -moz-border-radius: 4px;
    border-radius: 4px;
    -webkit-border-radius: 4px;
@@ -241,7 +241,7 @@ input[name="addr"]:focus {
    text-transform: uppercase;
    color: #eee;
    cursor: pointer;
-   font-size: 20px;
+   font-size: 15px;
    margin: 5px 0;
    padding: 5px 22px;
    -moz-border-radius: 4px;
@@ -257,7 +257,7 @@ input[name="addr"]:focus {
    text-transform: uppercase;
    color: white;
    cursor: pointer;
-   font-size: 20px;
+   font-size: 15px;
    margin: 5px 0;
    padding: 5px 22px;
    -moz-border-radius: 4px;
@@ -272,7 +272,7 @@ input[name="addr"]:focus {
    background: #fff;
    border: 1px solid #CCCCCC;
    color: #aaa;
-   font-size: 23px;
+   font-size: 15px;
    line-height: 1.2em;
    margin-bottom: 15px;
    -moz-border-radius: 4px;
@@ -286,7 +286,7 @@ input[name="addr"]:focus {
    background: #fff;
    border: 1px solid #CCCCCC;
    color: #aaa;
-   font-size: 20px;
+   font-size: 15px;
    line-height: 1.2em;
    margin-bottom: 15px;
    -moz-border-radius: 4px;
@@ -319,7 +319,7 @@ h1 {
 .pagination a {
   float: left;
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   text-decoration: none;
   padding: 5px 12px;
   color: #fff;

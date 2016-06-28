@@ -45,6 +45,20 @@
 			<beans:ref bean="LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
+	<!-- 새로운 메세지 왔을때 페이지마다 리로딩 -->
+	<beans:bean id="MessageInterceptor" class="com.kosta.matna.interceptor.MessageInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/item/**"/>
+			<mapping path="/mypage/**"/>
+			<mapping path="/message/**"/>
+			<mapping path="/community/**"/>
+			<mapping path="/admin/**"/>
+			<mapping path="/review/**"/>
+			<mapping path="/recipe/**"/>
+			<beans:ref bean="MessageInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	<context:component-scan base-package="com.kosta.matna.controller" />
 	

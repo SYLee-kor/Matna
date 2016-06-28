@@ -54,6 +54,7 @@ function showContents(no) {
   </table> 
   <!-- ------ paging 처리--------- -->
    <center>
+   <div class="page">
   <ul class="pagination modal-1" id="pagination">
   <c:if test="${pageMaker.prev }">
   	<li><a class="prev" 
@@ -78,4 +79,5 @@ function showContents(no) {
  	 	onclick="showPage_${pageType }('${tabType}',${pageMaker.afterPage})">&raquo;</a></li>
   </c:if>
 </ul><br>
+</div>
   </center>

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.service.member.MemberService;
+import com.kosta.matna.service.message.MessageService;
 
 @Controller
 @RequestMapping("/login")
@@ -25,6 +26,9 @@ public class LoginController {
 
 	@Inject
 	private MemberService memberService;
+	
+	@Inject
+	private MessageService messageService;
 	
 	private static final Logger logger
     = LoggerFactory.getLogger(LoginController.class);
@@ -116,6 +120,10 @@ public class LoginController {
 			member = memberService.selectIsMember(login_id, login_pass);
 			attr.addFlashAttribute("msg", "upgrade");
 		}
+		
+		//새로운 메세지가 있는가
+		session.setAttribute("isNewMessage",messageService.IsNewMessage(member.getNo()));
+		
 		System.out.println("LoginControler - userGrade : "+member.getGrade());
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());

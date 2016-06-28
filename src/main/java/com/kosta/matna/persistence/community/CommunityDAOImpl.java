@@ -98,5 +98,10 @@ public class CommunityDAOImpl implements CommunityDAO {
 		if(session.update("board.updateReplyCnt",map(no,type))==1) return true;
 		return false;
 	}
+	@Override
+	public boolean delReplyCnt(int no, BoardTypeVO type) throws Exception {
+		if(session.update("board.delReplyCnt",map(no,type))==1) return true;
+		return false;
+	}
 
 }

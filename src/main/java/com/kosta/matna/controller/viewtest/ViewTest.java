@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.matna.domain.member.MemberVO;
 import com.kosta.matna.service.member.MemberService;
+import com.kosta.matna.service.message.MessageService;
 
 @Controller
 public class ViewTest {
 
 	@Inject
 	private MemberService memberService;
+	
+	@Inject
+	private MessageService messageService;
 	
 	@RequestMapping("/home")
 	public String homeTest(HttpSession session)throws Exception{
@@ -23,6 +27,8 @@ public class ViewTest {
 			member = memberService.selectID((String)session.getAttribute("userId"));
 			session.setAttribute("userNickname", member.getNickname());
 			session.setAttribute("userPoint", member.getPoint());
+			/*//새로운 메세지가 있는가
+			session.setAttribute("isNewMessage",messageService.IsNewMessage(member.getNo()));*/
 		}
 		return "home";
 	}

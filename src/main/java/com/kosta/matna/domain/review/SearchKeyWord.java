@@ -40,7 +40,9 @@ public class SearchKeyWord extends PageMaker{
 	}
 
 	public void setGu(String gu) {
-		if(gu.length()>0)
+		if(gu == null)
+			this.gu = "";
+		else if(gu.length()>0)
 			this.gu = gu;
 		else
 			this.gu = "";
@@ -51,7 +53,9 @@ public class SearchKeyWord extends PageMaker{
 	}
 
 	public void setDong(String dong) {
-		if(dong.length()>0)
+		if(dong == null)
+			this.dong = "";
+		else if(dong.length()>0)
 			this.dong = dong;
 		else
 			this.dong = "";
