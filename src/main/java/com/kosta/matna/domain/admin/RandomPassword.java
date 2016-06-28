@@ -27,4 +27,11 @@ public class RandomPassword {
     					+"감사합니다.";
     	return content;
     }
+    
+    public String makeConfirmEmail(String pw){
+    	String content = "고객님께서 문의하신 이메일 인증 번호입니다.\r\n"
+    			+"인증 번호는 "+pw+" 입니다. 유효 기간은 3분입니다.";
+    	
+    	return content;
+    }
 }  

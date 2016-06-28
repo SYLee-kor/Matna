@@ -31,7 +31,7 @@ public class MainController {
 		model.addAttribute("list", service.searchList(cri));
 		model.addAttribute("cri", cri);
 		
-		return "/main/body/review/list";
+		return "/main/body/review/list2";
 	}
 }
 

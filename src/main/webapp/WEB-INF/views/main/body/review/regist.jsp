@@ -223,7 +223,7 @@ $(function(){
       
       <!-- 전화번호 입력란 -->
 	  <p class="inputfield"><label for="phone">전화번호</label> 
-	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" style="color: #fff;" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
+	  <input type="text" id="phone" name="phone" placeholder=" 예) 02-224-2424" onfocus="if (this.value == '90') {this.value=''; this.style.color='#000';}" required tabindex="3" /> 
 	  <font color="red" face="bold">${errMsgs.e_phone }</font>
 	  </p>
       <!-- 추천메뉴 입력란 -->

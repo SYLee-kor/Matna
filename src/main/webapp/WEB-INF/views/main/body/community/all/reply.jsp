@@ -3,7 +3,7 @@
 <hr style="border: 1px solid #dddddd;width: 64%;margin-left: 17%;margin-top: 3%;">
 <c:if test="${replyList != null}" >
 <c:forEach var="reply" items="${replyList }">
-<c:set var="rNo" value="${reply.bNo }"/>
+<c:set var="bNo" value="${reply.bNo }"/>
 <font size="2">
 <b style="color: #01559a; font-size: medium;margin-left: 18%;">${reply.nickName }</b> &nbsp; 
 

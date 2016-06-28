@@ -215,10 +215,10 @@ public class ReviewController {
 	} // # list페이지로 가기 위한 메소드
 	
 	@RequestMapping("tabPage")
-	public String tabPage(String pageType, String tabType, String listType, 
+	public String tabPage(String pageType, String tabType,
 			Model model, Criteria cri) {
 		System.out.println("listReview = [page : "+cri.getPage()+"/tabType : "+tabType
-				+"/ pageType : "+pageType+" /listType : "+listType);
+				+"/ pageType : "+pageType);
 		try {
 			pageType = (pageType==null)?"review":pageType;
 			tabType = (tabType==null)?"food":tabType;
@@ -227,7 +227,6 @@ public class ReviewController {
 			Map<String,String> typeMap = new HashMap<>();
 			typeMap.put("pageType", pageType);
 			typeMap.put("tabType",tabType);
-			typeMap.put("listType",listType);
 			
 			// # 해당 탭의 총 리뷰 개수 구하기
 			int totalCount = service.getTotalCount(typeMap.get("tabType"));
@@ -266,7 +265,6 @@ public class ReviewController {
 			// # 해당 탭의 총 리뷰 개수 구하기
 			List<ReviewVO> list = 
 					service.readList(typeMap, new RowBounds(0, 3));
-			System.out.println("mini list.size() : "+list.get(0).getGood());
 			model.addAttribute("miniList", list);
 			model.addAttribute("tabType", typeMap.get("tabType"));
 			model.addAttribute("pageType", typeMap.get("pageType"));

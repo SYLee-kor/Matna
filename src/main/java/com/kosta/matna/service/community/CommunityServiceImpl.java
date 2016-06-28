@@ -28,6 +28,11 @@ public class CommunityServiceImpl implements CommunityService {
 		dao.updateViewCnt(no,type);
 		return dao.read(no,type);
 	}
+	
+	@Override
+	public BoardVO update(int no,BoardTypeVO type) throws Exception {
+		return dao.read(no,type);
+	}
 
 	@Override
 	public void modify(BoardVO board) throws Exception {

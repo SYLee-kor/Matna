@@ -13,7 +13,7 @@
 }
 
 .subtitle{
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: gray;
   line-height: 40px;
 }
@@ -42,7 +42,7 @@
   width:80%;
   height:50px;
   margin-left:1%;
-  font-size:1.5em; /*finalize order font사이즈*/
+  font-size:1.0em; /*finalize order font사이즈*/
   font-weight:300;
 }
 

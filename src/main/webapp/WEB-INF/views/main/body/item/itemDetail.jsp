@@ -42,7 +42,7 @@
 	           <div class="col-md-5 col-sm-5">
                   <div>
                      <!-- <img src="/matna/resource/images/쉑쉑.png" id="order_img"/> -->
-                     <img alt="사진1" src="/matna/resource/img/${detailItem.photo}" id="order_img">
+                     <img alt="사진1" src="/matna/resource/images/admin/item/${detailItem.photo}" id="order_img">
 		          </div>			
 		       </div>
 		       
@@ -79,7 +79,7 @@
 	          </div>
 	
     </div>
-      <div style="border-top: 1px solid #d9d9d9;margin-top: 3%;">
+      <div style="border-top: 1px solid #d9d9d9;margin-top: 3%; width: 85%">
        <div id="item_order" style="margin-left:20%; float:left; margin-top:3%; padding: 3%;">
            <div>
             <!-- <input type="button" id="up" value="업"> 

@@ -32,6 +32,7 @@ var url = "/matna/communityReply";
 			url:url+"/listReply",
 			data:{
 				bNo:no,		// # 게시글 번호
+				type:$('#type').val(),
 				page:replyPage
 			},
 			type:"POST",
@@ -91,6 +92,7 @@ var url = "/matna/communityReply";
 		$.ajax({
 			url:url+"/removeReply",
 			data:{
+				type:$('#type').val(),
 				no:no			// # 댓글 번호 --> primary key
 			},
 			type:"POST",

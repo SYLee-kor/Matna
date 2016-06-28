@@ -12,6 +12,7 @@
 <script src="/matna/resource/jquery/jquery-2.2.3.js"/></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$(emailConfirm).hide();
 		var formObj = $("form[role='form']");
 		var idFlag = false;
 		var nickFlag = false;
@@ -31,6 +32,10 @@
 			}
 			if( $('[name=pw]').val() != $('[name=confirmpass]').val() ){
 				alert('비밀번호와 비번확인 값이 서로 일치하지 않습니다.');
+				return false;
+			}
+			if( !emailFlag ){
+				alert('이메일을 인증해주시기 바랍니다.');
 				return false;
 			}
 			formObj.attr("action", "/matna/join/joinSuccess");
@@ -72,6 +77,46 @@
 		    });
 		});
 		
+		$('#confirmEmail').click(function() {
+			$.ajax({
+			      type: "POST",
+			      url: "/matna/join/confirmEmail",
+			      data: {  
+			    	  	  email: $('#email').val()
+			      },
+			      success:function(result) {
+			    	var s = result;
+					alert(s);
+			    	$('#emailConfirm').show();
+			      }
+			    });
+		});
+		
+		var emailFlag = false;
+		// # 이메일 내용이 바뀔때 emailFlag false
+		$('[name=email]').change(function() {
+			emailFlag = false;
+		});
+		// # 이메일 인증 작업.. 인증 성공시 emailFlag true
+		$('#tryConfirmEmail').click(function() {
+			$.ajax({
+			      type: "POST",
+			      url: "/matna/join/tryConfirmEmail",
+			      dataType:"json",
+			      data: {  
+			    	  confirmNum: $('#confirmNum').val()
+			      },
+			      success:function(data) {
+					alert(data.result);
+					
+					if(data.confirm =='success'){
+				    	$('#emailConfirm').hide();
+						emailFlag = true;					
+					}
+			      }
+			    });
+		});
+		
 		if('${errMsgs.isValid}'=='invalid'){
 			var objs = [$('[name=id]'),$('[name=pw]'),
 			            $('[name=nickname]'),$('[name=name]'),$('[name=email]'),
@@ -95,6 +140,7 @@
 				}
 			}		}
 	});
+
 </script>
 </head>
 <%-- joinForm.jsp --%>
@@ -145,10 +191,16 @@
 				<font color="red" size="2">${errMsgs.e_name }</font>
 				<br>
 				<div>
-					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text"
+					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="email"
 						name="email" maxlength="50" placeholder="Email" class="tf1" />
+						<input type="button" id="confirmEmail" name="confirmEmail" value="이메일인증" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_email }</font>
+				<div id="emailConfirm">
+					인증번호:&nbsp; &nbsp;&nbsp;<input type="text" id="confirmNum"
+						name="confirmNum" maxlength="10" placeholder="인증번호" class="tf1" />
+					<input type="button" id="tryConfirmEmail" name="tryConfirmEmail" value="인증하기" style="margin-left: 20px" />
+				</div>
 				<br>
 				<div>
 					성별: &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
