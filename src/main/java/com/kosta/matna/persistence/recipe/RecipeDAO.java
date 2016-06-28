@@ -24,5 +24,10 @@ public interface RecipeDAO {
 	
 	RecipeVO readRecipe(int no)throws Exception;
 	
-	List<RecipeVO> readList(String pageType, RowBounds rowBounds) throws Exception;
+	boolean likesUp(int no)throws Exception;
+	boolean addLikes(int no, int userNo)throws Exception;
+	boolean removeLikes(int no, int userNo) throws Exception;
+	boolean removeAllLikes(int no) throws Exception;
+	boolean findLikes(int no, int userNo) throws Exception;
+	List<RecipeVO> readList(String pageType, int userNo, RowBounds rowBounds) throws Exception;
 }

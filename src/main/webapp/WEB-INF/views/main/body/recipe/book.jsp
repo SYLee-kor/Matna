@@ -302,11 +302,61 @@ select[name="per"], select[name="difficulty"] {
 			$('#itemList').append(option);
 		}
 	}
+	
+	//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드
+	$("#file").change(function(){
+	    //alert(this.value); //선택한 이미지 경로 표시
+	    readURL(this);
+	});
 });// # document.ready
-
+	
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader(); //파일을 읽기 위한 FileReader객체 생성
+        var file = input.files[0].name;
+        var img_format = "\.(bmp|gif|jpg|jpeg|png)$";
+        if(!(new RegExp(img_format, "i")).test(file)){
+        	alert("이미지 파일만 올려주세요");
+            $('#file').val('');
+            return;
+        }
+        reader.onload = function (e) {
+        //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+            $('.photo').attr('src', e.target.result);
+            //이미지 Tag의 SRC속성에 읽어들인 File내용을 지정
+            //(아래 코드에서 읽어들인 dataURL형식)
+        }                   
+        reader.readAsDataURL(input.files[0]);
+        //File내용을 읽어 dataURL형식의 문자열로 저장
+    }
+}//readURL()--
+	
 	//# read 일때 수정화면 호출버튼 및 삭제기능
 	function upDel(type) {
-		document.location.href = "/matna/recipe/"+type+"?no=${recipe.no}";
+		if('${userNo}'==''){
+			alert('먼저 로그인 해주세요.');
+			return false;
+		}
+	 	if(type=='modify')	
+			document.location.href = "/matna/recipe/"+type+"?no=${recipe.no}";
+		else if(type=='remove'){
+			$.ajax({
+				url:'/matna/recipe/remove',
+				data:{
+					no:'${recipe.no}',
+				},
+				success:function(result){
+					if(result=='success'){
+						alert('삭제 되었습니다.');
+						window.opener.location.href="/matna/recipe/list";
+						window.close();
+					}
+				},
+				error:function(xhr,error,msg){
+					alert('에러발생 : '+error);
+				}
+			})
+		}
 	}
 
 	var items = '';
@@ -354,11 +404,11 @@ select[name="per"], select[name="difficulty"] {
 						<div class="content">
 							<center>
 								<p>
-									<c:if test="${action != 'read' }">
-										<img alt="완성사진" src="/matna/resource/images/쉑쉑.png"
+									<c:if test="${action == 'regist' }">
+										<img alt="완성사진" src="/matna/resource/images/쉑쉑.png" class="photo"
 											width="400px" height="400px">
 									</c:if>
-									<c:if test="${action == 'read' }">	
+									<c:if test="${action != 'regist' }">	
 	            						${recipe.photo }
 	           						 </c:if>
 								</p>
@@ -380,16 +430,24 @@ select[name="per"], select[name="difficulty"] {
 							<center>
 								<p>
 									<c:if test="${action == 'regist' }">
-										<img alt="완성사진" src="/matna/resource/images/쉑쉑.png"
+										<img alt="완성사진" class="photo" src="/matna/resource/images/쉑쉑.png"
 											width="400px" height="400px">
 									</c:if>
 									<c:if test="${action != 'regist' }">
 						          		${recipe.photo }
 						          	</c:if>
 									<c:if test="${action != 'read' }">
-										<input type="file" name="file">
+										<input type="file" name="file" id="file" accept="image/*">
 						          	</c:if>
 								</p>
+								<c:if test="${action == 'read' }">
+								<!-- 버튼 -->
+								<input type="button" id="delete" value="  삭제  "
+									onclick="upDel('remove')">
+								<input type="button" id="cancel" value="  취소  ">
+								<input type="button" id="modify" value="  수정  "
+									onclick="upDel('modify')">
+								</c:if>
 							</center>
 						</div>
 						<div class="pageNumber">1</div>
@@ -505,7 +563,7 @@ select[name="per"], select[name="difficulty"] {
 							<center>
 								<p>
 									<c:if test="${action == 'regist' }">
-										<img alt="완성사진" src="/matna/resource/images/쉑쉑.png"
+										<img alt="완성사진" src="/matna/resource/images/쉑쉑.png" class='photo'
 											width="400px" height="400px">
 									</c:if>
 									<c:if test="${action != 'regist' }"> ${recipe.photo }</c:if>
@@ -548,14 +606,6 @@ select[name="per"], select[name="difficulty"] {
 								<input name="submit" type="submit" id="submit" tabindex="5"
 									value="등록" />
 								<input type="button" id="cancel" value="  취소  ">
-							</c:if>
-							<c:if test="${action == 'read' }">
-								<!-- 버튼 -->
-								<input type="button" id="delete" value="  삭제  "
-									onclick="upDel('remove')">
-								<input type="button" id="cancel" value="  취소  ">
-								<input type="button" id="modify" value="  수정  "
-									onclick="upDel('modify')">
 							</c:if>
 						</div>
 	<!-- ============================= page 4 ======================================== -->					

@@ -29,3 +29,8 @@ create table precipe(
 	difficulty char(3),
 	per number default 2
 );
+
+create table recipeLikes(
+	no number references recipe(no),
+	writer number not null
+);

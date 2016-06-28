@@ -14,7 +14,9 @@ public interface RecipeService {
 	boolean viewCntUp(int no) throws Exception;
 	boolean removeRecipe(int no) throws Exception;
 	
+	boolean likesUp(int no,int writer) throws Exception;
+	
 	int getTotalCount() throws Exception;
 	RecipeVO readRecipe(int no)throws Exception;
-	List<RecipeVO> readList(String pageType, RowBounds rowBounds) throws Exception;
+	List<RecipeVO> readList(String pageType, int userNo, RowBounds rowBounds) throws Exception;
 }
