@@ -38,7 +38,36 @@
 	<insert id="insert">
 		insert into <include refid="type"/> 
 		(no,bNo,writer,content)
-		values(board_free_reply_seq.nextval,#{bNo},#{writer},#{content})
+		<choose>
+			<when test="type=='free'.toString()">
+				values(board_free_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
+		<choose>
+			<when test="type=='meeting'.toString()">
+				values(board_meeting_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
+		<choose>
+			<when test="type=='noname'.toString()">
+				values(board_noname_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
+		<choose>
+			<when test="type=='suggest'.toString()">
+				values(board_suggest_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
+		<choose>
+			<when test="type=='faq'.toString()">
+				values(board_faq_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
+		<choose>
+			<when test="type=='notice'.toString()">
+				values(board_notice_reply_seq.nextval,#{bNo},#{writer},#{content})
+			</when>
+		</choose>
 	</insert>
 
 	<update id="update">

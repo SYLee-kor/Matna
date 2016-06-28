@@ -92,7 +92,7 @@
    </select>
    
    <select id="read" resultType="board">
-      select no,title,content,writer,(select nickName from member where no=writer) nickName
+      select no,title,content,writer,viewCnt,replyCnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no=#{no}
    </select>
@@ -124,7 +124,7 @@
    </select>
    
    <select id="listSearch" resultType="board">
-      select no,title,content,writer,regdate,viewcnt,(select nickName from member where no=writer) nickName
+      select no,title,content,writer,regdate,viewcnt,replyCnt,(select nickName from member where no=writer) nickName
       from <include refid="type"/>
       where no>0     
       <include refid="search"/>
