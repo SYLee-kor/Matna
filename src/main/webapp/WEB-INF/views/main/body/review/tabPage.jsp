@@ -13,9 +13,7 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
- 
      $(document).mousedown(function(e){
-    	 
          $('.pop').each(function(){
                  if( $(this).css('display') == 'block'){
                      var l_position = $(this).offset();
