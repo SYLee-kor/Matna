@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -120,7 +121,12 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public boolean removeAllLikes(int no) throws Exception {
-		if(session.delete("recipe.removeAllLikes", no) ==1 )return true;
+		if(session.delete("recipe.removeAllLikes", no) >=0 )return true;
 		return false;
+	}
+
+	@Override
+	public List<Integer> getLikeRecipies(int userNo) throws Exception {
+		return session.selectList("recipe.getLikeRecipies", userNo);
 	}
 }

@@ -14,6 +14,7 @@ import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.domain.review.SearchKeyWord;
 import com.kosta.matna.persistence.member.MemberDAO;
+import com.kosta.matna.persistence.review.ReplyDAO;
 import com.kosta.matna.persistence.review.ReviewDAO;
 
 @Transactional
@@ -24,6 +25,8 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewDAO dao;
 	@Inject
 	MemberDAO mDao;
+	@Inject
+	ReplyDAO rDao;
 	
 	@Override
 	public boolean registReview(ReviewVO review, PreviewVO preview) throws Exception {
@@ -45,7 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public boolean removeReview(int no) throws Exception {
-		if(dao.deletePreview(no) && dao.deleteReview(no))return true;
+		if(rDao.removeAllReply(no) && dao.deletePreview(no) && dao.deleteReview(no))return true;
 		return false;
 	}
 

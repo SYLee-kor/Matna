@@ -56,6 +56,11 @@
 		where no=#{no} and userNo=#{userNo}
 	</select>
 	
+	<select id="getLikeRecipies" resultType="int">
+		select no from recipeLikes
+		where userNo = #{userNo}
+	</select>
+	
 	<delete id="delete">
 		delete from recipe
 		where no=#{no}

@@ -15,6 +15,11 @@
 		delete from review_reply
 		where no=#{no}
 	</delete>
+
+	<delete id="removeAll">
+		delete from review_reply
+		where rNo=#{no}
+	</delete>
 	
 	<select id="totalCount" resultType="int">
 		select count(*)

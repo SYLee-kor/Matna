@@ -44,5 +44,4 @@ public class ReplyDAOImpl_recipe implements ReplyDAO {
 	public int getTotalCount(int rNo) throws Exception {
 		return session.selectOne(nameSpc+"totalCount", rNo);
 	}
-
 }

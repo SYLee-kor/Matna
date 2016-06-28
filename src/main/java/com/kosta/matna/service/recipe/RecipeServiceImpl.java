@@ -70,6 +70,11 @@ public class RecipeServiceImpl implements RecipeService {
 			else return false;
 		}
 	}
+
+	@Override
+	public List<Integer> getLikeRecipies(int userNo) throws Exception {
+		return dao.getLikeRecipies(userNo);
+	}
 	
 	
 }

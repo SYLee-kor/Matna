@@ -44,5 +44,10 @@ public class ReplyDAOImpl implements ReplyDAO {
 	public int getTotalCount(int rNo) throws Exception {
 		return session.selectOne(nameSpc+"totalCount", rNo);
 	}
-
+	
+	@Override
+	public boolean removeAllReply(int no) throws Exception {
+		if ( session.delete(nameSpc+"removeAll", no) == 1 ) return true;
+		return false;
+	}
 }

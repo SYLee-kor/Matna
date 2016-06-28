@@ -10,6 +10,7 @@ public interface ReplyDAO {
 	boolean addReply(ReplyVO vo) throws Exception;
 	boolean modifyReply(ReplyVO vo) throws Exception;
 	boolean removeReply(int no) throws Exception;
+	boolean removeAllReply(int no) throws Exception;
 	List<ReplyVO> listReply(int rNo,RowBounds rowBounds) throws Exception;	
 	int getTotalCount(int rNo) throws Exception;
 }

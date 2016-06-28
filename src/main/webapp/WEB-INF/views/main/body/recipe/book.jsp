@@ -343,7 +343,7 @@ function readURL(input) {
 			$.ajax({
 				url:'/matna/recipe/remove',
 				data:{
-					no:'${recipe.no}',
+					no:'${recipe.no}'
 				},
 				success:function(result){
 					if(result=='success'){
@@ -442,11 +442,11 @@ function readURL(input) {
 								</p>
 								<c:if test="${action == 'read' }">
 								<!-- 버튼 -->
-								<input type="button" id="delete" value="  삭제  "
-									onclick="upDel('remove')">
-								<input type="button" id="cancel" value="  취소  ">
 								<input type="button" id="modify" value="  수정  "
 									onclick="upDel('modify')">
+								<input type="button" id="delete" value="  삭제  "
+									onclick="upDel('remove')">
+								<input type="button" id="cancel" value="  닫기  ">
 								</c:if>
 							</center>
 						</div>
