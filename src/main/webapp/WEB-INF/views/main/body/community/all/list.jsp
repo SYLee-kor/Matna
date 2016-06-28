@@ -51,7 +51,7 @@
 						<thead>
 							<tr>
 								<th style="width: 100px; padding: 0px; text-align: center"><span>No</span></th>
-								<th style="text-align: center;width:400px; "><span>Title</span></th>
+								<th style="text-align: center;width:480px; "><span>Title</span></th>
 								<th style="text-align: center; width: 200px;"><span>작성자</span></th>
 								<th style="width: 100px; padding: 0px; text-align: center;">조회수</th>
 								<th style="text-align: center;"><span>date</span></th>

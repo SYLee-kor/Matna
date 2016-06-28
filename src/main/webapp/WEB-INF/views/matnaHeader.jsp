@@ -300,7 +300,7 @@ select[name="money"], #guSel, #dongSel{
             <div class="col-md-4 col-sm-4">
                <form id="search_form">
                   <div class="templatemo_search">
-                       <input name="search" type="text" placeholder="Search here .... " id="search">
+                       <input name="search" type="text" placeholder="Search here .... " id="main_search">
                     </div>
                 </form>
             </div>
