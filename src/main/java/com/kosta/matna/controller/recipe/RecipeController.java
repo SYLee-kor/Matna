@@ -50,7 +50,11 @@ public class RecipeController {
 		System.out.println(recipe);
 		try {
 			if(file!=null) {
-				uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
+				File folder = new File(session.getServletContext().getRealPath("/resource/images/recipe"));
+				if (!folder.exists() ){
+					if ( folder.mkdirs() ) System.out.println("폴더 생성!!");
+				}
+				uploadPath = folder.getPath();
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}else
@@ -93,7 +97,11 @@ public class RecipeController {
 			// # 사진 세팅
 			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
 			if( file != null && file.getOriginalFilename().trim().length()!=0 ){
-				System.out.println("modifyRecipe 사진 생성");
+				File folder = new File(session.getServletContext().getRealPath("/resource/images/recipe"));
+				if (!folder.exists() ){
+					if ( folder.mkdirs() ) System.out.println("폴더 생성!!");
+				}
+				uploadPath = folder.getPath();
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}
