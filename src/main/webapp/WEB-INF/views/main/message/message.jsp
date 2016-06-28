@@ -262,7 +262,7 @@
                       <br>
 		<div class="page">
 			<ul class="pagination modal-1" id="pagination">
-			<li><a href="javascript: sendShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo</a></li>
+			<li><a href="javascript: sendShowPage(1,'${messageSelect }','${search }')" class="prev">&laquo;</a></li>
             <li><a href="javascript:sendShowPage(${senderBeforePage},'${messageSelect }','${search }')" class="prev">prev</a></li>
 			<c:forEach var="i" begin="1" end="${senderTotalPage }">
             	<li><a href="javascript: sendShowPage(${i },'${messageSelect }','${search }')">${i}</a></li>
