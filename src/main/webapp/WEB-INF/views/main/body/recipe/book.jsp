@@ -55,8 +55,8 @@ select[name="per"], select[name="difficulty"] {
 }
 
 .book {
-	width: 1000px;
-	height: 640px;
+	width: 1300px;
+	height: 660px;
 	border: 2px solid #dddddd;
 	-webkit-perspective: 1400px;
 	-moz-perspective: 1400px;
@@ -86,7 +86,7 @@ select[name="per"], select[name="difficulty"] {
 	width: 50%;
 	height: 100%;
 	position: absolute;
-	transform: translateX(500px) translateY(2%);
+	transform: translateX(650px) translateY(2%);
 	transform-style: preserve-3d;
 }
 
@@ -632,7 +632,7 @@ function readURL(input) {
 									id="recipe_content" style="width: 400px; height: 350px;"></textarea>
 								<br><font color="red" size="2" id="e_content"></font>
 							</c:if>
-							<c:if test="${action == 'read' }">${recipe.content }</c:if>
+							<c:if test="${action == 'read' }"><div style="height:540px ;width:560px;overflow: scroll;">${recipe.content }</div></c:if>
 							<br><br>
 							<c:if test="${action != 'read' }">
 								<!-- 버튼 -->

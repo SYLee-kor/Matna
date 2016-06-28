@@ -40,7 +40,7 @@
 			var url = '/matna/recipe/'+action;
 		else 
 			var url = '/matna/recipe/read?no='+no+'&page=${page}&pageType=recipe';
-		window.open(url,'name','channelmode=yes,fullscreen=no,height=600pixels,width=1000pixels,left=150pixels,top=50pixels,menubar=no,status=no,titlebar=no');
+		window.open(url,'name','channelmode=yes,fullscreen=no,height=600pixels,width=1400pixels,left=50pixels,top=50pixels,menubar=no,status=no,titlebar=no');
 	}
 	
 	function showPage_recipe(page) {

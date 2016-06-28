@@ -106,7 +106,7 @@
    </update>
    
     <update id="updateAllPoint" parameterType="java.util.Map">
-       update member set allpoint=allpoint+#{point}
+       update member set allpoint=allpoint+#{point} , point=point+#{point}
 	    where no=#{userNo}
    </update>
 
