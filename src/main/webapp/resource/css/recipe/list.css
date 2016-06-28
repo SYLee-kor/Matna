@@ -10,7 +10,7 @@
   list-style-type: none;
 }
 body {
-  color:#FFF;
+  //color:#FFF;
   background:url('http://subtlepatterns.com/patterns/gplaypattern.png');
 }
 h3 {
@@ -123,9 +123,9 @@ footer {
   color: #339187;
   margin:15px 0 0 0;
 }
-a:link, a:visited {color: #339187; text-decoration:none;font-weight:700;}
+/* a:link, a:visited {color: #339187; text-decoration:none;font-weight:700;}
 a:hover {color: #D61650;text-decoration:none;}
-a:active {text-decoration:underline;}
+a:active {text-decoration:underline;} */
 
 /* Pulse Animation for Firefox, Opera and Internet Explorer 10 */
 @keyframes pulse {
