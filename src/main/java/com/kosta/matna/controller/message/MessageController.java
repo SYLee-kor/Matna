@@ -46,7 +46,7 @@ public class MessageController {
 	
 	@RequestMapping(value="/listAll", method=RequestMethod.GET)
     public String message(Model model,HttpSession session,
-    		String message, String receivepage, String sendpage, String searches)throws Exception{
+    		String message, String receivepage, String toNickname, String sendpage, String searches)throws Exception{
 		logger.info("전체 메시지 list 요청...");
 		int userNo = (int) session.getAttribute("userNo");
 		
@@ -83,6 +83,9 @@ public class MessageController {
 				
 				System.out.println(sendList.get(i).getSenderNickname()+","+sendList.get(i).getReceiverNickname());
 			}*/
+			if(toNickname!=null){
+				model.addAttribute("toNickname",toNickname);
+			}
 			
 			model.addAttribute("sendList", messageService.selectSenderPage(userNo, start2, end2));
 			model.addAttribute("senderTotalPage", totalPage2);

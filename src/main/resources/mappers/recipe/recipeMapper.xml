@@ -30,6 +30,32 @@
 	]]>
 	</update>
 	
+	<update id="likesUp">
+	<![CDATA[
+		update recipe set likes = (select count(*) from recipeLikes where no=#{no}) 
+		where no=#{no}
+	]]>
+	</update>
+	
+	<insert id="addLikes">
+		insert into recipeLikes values(#{no},#{userNo})
+	</insert>
+	
+	<delete id="removeLikes">
+		delete from recipeLikes 
+		where no=#{no} and userNo=#{userNo}
+	</delete>
+	
+	<delete id="removeAllLikes">
+		delete from recipeLikes 
+		where no=#{no}
+	</delete>
+	
+	<select id="findLikes" resultType="int">
+		select count(*) from recipeLikes
+		where no=#{no} and userNo=#{userNo}
+	</select>
+	
 	<delete id="delete">
 		delete from recipe
 		where no=#{no}
@@ -47,16 +73,20 @@
 		where no=#{no}
 	</select>
 	
-	<select id="selectList" resultType="recipe" parameterType="String">
+	<select id="selectList" resultType="recipe">
 		select no,photo, time, per, price, likes,foodName
 		from recipe natural join precipe
 		<choose>
-			<when test="value=='recipe'">
+			<when test="pageType=='recipe'">
 				order by no desc
 			</when>
-			<when test="value=='ranking'">
+			<when test="pageType=='ranking'">
 				where regdate >= sysdate-7
 				order by likes desc
+			</when>
+			<when test="pageType=='myRecipe'">
+				where no in((select no from recipeLikes where userNo=#{userNo}) )
+				order by no desc
 			</when>
 		</choose>
 	</select>

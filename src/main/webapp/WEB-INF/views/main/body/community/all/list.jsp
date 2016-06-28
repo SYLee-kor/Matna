@@ -92,6 +92,14 @@
 						    		<c:otherwise>
 						 	   			<img src="/matna/resource/img/lv${list.mGrade }.jpg"/>
 						 	   			${list.nickName }
+						 	   			<div class="pop" id="${review.no }" style="position:absolute; background-color:white; z-index:1; display:none;
+         									 width:150px; height:150px; border:3px solid #ff7359; border-radius:20px;">
+         		 							<table>
+         		 								<tr><td><a href="javascript:message('${list.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
+         		 								<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${list.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
+         		 								<tr><td><a href="#" style="font-size:13px;">게시글보기</a></td></tr>
+         									</table>
+         								</div>
 						    		</c:otherwise>
 								</c:choose>
 								</td>
@@ -221,6 +229,15 @@
 		f.find("[name='page']").val('${pageMaker.end}');
 		f.submit();
 	});
+	
+	function show_pop(no){
+		var bno = '#'+no;
+	   $(bno).show();
+    }
+    
+	function message(nick){
+    	window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+	}
 	</script>
 
 	<%@include file="/WEB-INF/views/footer.jsp"%>

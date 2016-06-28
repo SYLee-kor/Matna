@@ -25,7 +25,7 @@
 						<c:forEach items="${miniList }" var="mini">
 						<tr>
 							<td>${mini.photo }</td>
-							<td><a href=#>${mini.title }</a></td>
+							<td><a href="/matna/review/read?pageType=${pageType }&no=${mini.no}">${mini.title }</a></td>
 							<td>${mini.nickName }</td>
 							<c:if test="${pageType=='review' }">
 								<td>${mini.regdate }</td>

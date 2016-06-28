@@ -38,7 +38,8 @@ public class RecipeServiceImpl implements RecipeService {
 
 	@Override
 	public boolean removeRecipe(int no) throws Exception {
-		if(dao.deletePrecipe(no) && dao.deleteRecipe(no))return true;
+		if(dao.removeAllLikes(no) && 
+				dao.deletePrecipe(no) && dao.deleteRecipe(no))return true;
 		return false;
 	}
 
@@ -50,8 +51,8 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public List<RecipeVO> readList(String pageType, RowBounds rowBounds) throws Exception {
-		return dao.readList(pageType, rowBounds);
+	public List<RecipeVO> readList(String pageType,int userNo, RowBounds rowBounds) throws Exception {
+		return dao.readList(pageType,userNo, rowBounds);
 	}
 
 	@Override
@@ -59,4 +60,16 @@ public class RecipeServiceImpl implements RecipeService {
 		return dao.getTotalCount();
 	}
 
+	@Override
+	public boolean likesUp(int no, int writer) throws Exception {
+		if( !dao.findLikes(no, writer) ){ // # 좋아요를 한적 없을땐 하기!
+			if(dao.addLikes(no, writer) && dao.likesUp(no)) return true;
+			else return false;
+		}else{ // # 이미 했다면 다시 취소!!
+			if(dao.removeLikes(no, writer) && dao.likesUp(no)) return true;
+			else return false;
+		}
+	}
+	
+	
 }
