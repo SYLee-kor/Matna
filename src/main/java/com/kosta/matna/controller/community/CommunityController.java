@@ -1,5 +1,8 @@
 package com.kosta.matna.controller.community;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -48,6 +51,20 @@ public class CommunityController {
 		model.addAttribute("type", type);
 		return "main/body/community/all/list";
 	}
+	@RequestMapping(value = "/miniListF", method = RequestMethod.POST)
+	public String miniListF(Model model, @ModelAttribute("type1")String type1) throws Exception{
+		logger.info("미니list 요청..."+ model);	
+		
+		model.addAttribute("list1", service.listAll(new BoardTypeVO(type1)));
+		return "main/body/community/all/miniListFree";
+	}
+	@RequestMapping(value = "/miniListM", method = RequestMethod.POST)
+	public String miniListM(Model model, @ModelAttribute("type2")String type2) throws Exception{
+		logger.info("미니list 요청..."+ model);	
+		model.addAttribute("list2", service.listAll(new BoardTypeVO(type2)));
+		return "main/body/community/all/miniListMeeting";
+	}
+	
 	
 	@RequestMapping(value = "/listPage", method = RequestMethod.POST)
 	public String listPage(Model model, @ModelAttribute("cri") SearchVO cri,String type) throws Exception{
