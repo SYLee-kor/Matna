@@ -25,13 +25,6 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public boolean insertPrecipe(RecipeVO vo) throws Exception {
-		System.out.println(vo.getIngredient());
-		System.out.println(vo.getPrice());
-		System.out.println(vo.getTime());
-		System.out.println(vo.getDifficulty());
-		System.out.println(vo.getPer());
-		System.out.println(vo.getFoodName());
-		System.out.println(vo.getFoodDetail());
 		if(session.insert("precipe.insert",vo)==1)return true;
 		return false;
 	}

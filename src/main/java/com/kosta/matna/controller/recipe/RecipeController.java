@@ -3,8 +3,6 @@ package com.kosta.matna.controller.recipe;
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -16,6 +14,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -40,25 +39,16 @@ public class RecipeController {
 	public String registrecipe(@ModelAttribute("pageType") String pageType, Model model
 			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
 		model.addAttribute("action", "regist");
-		return path+"regist";
+		return path+"book";
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public String registrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
+	public @ResponseBody String registrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
 			, String pageType, String page, MultipartFile file){
+		System.out.println(recipe);
 		try {
-			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			/*Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
-			Matcher match = pattern.matcher(recipe.getContent());
-			String imgTag = "";
-			if (match.find())imgTag = match.group(0);
-			String photo = imgTag+" width=\"150\" height=\"90\">";
-			photo = (imgTag.equals("")) ? "포토" : photo;*/
-			
-			// # 사진 등록 
-//			recipe.setPhoto(photo);
 			if(file!=null) {
-				uploadPath = session.getServletContext().getRealPath("/resource/recipe_images");
+				uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}else
@@ -69,13 +59,15 @@ public class RecipeController {
 			rttr.addAttribute("page", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			return "fail";
+			//return "error";
 		}
-		return "redirect:/recipe/list";
+		return "success";
+		//return "redirect:/recipe/list";
 	}
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
-	public String modifyrecipe(int no, Model model
+	public String modifyRecipe(int no, Model model
 			, String pageType, String tabType, String page){
 		try {
 			RecipeVO recipe = service.readRecipe(no);
@@ -87,27 +79,18 @@ public class RecipeController {
 			e.printStackTrace();
 			return "error";
 		}
-		return path+"regist";
+		return path+"book";
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
-	public String modifyrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
+	public @ResponseBody String modifyRecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
 			, String pageType,  String page, MultipartFile file){
-		System.out.println("recipe_modify 실행 [page : "+page+" / pageType : "+pageType);
+		System.out.println("수정시 사진 값 : "+recipe.getPhoto());
 		try {
-
-			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			/*Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
-			Matcher match = pattern.matcher(recipe.getContent());
-			String imgTag = "";
-			if (match.find())imgTag = match.group(0);
-			String photo = imgTag+" width=\"150\" height=\"90\">";
-			photo = (imgTag.equals("")) ? "포토" : photo;
-			recipe.setPhoto(photo);*/
-			
 			// # 사진 세팅
-			uploadPath = session.getServletContext().getRealPath("/resource/recipe_images");
-			if( file != null ){
+			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
+			if( file != null && !file.equals("") ){
+				System.out.println("modifyRecipe 사진 생성");
 				String photoName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				recipe.setPhoto(photoName);
 			}
@@ -120,7 +103,7 @@ public class RecipeController {
 			e.printStackTrace();
 			return "error";
 		}
-		return "redirect:/recipe/list";
+		return "success";
 	}
 	
 	@RequestMapping("read")
@@ -128,11 +111,9 @@ public class RecipeController {
 			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
 		try {
 			RecipeVO recipe = service.readRecipe(no);
-			String titles[] = {"재료","가격","난이도","조리 시간"};
-			String romeNum[] = {"i","ii","iii","iv"};
-			model.addAttribute( "titles", titles );
+			
 			model.addAttribute( "recipe", recipe );
-			model.addAttribute( "romeNum", romeNum );
+			model.addAttribute( "action", "read" );
 			
 			if(recipe != null){
 				String values[] = {recipe.getIngredient(),recipe.getPrice(),recipe.getDifficulty(),recipe.getTime()};
@@ -142,17 +123,18 @@ public class RecipeController {
 			e.printStackTrace();
 			return "error";
 		}
-		return "test/book";
+		return path+"book";
 	}
 	
-	@RequestMapping(value="remove", method=RequestMethod.POST)
+	@RequestMapping("remove")
 	public String removerecipe(int no, RedirectAttributes rttr
-			, String pageType, String page){
+			, String pageType, String page,String action){
 		try {
 			if(service.removeRecipe(no))
 			rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("pageType", pageType);
 			rttr.addAttribute("page", page);
+			rttr.addAttribute("action", action);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -185,6 +167,6 @@ public class RecipeController {
 		String savedName = uid.toString()+"_"+photoName;
 		File target = new File(uploadPath,savedName); 
 		FileCopyUtils.copy(fileData, target);
-		return "<img src='/matna/resource/images/recipe/"+savedName+"'>";
+		return "<img src='/matna/resource/images/recipe/"+savedName+"' width='400px' height='400px'>";
 	}
 }

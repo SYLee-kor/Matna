@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
-<!-- <link href="/matna/resource/css/recipe/list.css" rel="stylesheet"> -->
+<link href="/matna/resource/css/recipe/list.css" rel="stylesheet">
 <script type="text/javascript">
 	var heart = false;
 	$('.lv').click(function() {
@@ -14,8 +14,11 @@
 		}
 	});
 	
-	function openPage(no) {
-		var url = '/matna/recipe/read?no='+no+'&page=${page}&pageType=${pageType}';
+	function openPage(no,action) {
+		if (action != 'read')
+			var url = '/matna/recipe/'+action;
+		else 
+			var url = '/matna/recipe/read?no='+no+'&page=${page}&pageType=recipe';
 		window.open(url,'name','channelmode=yes,fullscreen=no,height=600pixels,width=1000pixels,left=150pixels,top=50pixels,menubar=no,status=no,titlebar=no');
 	}
 	
@@ -27,7 +30,7 @@
 <div id="content">
   <c:forEach items="${recipeList }" var="recipe">
    <!-- Recipe Start -->
-	<div class="recipe" onclick="openPage(${recipe.no})"> 
+	<div class="recipe" onclick="openPage(${recipe.no},'read')"> 
 		<div class="image">
 	    	${recipe.photo }
 	  		<div class="likes">
@@ -62,6 +65,6 @@
 	 </ul><br>
 <center>
 	<input type="button" value="레시피 등록" class="btn" style="max-width:100px;" 
-	onclick="javaScript:document.location.href='/matna/recipe/regist'">
+	onclick="openPage(0,'regist')">
 </center>
   <%@include file="/WEB-INF/views/footer.jsp" %>
