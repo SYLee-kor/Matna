@@ -121,8 +121,9 @@ public class LoginController {
 			attr.addFlashAttribute("msg", "upgrade");
 		}
 		
+		//새로운 메세지가 있는가
 		session.setAttribute("isNewMessage",messageService.IsNewMessage(member.getNo()));
-		System.out.println(session.getAttribute("isNewMessage"));
+		
 		System.out.println("LoginControler - userGrade : "+member.getGrade());
 		session.setAttribute("userNo", member.getNo());
 		session.setAttribute("userId", member.getId());
