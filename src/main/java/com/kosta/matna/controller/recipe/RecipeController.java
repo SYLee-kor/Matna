@@ -24,6 +24,7 @@ import com.kosta.matna.domain.recipe.Criteria;
 import com.kosta.matna.domain.recipe.PageMaker;
 import com.kosta.matna.domain.recipe.RecipeVO;
 import com.kosta.matna.service.recipe.RecipeService;
+import com.kosta.matna.validator.MatnaValidator;
 
 @RequestMapping("/recipe/")
 @Controller
@@ -45,9 +46,15 @@ public class RecipeController {
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public @ResponseBody String registrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
+	public @ResponseBody Map<String,Object> registrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
 			, String pageType, String page, MultipartFile file){
-		System.out.println(recipe);
+		Map<String,Object> map = new HashMap<>();
+		// # 유효성 검사
+		if( !MatnaValidator.isValid(recipe, "RecipeVO") ){
+			map.put("errMsgs", MatnaValidator.getErrMsgs() );
+			map.put("recipe", recipe );
+			return map;
+		};
 		try {
 			if(file!=null) {
 				File folder = new File(session.getServletContext().getRealPath("/resource/images/recipe"));
@@ -65,10 +72,11 @@ public class RecipeController {
 			rttr.addAttribute("page", 1);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "fail";
+			map.put("result", "fail");
 			//return "error";
 		}
-		return "success";
+		map.put("result", "success");
+		return map;
 		//return "redirect:/recipe/list";
 	}
 	
@@ -89,10 +97,15 @@ public class RecipeController {
 	}
 
 	@RequestMapping(value="modify",method=RequestMethod.POST)
-	public @ResponseBody String modifyRecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
+	public @ResponseBody Map<String,Object> modifyRecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
 			, String pageType,  String page, MultipartFile file){
-		System.out.println("수정시 사진 값 : "+recipe.getPhoto());
-		System.out.println("파일 사진이름  : "+file.getOriginalFilename());
+		Map<String,Object> map = new HashMap<>();
+		// # 유효성 검사
+		if( !MatnaValidator.isValid(recipe, "RecipeVO") ){
+			map.put("errMsgs", MatnaValidator.getErrMsgs() );
+			map.put("recipe", recipe );
+			return map;
+		};
 		try {
 			// # 사진 세팅
 			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");
@@ -112,9 +125,10 @@ public class RecipeController {
 			rttr.addAttribute("page",page);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "error";
+			map.put("result", "error");
 		}
-		return "success";
+		map.put("result", "success");
+		return map;
 	}
 	
 	@RequestMapping("read")
