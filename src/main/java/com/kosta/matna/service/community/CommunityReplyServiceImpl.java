@@ -33,7 +33,8 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 	}
 
 	@Override
-	public boolean removeReply(int no,BoardTypeVO type) throws Exception {
+	public boolean removeReply(int bNo,int no,BoardTypeVO type) throws Exception {
+		if( dao.removeReply(no,type) && cdao.delReplyCnt(bNo,type) ) return true;
 		return dao.removeReply(no,type);
 	}
 

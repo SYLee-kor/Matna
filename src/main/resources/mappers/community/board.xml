@@ -112,6 +112,11 @@
 		set replyCnt = replyCnt+1 
 		where no=#{no}
 	</update>
+   <update id="delReplyCnt">
+   	update <include refid="type"/>
+   	set replyCnt = replyCnt-1 
+   	where no = #{no}
+   </update>
    
    <update id="updateViewCnt">
    	update <include refid="type"/>
