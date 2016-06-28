@@ -222,7 +222,7 @@
                         <table class="table table-bordered" style="text-align:center; margin:auto; border:1px soild #ff7359; width:100%; height:100px;">
                            <tr align="center">
                               <th></th>
-                              <th>받는이</th>
+                              <th width="100px">받는이</th>
                               <th width="300px">제목</th>
                               <th>날짜</th>
                               <th>읽음상태</th>
@@ -247,7 +247,7 @@
                               </tr>
                               <tr align="center" id="${messageVO.no}" class="b">
                                  <td></td>
-                                 <td width="80px" style="background:#e8f8fd;">내용</td>
+                                 <td width="100px" style="background:#e8f8fd;">내용</td>
                                  <td colspan="3" style=" background:#e8f8fd;">${messageVO.content}</td>
                                  <td></td>
                                  <td></td>
