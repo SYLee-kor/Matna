@@ -129,7 +129,8 @@ public class RecipeController {
 	}
 	
 	@RequestMapping("remove")
-	public @ResponseBody String removerecipe(int no, HttpSession session){
+	public @ResponseBody String removerecipe(int no){
+		System.out.println("Recipe_remove ½ÇÇà   : no = "+no);
 		try {
 			if(service.removeRecipe(no)) return "success";
 		} catch (Exception e) {
@@ -149,9 +150,11 @@ public class RecipeController {
 		List<RecipeVO> list = 
 				service.readList(pageType,userNo, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
 		PageMaker pageMaker = new PageMaker(cri, service.getTotalCount());
+		List<Integer> likeList = service.getLikeRecipies(userNo);
 		model.addAttribute("page", cri.getPage());
 		model.addAttribute("pageType", pageType);
 		model.addAttribute("recipeList", list);
+		model.addAttribute("likeList", likeList);
 		model.addAttribute("pageMaker", pageMaker);
 		} catch (Exception e) {
 			e.printStackTrace();

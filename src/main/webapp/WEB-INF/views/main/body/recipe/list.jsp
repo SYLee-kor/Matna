@@ -3,15 +3,6 @@
 <%@include file="/WEB-INF/views/matnaHeader.jsp" %>
 <link href="/matna/resource/css/recipe/list.css" rel="stylesheet">
 <script type="text/javascript">
-	/* $('.lv').click(function() {
-		if (!heart) {
-			$(this).addClass('fa-heart').removeClass('fa-heart-o');
-			heart = true;
-		} else {
-			$(this).removeClass('fa-heart').addClass('fa-heart-o');
-			heart = false;
-		}
-	}); */
 	
 	function likesUp(no) {
 		if( '${userNo}' == null || '${userNo}'=='') {
@@ -83,7 +74,7 @@ a{
   		<ul class="media"  onclick="openPage(${recipe.no},'read')">
 		    <li><i class="fa fa-clock-o"></i> ${recipe.time } 분</li>
 		    <li><i class="fa fa-cutlery"></i> ${recipe.per } 명</li>
-		    <li><i class="fa fa-leaf"></i> 좋아요 ${recipe.likes }</li>
+		    <li><i class="fa fa-leaf" ></i> 좋아요 ${recipe.likes }</li>
   		</ul>
 	</div>
 </c:forEach>

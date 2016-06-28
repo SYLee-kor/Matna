@@ -17,7 +17,8 @@
 <script type="text/javascript">
 // ================= 페이지 이동 함수 =================	
 function movePage(page) {
-	document.location.href="/matna/review/list?page="+page;
+	$('#page').val(page);
+	$('#dataForm').submit();
 }
 // ================== 글 읽기 함수 ===================
 function showContents(no) {
@@ -26,6 +27,17 @@ function showContents(no) {
 	document.location.href=moveUrl;
 }
 </script>
+ <form id="dataForm" action="/matna/main/review/list" method="get">
+ <input type="hidden" name="rb" id="rb" value="${cri.rb }"/>
+ <input type="hidden" name="gu" id="gu" value="${cri.gu }"/>
+ <input type="hidden" name="dong" id="dong" value="${cri.dong }"/>
+ <input type="hidden" name="money" id="money" value="${cri.money }"/>
+ <input type="hidden" name="parking" id="parking" value="${cri.parking }"/>
+ <input type="hidden" name="date" id="date" value="${cri.date }"/>
+ <input type="hidden" name="search" id="search" value="${cri.search }"/>
+ <input type="hidden" name="reviewType" id="reviewType" value="${cri.reviewType }"/>
+ <input type="hidden" name="page" id="page" value=""/>
+ </form>
  <div class="col-md-1 col-sm-1"></div>
 <div class="col-md-10 col-sm-10">
  <div id="reviewList">
@@ -47,7 +59,7 @@ function showContents(no) {
 	      </tr>
 	    </thead>
 	    <tbody>
-	    <c:forEach items="${list }" var="review">
+	    <c:forEach items="${review }" var="review">
 	      <tr class="list_lists">
 	         <td style="width: 50px;padding: 0px;">10</td>
 	         <td style="cursor: pointer;" onclick="showContents(${review.no})">${review.photo }</td>
@@ -66,6 +78,7 @@ function showContents(no) {
 	    </c:forEach>
 	    </tbody>
 	  </table> 
+	  <center>
 	  <!-- ------ paging 처리--------- -->
 	  <ul class="pagination modal-1" id="pagination">
 	  <c:if test="${pageMaker.prev }">
@@ -85,6 +98,7 @@ function showContents(no) {
 	 	 	onclick="movePage(${pageMaker.afterPage})">&raquo;</a></li>
 	  </c:if>
 	</ul><br>
+	</center>
   <div class="list_write_bt" id="reviewlist_write_bt">
        <a id="goRegist" style="cursor: pointer;"><span><b>글 쓰기</b></span></a>  
   </div> 
@@ -92,6 +106,7 @@ function showContents(no) {
   </figure>
 </div>
 </div>
+
 <script type="text/javascript">
 	if('${pageType}'=='review') showPage_review('${tabType}','${page}'); // # 
 	else if('${pageType}'=='ranking') showPage_ranking('${tabType}','${page}'); // # 

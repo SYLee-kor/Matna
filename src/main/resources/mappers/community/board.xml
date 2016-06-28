@@ -42,7 +42,7 @@
            and title like '%'||#{keyword}||'%'
          </when>
          <when test="searchType=='writer'.toString()">
-           and writer like '%'||#{keyword}||'%'
+           and writer like '%'|| (select no from member where nickname=#{keyword}) ||'%'
          </when>
        </choose>       
      </if>
