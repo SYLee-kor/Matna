@@ -112,7 +112,7 @@ $(document).ready(function() {
   
   <input class="logout" type="submit" id="logout"  name="logout" value="logout">
   <a onclick="mypage()"><img src="/matna/resource/img/mypage.png" width="60" height="50" id="myPage"/></a>
-  <a onclick="message()"><img src="/matna/resource/img/message3.png" width="60" height="50" id="msg"/></a>
+  <a onclick="message()"><img src="/matna/resource/images/message.png" width="60" height="50" id="msg"/></a>
   
   <c:if test="${userGrade == '5' || userGrade=='4' }">
   	<a onclick="admin()"><img src="/matna/resource/img/admin2.png" width="50" height="50" id="adm"/></a>
