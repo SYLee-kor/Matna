@@ -7,17 +7,17 @@
 			  <table id="meeting_table" cellspacing="0" cellpadding="0">
 			    <thead>
 			      <tr>
-			        <th><span>title</span></th>
-			        <th><span>작성자</span></th>
-			        <th><span>조회수</span></th>
+			        <th style="width: 300px;text-align: left;"><span>title</span></th>
+			        <th style="width: 150px;text-align: left;"><span>작성자</span></th>
+			        <th style="width: 80px;text-align: left;"><span>조회수</span></th>
 		          </tr>
 			    </thead>
 			    <tbody>
 			      <c:forEach var="list2" items="${list2}" varStatus="stat">
 		      <tr>
-		         <td><a href="/matna/community/listOne?no=${list2.no}&type=${type2}">${list2.title }</a>[${list2.replyCnt }]</td>
-		         <td>${list2.nickName }</td>
-		         <td>${list2.viewCnt}</td>
+		         <td style="text-align: left;padding-left: 20px;"><a href="/matna/community/listOne?no=${list2.no}&type=${type2}">${list2.title }</a>[${list2.replyCnt }]</td>
+		         <td style="text-align: left;"> ${list2.nickName }</td>
+		         <td style="text-align: center;">${list2.viewCnt}</td>
 		      </tr>
 		    </c:forEach>
 			    </tbody>
