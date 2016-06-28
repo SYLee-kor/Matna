@@ -32,6 +32,10 @@
 	}
 	
 	function openPage(no,action) {
+		if('${userNo}'==''){
+			alert('로그인을 먼저 해주세요!!');
+			return false;
+		}
 		if (action != 'read')
 			var url = '/matna/recipe/'+action;
 		else 
@@ -47,9 +51,15 @@
 		$('#pageSel').val('${pageType}');
 		// # 셀렉트 박스로 페이지 조회 방법 변경!!
 		$('#pageSel').change(function() {
+			var keyword = $('[name=keyword]').val();
+			var searchKey = $('[name=searchKey]').val();
 			document.location.href="/matna/recipe/list?pageType="+$(this).val()
-					+'&page=${pageMaker.cri.page}';
+					+'&page=${pageMaker.cri.page}&keyword='
+					+keyword+'&searchKey='+searchKey;
 		});
+		
+		$('[name=keyword]').val('${keyword}');
+		$('[name=searchKey]').val('${searchKey}');
 	})
 </script>
 <style>
@@ -107,6 +117,16 @@ a{
 	  	<li><a class="next" onclick="showPage_recipe(${pageMaker.afterPage})">&raquo;</a></li>
 	  </c:if>
 	 </ul><br>
+	 <form action="/matna/recipe/list" method="post">
+	 	<input type="hidden" name="page" value="${pageMaker.cri.page }">
+	 	<input type="hidden" name="pageType" value="${pageType }">
+		<select name="searchKey">
+			<option value="foodName">음식명</option>
+			<option value="writer">작성자</option>
+		</select>
+		<input type="text" name="keyword"/>
+		<input type="submit" name="search" value="검색"/>
+	 </form>
 	<input type="button" value="레시피 등록" class="btn" style="max-width:100px;" 
 	onclick="openPage(0,'regist')">
 </center>

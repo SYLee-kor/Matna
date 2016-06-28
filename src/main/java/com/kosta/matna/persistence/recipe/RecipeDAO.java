@@ -31,5 +31,5 @@ public interface RecipeDAO {
 	boolean findLikes(int no, int userNo) throws Exception;
 	List<Integer> getLikeRecipies(int userNo) throws Exception;
 	
-	List<RecipeVO> readList(String pageType, int userNo, RowBounds rowBounds) throws Exception;
+	List<RecipeVO> readList(Map<String,Object> map, RowBounds rowBounds) throws Exception;
 }

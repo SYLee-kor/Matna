@@ -13,7 +13,8 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
-     $(document).mousedown(function(e){
+     
+	$(document).mousedown(function(e){
          $('.pop').each(function(){
                  if( $(this).css('display') == 'block'){
                      var l_position = $(this).offset();
@@ -36,17 +37,16 @@ $(document).ready(function() {
  });
  
 
+function goRegist() {
+	document.location.href=
+		"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
+}
 
 function showContents(no) {
 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=${pageType}&tabType=${tabType}&page=${pageMaker.cri.page}";
 	document.location.href=moveUrl;
 }
-
-$('#goRegist').click(function() {
-	document.location.href=
-		"/matna/review/regist?page=${page}&tabType=${tabType}&pageType=${pageType}";
-})
 
 function show_pop(no){
 		var bno = '#'+no;
@@ -136,7 +136,7 @@ function message(nick){
         
         <td class="comm_list_td">
 			  <div class="list_write_bt" id="reviewlist_write_bt">
-			       <a id="goRegist" style="cursor: pointer;padding-top:5px;"><span><b>글 쓰기</b></span></a>  
+			       <a onclick="goRegist()" style="cursor: pointer;padding-top:5px;"><span><b>글 쓰기</b></span></a>  
 			  </div>
         </td>
       </tr>
