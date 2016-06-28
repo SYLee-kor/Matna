@@ -42,7 +42,7 @@
 	           <div class="col-md-5 col-sm-5">
                   <div>
                      <!-- <img src="/matna/resource/images/쉑쉑.png" id="order_img"/> -->
-                     <img alt="사진1" src="/matna/resource/img/${detailItem.photo}" id="order_img">
+                     <img alt="사진1" src="/matna/resource/images/admin/item/${detailItem.photo}" id="order_img">
 		          </div>			
 		       </div>
 		       

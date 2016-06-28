@@ -134,7 +134,7 @@
    width: 100%;
    text-align: center;
 }
-select[name="menu"], #guSel, #dongSel{
+select[name="money"], #guSel, #dongSel{
    font-family: inherit;
    background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
    border: 1px solid #999; 
@@ -150,7 +150,7 @@ select[name="menu"], #guSel, #dongSel{
    display: inline-block;
 }
 </style>
-   
+
         <%--상세 검색 --%>
   <script type="text/javascript">
     $(document).ready(
@@ -195,9 +195,8 @@ select[name="menu"], #guSel, #dongSel{
                          });
                      }); 
 
-             
+                 printGu();             
              });
-    
     
     function show_popup(){
         $('.layer').show();
@@ -263,12 +262,17 @@ select[name="menu"], #guSel, #dongSel{
       
       <div class="holder" align="center">
       <p class="inputfield"><label for="menu"></label> 
-      <select name="menu" id="menu">
-              <option value="가격대">&nbsp;== 가격대  == </option>
-              <option value="5000~10000">5000~10000</option>
-              <option value="10000~20000">10000~20000</option>
-              <option value="20000~30000">20000~30000</option>
-      </select></p>
+       <select id="money" name="money">
+         <option value="==가격==">==가격==</option>
+         <option value="5천원 이하">5천원 이하</option>
+         <option value="5천원~1만원">5천원~1만원</option>
+         <option value="1만원~2만원">1만원~2만원</option>
+         <option value="2만원~3만원">2만원~3만원</option>
+         <option value="3만원~5만원">3만원~5만원</option>
+         <option value="5만원~7만원">5만원~7만원</option>
+         <option value="7만원 이상">7만원 이상</option>
+        </select>
+      </p>
       </div>
       </div>
       <!-- 바꾼부분 -->
@@ -309,9 +313,7 @@ select[name="menu"], #guSel, #dongSel{
     </div>
     </form>
   <!-- title end -->
-  <script type="text/javascript">
-  printGu();
-  </script>
+  
      <div class="site-header">
       <div class="main-navigation">
          
