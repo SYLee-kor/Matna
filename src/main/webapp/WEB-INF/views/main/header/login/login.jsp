@@ -110,9 +110,11 @@ $(document).ready(function() {
   </table>        
   <br>        
   
+  <!-- 메세지이미지 추가 -->
   <input class="logout" type="submit" id="logout"  name="logout" value="logout">
   <a onclick="mypage()"><img src="/matna/resource/img/mypage.png" width="60" height="50" id="myPage"/></a>
-  <a onclick="message()"><img src="/matna/resource/images/message.png" width="60" height="50" id="msg"/></a>
+<!--   <a onclick="message()"><img src="/matna/resource/images/message1.png" width="60" height="50" id="msg"/></a>
+ -->  <a onclick="message()"><img src="/matna/resource/images/message2.PNG" width="60" height="50" id="msg"/></a>
   
   <c:if test="${userGrade == '5' || userGrade=='4' }">
   	<a onclick="admin()"><img src="/matna/resource/img/admin2.png" width="50" height="50" id="adm"/></a>
