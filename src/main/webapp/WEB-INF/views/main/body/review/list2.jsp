@@ -62,7 +62,7 @@ function showContents(no) {
 	    <tbody>
 	    <c:forEach items="${review }" var="review">
 	      <tr class="list_lists">
-	         <td style="width: 50px;padding: 0px;">10</td>
+	         <td style="width: 50px;padding: 0px;">${review.no }</td>
 	         <td style="cursor: pointer;" onclick="showContents(${review.no})">${review.photo }</td>
 	         <td><a href=# style="font-size:13px;" onclick="showContents(${review.no})">${review.title }</a>
 	           <input type="button" readonly="readonly" class="reply_num"  value="${review.replyCnt }" style="cursor: default;" >

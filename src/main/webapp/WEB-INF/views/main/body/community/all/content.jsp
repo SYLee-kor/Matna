@@ -67,7 +67,16 @@ function page_move(url) {
            <td class="comm_td"> 
                 <input type="button" readonly="readonly" value="No." class="comm_img">   ${board.no }</td>
            <td class="comm_td"> 
-                <input type="button" readonly="readonly" value="작성자" class="comm_img">  <img src="/matna/resource/img/lv${board.mGrade }.jpg"/> ${board.nickName }</td>
+                <input type="button" readonly="readonly" value="작성자" class="comm_img">  
+                <c:choose>
+                	<c:when test="${type eq 'noname'}">
+                		익명
+                	</c:when>
+                	<c:otherwise>                	
+		                <img src="/matna/resource/img/lv${board.mGrade }.jpg"/> ${board.nickName }
+                	</c:otherwise>
+                </c:choose>
+		                </td>
            <td class="comm_td"> 
                 <input type="button" readonly="readonly" value="작성일"class="comm_img">   ${board.regDate }</td>
            <td class="comm_td"> 
@@ -84,8 +93,12 @@ function page_move(url) {
          <%--버튼으로 바꿀예정!! --%>
      <div id="comm_bt">
         <a href="#" onclick="javascript:page_move('/matna/community/listPage');" class="comm_bt"><span>목록으로</span></a>
+        <c:choose>
+        <c:when test="${(userGrade > 3 || userNo == board.writer ) && isLogin == true}">
         <a href="#" onclick="javascript:page_move('/matna/community/update');" class="comm_bt"><span>수정하기</span></a>
         <a href="#" onclick="javascript:page_move('/matna/community/delete');" class="comm_bt"><span>삭제하기</span></a>
+        </c:when>
+        </c:choose>
       <!-- <input type=button value="수정" 
              onclick="javascript:page_move('/matna/community/update');">
       <input type=button value="삭제" 

@@ -30,14 +30,18 @@
 			fCreator : "createSEditor2"
 		});
 		$("#comm_submit").click(function() {
+			alert('dddddddd');
 			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			$("#frm").prop({action:'/matna/community/write'});
 			$("#frm").submit();
 		});
 	});
 	
-	function page_exit() {
-		location.href = "/matna/community/list?type="+$('#type').val();
-	}
+/* 	$("#exit").on("click", function(event) {
+		alert('ddd');
+		$("#frm").prop({action:"/matna/community/list?type="+$('#type').val()});
+		$("#frm").submit();
+	}); */
 
 </script>
 </head>
@@ -45,7 +49,7 @@
 	<br>
 	<br>
 	<div class="regdiv" style="margin-left: 17%;padding-left:50px ;margin-right: 20%;border: 1px solid #999;" >
-	<form id="frm" action="/matna/community/write" method="post">
+	<form id="frm" method="post">
 		<input type="hidden" name="type" id="type" value="${type }"/>
 		<input type="hidden" name="writer" id="writer" value="${userNo}"/>
     <h2>
@@ -70,7 +74,7 @@
 	   
         <!-- 버튼 -->
         <button id="comm_submit" name="submit" tabindex="5" style="margin-left: 79%;">등록</button>
-		<button id="exit" onclick="page_exit();">목록</button>
+		<button id="exit" onclick='javascript:document.location.href=history.back();'>목록</button>
        
     </form>
 	</div>
