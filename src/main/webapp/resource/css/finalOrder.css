@@ -70,7 +70,7 @@
   display:table-cell;
   vertical-align: middle;
   margin-top:30%;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color:#aaa;
 }
 
@@ -82,7 +82,7 @@
   margin-margin:1%;
 }
 #accordian .totals .subtitle {
-  font-size:1.7em;
+  font-size:1.2em;
   display:block;
   text-align: right;
   color:#aaa;
@@ -97,7 +97,7 @@
 #accordian .final{
   width:100%;
   float:left;
-  font-size:2em;
+  font-size:1.2em;
   text-align: left;
   color:#888;
   margin-top:1.2%;
@@ -125,7 +125,7 @@
   margin-bottom:4%;
 }
 .order_info{
-  font-size:1.5em;
+  font-size:1.2em;
   display:block;
   text-align: left;
   color:#aaa;

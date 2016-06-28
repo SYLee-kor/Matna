@@ -35,8 +35,9 @@ public class CommunityReplyController {
 	}
 	
 	@RequestMapping("/removeReply")
-	public @ResponseBody String removeReply(int no,@ModelAttribute("type") String type) throws Exception{
-		return service.removeReply(no,new BoardTypeVO(type))+"";
+	public @ResponseBody String removeReply(int bNo,int no,@ModelAttribute("type") String type) throws Exception{
+		System.out.println("bNo,No,type : " + bNo +","+ no +","+ type);
+		return service.removeReply(bNo,no,new BoardTypeVO(type))+"";
 	}
 	
 	@RequestMapping("/listReply")

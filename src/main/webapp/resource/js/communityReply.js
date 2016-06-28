@@ -93,6 +93,7 @@ var url = "/matna/communityReply";
 			url:url+"/removeReply",
 			data:{
 				type:$('#type').val(),
+				bNo:bNo,
 				no:no			// # 댓글 번호 --> primary key
 			},
 			type:"POST",
