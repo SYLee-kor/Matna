@@ -397,7 +397,7 @@ function readURL(input) {
 	function registItem() {
 		var newItem = $('[name=item]').val();
 		$('[name=item]').val('');
-		$('#itemList').prepend("<option value="+newItem+">" + newItem + "</option>");
+		$('#itemList').prepend("<option value="+newItem+" selected='selected'>" + newItem + "</option>");
 		itemCnt++;
 	}
 	

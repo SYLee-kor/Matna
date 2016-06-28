@@ -138,6 +138,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 		System.out.println("cri : " + cri);
 		return session.selectOne("review.searchTotal", cri);
 	}
+
+	@Override
+	public boolean replyCntDown(int no) throws Exception {
+		if( session.update("review.replyCntDown", no) == 1 ) return true;
+		return false;
+	}
 }
 
 
