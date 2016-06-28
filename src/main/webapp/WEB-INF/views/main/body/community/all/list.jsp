@@ -14,6 +14,39 @@
 
 </head>
 <body>
+<script type="text/javascript">
+$(document).ready(function() {
+     $(document).mousedown(function(e){
+         $('.pop').each(function(){
+                 if( $(this).css('display') == 'block'){
+                     var l_position = $(this).offset();
+                     l_position.right = parseInt(l_position.left) + ($(this).width());
+                     l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                     if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                         && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
+                     {
+                        // alert( 'popup in click' );
+                     }
+                     else
+                     {
+                         //alert( 'popup out click' );
+                         $(this).hide();
+                     }
+                 }
+             });
+         }); 
+ });
+ 
+function show_pop(no){
+	var bno = '#'+no;
+   $(bno).show();
+}
+
+function messageCo(nick){
+	window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+}
+ </script>
 
 	<%@include file="/WEB-INF/views/matnaHeader.jsp"%>
 
@@ -91,7 +124,16 @@
 									</c:when>
 						    		<c:otherwise>
 						 	   			<img src="/matna/resource/img/lv${list.mGrade }.jpg"/>
-						 	   			${list.nickName }
+						 	   			<a href="javascript:show_pop(${list.no });" style="font-size:13px;">
+         									${list.nickName }</a>
+         								<div class="pop" id="${list.no }" style="position:absolute; background-color:white; z-index:1; display:none;
+         									 width:150px; height:150px; border:3px solid #ff7359; border-radius:20px;">
+         		 							<table>
+         		 								<tr><td><a href="javascript:messageCo('${list.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
+         		 								<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${list.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
+         		 								<tr><td><a href="javascript:searchWriter('${list.nickName }')" style="font-size:13px;">게시글보기</a></td></tr>
+         					 				</table>
+         								</div>
 						    		</c:otherwise>
 								</c:choose>
 								</td>
@@ -199,6 +241,17 @@
 						+ "&type="
 						+ '${type}';
 	});
+	
+	function searchWriter(nick){
+		$('#page').val('1');
+				self.location = "list"
+						+ '${pageMaker.makeQuery(1)}'
+						+ "&searchType="
+						+ "writer"
+						+ "&keyword=" + nick
+						+ "&type="
+						+ '${type}';
+	}
 	
 	$("a[name=page]").on("click", function(event) {
 			event.preventDefault();
