@@ -227,6 +227,10 @@
 	     select count(*) no from message where receiverNo=#{receiverNo} and receiverDelete=0
 	</select>
 	
+	<select id="IsNewMessage" parameterType="int" resultType="int">
+	     select count(*) no from message where receiverNo=#{receiverNo} and state=0
+	</select>
+	
 </mapper>
 
 	<!-- <insert id="create">

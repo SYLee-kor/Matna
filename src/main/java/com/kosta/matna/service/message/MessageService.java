@@ -39,5 +39,6 @@ public interface MessageService {
 	public List<MessageVO> selectAllPage(int start, int end)throws Exception;
 	public List<MessageVO> selectSenderPage(int senderNo, int start, int end)throws Exception;
 	public List<MessageVO> selectReceiverPage(int senderNo, int start, int end)throws Exception;
-	
+
+	public int IsNewMessage(int receiverNo)throws Exception;
 }
