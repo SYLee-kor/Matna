@@ -83,9 +83,9 @@ function page_move(url) {
         
          <%--버튼으로 바꿀예정!! --%>
      <div id="comm_bt">
+        <a href="#" onclick="javascript:page_move('/matna/community/listPage');" class="comm_bt"><span>목록으로</span></a>
         <a href="#" onclick="javascript:page_move('/matna/community/update');" class="comm_bt"><span>수정하기</span></a>
         <a href="#" onclick="javascript:page_move('/matna/community/delete');" class="comm_bt"><span>삭제하기</span></a>
-        <a href="#" onclick="javascript:page_move('/matna/community/listPage');" class="comm_bt"><span>목록으로</span></a>
       <!-- <input type=button value="수정" 
              onclick="javascript:page_move('/matna/community/update');">
       <input type=button value="삭제" 
