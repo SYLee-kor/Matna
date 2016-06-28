@@ -30,7 +30,8 @@ create table precipe(
 	per number default 2
 );
 
+drop table recipeLikes;
 create table recipeLikes(
 	no number references recipe(no),
-	writer number not null
+	userno number not null
 );
