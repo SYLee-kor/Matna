@@ -128,10 +128,15 @@ public class ReviewDAOImpl implements ReviewDAO {
 	@Override
 	public List<ReviewVO> searchList(SearchKeyWord cri) throws Exception {
 		System.out.println("cri : " + cri);
-		System.out.println("pageMaker : " + cri.toStringPM());
 		System.out.println(cri.getPerPageNum());
 		System.out.println(cri.getPageStart());
-		return session.selectList("review.search", cri, new RowBounds(cri.getStartPage(),cri.getPerPageNum()));
+		return session.selectList("review.search", cri, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
+	}
+
+	@Override
+	public int searchListTotal(SearchKeyWord cri) throws Exception {
+		System.out.println("cri : " + cri);
+		return session.selectOne("review.searchTotal", cri);
 	}
 }
 

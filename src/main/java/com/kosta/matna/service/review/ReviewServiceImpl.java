@@ -104,5 +104,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> searchList(SearchKeyWord cri) throws Exception {
 		return dao.searchList(cri);
 	}
+	@Override
+	public int searchListTotal(SearchKeyWord cri) throws Exception{
+		return dao.searchListTotal(cri);
+	}
 
 }

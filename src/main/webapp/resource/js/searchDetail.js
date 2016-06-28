@@ -11,7 +11,7 @@
 				gu += '</select>';
 /*				$('#guSpan').html(gu);*/
 				$('#guSel').html(gu);
-				if('${preview.gu}'.length!=0) $('[name=gu]').val('${preview.gu}');
+				/*if('${preview.gu}'.length!=0) $('[name=gu]').val('${preview.gu}');*/
 				printDong();
 			},
 			error:function(xhr,status,error){
@@ -32,7 +32,7 @@
 				}
 				dong += '</select>';
 				$('#dongSel').html(dong);
-				if('${preview.dong}'.length!=0) $('[name=dong]').val('${preview.dong}');
+				/*if('${preview.dong}'.length!=0) $('[name=dong]').val('${preview.dong}');*/
 			},
 			error:function(xhr,status,error){
 				alert('error : '+error);

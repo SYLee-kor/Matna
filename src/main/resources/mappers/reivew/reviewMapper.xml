@@ -121,7 +121,7 @@
 	
 	<select id="search" resultType="review">
 	<![CDATA[
-	select no,title,writer,(select nickName from member where no=writer)
+	select no,title,writer,(select grade from member where no=writer) mGrade,(select nickName from member where no=writer)
 	nickName,replycnt,photo,viewcnt,regdate,good,bad
 	from review natural join preview
 	where menu like '%'||#{rb}||'%' and
@@ -140,5 +140,25 @@
 		</when>
 	</choose>
 	order by no desc
+	</select>	
+	<select id="searchTotal" resultType="int">
+	<![CDATA[
+	select count(*)
+	from review natural join preview
+	where menu like '%'||#{rb}||'%' and
+	gu like '%'||#{gu}||'%' and	
+	dong like '%'||#{dong}||'%' and
+	price like '%'||#{money}||'%' and
+	parking like '%'||#{parking}||'%' and
+	title like '%'||#{search}||'%'
+	]]> 	
+	<choose>
+		<when test="date=='7'">
+			and regdate >= sysdate-7
+		</when>
+		<when test="date=='30'">
+			and regdate >= sysdate-30
+		</when>
+	</choose>
 	</select>	
 </mapper>
