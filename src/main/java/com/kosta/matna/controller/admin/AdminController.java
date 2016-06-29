@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
@@ -298,9 +299,13 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(@RequestParam("check") int check, 
+	public String delete(HttpServletRequest request,HttpSession session,@RequestParam("check") int check, 
 			RedirectAttributes attr)throws Exception{
 		int memberNo = check;
+		
+		String defaultPath = request.getSession().getServletContext().getRealPath("/");
+	       String root = defaultPath + "resource" + File.separator + "user" + File.separator + session.getAttribute("userNo")+ File.separator;
+		   deleteDirectory(new File(root));
 		
 		if(memberService.selectNo(memberNo).getGrade()==5){
 			attr.addFlashAttribute("msg","undelete");
@@ -312,6 +317,22 @@ public class AdminController {
 		attr.addFlashAttribute("msg","SUCCESS");
 		return "redirect:/admin/memberList";
 	}
+	
+	public static boolean deleteDirectory(File path) {
+        if(!path.exists()) {
+            return false;
+        }
+         
+        File[] files = path.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                deleteDirectory(file);
+            } else {
+                file.delete();
+            }
+        }
+        return path.delete();
+    }
 	
 	@RequestMapping("/toUpdateForm")
 	public String toUpdateForm(@RequestParam("check") int check, Model model)throws Exception{

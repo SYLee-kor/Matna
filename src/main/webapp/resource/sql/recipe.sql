@@ -1,5 +1,6 @@
 drop table precipe;
 drop table recipe;
+drop table recipeLikes;
 
 drop sequence recipe_seq;
 create sequence recipe_seq
@@ -30,7 +31,6 @@ create table precipe(
 	per number default 2
 );
 
-drop table recipeLikes;
 create table recipeLikes(
 	no number references recipe(no) on delete cascade,
 	userno number not null
