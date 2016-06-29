@@ -179,7 +179,7 @@ function showContents(no) {
 	else if('${pageType}'=='ranking') showPage_ranking('${tabType}','${page}'); // # 
 	
 	// # 삽입 , 수정, 삭제 후 결과 출력.
-	if('${result}'=='success') alert('처리되었습니다.');
+	/* if('${result}'=='success') alert('처리되었습니다.'); */
 	// # 글등록 버튼을 누르면 이동
 	$('#goRegist').click(function() {
 		document.location.href=
