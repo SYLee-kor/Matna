@@ -376,7 +376,7 @@ select[name="money"], #guSel, #dongSel{
                            </button>
                            <ul class="dropdown-menu">
                               <li class="dropdown dropdown-submenu">
-                              <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
+                              <a>메뉴</a>
                                  <ul id="submenu" class="dropdown-menu">
                                     <li><a href="/matna/review/list?tabType=food&pageType=review">식사</a></li>
                                     <li><a href="/matna/review/list?tabType=desert&pageType=review">디저트</a></li>
