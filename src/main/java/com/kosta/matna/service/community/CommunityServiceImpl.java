@@ -11,16 +11,22 @@ import com.kosta.matna.domain.community.BoardVO;
 import com.kosta.matna.domain.community.Criteria;
 import com.kosta.matna.domain.community.SearchVO;
 import com.kosta.matna.persistence.community.CommunityDAO;
+import com.kosta.matna.persistence.member.MemberDAO;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
 	
 	@Inject
 	private CommunityDAO dao;
+	
+	@Inject
+	private MemberDAO mdao;
 
 	@Override
 	public void regist(BoardVO board) throws Exception {
 		dao.create(board);
+		mdao.updateAllPoint(board.getWriter(), 10);
+		mdao.updatePoint(board.getWriter(), 10);
 	}
 
 	@Override
