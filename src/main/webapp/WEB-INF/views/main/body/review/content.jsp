@@ -61,8 +61,8 @@
 	
 	function deleteReview() {
 		var reviewForm = $('#reviewForm');
-		reviewForm.attr("action",'/matna/review/remove');
 		reviewForm.attr("method",'POST');
+		reviewForm.attr("action",'/matna/review/remove');
 		reviewForm.submit();
 	}
 	
@@ -163,8 +163,8 @@
       &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
         <c:if test="${ userNo == review.writer }">
       
-      <input id="reviewup" type="button" value="수정" onclick="updateReview('${review.no}');">
-      <input id="reviewdel" type="button" value="삭제" onclick="deleteReview(${review.no},'${pageType }')"> 
+      <input id="reviewup" type="button" value="수정" onclick="updateReview()">
+      <input id="reviewdel" type="button" value="삭제" onclick="deleteReview()"> 
       </c:if>
       <input id="reviewli" type="button" value="목록" 
       onclick='javascript:document.location.href=history.back();'>

@@ -48,7 +48,7 @@ public class MatnaValidator {
 				errMsgs.put("e_nickname", "닉네임은 한글,영문,숫자 조합으로 2~8 글자 이어야 합니다.");
 			if( mVO.getBirth()==null || !mVO.getBirth().matches("[0-9]{6}"))
 				errMsgs.put("e_birth", "생년월일은 6자리 숫자로만 입력가능합니다.");
-			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9]{0,12}[@][a-zA-Z]{1,8}[.][a-zA-Z]{1,5}"))
+			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9!@#$%^&*()_+-=]{0,12}[@][a-zA-Z]{1,8}[.][a-zA-Z]{1,5}"))
 				errMsgs.put("e_email", "이메일은 영문, 숫자의 조합으로 반드시 @를 포함해야 합니다. 예시) matna@kosta.com");
 			if( mVO.getPhone()==null || !mVO.getPhone().matches("[0-9]{9,12}"))
 				errMsgs.put("e_phone", "연락처는 9~12 자리의 숫자만 입력가능 합니다. 예시)02-213-3535");

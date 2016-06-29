@@ -52,8 +52,8 @@ create table review_reply(
 );
 
 create table gbCheck(
-	rNo number references review(no),
-	userNo number references member(no),
+	rNo number references review(no) on delete cascade,
+	userNo number references member(no) on delete cascade,
 	gbType varchar2(5)
 );
 

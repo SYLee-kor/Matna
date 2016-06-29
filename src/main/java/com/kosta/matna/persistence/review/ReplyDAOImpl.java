@@ -47,7 +47,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 	
 	@Override
 	public boolean removeAllReply(int no) throws Exception {
-		if ( session.delete(nameSpc+"removeAll", no) == 1 ) return true;
+		if ( session.delete(nameSpc+"removeAll", no) >= 0 ) return true;
 		return false;
 	}
 }

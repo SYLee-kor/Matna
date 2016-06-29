@@ -189,6 +189,7 @@ public class ReviewController {
 	@RequestMapping(value="remove", method=RequestMethod.POST)
 	public String removeReview(int no, RedirectAttributes rttr
 			, String pageType, String tabType,  String page){
+		System.out.println("ReviewController_remove("+no+")");
 		try {
 			if(service.removeReview(no))
 			rttr.addFlashAttribute("result", "success");
