@@ -69,6 +69,13 @@ a{
 </style>
 
 <h1 style="width: 71%;margin-left: 14%;">Recipe</h1>
+<span include="form-input-select2()" style="margin-left: 70%;margin-bottom:1.5%;margin-top: 0.5%;">
+            <select required name="searchType" id="pageSel">  <!-- name -->
+               <option value="recipe" selected="selected">최신순</option>
+                 <option value="ranking">좋아요순</option>
+                 <option value="myRecipe">My레시피</option>
+            </select>
+    </span>
 
 <!-- Content Start - Just for visualization -->
 <div id="content">
