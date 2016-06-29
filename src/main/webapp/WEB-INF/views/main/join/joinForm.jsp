@@ -152,8 +152,8 @@
 			<input type="hidden" name="duplicated" id="duplicated"/>
 			<fieldset>
 				<div>
-					아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *5글자이상
-					<input type="text" id="id"	name="id" placeholder="ID" class="tf1" maxlength="15" path="id"/>
+					아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" id="id"	name="id" placeholder="ID" class="tf1" maxlength="15" path="id"/>&nbsp;&nbsp;&nbsp;&nbsp;*5글자이상
 					<input type="button" id="confirmid"	name="confirmid" value="중복확인" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_id }</font>
