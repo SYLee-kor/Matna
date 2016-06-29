@@ -11,6 +11,7 @@ import com.kosta.matna.domain.community.BoardTypeVO;
 import com.kosta.matna.domain.community.ReplyVO;
 import com.kosta.matna.persistence.community.CommunityDAO;
 import com.kosta.matna.persistence.community.CommunityReplyDAO;
+import com.kosta.matna.persistence.member.MemberDAO;
 
 @Service
 public class CommunityReplyServiceImpl implements CommunityReplyService {
@@ -21,9 +22,16 @@ public class CommunityReplyServiceImpl implements CommunityReplyService {
 	@Inject
 	CommunityDAO cdao;
 	
+	@Inject
+	MemberDAO mdao;
+	
 	@Override
 	public boolean addReply(ReplyVO vo,BoardTypeVO type) throws Exception {
-		if( dao.addReply(vo) && cdao.replyCnt(vo.getbNo(),type) ) return true;
+		if( dao.addReply(vo) && cdao.replyCnt(vo.getbNo(),type) ){
+			mdao.updatePoint(vo.getWriter(), 1);
+			mdao.updateAllPoint(vo.getWriter(), 1);
+			return true;
+		}
 		return false;
 	}
 

@@ -210,6 +210,7 @@ select[name="money"], #guSel, #dongSel{
 <!-- title start -->
     <form action="/matna/main/review/list" method="post">  
     <input type="hidden" name="reviewType" id="reviewType" value="search"/>       
+    <input type="hidden" name="writerR" id="writerR" value=""/>       
      <div class="container">
        <div class="row">
            <div class="col-md-4 col-sm-4">

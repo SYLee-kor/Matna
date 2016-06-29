@@ -137,6 +137,10 @@
 	parking like '%'||#{parking}||'%' and
 	title like '%'||#{search}||'%'
 	]]> 	
+	<if test="writerR != ''">
+    and writer = (select no from member where nickname=#{writerR})
+    </if>
+<!-- 	and writer like '%'|| (select no from member where nickname=#{writerR}) ||'%' -->
 	<choose>
 		<when test="date=='7'">
 			and regdate >= sysdate-7
@@ -158,6 +162,10 @@
 	parking like '%'||#{parking}||'%' and
 	title like '%'||#{search}||'%'
 	]]> 	
+	<if test="writerR != ''">
+    and writer = (select no from member where nickname=#{writerR})
+    </if>
+<!-- 	and writer like '%'|| (select no from member where nickname=#{writerR}) ||'%' -->
 	<choose>
 		<when test="date=='7'">
 			and regdate >= sysdate-7

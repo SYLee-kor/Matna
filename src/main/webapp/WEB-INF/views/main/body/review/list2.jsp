@@ -39,6 +39,12 @@ $(document).ready(function() {
              });
          }); 
  });
+ 
+/* $("#searchWriter").on("click", function(event) {
+	$("#dataForm").prop({action:"/matna/main/review/list"}); 
+$("#dataForm").submit();
+}); */
+
 
 function show_pop(no){
 	var bno = '#'+no;
@@ -49,6 +55,11 @@ function message(nick){
 window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 }
 
+function searchWriter(writerR){
+	$("#writerR2").val(writerR);
+	$('#page').val('1');
+	$("#dataForm").submit();
+}
 
 // ================= 페이지 이동 함수 =================	
 function movePage(page) {
@@ -62,7 +73,7 @@ function showContents(no) {
 	document.location.href=moveUrl;
 }
 </script>
- <form id="dataForm" action="/matna/main/review/list" method="get">
+ <form id="dataForm" action="/matna/main/review/list" method="post">
  <input type="hidden" name="rb" id="rb" value="${cri.rb }"/>
  <input type="hidden" name="gu" id="gu" value="${cri.gu }"/>
  <input type="hidden" name="dong" id="dong" value="${cri.dong }"/>
@@ -71,6 +82,7 @@ function showContents(no) {
  <input type="hidden" name="date" id="date" value="${cri.date }"/>
  <input type="hidden" name="search" id="search" value="${cri.search }"/>
  <input type="hidden" name="reviewType" id="reviewType" value="${cri.reviewType }"/>
+ <input type="hidden" name="writerR" id="writerR2" value="${cri.writerR }"/>
  <input type="hidden" name="page" id="page" value=""/>
  </form>
  <div class="col-md-1 col-sm-1"></div>
@@ -110,7 +122,7 @@ function showContents(no) {
          		 <table>
          		 	<tr><td><a href="javascript:message('${review.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
          		 	<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${review.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
-         		 	<tr><td><a href="#" style="font-size:13px;">게시글보기</a></td></tr>
+         		 	<tr><td><a href="javascript:searchWriter('${review.nickName }')" id="searchWriter" style="font-size:13px;">게시글보기</a></td></tr>
          		 </table>
          	</div>
 	         </td>
