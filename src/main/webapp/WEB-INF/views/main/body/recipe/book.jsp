@@ -474,7 +474,7 @@ function readURL(input) {
 								<input type="button" id="delete" value="  삭제  "
 									onclick="upDel('remove')">
 									</c:if>
-								<input type="button" id="cancel" value="  닫기  ">
+								<!-- <input type="button" id="cancel" value="  닫기  "> -->
 								</c:if>
 							</center>
 						</div>
