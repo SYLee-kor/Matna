@@ -66,7 +66,7 @@ public class ReviewController {
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+"id='review_photo'>";
 //			 width=\"150\" height=\"90\"
-			photo = (imgTag.equals("")) ? "포토" : photo;
+			photo = (imgTag.equals("")) ? "<img src='/matna/resource/images/matnaLogo.png id='review_photo'>" : photo;
 			review.setPhoto(photo);
 			
 			// # 주소값 입력안했을 경우...
