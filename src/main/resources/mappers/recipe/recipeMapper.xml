@@ -72,7 +72,7 @@
 	</select>
 	
 	<select id="selectOne" resultType="recipe">
-		select no,title,content,writer,(select nickName from member where no=writer) nickName,
+		select (select grade from member where no=writer) mGrade,no,title,content,writer,(select nickName from member where no=writer) nickName,
 			regdate,replyCnt,viewCnt,photo , likes, ingredient,price,time,difficulty,per,foodName
 		from recipe natural join precipe 
 		where no=#{no}
