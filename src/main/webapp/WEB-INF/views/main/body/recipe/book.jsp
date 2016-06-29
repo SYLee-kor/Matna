@@ -468,11 +468,13 @@ function readURL(input) {
 								</p>
 								<c:if test="${action == 'read' }">
 								<!-- 버튼 -->
+								<c:if test="${(recipe.writer == userNo && isLogin == true ) || userGrade > 3}">
 								<input type="button" id="modify" value="  수정  "
 									onclick="upDel('modify')">
 								<input type="button" id="delete" value="  삭제  "
 									onclick="upDel('remove')">
-								<input type="button" id="cancel" value="  닫기  ">
+									</c:if>
+								<!-- <input type="button" id="cancel" value="  닫기  "> -->
 								</c:if>
 							</center>
 						</div>

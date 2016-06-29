@@ -30,7 +30,6 @@
 			fCreator : "createSEditor2"
 		});
 		$("#comm_submit").click(function() {
-			alert('dddddddd');
 			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
 			$("#frm").prop({action:'/matna/community/write'});
 			$("#frm").submit();

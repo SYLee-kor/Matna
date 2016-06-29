@@ -19,7 +19,16 @@ public class RecipeVO {
 	private int per;
 	private String foodName;
 	private int likes;
+	private int mGrade;
 	
+	
+	
+	public int getmGrade() {
+		return mGrade;
+	}
+	public void setmGrade(int mGrade) {
+		this.mGrade = mGrade;
+	}
 	public int getLikes() {
 		return likes;
 	}

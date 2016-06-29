@@ -53,7 +53,7 @@
 	</select>
 	
 	<select id="selectList" resultType="review">
-		select no,substr(title,1,15) title,writer,(select nickName from member where no=writer) nickName,
+		select no,substr(title,1,20) title,writer,(select nickName from member where no=writer) nickName,
 		(select grade from member where no=writer) mGrade, replycnt,photo,viewcnt
 		,regdate,good,bad
 		from review natural join preview
