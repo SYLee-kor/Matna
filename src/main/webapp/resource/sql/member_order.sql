@@ -1,9 +1,9 @@
 drop table member_order;
 create table member_order(
 	ono number primary key,
-	giver number references member (no),
-	taker number references member (no),
-	item number references item(ino),
+	giver number references member (no) on delete cascade,
+	taker number references member (no) on delete cascade,
+	item number references item(ino) on delete cascade,
 	cnt number default 1,
 	orderDate Date default sysdate,
 	state number default 0,
