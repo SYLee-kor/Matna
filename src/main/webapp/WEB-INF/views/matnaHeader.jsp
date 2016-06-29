@@ -242,7 +242,7 @@ select[name="money"], #guSel, #dongSel{
       
       <!-- 바꾼부분 -->
       <div class="selectH" style="position:relative;z-index:2;">
-      <div class="holder" align="center" id="guSel">
+      <div class="holder" align="center" id="guSel" style="padding-right: 10px;">
       <!--   <span id="guSpan"></span> -->
    <!-- <select class="select">
         <option value="구" ></option>
@@ -261,7 +261,6 @@ select[name="money"], #guSel, #dongSel{
         <option value="여의도동"></option>
       </select> -->
       </div>
-      
       <div class="holder" align="center">
       <p class="inputfield"><label for="menu"></label> 
        <select id="money" name="money">
