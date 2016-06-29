@@ -108,10 +108,10 @@
 				<td>
 				 <p id ='one' style="margin-left: 50px">
 	    <label class="fa fa-user fa-2x"></label>
-	    <label class="preview_la">&nbsp; 작성자:</label>
+	    <label class="preview_la">&nbsp;&nbsp;&nbsp; 작성자:</label>
 	                  &nbsp;&nbsp;<b>${review.nickName }</b></br>
 	    <label class="fa fa-hand-o-up fa-2x" ></label>
-	    <label class="preview_la">&nbsp; 조회수:</label>
+	    <label class="preview_la">&nbsp;&nbsp;&nbsp; 조회수:</label>
 	                  &nbsp;&nbsp;<b>${review.viewCnt }</b></br>
 	    <label class="fa fa-truck fa-2x"></label>
 	    <label class="preview_la">&nbsp; 주차장여부:</label>
@@ -120,14 +120,17 @@
 	    <label class="preview_la">&nbsp; 1인비용:</label>
 	                  &nbsp;&nbsp;<b>${preview.price }</b></br> 
 	    <label class="fa fa-cutlery fa-2x"></label>
-	    <label class="preview_la">&nbsp; 추천메뉴:</label>
+	    <label class="preview_la">&nbsp;&nbsp;&nbsp; 추천메뉴:</label>
 	                  &nbsp;&nbsp;<b>${preview.recommend }</b></br> 
 	    <label class="fa fa-star fa-2x"></label>
-	    <label class="preview_la">&nbsp; 평점:</label>
+	    <label class="preview_la">&nbsp;&nbsp; 평점:</label>
 	                  &nbsp;&nbsp;<font color="orange">${score }</font></br> 
 	    <label class="fa fa-phone fa-2x"></label>
-	    <label class="preview_la">&nbsp; 연락처:</label>
+	    <label class="preview_la">&nbsp;&nbsp;&nbsp; 연락처:</label>
 	                  &nbsp;&nbsp;<b>${preview.phone }</b></br>
+	    <label class="fa fa-map-marker fa-2x"></label>
+	    <label class="preview_la">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 위치:</label>
+	                  &nbsp;&nbsp;<b>${preview.gu } ${preview.dong }</b></br>
      </p>
 				</td>
 				<td>

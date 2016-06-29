@@ -91,7 +91,7 @@
             <a href="#"><img alt="arrow_up" src="/struts/images/arrow2_2.PNG"></a> -->
            		<c:if test="${detailItem.state!=3}">
            		<span><a href="javascript:buyCountChange(-1)" name="buyDown"><img alt="arrow_down" src="/matna/resource/images/arrow1_2.PNG" ></a></span>
-           		<span><input type="text" id="amount" value="1" name="buyCount" style="width: 40px;height: 30px;text-align: center;font-size: 20px;"></span> 
+           		<span><input type="text" id="amount" value="1" name="buyCount" style="width: 40px;height: 30px;text-align: center;font-size: 20px;" readonly="readonly"></span> 
 				<span><a href="javascript:buyCountChange(1)" name="buyUp"><img alt="arrow_up" src="/matna/resource/images/arrow1_1.PNG"></a></span>
 					<!-- <input type="button" value="-" name="buyDown" onclick="buyCountChange(-1)">
 					<input type="text" value="1" name="buyCount" >
