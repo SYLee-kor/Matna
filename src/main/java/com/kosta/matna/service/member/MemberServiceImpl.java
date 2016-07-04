@@ -119,5 +119,10 @@ public class MemberServiceImpl implements MemberService {
 		public boolean updateGrade(int userNo, int grade) throws Exception {
 			return memberDAO.updateGrade(userNo, grade);
 		}
+
+		@Override
+		public boolean duplEmail(String email) throws Exception {
+			return memberDAO.duplEmail(email);
+		}
 	
 }
