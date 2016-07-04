@@ -54,7 +54,8 @@ function show_pop(no){
     }
     
 function message(nick){
-    window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+    window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank",
+    		"location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 }
 
 function searchWriter(writerR){
@@ -85,7 +86,7 @@ function searchWriter(writerR){
       <tr class="list_lists">
          <td style="width: 50px;padding: 0px;">${review.no}</td>
          <td style="cursor: pointer;" onclick="showContents(${review.no})">${review.photo }</td>
-         <td><a href=# style="font-size:13px;" onclick="showContents(${review.no})"><![CDATA[${review.title }]]></a>
+         <td><a href=# style="font-size:13px;" onclick="showContents(${review.no})">${review.title }</a>
            <input type="button" readonly="readonly" class="reply_num"  value="${review.replyCnt }" style="cursor: default;" >
          </td> 
          <td style="text-align: left;">
