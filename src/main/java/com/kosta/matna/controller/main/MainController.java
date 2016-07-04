@@ -26,7 +26,7 @@ public class MainController {
 	String uploadPath;
 	
 	@RequestMapping("/list") //관리자 발송전 주문취소 
-	public String list(Model model, @ModelAttribute("cri") SearchKeyWord cri) throws Exception{
+	public String list(Model model, @ModelAttribute(value="cri") SearchKeyWord cri) throws Exception{
 		System.out.println("전체 검색");
 		logger.info("전체 리뷰 검색 .."+cri);
 		PageMaker maker = new PageMaker(cri, service.searchListTotal(cri));
