@@ -44,7 +44,7 @@
    
    <update id="update" parameterType="member">
        update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone}, nickname=#{nickname},
-                         post=#{post},addr=#{addr},point=#{point},grade=#{grade}
+                         post=#{post},addr=#{addr}
 	    where id=#{id} 
    </update>
    
