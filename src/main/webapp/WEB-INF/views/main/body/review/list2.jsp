@@ -58,22 +58,26 @@ window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","locatio
 function searchWriter(writerR){
 	$("#writerR2").val(writerR);
 	$('#page').val('1');
+	$("#dataForm").prop({action:'/matna/main/review/list'});
 	$("#dataForm").submit();
 }
 
 // ================= 페이지 이동 함수 =================	
 function movePage(page) {
 	$('#page').val(page);
+	$("#dataForm").prop({action:'/matna/main/review/list'});
 	$('#dataForm').submit();
 }
 // ================== 글 읽기 함수 ===================
 function showContents(no) {
-	var moveUrl = "/matna/review/read?no="+no
+	$("#dataForm").prop({action:'/matna/review/read?no='+no+'&pageType=search&page=${pageMaker.cri.page}'});
+	$('#dataForm').submit();
+/* 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=search&page=${pageMaker.cri.page}";
-	document.location.href=moveUrl;
+	document.location.href=moveUrl; */
 }
 </script>
- <form id="dataForm" action="/matna/main/review/list" method="post">
+ <form id="dataForm" method="post">
  <input type="hidden" name="rb" id="rb" value="${cri.rb }"/>
  <input type="hidden" name="gu" id="gu" value="${cri.gu }"/>
  <input type="hidden" name="dong" id="dong" value="${cri.dong }"/>

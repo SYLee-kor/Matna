@@ -21,6 +21,7 @@ import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.review.ReviewService;
 import com.kosta.matna.validator.MatnaValidator;
@@ -139,7 +140,8 @@ public class ReviewController {
 	
 	@RequestMapping("read")
 	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page
+			,@ModelAttribute("cri") SearchKeyWord cri){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
@@ -188,10 +190,14 @@ public class ReviewController {
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
 	public String removeReview(int no, RedirectAttributes rttr
-			, String pageType, String tabType,  String page){
+			, String pageType, String tabType,  String page, SearchKeyWord cri){
 		System.out.println("ReviewController_remove("+no+")");
 		try {
 			if(service.removeReview(no))
+				if(cri.getReviewType().equals("search")){
+					rttr.addFlashAttribute("cri", cri);
+					return "redirect:/main/review/list";
+				}
 			rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("pageType", pageType);
 			rttr.addAttribute("tabType", tabType);
