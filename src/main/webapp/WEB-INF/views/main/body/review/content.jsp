@@ -162,13 +162,14 @@
      <div id="like_hate">
      <a href='javascript:gbCheck("good",${review.no },${userNo })'><img alt="good" src="/matna/resource/images/good_content.PNG"></a> :  
       &nbsp;&nbsp;<span id="good">${review.good }</span>  &nbsp;&nbsp;&nbsp;
-    <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><img alt="bad" src="/matna/resource/images/bad_content.PNG"></a> :
+     <a href='javascript:gbCheck("bad",${review.no },${userNo })' ><img alt="bad" src="/matna/resource/images/bad_content.PNG"></a> :
       &nbsp;&nbsp;<span id="bad">${review.bad }</span>  &nbsp;&nbsp;&nbsp;
-        <c:if test="${ userNo == review.writer }">
-      
-      <input id="reviewup" type="button" value="수정" onclick="updateReview()">
-      <input id="reviewdel" type="button" value="삭제" onclick="deleteReview()"> 
-      </c:if>
+      <c:choose>
+      	<c:when test="${(userGrade > 3 || userNo == review.writer ) && isLogin == true}">
+      		<input id="reviewup" type="button" value="수정" onclick="updateReview()">
+      		<input id="reviewdel" type="button" value="삭제" onclick="deleteReview()">
+      	</c:when>
+      </c:choose>  
       <input id="reviewli" type="button" value="목록" 
       onclick='javascript:document.location.href=history.back();'>
       <%-- 'javascript:document.location.href="/matna/review/list?tabType=${tabType}&pageType=${pageType }&page=${page }"'> --%>
