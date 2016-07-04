@@ -54,7 +54,8 @@ function show_pop(no){
     }
     
 function message(nick){
-    window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+    window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank",
+    		"location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
 }
 
 function searchWriter(writerR){

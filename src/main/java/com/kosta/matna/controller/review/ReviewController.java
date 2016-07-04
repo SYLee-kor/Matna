@@ -49,25 +49,26 @@ public class ReviewController {
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String pageType, String page, Model model){
+		// # 들어온 데이터에 대한 유효성 검사!!
 		if(!MatnaValidator.isValid(review, "ReviewVO") 
 				|| !MatnaValidator.isValid(preview, "PreviewVO")){
 			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
-			System.out.println("MatnaValidator.getErrMsgs()::::::"+MatnaValidator.getErrMsgs());
 			model.addAttribute("review", review);
 			model.addAttribute("preview", preview);
 			model.addAttribute("action", "regist");
 			return path+"regist";
 		}
-		System.out.println("Validator 통과");
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Pattern pattern = Pattern.compile(
+					"<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
 			Matcher match = pattern.matcher(review.getContent());
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+"id='review_photo'>";
 //			 width=\"150\" height=\"90\"
-			photo = (imgTag.equals("")) ? "<img src='/matna/resource/images/matnaLogo.png' id='review_photo'>" : photo;
+			photo = (imgTag.equals("")) ? 
+					"<img src='/matna/resource/images/matnaLogo.png' id='review_photo'>" : photo;
 			review.setPhoto(photo);
 			
 			// # 주소값 입력안했을 경우...

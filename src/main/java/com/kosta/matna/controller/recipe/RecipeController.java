@@ -46,8 +46,8 @@ public class RecipeController {
 	}
 
 	@RequestMapping(value="regist",method=RequestMethod.POST)
-	public @ResponseBody Map<String,Object> registrecipe(RecipeVO recipe, RedirectAttributes rttr, HttpSession session
-			, String pageType, String page, MultipartFile file){
+	public @ResponseBody Map<String,Object> registrecipe(RecipeVO recipe, RedirectAttributes rttr, 
+			HttpSession session, String pageType, String page, MultipartFile file){
 		Map<String,Object> map = new HashMap<>();
 		// # 유효성 검사
 		if( !MatnaValidator.isValid(recipe, "RecipeVO") ){
@@ -214,6 +214,7 @@ public class RecipeController {
 		String savedName = uid.toString()+"_"+photoName;
 		File target = new File(uploadPath,savedName); 
 		FileCopyUtils.copy(fileData, target);
-		return "<img src='/matna/resource/images/recipe/"+savedName+"' width='400px' height='400px' class='photo'>";
+		return "<img src='/matna/resource/images/recipe/"+savedName
+				+"' width='400px' height='400px' class='photo'>";
 	}
 }
