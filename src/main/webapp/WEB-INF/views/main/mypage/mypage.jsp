@@ -247,6 +247,8 @@ if('${errMsgs.isValid}'=='invalid'){
                <input type="hidden" name="action" id="action" value="join" />
                <input type="hidden" name="action2" id="action2" value="join" />
                <input type="hidden" name="duplicated" id="duplicated" />
+               <input type="hidden" name="point" id="point" value="${memberVO.point }" />
+               <input type="hidden" name="grade" id="grade" value="${memberVO.grade }"/>               
                   <div style="float:left;">
                      아이디:<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --> <input type="text"
                         id="id" name="id" placeholder="ID" class="tf1" maxlength="15" value="${memberVO.id}"
