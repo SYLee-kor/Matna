@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.kosta.matna.controller.admin.AdminController" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/controller/admin/AdminController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="531" width="320" x="732" y="37"/>    
+    <position height="531" width="320" x="1322" y="37"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,7 +13,7 @@
   </class>  
   <interface id="2" language="java" name="com.kosta.matna.persistence.member.MemberDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/member/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="441" width="257" x="2088" y="626"/>    
+    <position height="459" width="257" x="794" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   <class id="3" language="java" name="com.kosta.matna.persistence.member.MemberDAOImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/member/MemberDAOImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="477" width="257" x="2237" y="37"/>    
+    <position height="495" width="257" x="728" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -32,7 +32,7 @@
   </class>  
   <interface id="4" language="java" name="com.kosta.matna.persistence.message.MessageDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/message/MessageDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="513" width="305" x="105" y="626"/>    
+    <position height="513" width="305" x="2581" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -42,7 +42,7 @@
   <class id="5" language="java" name="com.kosta.matna.persistence.message.MessageDAOImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/message/MessageDAOImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="549" width="305" x="42" y="37"/>    
+    <position height="549" width="305" x="2875" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -51,7 +51,7 @@
   </class>  
   <interface id="6" language="java" name="com.kosta.matna.persistence.admin.AdminDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/admin/AdminDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="384" x="1516" y="626"/>    
+    <position height="315" width="384" x="2157" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,7 +60,7 @@
   </interface>  
   <class id="7" language="java" name="com.kosta.matna.persistence.admin.AdminDAOImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/admin/AdminDAOImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="384" x="1516" y="37"/>    
+    <position height="351" width="384" x="2451" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -69,7 +69,7 @@
   </class>  
   <interface id="8" language="java" name="com.kosta.matna.service.member.MemberService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/member/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="441" width="257" x="1219" y="626"/>    
+    <position height="459" width="257" x="1091" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -79,7 +79,7 @@
   <class id="9" language="java" name="com.kosta.matna.service.member.MemberServiceImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/member/MemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="459" width="257" x="1940" y="37"/>    
+    <position height="477" width="257" x="1025" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -88,7 +88,7 @@
   </class>  
   <interface id="10" language="java" name="com.kosta.matna.service.message.MessageService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/message/MessageService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="513" width="305" x="450" y="626"/>    
+    <position height="513" width="305" x="1812" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -98,7 +98,7 @@
   <class id="11" language="java" name="com.kosta.matna.service.message.MessageServiceImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/message/MessageServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="531" width="305" x="387" y="37"/>    
+    <position height="531" width="305" x="2106" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -107,7 +107,7 @@
   </class>  
   <interface id="12" language="java" name="com.kosta.matna.service.admin.AdminService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/admin/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="384" x="795" y="626"/>    
+    <position height="315" width="384" x="1388" y="626"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -116,82 +116,109 @@
   </interface>  
   <class id="13" language="java" name="com.kosta.matna.service.admin.AdminServiceImpl" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/admin/AdminServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="384" x="1092" y="37"/>    
+    <position height="333" width="384" x="1682" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="14">    
+  <class id="14" language="java" name="com.kosta.matna.domain.admin.AD" project="Matna" 
+    file="/Matna/src/main/java/com/kosta/matna/domain/admin/AD.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="558" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.kosta.matna.domain.admin.Email" project="Matna" 
+    file="/Matna/src/main/java/com/kosta/matna/domain/admin/Email.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="542" y="766"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.kosta.matna.domain.admin.RandomPassword" project="Matna" 
+    file="/Matna/src/main/java/com/kosta/matna/domain/admin/RandomPassword.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="567" y="105"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="17">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <realization id="15">    
+  <realization id="18">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="4"/>  
   </realization>  
-  <realization id="16">    
+  <realization id="19">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="12"/>  
   </realization>  
-  <association id="17">    
+  <association id="20">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="18" name="service"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="21" name="service"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
+  <association id="23">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="21" name="memberDAO"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+      <attribute id="24" name="memberDAO"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
+  <association id="26">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="24" name="messageDAO"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="27" name="messageDAO"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
+  <association id="29">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="27" name="messageService"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+      <attribute id="30" name="messageService"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="29">    
+  <realization id="32">    
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="6"/>  
   </realization>  
-  <association id="30">    
+  <association id="33">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="31" name="memberService"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+      <attribute id="34" name="memberService"/>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
+  <association id="36">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="34" name="dao"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
+      <attribute id="37" name="dao"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="36">    
+  <realization id="39">    
     <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="8"/>  
   </realization>  
-  <realization id="37">    
+  <realization id="40">    
     <end type="SOURCE" refId="11"/>    
     <end type="TARGET" refId="10"/>  
   </realization>  
