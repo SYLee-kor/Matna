@@ -31,4 +31,7 @@ public interface MemberService {
 	public boolean updateAllPoint(int userNo , int point)throws Exception ;
 	
 	public boolean updateGrade(int userNo , int grade)throws Exception ;
+	
+	// # 이메일 중복 검사
+	public boolean duplEmail(String email) throws Exception;
 }

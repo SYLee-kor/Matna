@@ -192,7 +192,7 @@
 				<br>
 				<div>
 					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="email"
-						name="email" maxlength="50" placeholder="Email" class="tf1" />
+						name="email" maxlength="50" placeholder="Email(중복 불가)" class="tf1" />
 						<input type="button" id="confirmEmail" name="confirmEmail" value="이메일인증" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_email }</font>
