@@ -22,7 +22,7 @@
   </class>  
   <interface id="3" language="java" name="com.kosta.matna.persistence.review.ReviewDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/review/ReviewDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="441" width="312" x="355" y="824"/>    
+    <position height="-1" width="-1" x="511" y="883"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -51,7 +51,7 @@
   </class>  
   <interface id="6" language="java" name="com.kosta.matna.persistence.member.MemberDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/member/MemberDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="459" width="257" x="1356" y="824"/>    
+    <position height="-1" width="-1" x="1483" y="871"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,7 +60,7 @@
   </interface>  
   <interface id="7" language="java" name="com.kosta.matna.service.member.MemberService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/member/MemberService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="459" width="257" x="1059" y="824"/>    
+    <position height="-1" width="-1" x="1188" y="873"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

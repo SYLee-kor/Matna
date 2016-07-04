@@ -24,7 +24,7 @@
   <interface id="3" language="java" name="com.kosta.matna.persistence.community.CommunityDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/community/CommunityDAO.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="279" width="281" x="888" y="734"/>    
+    <position height="-1" width="-1" x="1030" y="554"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,7 +44,7 @@
   <interface id="5" language="java" name="com.kosta.matna.service.community.CommunityService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/community/CommunityService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="243" width="315" x="533" y="734"/>    
+    <position height="-1" width="-1" x="684" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

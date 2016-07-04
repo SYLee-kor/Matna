@@ -107,8 +107,8 @@
   </class>  
   <interface id="12" language="java" name="com.kosta.matna.service.admin.AdminService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/admin/AdminService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="384" x="1388" y="626"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="315" width="324" x="1388" y="626"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
@@ -125,7 +125,7 @@
   </class>  
   <class id="14" language="java" name="com.kosta.matna.domain.admin.AD" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/domain/admin/AD.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="558" y="393"/>    
+    <position height="-1" width="-1" x="558" y="382"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

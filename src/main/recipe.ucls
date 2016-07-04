@@ -23,7 +23,7 @@
   </class>  
   <interface id="3" language="java" name="com.kosta.matna.persistence.recipe.RecipeDAO" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/persistence/recipe/RecipeDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="311" x="814" y="1112"/>    
+    <position height="-1" width="-1" x="963" y="882"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -32,7 +32,7 @@
   </interface>  
   <interface id="4" language="java" name="com.kosta.matna.service.recipe.RecipeService" project="Matna" 
     file="/Matna/src/main/java/com/kosta/matna/service/recipe/RecipeService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="225" width="311" x="436" y="1112"/>    
+    <position height="-1" width="-1" x="586" y="954"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
