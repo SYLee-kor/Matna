@@ -79,6 +79,7 @@ public class MypageController {
     public String modifySuccess(String confirmpass,HttpSession session,
     		RedirectAttributes attr, MemberVO member, Model model)throws Exception{
 	   logger.info("modifySuccess ฟไรป...");
+	   System.out.println("point : " + member.getPoint()+", grade : " + member.getGrade());
 	   
 	   if(!MatnaValidator.isValid(member, "MemberVO") ) { 
 			session.setAttribute("errMsgs", MatnaValidator.getErrMsgs());
