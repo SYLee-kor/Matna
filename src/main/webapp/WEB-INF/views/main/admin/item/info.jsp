@@ -80,7 +80,7 @@ $(document).ready(function(){
 		<tr>
 			<td rowspan="5" colspan="2">
 			<c:if test="${items.photo!=null}">
-				<img src="/matna/resource/img/${items.photo}" id="photo" width="300px" height="300px"><br>
+				<img src="/images/admin/item/${items.photo}" id="photo" width="300px" height="300px"><br>
 			</c:if>
 			<c:if test="${items.photo==null}">
 				<img src="" id="photo" width="300px" height="300px"><br>
