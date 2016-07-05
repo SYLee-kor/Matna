@@ -36,6 +36,30 @@ $(document).ready(function() {
          }); 
  });
  
+function gbCheck(gbType, rNo, userNo) {
+	$.ajax({
+		url : '/matna/review/gbCheck',
+		data : {
+			rNo : rNo,
+			gbType : gbType,
+			userNo : userNo
+		},
+		type : "post",
+		dataType : "json",
+		success : function(result) {
+			if (result.result) { // # 좋아요를 누르지 않은 경우
+				$('#' + result.gbType).html(result.gbNum);
+			} else { // # 이미 좋아요를 누른 경우
+				alert('좋아요 / 싫어요 는 한 리뷰당 한번만 가능합니다.');
+			}
+		},
+		error : function(xhr, status, error) {
+			alert(status.text);
+			alert(error);
+			alert(xhr);
+		}
+	})
+}
 
 function goRegist() {
    document.location.href=
@@ -103,8 +127,16 @@ function searchWriter(writerR){
             </div>
          </td>
          <td>${review.viewCnt }</td> 
-         <td><img alt="like" src="/matna/resource/images/good.PNG">${review.good }</td> 
-         <td><img alt="bad" src="/matna/resource/images/sad.PNG">${review.bad }</td>  
+         <td>
+	         <a href='javascript:gbCheck("good",${review.no },${userNo })'>
+	         	<img alt="like" src="/matna/resource/images/good.PNG">${review.good }
+	         </a>
+         </td> 
+         <td>
+         	<a href='javascript:gbCheck("bad",${review.no },${userNo })'>
+         		<img alt="bad" src="/matna/resource/images/sad.PNG">${review.bad }
+         	</a>
+         </td>  
          <td>${review.regdate }</td>
       </tr>
     </c:forEach>

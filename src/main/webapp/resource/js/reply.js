@@ -2,7 +2,6 @@
 // 기본 URL
 var url = "/matna/reviewReply";
 	function insertReply(rNo){
-		alert('${userNo');
 		if('${userNo}'==''){
 			alert('댓글을 달기 위해선 로그인을 해야합니다.');
 			return;

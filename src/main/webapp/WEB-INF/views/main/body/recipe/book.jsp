@@ -334,6 +334,34 @@ select[name="per"], select[name="difficulty"] {
 	    //alert(this.value); //선택한 이미지 경로 표시
 	    readURL(this);
 	});
+	
+	// # 좋아요 및 취소 기능
+	function likesUp(no) {
+		if( '${userNo}' == null || '${userNo}'=='') {
+			alert('로그인을 먼저 해주세요.');
+			return false;
+		}
+		$.ajax({
+			url:"/matna/recipe/likesUp",
+			type:'post',
+			data: {
+				"no":no,
+				"writer":'${userNo}'
+			},
+			success:function(result){
+				if(result){
+					var heart = $('#heart'+no);
+					if(heart.val() == 'fa fa-heart'){
+						heart.removeAttr('class');						
+						heart.attr("class","fa fa-heart-o lv")
+					}else{
+						heart.removeAttr('class');						
+						heart.attr("class","fa fa-heart")
+					}
+				}
+			}
+		})
+	}
 });// # document.ready
 	
 function readURL(input) {
@@ -443,7 +471,9 @@ function readURL(input) {
 									<p>
 									<font color="orange">조리시간</font>: <b>${recipe.time }</b> 
 									<font color="orange">양</font>: <b>${recipe.per } 인분</b> 
-									<font color="orange">좋아요</font>: <b>${recipe.likes }</b>
+									<a onclick="likesUp(${recipe.no})">
+										<font color="orange">좋아요</font>: <b>${recipe.likes }</b>
+									</a>
 									</p>
 								</c:if>
 							</center>
