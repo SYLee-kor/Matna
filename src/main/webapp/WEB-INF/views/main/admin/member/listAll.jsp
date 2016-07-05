@@ -26,7 +26,6 @@
 	});
 	
 	function showPage(page,nickname) {
-		alert("dd");
 		document.location.href='/matna/admin/memberList?page='+page+'&nickname='+nickname;
 	}
 </script>
