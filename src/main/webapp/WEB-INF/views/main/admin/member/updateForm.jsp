@@ -71,19 +71,6 @@
 				</div>
 				<br>
 				<div>
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="password" maxlength="15" name="confirmpass" placeholder="Password 확인"
-						class="tf1" />
-				</div>
-				<div>
-				<html:messages id="msg" property="errPass2">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;
-					<font color="red"><bean:write name="msg" /><br></font>
-				</html:messages>
-				</div>
-				<br>
-				<div>
 					이름:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 						type="text" maxlength="30" name="name" placeholder="이름" class="tf1" value="${memberVO.name}" />
 					<label class="la" style="margin-left: 20px">*공백없이 입력</label>
