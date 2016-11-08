@@ -34,11 +34,17 @@ public class ADController {
 	private AdService service;
 	String uploadPath;
 	
-	@RequestMapping(value="/change", method = RequestMethod.POST) //°ü¸®ÀÚ ¹ß¼ÛÀü ÁÖ¹®Ãë¼Ò 
-	public String setAD(Model model, int no) throws Exception{
-		
+	@RequestMapping(value="/change", method = RequestMethod.POST) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ 
+	public String setAD(Model model, int no, HttpSession session) throws Exception{
 		
 			AD ad = service.selectView(no);
+
+			// # adê°€ nullì¼ ê²½ìš° ì²˜ë¦¬..
+			if( ad == null ) {
+				// # ë“±ë¡ëœ ê´‘ê³ ê°€ ì—†ìœ¼ë¯€ë¡œ ì„ì˜ì˜ ê°’ ì„¤ì •..
+				ad = new AD(0, "", "ê´‘ê³  ì—†ìŒ", "ê´‘ê³ ë¥¼ ë“±ë¡í•´ì£¼ì„¸ìš”.", "");
+			}
+				
 			model.addAttribute("total", service.total());
 			model.addAttribute("AD",ad);
 		
@@ -46,7 +52,7 @@ public class ADController {
 		return "main/header/ad/setAD";
 	}
 	
-	@RequestMapping("/list") //°ü¸®ÀÚ ¹ß¼ÛÀü ÁÖ¹®Ãë¼Ò 
+	@RequestMapping("/list") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¼ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ 
 	public String list(Model model, SearchKeyWord cri) throws Exception{
 		model.addAttribute("ad", service.selectList(cri));
 		PageMaker maker = new PageMaker();
@@ -80,19 +86,19 @@ public class ADController {
 
 		try {
 			String imgName = file.getOriginalFilename();
-			System.out.println("»çÁø°ª: "+imgName);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+imgName);
 			
 			if(imgName.equals("")){
 				service.insertAD(ad);
 			}else{
 				if(!new File(uploadPath).exists()){
 					new File(uploadPath).mkdir();
-					System.out.println("Æú´õ»ı¼º");
+					System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 				}
 				String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 				ad.setPhoto(savedName);
-			//System.out.println("»çÁø ¿ø·¡ÀÌ¸§ : "+file.getOriginalFilename()); È®ÀåÀÚÃ³¸® ¾ÈÇÔ/jpg,png,gif
-			//System.out.println("»çÁø È®ÀåÀÚ¸í: "+fileName.substring(fileName.lastIndexOf(".")+1));
+			//System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ : "+file.getOriginalFilename()); È®ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/jpg,png,gif
+			//System.out.println("ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ú¸ï¿½: "+fileName.substring(fileName.lastIndexOf(".")+1));
 				service.insertAD(ad);
 			}
 		} catch (IOException e) {
@@ -113,7 +119,7 @@ public class ADController {
 		
 		try {
 			String imgName = file.getOriginalFilename();
-			System.out.println("»çÁø°ª: "+imgName);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+imgName);
 			
 			if(imgName.equals("")){
 				service.updateAD(ad);
@@ -136,14 +142,14 @@ public class ADController {
 	public @ResponseBody void delete(HttpSession session,int no)throws Exception{
 		
 		if(new File(session.getServletContext().getRealPath("/resource/images/admin/ad/")+service.select(no).getPhoto()).delete()){
-			System.out.println("»èÁ¦ ¼º°ø");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}else
-			System.out.println("»èÁ¦ ½ÇÆĞ");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		
 		service.deleteAD(no);
 	}
 	
-	private String uploadFile(String photoName, byte[] fileData)throws Exception{ //»óÇ° UID_»óÇ°¸í »ı¼º
+	private String uploadFile(String photoName, byte[] fileData)throws Exception{ //ï¿½ï¿½Ç° UID_ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
 		UUID uid=UUID.randomUUID();
 		String savedName = uid.toString()+"_"+photoName;
