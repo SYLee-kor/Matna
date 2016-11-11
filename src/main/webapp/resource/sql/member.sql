@@ -29,6 +29,9 @@ create table member(
 	allpoint number default 0
 );
 
+insert into member values(member_seq.nextval,'admin','admin','황은지','관리자','920504',
+'여','admin@naver.com',01039344540,'12345','인천',200000,sysdate,5,200000);
+
 drop sequence member_seq;
 create sequence member_seq
      start with 1

@@ -1,4 +1,4 @@
-drop table gbCheck;
+drop table reviewGB;
 drop table preview;
 drop table review_reply;
 drop table review;
@@ -59,7 +59,7 @@ create table gbCheck(
 
 drop table matnaAddr;
 create table matnaAddr
-as (select ds_gugun,ds_dong from ds_zip where ds_sido='¼­¿ï');
+as (select ds_gugun,ds_dong from ds_zip where ds_sido='ï¿½ï¿½ï¿½ï¿½');
  
 alter table matnaAddr
 rename column ds_gugun to gu;
