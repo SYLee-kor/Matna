@@ -109,21 +109,19 @@
 <body>
 	<h1 style="width: 70%; margin-left: 15%; margin-top: 2%;">Review게시판</h1>
 	<form name="reviewForm" id="reviewForm" class="reviewF">
-		<input type="hidden" name="no" value="${review.no }" /> <input
-			type="hidden" name="page" value="${page }" /> <input type="hidden"
-			name="pageType" value="${pageType }" /> <input type="hidden"
-			name="tabType" value="${tabType }" /> <input type="hidden" name="rb"
-			id="rb" value="${cri.rb }" /> <input type="hidden" name="gu" id="gu"
-			value="${cri.gu }" /> <input type="hidden" name="dong" id="dong"
-			value="${cri.dong }" /> <input type="hidden" name="money" id="money"
-			value="${cri.money }" /> <input type="hidden" name="parking"
-			id="parking" value="${cri.parking }" /> <input type="hidden"
-			name="date" id="date" value="${cri.date }" /> <input type="hidden"
-			name="search" id="search" value="${cri.search }" /> <input
-			type="hidden" name="reviewType" id="reviewType"
-			value="${cri.reviewType }" /> <input type="hidden" name="writerR"
-			id="writerR2" value="${cri.writerR }" /> <input type="hidden"
-			name="page" id="page" value="" />
+		<input type="hidden" name="no" value="${review.no }" /> 
+		<input type="hidden" name="page" id="page" value="${page }" /> 
+		<input type="hidden" name="pageType" value="${pageType }" /> 
+		<input type="hidden" name="tabType" value="${tabType }" /> 
+		<input type="hidden" name="rb" id="rb" value="${cri.rb }" /> 
+		<input type="hidden" name="gu" id="gu" value="${cri.gu }" /> 
+		<input type="hidden" name="dong" id="dong" value="${cri.dong }" /> 
+		<input type="hidden" name="money" id="money" value="${cri.money }" /> 
+		<input type="hidden" name="parking" id="parking" value="${cri.parking }" /> 
+		<input type="hidden" name="date" id="date" value="${cri.date }" /> 
+		<input type="hidden" name="search" id="search" value="${cri.search }" /> 
+		<input type="hidden" name="reviewType" id="reviewType" value="${cri.reviewType }" /> 
+		<input type="hidden" name="writerR" id="writerR2" value="${cri.writerR }" /> 
 
 		<div id="preview">
 			<table>
