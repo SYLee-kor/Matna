@@ -64,7 +64,7 @@ var url = "/matna/communityReply";
 		upSpan.append(upDiv);
 		upDiv.show();
 		// # 업데이트 폼 데이터 세팅
-		$('#replyContent_up').val(upContent);
+		$('#replyContent_up').html(upContent);
 	}
 	
 	function hideReplyForm() {
