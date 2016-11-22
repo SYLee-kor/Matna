@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=d57f90536554e1d1025bdf0836b0ed4f&libraries=services"></script>
-<script type="text/javascript" src="/matna/resource/js/daumMap.js"></script>
+
 <script src="/matna/resource/jqplot/jquery.jqplot.min.js"/></script>
 <script type="text/javascript" src="/matna/resource/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
 <script type="text/javascript">

@@ -27,6 +27,9 @@ var url = "/matna/reviewReply";
 	}
 	
 	function listReply(no,replyPage) {
+		// # 먼저 수정 폼을 숨겨준 후에 리스트 호출..!
+		hideReplyForm();
+		
 		$.ajax({
 			url:url+"/listReply",
 			data:{
@@ -79,7 +82,6 @@ var url = "/matna/reviewReply";
 			type:"POST",
 			dataType:"json",
 			success:function(result){
-				hideReplyForm();
 				listReply(rNo,replyPage)
 			}
 		})
@@ -94,7 +96,6 @@ var url = "/matna/reviewReply";
 			type:"POST",
 			dataType:"json",
 			success:function(result){
-				hideReplyForm();
 				listReply(rNo,replyPage);
 			}
 		})
