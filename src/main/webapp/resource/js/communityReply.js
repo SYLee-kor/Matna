@@ -1,11 +1,14 @@
 
 // 기본 URL
 var url = "/matna/communityReply";
-	function insertReply(bNo){
-		/*if(login!='success'){
+	function insertReply(bNo,userNo){
+		if(userNo==''){
 			alert('댓글을 달기 위해선 로그인을 해야합니다.');
 			return;
-		}*/
+		}else if($('#replyContent').val() == ''){
+			alert('댓글을 입력해주세요.');
+			return;
+		}
 		$.ajax({
 			url:"/matna/communityReply/addReply",
 			data:{

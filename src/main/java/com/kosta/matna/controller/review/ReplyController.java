@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.domain.review.ReplyVO;
+import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.service.review.ReplyService;
 
 @RequestMapping("/reviewReply")
@@ -23,11 +24,19 @@ public class ReplyController {
 	@RequestMapping("/addReply")
 	public @ResponseBody String addReply(ReplyVO vo) throws Exception{
 		System.out.println("ReplyVO "+vo.getContent());
+		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
+		ReplyVO rVo = vo;
+		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
+		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
 		return service.addReply(vo)+"";
 	}
 	
 	@RequestMapping("/modifyReply")
 	public @ResponseBody String modifyReply(ReplyVO vo) throws Exception{
+		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
+		ReplyVO rVo = vo;
+		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
+		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
 		return service.modifyReply(vo)+"";
 	}
 	

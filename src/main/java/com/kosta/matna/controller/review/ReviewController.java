@@ -58,6 +58,7 @@ public class ReviewController {
 			model.addAttribute("action", "regist");
 			return path+"regist";
 		}
+		
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			Pattern pattern = Pattern.compile(
@@ -117,6 +118,7 @@ public class ReviewController {
 			model.addAttribute("action", "modify");
 			return path+"regist";
 		}
+		
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
 			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");

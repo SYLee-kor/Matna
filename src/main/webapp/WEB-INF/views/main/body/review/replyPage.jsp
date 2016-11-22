@@ -7,7 +7,7 @@
 		 <h4 style="font-weight: 500; font-size: 20px;">댓글쓰기</h4>
    <input type="hidden" name="replyWriter" size="10" value="${userNo }" id="replyWriter">
    <textarea rows="3" cols="50" name="replyContent" tabindex="0" id="replyContent"></textarea>
-   <input type="button" value="등록" onclick="insertReply(${review.no})" id="comment"><br>
+   <input type="button" value="등록" onclick="insertReply(${review.no},'${userNo }')" id="comment"><br>
 		
 		<%-- 
 		<h4 style="font-weight: 500; font-size: 25px;">댓글쓰기</h4>

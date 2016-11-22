@@ -18,16 +18,8 @@
 		}
 		listReply('${review.no}');
 
-		var man = $
-		{
-			mcount
-		}
-		;
-		var woman = $
-		{
-			wcount
-		}
-		;
+		var man = ${mcount};
+		var woman = ${wcount};
 
 		$.jqplot('graph', [ [ [ '남자', man ], [ '여자', woman ] ] ], {
 			seriesDefaults : {

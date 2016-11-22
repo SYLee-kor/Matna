@@ -26,11 +26,21 @@ public class CommunityReplyController {
 	@RequestMapping("/addReply")
 	public @ResponseBody String addReply(ReplyVO vo,@ModelAttribute("type") String type) throws Exception{
 		System.out.println("ReplyVO "+vo.getbNo()+","+vo.getType()+","+vo.getWriter()+",");
+		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
+		ReplyVO rVo = vo;
+		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
+		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
+		
 		return service.addReply(vo,new BoardTypeVO(type))+"";
 	}
 	
 	@RequestMapping("/modifyReply")
 	public @ResponseBody String modifyReply(ReplyVO vo) throws Exception{
+		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
+		ReplyVO rVo = vo;
+		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
+		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
+		
 		return service.modifyReply(vo)+"";
 	}
 	

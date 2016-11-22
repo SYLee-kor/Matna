@@ -61,7 +61,7 @@
        <p id="inputfield"><label for="review_title">제목</label>
        <input type="text" id="review_title" name="title" value="${board.title }"
               required tabindex="4" style="margin-bottom: 10px;"/> </p>
-  
+  		 <font color="red" face="bold">${errMsgs.e_title }</font> 
        <!--SmartEditor입력란 -->
    
        <textarea cols="100" rows="35" name="content"

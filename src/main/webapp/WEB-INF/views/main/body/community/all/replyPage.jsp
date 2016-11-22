@@ -8,7 +8,7 @@
    <input type="hidden" name="replyWriter" size="10" value="${userNo }" id="replyWriter">
    <input type="hidden" name="type" id="type" value="${type }" />
    <textarea rows="3" cols="50" name="replyContent" tabindex="0" id="replyContent"></textarea>
-   <input type="button" value="등록" onclick="insertReply(${board.no})" id="comment"><br>
+   <input type="button" value="등록" onclick="insertReply(${board.no},'${userNo }')" id="comment"><br>
 </div>
 <div id="replyList"  align="left"></div>
 <div id="replyUpDiv" style="display:none">

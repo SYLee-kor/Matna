@@ -155,9 +155,10 @@ $(function(){
       <p class="inputfield"><label for="gudong">구 & 동  & 상세주소</label> 
       <span id="guSpan"></span>
       <span id="dongSpan"></span>
-      <br> ${errMsgs.e_gu }  ${errMsgs.e_dong }
+      <br> <font color="red" face="bold">${errMsgs.e_gu }  ${errMsgs.e_dong }</font>
       <input type="text" id="addr" name="addr" required tabindex="4"
                 style="margin-bottom: 10px;margin-left: 15.5%;" placeholder="상세주소입력란">
+      <font color="red" face="bold">${errMsgs.e_addr }</font> 
       </p>
   
       <!--주차장여부 입력란 -->

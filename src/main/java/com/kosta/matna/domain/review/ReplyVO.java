@@ -10,6 +10,20 @@ public class ReplyVO {
 	private String content;
 	private Date regDate;
 	
+	public ReplyVO() {
+	}
+	
+	public ReplyVO(int no, int rNo, int writer, String nickName, String content, Date regDate) {
+		super();
+		this.no = no;
+		this.rNo = rNo;
+		this.writer = writer;
+		this.nickName = nickName;
+		this.content = content;
+		this.regDate = regDate;
+	}
+
+
 	public int getNo() {
 		return no;
 	}

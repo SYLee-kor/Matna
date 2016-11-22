@@ -21,7 +21,9 @@ import com.kosta.matna.domain.community.BoardVO;
 import com.kosta.matna.domain.community.Criteria;
 import com.kosta.matna.domain.community.PageMaker;
 import com.kosta.matna.domain.community.SearchVO;
+import com.kosta.matna.domain.review.ReviewVO;
 import com.kosta.matna.service.community.CommunityService;
+import com.kosta.matna.validator.MatnaValidator;
 
 
 @Controller
@@ -98,9 +100,16 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(BoardVO board,RedirectAttributes attr) throws Exception{
+	public String writePOST(BoardVO board,RedirectAttributes attr,Model model) throws Exception{
 		logger.info("register POST요청...");	
 		logger.info("BoardVO::"+ board);
+		if(!MatnaValidator.isValid(board, "BoardVO") ){
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("board", board);
+			model.addAttribute("type", board.getType());
+			return "main/body/community/all/write";
+		}
+		
 		service.regist(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
@@ -115,9 +124,16 @@ public class CommunityController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(BoardVO board,RedirectAttributes attr,@ModelAttribute("cri") SearchVO cri) throws Exception{
+	public String modify(Model model, BoardVO board,RedirectAttributes attr,@ModelAttribute("cri") SearchVO cri) throws Exception{
 		logger.info("update POST요청...");	
 		logger.info("BoardVO::"+ board);
+		if(!MatnaValidator.isValid(board, "BoardVO") ){
+			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
+			model.addAttribute("board", board);
+			model.addAttribute("type", board.getType());
+			return "main/body/community/all/update";
+		}
+		
 		service.modify(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
