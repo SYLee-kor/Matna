@@ -18,4 +18,4 @@ nocycle
 nocache;
 
 insert into ITEM (ino,name,price,amount,state,regdate,content,photo) values
-(Item_seq.nextval,'»óÇ°¸í',1000,10,1,sysdate,'¼³¸í','»çÁø');
+(Item_seq.nextval,'ï¿½ï¿½Ç°ï¿½ï¿½',1000,10,1,sysdate,'ï¿½ï¿½ï¿½ï¿½','ï¿½ï¿½ï¿½ï¿½');

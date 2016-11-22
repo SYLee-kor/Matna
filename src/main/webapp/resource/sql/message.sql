@@ -10,7 +10,7 @@ select no,senderNo,receiverNo, title,content,sendDate,state,
 		(select nickname from member where no=senderNo) senderNickname,
 		 sendDelete,receiverDelete
 		from message
-		where content like '%¿¡¶ó%' order by no desc;
+		where content like '%ï¿½ï¿½ï¿½ï¿½%' order by no desc;
 
 select sendDate from message where (sysdate-sendDate)>2;
 delete from message where (sysdate-sendDate)>2;
@@ -82,5 +82,5 @@ select no,senderNo,receiverNo, title,content,sendDate,state,
 				(select nickname from member where no=senderNo) senderNickname,
 		 		sendDelete,receiverDelete 
 			     from message order by no desc)
-			where senderNo=2 and sendDelete=0 and title like '%¿¬%' )
+			where senderNo=2 and sendDelete=0 and title like '%ï¿½ï¿½%' )
 		where rn between 1 and 10

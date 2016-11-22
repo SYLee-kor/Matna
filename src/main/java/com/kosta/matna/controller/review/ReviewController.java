@@ -100,6 +100,7 @@ public class ReviewController {
 			model.addAttribute("page", page);
 			model.addAttribute("pageType", pageType);
 			model.addAttribute("tabType",tabType);
+			System.out.println("Modify GET_page: "+page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -136,6 +137,7 @@ public class ReviewController {
 			rttr.addAttribute("tabType", preview.getMenu());
 			rttr.addAttribute("pageType",pageType);
 			rttr.addAttribute("page",page);
+			System.out.println("Modify POST_page: "+page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -220,7 +222,7 @@ public class ReviewController {
 	@RequestMapping("list") 
 	public String listReview(Model model, String pageType
 			, String tabType, String page){
-		System.out.println("list 실행");
+		System.out.println("list 실행 page : "+page);
 		int nowPage = ( page==null || page.trim().equals("")) ? 1 : Integer.parseInt(page);
 		tabType = ( tabType == null || tabType.trim().equals("")) ? "food" : tabType;
 		pageType = ( pageType == null || pageType.trim().equals("")) ? "review" : pageType;

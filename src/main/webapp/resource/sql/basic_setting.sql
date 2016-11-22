@@ -4,7 +4,7 @@
 drop table matnaAddr;
 
 create table matnaAddr
-as (select ds_gugun,ds_dong from ds_zip where ds_sido='서울시');
+as (select ds_gugun,ds_dong from ds_zip where ds_sido='서울');
  
 alter table matnaAddr
 rename column ds_gugun to gu;
