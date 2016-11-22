@@ -76,7 +76,6 @@
 		reviewForm.attr("action", '/matna/review/modify');
 		reviewForm.submit();
 	}
-	alert('리뷰컨텐트 페이지 : ${page}');
 </script>
 </head>
 <!-- 주차 여부 체크 -->

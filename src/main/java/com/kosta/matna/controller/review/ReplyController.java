@@ -25,18 +25,24 @@ public class ReplyController {
 	public @ResponseBody String addReply(ReplyVO vo) throws Exception{
 		System.out.println("ReplyVO "+vo.getContent());
 		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
-		ReplyVO rVo = vo;
-		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
-		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
+		vo.setContent(vo.getContent().replace("&", "&amp;"));
+		vo.setContent(vo.getContent().replace("<", "&lt;"));
+		vo.setContent(vo.getContent().replace(">", "&gt;"));
+		vo.setContent(vo.getContent().replace("'", "&#39;"));
+		vo.setContent(vo.getContent().replace("(", "&#40;"));
+		vo.setContent(vo.getContent().replace(")", "&#41;"));
 		return service.addReply(vo)+"";
 	}
 	
 	@RequestMapping("/modifyReply")
 	public @ResponseBody String modifyReply(ReplyVO vo) throws Exception{
 		// # 내용에 특수문자를 허용하기 위해 > 또는 < 를 다른 문자로 변경!
-		ReplyVO rVo = vo;
-		rVo.setContent(rVo.getContent().replace("<", "&lt;"));
-		rVo.setContent(rVo.getContent().replace(">", "&gt;"));
+		vo.setContent(vo.getContent().replace("&", "&amp;"));
+		vo.setContent(vo.getContent().replace("<", "&lt;"));
+		vo.setContent(vo.getContent().replace(">", "&gt;"));
+		vo.setContent(vo.getContent().replace("'", "&#39;"));
+		vo.setContent(vo.getContent().replace("(", "&#40;"));
+		vo.setContent(vo.getContent().replace(")", "&#41;"));
 		return service.modifyReply(vo)+"";
 	}
 	

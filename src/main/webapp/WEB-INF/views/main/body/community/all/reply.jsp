@@ -10,10 +10,10 @@
 <font size="2" style="color: gray">${reply.regDate }</font> &nbsp;
 </font> &nbsp;
 <c:if test="${userNo eq reply.writer}">
-<input type="button" value="수정" class="reply_bt"  onclick="upReplyForm(${reply.no},'${reply.content }',${replyMaker.cri.page })"> 
+<input type="button" value="수정" class="reply_bt"  onclick="upReplyForm(${reply.no},${replyMaker.cri.page })"> 
 <input type="button" value="삭제" class="reply_bt"  onclick="deleteReply(${reply.no},${reply.bNo },${replyMaker.cri.page })">
 </c:if>
-<pre style="width: 50%;margin-left: 18%;"><span style="color: #555555;">${reply.content }</span></pre>
+<pre style="width: 50%;margin-left: 18%;"><span style="color: #555555;" id="repCont${reply.no }">${reply.content }</span></pre>
 <hr style="border: 0.2% solid #dddddd;width: 64%;margin-left: 17%;margin-top: 1%;">
 <span id="reply${reply.no }"></span>	
 </c:forEach>
