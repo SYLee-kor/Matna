@@ -210,6 +210,7 @@ select[name="money"], #guSel, #dongSel{
 <!-- title start -->
     <form action="/matna/main/review/list" method="post">  
     <input type="hidden" name="reviewType" id="reviewType" value="search"/>       
+    <input type="hidden" name="writerR" id="writerR" value=""/>       
      <div class="container">
        <div class="row">
            <div class="col-md-4 col-sm-4">
@@ -241,7 +242,7 @@ select[name="money"], #guSel, #dongSel{
       
       <!-- 바꾼부분 -->
       <div class="selectH" style="position:relative;z-index:2;">
-      <div class="holder" align="center" id="guSel">
+      <div class="holder" align="center" id="guSel" style="padding-right: 10px;">
       <!--   <span id="guSpan"></span> -->
    <!-- <select class="select">
         <option value="구" ></option>
@@ -260,7 +261,6 @@ select[name="money"], #guSel, #dongSel{
         <option value="여의도동"></option>
       </select> -->
       </div>
-      
       <div class="holder" align="center">
       <p class="inputfield"><label for="menu"></label> 
        <select id="money" name="money">
@@ -376,7 +376,7 @@ select[name="money"], #guSel, #dongSel{
                            </button>
                            <ul class="dropdown-menu">
                               <li class="dropdown dropdown-submenu">
-                              <a class="dropdown-toggle" data-toggle="dropdown">메뉴</a>
+                              <a>메뉴</a>
                                  <ul id="submenu" class="dropdown-menu">
                                     <li><a href="/matna/review/list?tabType=food&pageType=review">식사</a></li>
                                     <li><a href="/matna/review/list?tabType=desert&pageType=review">디저트</a></li>

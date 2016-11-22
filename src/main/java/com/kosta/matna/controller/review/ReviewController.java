@@ -21,6 +21,7 @@ import com.kosta.matna.domain.review.Criteria;
 import com.kosta.matna.domain.review.PageMaker;
 import com.kosta.matna.domain.review.PreviewVO;
 import com.kosta.matna.domain.review.ReviewVO;
+import com.kosta.matna.domain.review.SearchKeyWord;
 import com.kosta.matna.service.member.MemberService;
 import com.kosta.matna.service.review.ReviewService;
 import com.kosta.matna.validator.MatnaValidator;
@@ -48,25 +49,26 @@ public class ReviewController {
 	@RequestMapping(value="regist",method=RequestMethod.POST)
 	public String registReview(ReviewVO review, PreviewVO preview, RedirectAttributes rttr
 			, String pageType, String page, Model model){
+		// # 들어온 데이터에 대한 유효성 검사!!
 		if(!MatnaValidator.isValid(review, "ReviewVO") 
 				|| !MatnaValidator.isValid(preview, "PreviewVO")){
 			model.addAttribute("errMsgs", MatnaValidator.getErrMsgs());
-			System.out.println("MatnaValidator.getErrMsgs()::::::"+MatnaValidator.getErrMsgs());
 			model.addAttribute("review", review);
 			model.addAttribute("preview", preview);
 			model.addAttribute("action", "regist");
 			return path+"regist";
 		}
-		System.out.println("Validator 통과");
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
-			Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
+			Pattern pattern = Pattern.compile(
+					"<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*title=[\"']?([^>\"']+)[\"']?[^>]*");
 			Matcher match = pattern.matcher(review.getContent());
 			String imgTag = "";
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+"id='review_photo'>";
 //			 width=\"150\" height=\"90\"
-			photo = (imgTag.equals("")) ? "포토" : photo;
+			photo = (imgTag.equals("")) ? 
+					"<img src='/matna/resource/images/matnaLogo.png' id='review_photo'>" : photo;
 			review.setPhoto(photo);
 			
 			// # 주소값 입력안했을 경우...
@@ -96,6 +98,7 @@ public class ReviewController {
 			model.addAttribute("page", page);
 			model.addAttribute("pageType", pageType);
 			model.addAttribute("tabType",tabType);
+			System.out.println("Modify GET_page: "+page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -122,7 +125,7 @@ public class ReviewController {
 			if (match.find())imgTag = match.group(0);
 			String photo = imgTag+"id='review_photo'>";
 //			 width=\"150\" height=\"90\"
-			photo = (imgTag.equals("")) ? "포토" : photo;
+			photo = (imgTag.equals("")) ? "<img src='/matna/resource/images/matnaLogo.png' id='review_photo'>" : photo;
 			review.setPhoto(photo);
 			
 			if(service.modifyReview(review, preview))
@@ -130,6 +133,7 @@ public class ReviewController {
 			rttr.addAttribute("tabType", preview.getMenu());
 			rttr.addAttribute("pageType",pageType);
 			rttr.addAttribute("page",page);
+			System.out.println("Modify POST_page: "+page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
@@ -139,7 +143,8 @@ public class ReviewController {
 	
 	@RequestMapping("read")
 	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page){
+			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page
+			,@ModelAttribute("cri") SearchKeyWord cri){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
@@ -188,9 +193,14 @@ public class ReviewController {
 	
 	@RequestMapping(value="remove", method=RequestMethod.POST)
 	public String removeReview(int no, RedirectAttributes rttr
-			, String pageType, String tabType,  String page){
+			, String pageType, String tabType,  String page, SearchKeyWord cri){
+		System.out.println("ReviewController_remove("+no+")");
 		try {
 			if(service.removeReview(no))
+				if(cri.getReviewType().equals("search")){
+					rttr.addFlashAttribute("cri", cri);
+					return "redirect:/main/review/list";
+				}
 			rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("pageType", pageType);
 			rttr.addAttribute("tabType", tabType);
@@ -205,7 +215,7 @@ public class ReviewController {
 	@RequestMapping("list") 
 	public String listReview(Model model, String pageType
 			, String tabType, String page){
-		System.out.println("list 실행");
+		System.out.println("list 실행 page : "+page);
 		int nowPage = ( page==null || page.trim().equals("")) ? 1 : Integer.parseInt(page);
 		tabType = ( tabType == null || tabType.trim().equals("")) ? "food" : tabType;
 		pageType = ( pageType == null || pageType.trim().equals("")) ? "review" : pageType;

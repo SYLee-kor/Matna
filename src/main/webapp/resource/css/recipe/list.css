@@ -10,7 +10,7 @@
   list-style-type: none;
 }
 body {
-  color:#FFF;
+  //color:#FFF;
   background:url('http://subtlepatterns.com/patterns/gplaypattern.png');
 }
 h3 {
@@ -156,4 +156,23 @@ a:active {text-decoration:underline;} */
     -webkit-transform: scale(1.0);
     opacity: 1.0;
   }
+}
+
+#recipe_bt{
+	max-width:100px;
+	margin-bottom: 10px;
+	margin-left: 60px;
+	border-radius:5px;
+	border-color: #ff7359;
+	background:  #ff7359;
+	color: white; 
+	width:80px;
+	height: 45px;
+	font-weight: 400;
+	font-size: 13px;
+}
+#recipe_bt:HOVER {
+	border-color: #ff9380;
+	background: #ff9380;
+	color: white; 
 }

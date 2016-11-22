@@ -38,9 +38,9 @@
 			<mapping path="/**/buy"/>
 			<mapping path="/**/itembuy"/>
 			<mapping path="/**/gift"/>
-			<mapping path="/mypage/**"/>
 			<mapping path="/message/**"/>
 			<mapping path="/admin/**"/>
+			<mapping path="/reviewReply/addReply"/>
 			<exclude-mapping path="/admin/AD/**"/>
 			<beans:ref bean="LoginInterceptor"/>
 		</interceptor>

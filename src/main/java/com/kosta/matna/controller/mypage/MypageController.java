@@ -1,5 +1,6 @@
 package com.kosta.matna.controller.mypage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.RowBounds;
@@ -77,6 +79,7 @@ public class MypageController {
     public String modifySuccess(String confirmpass,HttpSession session,
     		RedirectAttributes attr, MemberVO member, Model model)throws Exception{
 	   logger.info("modifySuccess 요청...");
+	   System.out.println("point : " + member.getPoint()+", grade : " + member.getGrade());
 	   
 	   if(!MatnaValidator.isValid(member, "MemberVO") ) { 
 			session.setAttribute("errMsgs", MatnaValidator.getErrMsgs());
@@ -101,8 +104,13 @@ public class MypageController {
     }
 	
 	@RequestMapping(value="withdraw" , method=RequestMethod.POST)//회원가입폼
-    public String withdraw(HttpSession session, Model model, RedirectAttributes attr)throws Exception{
+    public String withdraw(HttpServletRequest request,HttpSession session, Model model, RedirectAttributes attr)throws Exception{
 	   logger.info("회원탈퇴 요청..");
+	   
+	   String defaultPath = request.getSession().getServletContext().getRealPath("/");
+       String root = defaultPath + "resource" + File.separator + "user" + File.separator + session.getAttribute("userNo")+ File.separator;
+	   deleteDirectory(new File(root));
+	   
 	   
 	   ServletContext application = session.getServletContext();
 		List<Integer> loginList = (List<Integer>)application.getAttribute("loginList");
@@ -131,6 +139,23 @@ public class MypageController {
 		attr.addFlashAttribute("msg","withdraw");
 	   
 		return "redirect:/mypage";
+    }
+	
+	public static boolean deleteDirectory(File path) {
+        if(!path.exists()) {
+            return false;
+        }
+         
+        File[] files = path.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                deleteDirectory(file);
+            } else {
+                file.delete();
+            }
+        }
+         
+        return path.delete();
     }
 	
 	//-----------------------------------------마이페이지 상품리스트
@@ -178,6 +203,8 @@ public class MypageController {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	//-----------------------------------------마이페이지 상품리스트
 	

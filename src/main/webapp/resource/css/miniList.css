@@ -16,9 +16,7 @@
   background: #ffdfd9;
 }
 #review_table thead tr th { 
-  font-weight: bold;
-  padding: 12px 30px;
-  padding-left: 30px;
+  padding: 12px 20px;
   cursor: default;
 }
 

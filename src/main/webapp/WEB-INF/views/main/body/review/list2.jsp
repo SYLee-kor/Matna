@@ -16,19 +16,68 @@
 }
 </style>
 <script type="text/javascript">
+$(document).ready(function() {
+    
+	$(document).mousedown(function(e){
+         $('.pop').each(function(){
+                 if( $(this).css('display') == 'block'){
+                     var l_position = $(this).offset();
+                     l_position.right = parseInt(l_position.left) + ($(this).width());
+                     l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                     if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                         && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) )
+                     {
+                        // alert( 'popup in click' );
+                     }
+                     else
+                     {
+                         //alert( 'popup out click' );
+                         $(this).hide();
+                     }
+                 }
+             });
+         }); 
+ });
+ 
+/* $("#searchWriter").on("click", function(event) {
+	$("#dataForm").prop({action:"/matna/main/review/list"}); 
+$("#dataForm").submit();
+}); */
+
+
+function show_pop(no){
+	var bno = '#'+no;
+   $(bno).show();
+}
+
+function message(nick){
+window.open("/matna/message/listAll?toNickname="+nick+"#tab-3","_blank","location=no,toolbar=yes,scrollbars=yes,resizable=no,top=50,left=200, width=1000,height=600");
+}
+
+function searchWriter(writerR){
+	$("#writerR2").val(writerR);
+	$('#page').val('1');
+	$("#dataForm").prop({action:'/matna/main/review/list'});
+	$("#dataForm").submit();
+}
+
 // ================= 페이지 이동 함수 =================	
 function movePage(page) {
 	$('#page').val(page);
+	$("#dataForm").prop({action:'/matna/main/review/list'});
 	$('#dataForm').submit();
 }
 // ================== 글 읽기 함수 ===================
 function showContents(no) {
-	var moveUrl = "/matna/review/read?no="+no
+	$("#dataForm").prop({action:'/matna/review/read?no='+no+'&pageType=search&page=${pageMaker.cri.page}'});
+	$('#dataForm').submit();
+/* 	var moveUrl = "/matna/review/read?no="+no
 			+"&pageType=search&page=${pageMaker.cri.page}";
-	document.location.href=moveUrl;
+	document.location.href=moveUrl; */
 }
 </script>
- <form id="dataForm" action="/matna/main/review/list" method="get">
+ <form id="dataForm" method="post">
  <input type="hidden" name="rb" id="rb" value="${cri.rb }"/>
  <input type="hidden" name="gu" id="gu" value="${cri.gu }"/>
  <input type="hidden" name="dong" id="dong" value="${cri.dong }"/>
@@ -37,6 +86,7 @@ function showContents(no) {
  <input type="hidden" name="date" id="date" value="${cri.date }"/>
  <input type="hidden" name="search" id="search" value="${cri.search }"/>
  <input type="hidden" name="reviewType" id="reviewType" value="${cri.reviewType }"/>
+ <input type="hidden" name="writerR" id="writerR2" value="${cri.writerR }"/>
  <input type="hidden" name="page" id="page" value=""/>
  </form>
  <div class="col-md-1 col-sm-1"></div>
@@ -69,7 +119,16 @@ function showContents(no) {
 	         </td> 
 	         <td>
 	         	<img src="/matna/resource/img/lv${review.mGrade }.jpg"/>
-	         	${review.nickName }
+	         	<a href="javascript:show_pop(${review.no });" style="font-size:13px;">
+         	${review.nickName }</a>
+         	<div align="center" class="pop" id="${review.no }" style="position:absolute; background-color:white; z-index:1; display:none;
+         		 width:150px; height:150px; border:3px solid #ff7359; border-radius:20px;">
+         		 <table style="margin-top: 3px;" align="center">
+         		 	<tr><td><a href="javascript:message('${review.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
+         		 	<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${review.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
+         		 	<tr><td><a href="javascript:searchWriter('${review.nickName }')" id="searchWriter" style="font-size:13px;">게시글보기</a></td></tr>
+         		 </table>
+         	</div>
 	         </td>
 	         <td>${review.viewCnt }</td> 
 	         <td><img alt="like" src="/matna/resource/images/good.PNG">${review.good }</td> 
@@ -124,7 +183,7 @@ function showContents(no) {
 	else if('${pageType}'=='ranking') showPage_ranking('${tabType}','${page}'); // # 
 	
 	// # 삽입 , 수정, 삭제 후 결과 출력.
-	if('${result}'=='success') alert('처리되었습니다.');
+	/* if('${result}'=='success') alert('처리되었습니다.'); */
 	// # 글등록 버튼을 누르면 이동
 	$('#goRegist').click(function() {
 		document.location.href=

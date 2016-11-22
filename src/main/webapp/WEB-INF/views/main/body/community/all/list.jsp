@@ -126,9 +126,9 @@ function messageCo(nick){
 						 	   			<img src="/matna/resource/img/lv${list.mGrade }.jpg"/>
 						 	   			<a href="javascript:show_pop(${list.no });" style="font-size:13px;">
          									${list.nickName }</a>
-         								<div class="pop" id="${list.no }" style="position:absolute; background-color:white; z-index:1; display:none;
+         								<div align="center" class="pop" id="${list.no }" style="position:absolute; background-color:white; z-index:1; display:none;
          									 width:150px; height:150px; border:3px solid #ff7359; border-radius:20px;">
-         		 							<table>
+         		 							<table style="margin-top: 10px;" align="center">
          		 								<tr><td><a href="javascript:messageCo('${list.nickName }')" style="font-size:13px;">쪽지보내기</a></td></tr>
          		 								<tr><td><a href="/matna/item/itemdetail?ino=1&&toNickname=${list.nickName }" style="font-size:13px;">포인트선물</a></td></tr>
          		 								<tr><td><a href="javascript:searchWriter('${list.nickName }')" style="font-size:13px;">게시글보기</a></td></tr>

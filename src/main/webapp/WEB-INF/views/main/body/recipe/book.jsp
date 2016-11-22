@@ -55,8 +55,8 @@ select[name="per"], select[name="difficulty"] {
 }
 
 .book {
-	width: 1000px;
-	height: 640px;
+	width: 1300px;
+	height: 660px;
 	border: 2px solid #dddddd;
 	-webkit-perspective: 1400px;
 	-moz-perspective: 1400px;
@@ -86,7 +86,7 @@ select[name="per"], select[name="difficulty"] {
 	width: 50%;
 	height: 100%;
 	position: absolute;
-	transform: translateX(500px) translateY(2%);
+	transform: translateX(650px) translateY(2%);
 	transform-style: preserve-3d;
 }
 
@@ -261,15 +261,40 @@ select[name="per"], select[name="difficulty"] {
 					url : '/matna/recipe/${action}',
 					type : 'post',
 					data : fData,
+					dataType:"json",
 					async : false,
 					cache : false,
 					contentType : false,
 					processData : false,
 					success : function(result) {
-						alert('성공!!'+ result);
-						if (result == 'success') {
+						var errMsgs = result.errMsgs;
+						var recipe = result.recipe;
+						
+						if (errMsgs == null) { // # 유효성 검사 통과시...
+							alert('성공!!');
 							window.opener.location.href = "/matna/recipe/list";
 							window.close();
+						}else{ // # 유효성 검사에 걸렸을 때...
+							alert('실패!! - 입력하신 데이터를 확인해 주세요.');
+							var errs = [errMsgs.e_ingredient, errMsgs.e_foodName, errMsgs.e_price,
+							            errMsgs.e_time, errMsgs.e_per, errMsgs.e_difficulty,
+							            errMsgs.e_title,errMsgs.e_content];
+							var errNames = ['ingredient','foodName','price',
+							                'time','per','difficulty',
+							                'title','content'];
+							var recipes=[recipe.ingredient, recipe.foodName, recipe.price
+							             ,recipe.time, recipe.per, recipe.difficulty,
+							             recipe.title, recipe.content];
+							for (var int = 0; int < objs.length; int++) {
+								objs[int].val( recipes[int] );
+								if(errs[int]!=null && errs[int]!='undefined'){ // # 에러메시지가 있다면...
+								alert('errs[int] : '+ errs[int]);
+									objs[int].val('');
+									objs[int].focus();
+									$('#e_'+errNames[int]).html(errs[int]);
+								}
+							}
+						
 						}
 					},
 					error : function(xhr,errorT,error) {
@@ -285,10 +310,11 @@ select[name="per"], select[name="difficulty"] {
 			})
 	});
 
-	if ('${action}' == 'modify') {
 		var objs = [ $('[name=ingredient]'),$('[name=foodName]'), $('[name=price]'),
 					 $('[name=time]'), $('[name=per]'),$('[name=difficulty]'), 
 					 $('[name=title]'),$('[name=content]') ];
+	
+	if ('${action}' == 'modify') {
 		var values = [ '${recipe.ingredient}','${recipe.foodName}', '${recipe.price}',
 					   '${recipe.time}', '${recipe.per}','${recipe.difficulty}', 
 					   '${recipe.title}','${recipe.content}' ]
@@ -308,6 +334,34 @@ select[name="per"], select[name="difficulty"] {
 	    //alert(this.value); //선택한 이미지 경로 표시
 	    readURL(this);
 	});
+	
+	// # 좋아요 및 취소 기능
+	function likesUp(no) {
+		if( '${userNo}' == null || '${userNo}'=='') {
+			alert('로그인을 먼저 해주세요.');
+			return false;
+		}
+		$.ajax({
+			url:"/matna/recipe/likesUp",
+			type:'post',
+			data: {
+				"no":no,
+				"writer":'${userNo}'
+			},
+			success:function(result){
+				if(result){
+					var heart = $('#heart'+no);
+					if(heart.val() == 'fa fa-heart'){
+						heart.removeAttr('class');						
+						heart.attr("class","fa fa-heart-o lv")
+					}else{
+						heart.removeAttr('class');						
+						heart.attr("class","fa fa-heart")
+					}
+				}
+			}
+		})
+	}
 });// # document.ready
 	
 function readURL(input) {
@@ -371,7 +425,7 @@ function readURL(input) {
 	function registItem() {
 		var newItem = $('[name=item]').val();
 		$('[name=item]').val('');
-		$('#itemList').prepend("<option value="+newItem+">" + newItem + "</option>");
+		$('#itemList').prepend("<option value="+newItem+" selected='selected'>" + newItem + "</option>");
 		itemCnt++;
 	}
 	
@@ -417,7 +471,9 @@ function readURL(input) {
 									<p>
 									<font color="orange">조리시간</font>: <b>${recipe.time }</b> 
 									<font color="orange">양</font>: <b>${recipe.per } 인분</b> 
-									<font color="orange">좋아요</font>: <b>${recipe.likes }</b>
+									<a onclick="likesUp(${recipe.no})">
+										<font color="orange">좋아요</font>: <b>${recipe.likes }</b>
+									</a>
 									</p>
 								</c:if>
 							</center>
@@ -442,11 +498,13 @@ function readURL(input) {
 								</p>
 								<c:if test="${action == 'read' }">
 								<!-- 버튼 -->
+								<c:if test="${(recipe.writer == userNo && isLogin == true ) || userGrade > 3}">
 								<input type="button" id="modify" value="  수정  "
 									onclick="upDel('modify')">
 								<input type="button" id="delete" value="  삭제  "
 									onclick="upDel('remove')">
-								<input type="button" id="cancel" value="  닫기  ">
+									</c:if>
+								<!-- <input type="button" id="cancel" value="  닫기  "> -->
 								</c:if>
 							</center>
 						</div>
@@ -465,17 +523,18 @@ function readURL(input) {
 							
 							<!-- 재료입력란 -->
 							<p class="inputfield">
-								<label for="item">재료</label>
+								<label for="item">재료</label> 
 							</p>
 							<p>
 							<c:if test="${action!='read' }">
-								재료 목록 : 
+								재료 목록 : <font color="red" size="2" id="e_ingredient"></font>
 								<select id="itemList"></select> <input type="button" value="목록 비우기" onclick="clearList()"> 
 								<br>
 								<input type="hidden" name="ingredient" /> 
 								<input type="text" class="recipetext" id="addr" 
 									name="item" required tabindex="4"
-									style="margin-bottom: 10px;" placeholder="재료입력"> 
+									style="margin-bottom: 10px;" placeholder="재료입력"> <br>
+								<font color="red" size="2" id="e_ingredient"></font>
 								<input type="button" value="등록" onclick="registItem()" id="ingr" />
 							</c:if>
 							<c:if test="${action=='read' }">
@@ -485,12 +544,13 @@ function readURL(input) {
 
 							<!-- 가격 입력란 -->
 							<p class="inputfield">
-								<label for="price">가격 </label>
+								<label for="price">가격 </label> <font color="red" size="2" id="e_ingredient"></font>
 							</p>
 							<p>
 								<c:if test="${action != 'read' }">
-									<input type="text" class="recipetext" name="price"
-										placeholder="가격을 입력해주세요."> 원
+								<input type="text" class="recipetext" name="price"
+									placeholder="가격을 입력해주세요."> 원 <br>
+								<font color="red" size="2" id="e_price"></font>
   	  							</c:if>
 								<c:if test="${action == 'read' }">${recipe.price } 원</c:if>
 							</p>
@@ -502,7 +562,8 @@ function readURL(input) {
 							<p>
 								<c:if test="${action != 'read' }">
 									<input type="text" class="recipetext" name="time"
-										placeholder="조리 시간을 분 단위로 입력해주세요."> 분
+										placeholder="조리 시간을 분 단위로 입력해주세요."> 분 
+										 <br><font color="red" size="2" id="e_time"></font>
   	 							</c:if>
 								<c:if test="${action == 'read' }">${recipe.time } 분</c:if>
 							</p>
@@ -535,6 +596,7 @@ function readURL(input) {
 										<option value="3">3인분</option>
 										<option value="4">4인분</option>
 									</select>
+								 <br><font color="red" size="2" id="e_per"></font>
 								</c:if>
 								<c:if test="${action == 'read' }">${recipe.per } 인분</c:if>
 							</p>
@@ -547,6 +609,7 @@ function readURL(input) {
 								<c:if test="${action != 'read' }">
 									<input type="text" class="recipetext" name="foodName"
 										placeholder="요리 이름을 입력해주세요.">
+									<br><font color="red" size="2" id="e_foodName"></font>
 								</c:if>
 								<c:if test="${action == 'read' }">
 					  	  			${recipe.foodName }
@@ -591,6 +654,7 @@ function readURL(input) {
 								<input type="text" class="recipetext" id="recipe_title"
 									name="title" placeholder="제목을 입력해주세요~" required tabindex="4"
 									style="margin-bottom: 10px;" />
+								<br><font color="red" size="2" id="e_title"></font>
 								<br />
 							</c:if>
 							<c:if test="${action == 'read' }">${recipe.title }</c:if>
@@ -598,8 +662,9 @@ function readURL(input) {
 								<!--SmartEditor입력란 -->
 								<textarea cols="100" rows="35" name="content"
 									id="recipe_content" style="width: 400px; height: 350px;"></textarea>
+								<br><font color="red" size="2" id="e_content"></font>
 							</c:if>
-							<c:if test="${action == 'read' }">${recipe.content }</c:if>
+							<c:if test="${action == 'read' }"><div style="height:540px ;width:560px;overflow: scroll;">${recipe.content }</div></c:if>
 							<br><br>
 							<c:if test="${action != 'read' }">
 								<!-- 버튼 -->

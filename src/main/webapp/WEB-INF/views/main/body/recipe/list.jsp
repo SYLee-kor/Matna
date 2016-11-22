@@ -40,7 +40,7 @@
 			var url = '/matna/recipe/'+action;
 		else 
 			var url = '/matna/recipe/read?no='+no+'&page=${page}&pageType=recipe';
-		window.open(url,'name','channelmode=yes,fullscreen=no,height=600pixels,width=1000pixels,left=150pixels,top=50pixels,menubar=no,status=no,titlebar=no');
+		window.open(url,'name','channelmode=yes,fullscreen=no,height=700pixels,width=1400pixels,left=50pixels,top=0pixels,menubar=no,status=no,titlebar=no');
 	}
 	
 	function showPage_recipe(page) {
@@ -67,6 +67,16 @@ a{
  cursor: pointer;
 }
 </style>
+
+<h1 style="width: 71%;margin-left: 14%;">Recipe</h1>
+<span include="form-input-select2()" style="margin-left: 70%;margin-bottom:1.5%;margin-top: 0.5%;">
+            <select required name="searchType" id="pageSel">  <!-- name -->
+               <option value="recipe" selected="selected">최신순</option>
+                 <option value="ranking">좋아요순</option>
+                 <option value="myRecipe">My레시피</option>
+            </select>
+    </span>
+
 <!-- Content Start - Just for visualization -->
 <div id="content">
   <c:forEach items="${recipeList }" var="recipe">
@@ -93,7 +103,7 @@ a{
 	<!-- ===================== paging 처리======================= -->
 <center>
 	<!-- 페이지 조회 방법 변경  -->
-	<select id="pageSel">
+	<%-- <select id="pageSel">
 		<option value="recipe">최신순</option>
 		<option value="ranking">좋아요순</option>
 		<option value="myRecipe">My레시피</option>
@@ -128,6 +138,44 @@ a{
 		<input type="submit" name="search" value="검색"/>
 	 </form>
 	<input type="button" value="레시피 등록" class="btn" style="max-width:100px;" 
-	onclick="openPage(0,'regist')">
+	onclick="openPage(0,'regist')"> --%>
+	
+	<table >
+	  <tr>
+	    <td>
+	       <ul class="pagination modal-1" id="pagination">
+			  <c:if test="${pageMaker.prev }">
+			  	<li><a class="prev" onclick="showPage_recipe(${pageMaker.beforePage})">&laquo;</a></li>
+			  </c:if>
+			  <li><a class="prev" onclick="showPage_recipe(${pageMaker.prevPage})">이전</a></li>
+			  <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" varStatus="stat">
+			 	 <c:if test="${stat.index == pageMaker.cri.page }">
+			 	 <li><a class="pageIndex active" onclick="showPage_recipe(${stat.index})">${stat.index }</a></li>
+			 	 </c:if>
+			 	 <c:if test="${stat.index != pageMaker.cri.page }">
+			 	 <li><a class="pageIndex" onclick="showPage_recipe(${stat.index})">${stat.index }</a></li>
+			 	 </c:if>
+			  </c:forEach>
+			  <li><a class="next" onclick="showPage_recipe(${pageMaker.nextPage})">다음</a></li>
+			  <c:if test="${pageMaker.next }">
+			  	<li><a class="next" onclick="showPage_recipe(${pageMaker.afterPage})">&raquo;</a></li>
+			  </c:if>
+		   </ul>
+	    </td>
+	    <td>
+	    <input type="button" value="레시피 등록" id=recipe_bt style=""  onclick="openPage(0,'regist')">
+	    </td>
+	  </tr>
+	</table>
+</center>
+
+<center>
+	   
+	<form id="pageData" action="/matna/recipe/list" method="post" class="searchform2 cf" >
+		<form class="searchform cf" >
+		    <input type="text" placeholder="맛있는 레시피를 검색해보세요~^_^" name="keyword">
+			<button value="submit" class="list_searchbt" name="search">검색</button>
+		</form>
+	</form>		
 </center>
   <%@include file="/WEB-INF/views/footer.jsp" %>

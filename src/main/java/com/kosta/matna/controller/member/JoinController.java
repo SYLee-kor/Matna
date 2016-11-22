@@ -98,6 +98,10 @@ public class JoinController {
 	
 	@RequestMapping(value="/confirmEmail",  method=RequestMethod.POST)//id 중복확인
 	public String confirmEmail(HttpSession session,Model model, String email)throws Exception{
+			if(memberService.duplEmail(email)){
+				model.addAttribute("result","이미 존재하는 이메일 주소입니다.");
+				return "main/join/confirmEmail";
+			}
 			RandomPassword Rpw = new RandomPassword();
 			String emailKey = Rpw.randomPassword(6);
 			session.setAttribute("confirmEmail", emailKey);

@@ -24,7 +24,7 @@
 			<div class="left" id="ordered">
 				<div class="products">
 					<div class="product_image" >
-						<img src="/matna/resource/img/${detailItem.photo}" id="order_img" style="width:150px;height:150px;margin-left: -10px;"/>
+						<img src="/matna/resource/images/admin/item/${detailItem.photo}" id="order_img" style="width:150px;height:150px;margin-left: -10px;"/>
 					</div>
 					<div class="product_details">
 						<span class="product_name">&nbsp;&nbsp;&nbsp;&nbsp;${detailItem.name }</span>

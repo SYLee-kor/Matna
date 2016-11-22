@@ -37,7 +37,8 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public boolean removeReply(int no) throws Exception {
-		return dao.removeReply(no);
+		if( dao.removeReply(no) && rdao.replyCntDown(no) )return true;
+		return false;
 	}
 
 	@Override

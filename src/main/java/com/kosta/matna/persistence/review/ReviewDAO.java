@@ -21,6 +21,7 @@ public interface ReviewDAO {
 	
 	boolean viewCntUp(int no) throws Exception;
 	boolean replyCntUp(int no) throws Exception;
+	boolean replyCntDown(int no) throws Exception;
 	
 	boolean deleteReview(int no) throws Exception;
 	boolean deletePreview(int no) throws Exception;

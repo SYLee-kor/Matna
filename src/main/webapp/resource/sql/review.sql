@@ -31,7 +31,7 @@ create table review(
 );
 
 create table preview(
-	no number references review(no),
+	no number references review(no) on delete cascade,
 	parking number default 0,
 	price varchar(10) not null,
 	score number not null,
@@ -45,15 +45,15 @@ create table preview(
 
 create table review_reply(
 	no number primary key,
-	rNo number references review(no),
+	rNo number references review(no) on delete cascade,
 	writer number,
 	content varchar2(300),
 	regdate date default sysdate
 );
 
 create table gbCheck(
-	rNo number references review(no),
-	userNo number references member(no),
+	rNo number references review(no) on delete cascade,
+	userNo number references member(no) on delete cascade,
 	gbType varchar2(5)
 );
 

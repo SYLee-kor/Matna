@@ -190,5 +190,11 @@ public class MemberDAOImpl implements MemberDAO{
 		if (session.update("member.updateGrade", map)>0) return true;
 		return false;
 	}
+
+	@Override
+	public boolean duplEmail(String email) throws Exception {
+		if ( (Integer)session.selectOne("member.duplEmail",email) > 0)return true;
+		return false;
+	}
 	
 }

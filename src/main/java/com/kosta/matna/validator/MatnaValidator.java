@@ -48,7 +48,7 @@ public class MatnaValidator {
 				errMsgs.put("e_nickname", "닉네임은 한글,영문,숫자 조합으로 2~8 글자 이어야 합니다.");
 			if( mVO.getBirth()==null || !mVO.getBirth().matches("[0-9]{6}"))
 				errMsgs.put("e_birth", "생년월일은 6자리 숫자로만 입력가능합니다.");
-			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9]{0,12}[@][a-zA-Z]{1,8}[.][a-zA-Z]{1,5}"))
+			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9!@#$%^&*()_+-=]{0,12}[@][a-zA-Z]{1,8}[.][a-zA-Z]{1,5}"))
 				errMsgs.put("e_email", "이메일은 영문, 숫자의 조합으로 반드시 @를 포함해야 합니다. 예시) matna@kosta.com");
 			if( mVO.getPhone()==null || !mVO.getPhone().matches("[0-9]{9,12}"))
 				errMsgs.put("e_phone", "연락처는 9~12 자리의 숫자만 입력가능 합니다. 예시)02-213-3535");
@@ -62,10 +62,17 @@ public class MatnaValidator {
 			if( isNullOrEmpty(board.getContent()) ) errMsgs.put("e_content", "내용을 입력해주세요.");
 			break;
 		
-		case "RecipeVO" : // # RecipeVO : ingredient, foodname, price, time, difficulty, per, title, content
+		case "RecipeVO" : // # RecipeVO : ingredient, foodname, price, time, title, content
 			RecipeVO recipe = (RecipeVO) vo;
 			if( isNullOrEmpty(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "재료를 입력해주세요.");
-			
+			if( isNullOrEmpty(recipe.getFoodName()) ) errMsgs.put("e_foodName", "음식명을 입력해주세요.");
+			if( isNullOrEmpty(recipe.getPrice()) || !recipe.getPrice().matches("[0-9]+") ) 
+				errMsgs.put("e_price", "가격은 숫자만 입력 가능합니다.");
+			if( isNullOrEmpty(recipe.getTime()) || !recipe.getTime().matches("[0-9]+") ) 
+				errMsgs.put("e_time", "요리시간은 숫자만 입력 가능합니다.");
+			if( isNullOrEmpty(recipe.getTitle()) ) errMsgs.put("e_title", "제목을 입력 해주세요.");
+			if( isNullOrEmpty(recipe.getContent()) ) errMsgs.put("e_content", "내용을 입력 해주세요.");
+			break;
 		}
 		
 		// @ errMsgs 맵이 빈값이 아닐떄.. ( 즉 유효성 검사에 걸린 값이 있다면 ) false 리턴.

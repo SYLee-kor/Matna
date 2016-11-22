@@ -152,8 +152,8 @@
 			<input type="hidden" name="duplicated" id="duplicated"/>
 			<fieldset>
 				<div>
-					아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type="text" id="id"	name="id" placeholder="ID" class="tf1" maxlength="15" path="id"/>
+					아이디:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" id="id"	name="id" placeholder="ID" class="tf1" maxlength="15" path="id"/>&nbsp;&nbsp;&nbsp;&nbsp;*5글자이상
 					<input type="button" id="confirmid"	name="confirmid" value="중복확인" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_id }</font>
@@ -164,7 +164,7 @@
 				<div>
 					비밀번호:&nbsp;&nbsp;&nbsp; <input type="password" name="pw" id="pw"
 						placeholder="Password" maxlength="15" class="tf1" /> <label
-						class="la" style="margin-left: 20px">*특수문자, 숫자, 영문자 혼합사용가능</label>
+						class="la" style="margin-left: 20px">*5글자이상 특수문자, 숫자, 영문자 혼합사용가능</label>
 
 				</div>
 				<font color="red" size="2">${errMsgs.e_pw }</font>
@@ -192,7 +192,7 @@
 				<br>
 				<div>
 					email:&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="email"
-						name="email" maxlength="50" placeholder="Email" class="tf1" />
+						name="email" maxlength="50" placeholder="Email(중복 불가)" class="tf1" />
 						<input type="button" id="confirmEmail" name="confirmEmail" value="이메일인증" style="margin-left: 20px" />
 				</div>
 				<font color="red" size="2">${errMsgs.e_email }</font>

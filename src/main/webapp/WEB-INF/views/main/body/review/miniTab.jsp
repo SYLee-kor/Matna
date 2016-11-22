@@ -7,6 +7,11 @@
   height: 50px;
 }
 </style>
+<script>
+	function readReview(no) {
+		document.location.href="/matna/review/read?pageType=${pageType }&no="+no;
+	}
+</script>
 <table id="review_table" cellspacing="0" cellpadding="0">
 					<thead>
 						<tr>
@@ -24,8 +29,8 @@
 					<tbody>
 						<c:forEach items="${miniList }" var="mini">
 						<tr>
-							<td>${mini.photo }</td>
-							<td><a href="/matna/review/read?pageType=${pageType }&no=${mini.no}">${mini.title }</a></td>
+							<td onclick="readReview(${mini.no})" style="cursor:pointer;">${mini.photo }</td>
+							<td onclick="readReview(${mini.no})" style="cursor:pointer;">${mini.title }</td>
 							<td>${mini.nickName }</td>
 							<c:if test="${pageType=='review' }">
 								<td>${mini.regdate }</td>

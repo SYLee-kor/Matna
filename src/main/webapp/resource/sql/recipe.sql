@@ -1,5 +1,6 @@
 drop table precipe;
 drop table recipe;
+drop table recipeLikes;
 
 drop sequence recipe_seq;
 create sequence recipe_seq
@@ -21,7 +22,7 @@ create table recipe(
 );
 
 create table precipe(
-	no number references recipe(no),
+	no number references recipe(no) on delete cascade,
 	ingredient varchar2(1000) not null,
 	foodName varchar2(30) not null,
 	price number not null,
@@ -30,8 +31,7 @@ create table precipe(
 	per number default 2
 );
 
-drop table recipeLikes;
 create table recipeLikes(
-	no number references recipe(no),
+	no number references recipe(no) on delete cascade,
 	userno number not null
 );
