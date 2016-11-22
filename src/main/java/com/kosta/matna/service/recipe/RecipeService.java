@@ -13,8 +13,8 @@ public interface RecipeService {
 	
 	boolean viewCntUp(int no) throws Exception;
 	boolean removeRecipe(int no) throws Exception;
-	List<Integer> getLikeRecipies(int userNo) throws Exception;
-	boolean likesUp(int no,int writer) throws Exception;
+	String getLikeRecipies(int userNo) throws Exception;
+	String likesUp(int no,int writer) throws Exception;
 	
 	int getTotalCount() throws Exception;
 	RecipeVO readRecipe(int no)throws Exception;

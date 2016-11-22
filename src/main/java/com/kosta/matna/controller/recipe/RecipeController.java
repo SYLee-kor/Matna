@@ -182,10 +182,10 @@ public class RecipeController {
 		List<RecipeVO> list = 
 				service.readList(map, new RowBounds(cri.getPageStart(),cri.getPerPageNum()));
 		PageMaker pageMaker = new PageMaker(cri, service.getTotalCount());
-		List<Integer> likeList = service.getLikeRecipies(userNo);
+		String likeNums = service.getLikeRecipies(userNo);
 		model.addAttribute("pageType", pageType);
 		model.addAttribute("recipeList", list);
-		model.addAttribute("likeList", likeList);
+		model.addAttribute("likeNums", likeNums);
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("searchKey", searchKey);
 		model.addAttribute("keyword", keyword);
@@ -198,14 +198,14 @@ public class RecipeController {
 	} // # list페이지로 가기 위한 메소드
 	
 	@RequestMapping(value="likesUp", method=RequestMethod.POST)
-	public @ResponseBody boolean likesUp(int no, String writer
+	public @ResponseBody String likesUp(int no, String writer
 			,Model model){
 		try {
 			int writerInt = writer ==null || writer.equals("") ? 0 : Integer.parseInt(writer);
 			return service.likesUp(no, writerInt);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return "error";
 		}
 	}
 

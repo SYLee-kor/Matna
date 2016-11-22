@@ -48,6 +48,7 @@ function gbCheck(gbType, rNo, userNo) {
 		dataType : "json",
 		success : function(result) {
 			if (result.result) { // # 좋아요를 누르지 않은 경우
+				alert(result.gbType+' : '+result.gbNum);
 				$('#' + result.gbType).html(result.gbNum);
 			} else { // # 이미 좋아요를 누른 경우
 				alert('좋아요 / 싫어요 는 한 리뷰당 한번만 가능합니다.');
@@ -129,12 +130,12 @@ function searchWriter(writerR){
          <td>${review.viewCnt }</td> 
          <td>
 	         <a href='javascript:gbCheck("good",${review.no },${userNo })'>
-	         	<img alt="like" src="/matna/resource/images/good.PNG">${review.good }
+	         	<img alt="like" src="/matna/resource/images/good.PNG"><span id="good">${review.good }</span>
 	         </a>
          </td> 
          <td>
          	<a href='javascript:gbCheck("bad",${review.no },${userNo })'>
-         		<img alt="bad" src="/matna/resource/images/sad.PNG">${review.bad }
+         		<img alt="bad" src="/matna/resource/images/sad.PNG"><span id="bad">${review.bad }</span>
          	</a>
          </td>  
          <td>${review.regdate }</td>

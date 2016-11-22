@@ -61,19 +61,25 @@ public class RecipeServiceImpl implements RecipeService {
 	}
 
 	@Override
-	public boolean likesUp(int no, int writer) throws Exception {
+	public String likesUp(int no, int writer) throws Exception {
 		if( !dao.findLikes(no, writer) ){ // # 좋아요를 한적 없을땐 하기!
-			if(dao.addLikes(no, writer) && dao.likesUp(no)) return true;
-			else return false;
+			if(dao.addLikes(no, writer) && dao.likesUp(no)) return "add_success";
+			else return "add_fail";
 		}else{ // # 이미 했다면 다시 취소!!
-			if(dao.removeLikes(no, writer) && dao.likesUp(no)) return true;
-			else return false;
+			if(dao.removeLikes(no, writer) && dao.likesUp(no)) return "remove_success";
+			else return "remove_fail";
 		}
 	}
 
 	@Override
-	public List<Integer> getLikeRecipies(int userNo) throws Exception {
-		return dao.getLikeRecipies(userNo);
+	public String getLikeRecipies(int userNo) throws Exception {
+		List<Integer> likesList = dao.getLikeRecipies(userNo);
+		String likeNums ="";
+		for (int i = 0; i < likesList.size(); i++) {
+			likeNums += likesList.get(i);
+			if( i < likesList.size()-1 ) likeNums+=",";
+		}
+		return likeNums;
 	}
 	
 	

@@ -89,8 +89,9 @@ public class ReviewController {
 	
 	@RequestMapping(value="modify",method=RequestMethod.GET)
 	public String modifyReview(int no, Model model
-			, String pageType, String tabType, String page){
+			, String pageType, String tabType, String page ){
 		try {
+			System.out.println("review_modify() GET page : "+page);
 			Object reviews[] = service.readReview(no);
 			model.addAttribute("review", (ReviewVO)reviews[0]);
 			model.addAttribute("preview", (PreviewVO)reviews[1]);
@@ -128,6 +129,7 @@ public class ReviewController {
 			photo = (imgTag.equals("")) ? "<img src='/matna/resource/images/matnaLogo.png' id='review_photo'>" : photo;
 			review.setPhoto(photo);
 			
+			System.out.println("review_modify POST page : "+page);
 			if(service.modifyReview(review, preview))
 			rttr.addFlashAttribute("result", "success");
 			rttr.addAttribute("tabType", preview.getMenu());
@@ -143,8 +145,9 @@ public class ReviewController {
 	
 	@RequestMapping("read")
 	public String readReview(int no,Model model, @ModelAttribute("pageType") String pageType
-			, @ModelAttribute("tabType") String tabType, @ModelAttribute("page") String page
-			,@ModelAttribute("cri") SearchKeyWord cri){
+			, @ModelAttribute("tabType") String tabType 
+			, @ModelAttribute("cri") SearchKeyWord cri
+			, String page ){
 		Object reviews[];
 		try {
 			reviews = service.readReview(no);
@@ -184,6 +187,8 @@ public class ReviewController {
 			model.addAttribute("wcount", wcount);
 			model.addAttribute("review",reviews[0]);
 			model.addAttribute("preview",preview);
+			page = ( page == null ) ? "1" : page;
+			model.addAttribute("page",page);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "error";
