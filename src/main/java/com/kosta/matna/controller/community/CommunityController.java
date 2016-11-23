@@ -110,6 +110,10 @@ public class CommunityController {
 			return "main/body/community/all/write";
 		}
 		
+		// # 타이틀에 특수문자중 <> 를 변환
+		board.setTitle(board.getTitle().replace("<", "&lt;"));
+		board.setTitle(board.getTitle().replace(">", "&gt;"));
+		
 		service.regist(board);
 		
 		attr.addFlashAttribute("msg", "SUCCESS");
@@ -133,6 +137,9 @@ public class CommunityController {
 			model.addAttribute("type", board.getType());
 			return "main/body/community/all/update";
 		}
+		// # 타이틀에 특수문자중 <> 를 변환
+		board.setTitle(board.getTitle().replace("<", "&lt;"));
+		board.setTitle(board.getTitle().replace(">", "&gt;"));
 		
 		service.modify(board);
 		

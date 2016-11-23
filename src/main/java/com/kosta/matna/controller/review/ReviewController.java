@@ -58,6 +58,9 @@ public class ReviewController {
 			model.addAttribute("action", "regist");
 			return path+"regist";
 		}
+		// # 타이틀에 특수문자중 <> 를 변환
+		review.setTitle(review.getTitle().replace("<", "&lt;"));
+		review.setTitle(review.getTitle().replace(">", "&gt;"));
 		
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!
@@ -119,6 +122,10 @@ public class ReviewController {
 			model.addAttribute("action", "modify");
 			return path+"regist";
 		}
+		
+		// # 타이틀에 특수문자중 <> 를 변환
+		review.setTitle(review.getTitle().replace("<", "&lt;"));
+		review.setTitle(review.getTitle().replace(">", "&gt;"));
 		
 		try {
 			// # 사진을 안 넣은 경우 디폴트 이미지 적용!!

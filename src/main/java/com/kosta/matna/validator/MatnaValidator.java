@@ -16,72 +16,72 @@ public class MatnaValidator {
 
 	public static boolean isValid(Object vo, String voName) {
 		errMsgs = new HashMap<>();
-		// # ÀÔ·Â ¹ŞÀº voName °ªÀ» ÅëÇØ À¯È¿¼º °Ë»ç ¿µ¿ªÀ» ³ª´©°í ÇØ´ç °Ë»ç ÀÛ¾÷ ½ÇÇà ÈÄ
-		// errMsgs(¿¡·¯¸Ş¼¼Áö) ¸¦ ¸®ÅÏÇØÁØ´Ù.
-		System.out.println("Validator ½ÇÇà  - "+voName);
+		// # ì…ë ¥ ë°›ì€ voName ê°’ì„ í†µí•´ ìœ íš¨ì„± ê²€ì‚¬ ì˜ì—­ì„ ë‚˜ëˆ„ê³  í•´ë‹¹ ê²€ì‚¬ ì‘ì—… ì‹¤í–‰ í›„
+		// errMsgs(ì—ëŸ¬ë©”ì„¸ì§€) ë¥¼ ë¦¬í„´í•´ì¤€ë‹¤.
+		System.out.println("Validator ì‹¤í–‰  - "+voName);
 		switch (voName) {
 		case "ReviewVO": // # ReviewVO : title, content
 			ReviewVO rVO = (ReviewVO) vo;
-			if( isNullOrEmpty(rVO.getTitle()) ) errMsgs.put("e_title","Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( hasSpecialLetters(rVO.getTitle()) ) errMsgs.put("e_title", "Æ¯¼ö¹®ÀÚ´Â »ç¿ë ºÒ°¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(rVO.getContent())) errMsgs.put("e_content", "³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if( isNullOrEmpty(rVO.getTitle()) ) errMsgs.put("e_title","ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+//			if( hasSpecialLetters(rVO.getTitle()) ) errMsgs.put("e_title", "íŠ¹ìˆ˜ë¬¸ìëŠ” ì‚¬ìš© ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(rVO.getContent())) errMsgs.put("e_content", "ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			break;
 		case "PreviewVO" : // # PreviewVO : recommend, gu, dong, addr, phone
 			PreviewVO pVO = (PreviewVO) vo;
-			if( isNullOrEmpty(pVO.getRecommend()) ) errMsgs.put("e_recommend", "ÃßÃµ ¸Ş´º¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( pVO.getGu().equals("±¸") ) errMsgs.put("e_gu", "±¸¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
-			if( pVO.getDong().equals("µ¿") ) errMsgs.put("e_dong", "µ¿À» ¼±ÅÃÇØ ÁÖ¼¼¿ä.");
-			if( !pVO.getAddr().matches("[0-9¤¡-¤¾°¡-ÆR-]+") ) errMsgs.put("e_addr", "¾Ë¸ÂÀº »ó¼¼ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( !pVO.getPhone().matches("[0-9-]+") ) errMsgs.put("e_phone", "¾Ë¸ÂÀº ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if( isNullOrEmpty(pVO.getRecommend()) ) errMsgs.put("e_recommend", "ì¶”ì²œ ë©”ë‰´ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			if( pVO.getGu().equals("êµ¬") ) errMsgs.put("e_gu", "êµ¬ë¥¼ ì„ íƒí•´ ì£¼ì„¸ìš”.");
+			if( pVO.getDong().equals("ë™") ) errMsgs.put("e_dong", "ë™ì„ ì„ íƒí•´ ì£¼ì„¸ìš”.");
+			if( !pVO.getAddr().matches("[0-9ã„±-ã…ê°€-ï¿½R-]+") ) errMsgs.put("e_addr", "ì•Œë§ì€ ìƒì„¸ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			if( !pVO.getPhone().matches("[0-9-]+") ) errMsgs.put("e_phone", "ì•Œë§ì€ ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			if( pVO.getMenu()== null || pVO.getMenu().equals("menu"))
-				errMsgs.put("e_menu", "¸Ş´º¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.");
+				errMsgs.put("e_menu", "ë©”ë‰´ë¥¼ ì„ íƒí•´ì£¼ì„¸ìš”.");
 			if( pVO.getPrice()==null || pVO.getPrice().equals("0,0"))
-				errMsgs.put("e_price", "°¡°İÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.");
+				errMsgs.put("e_price", "ê°€ê²©ì„ ì„ íƒí•´ì£¼ì„¸ìš”.");
 			break;
 		case "MemberVO" : // # MemberVO : id, pw, name, nickname, birth, email, phone, post, addr
 			MemberVO mVO = (MemberVO) vo;
 			if( mVO.getId()== null || !mVO.getId().matches("[a-zA-Z]{1}[a-zA-Z0-9]{4,9}") ) 
-				errMsgs.put("e_id", "¾ÆÀÌµğ´Â 5~10ÀÚ¸®ÀÇ ¿µ¹® ¹× ¼ıÀÚÀÇ Á¶ÇÕÀÌ¾î¾ß ÇÕ´Ï´Ù.");
+				errMsgs.put("e_id", "ì•„ì´ë””ëŠ” 5~10ìë¦¬ì˜ ì˜ë¬¸ ë° ìˆ«ìì˜ ì¡°í•©ì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
 			if( mVO.getPw()== null || !mVO.getPw().matches("[a-zA-Z0-9!@#$%^&*()]{5,10}") )
-				errMsgs.put("e_pw", "ºñ¹Ğ¹øÈ£´Â 5~10ÀÚ¸®ÀÇ ¿µ¹®,¼ıÀÚ,Æ¯¼ö¹®ÀÚÀÇ Á¶ÇÕÀÌ¾î¾ß ÇÕ´Ï´Ù.");
-			if( mVO.getName()==null || !mVO.getName().matches("[a-zA-Z¤¡-ÆR]{2,6}"))
-				errMsgs.put("e_name", "ÀÌ¸§Àº ÇÑ±Û ¶Ç´Â ¿µ¹®À¸·Î ÃÖ¼Ò 2~6 ±ÛÀÚ·Î ÀÔ·Â ÇØÁÖ¼¼¿ä.");
-			if( mVO.getNickname()==null || !mVO.getNickname().matches("[a-zA-Z¤¡-ÆR0-9]{2,8}"))
-				errMsgs.put("e_nickname", "´Ğ³×ÀÓÀº ÇÑ±Û,¿µ¹®,¼ıÀÚ Á¶ÇÕÀ¸·Î 2~8 ±ÛÀÚ ÀÌ¾î¾ß ÇÕ´Ï´Ù.");
+				errMsgs.put("e_pw", "ë¹„ë°€ë²ˆí˜¸ëŠ” 5~10ìë¦¬ì˜ ì˜ë¬¸,ìˆ«ì,íŠ¹ìˆ˜ë¬¸ìì˜ ì¡°í•©ì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
+			if( mVO.getName()==null || !mVO.getName().matches("[a-zA-Zã„±-ï¿½R]{2,6}"))
+				errMsgs.put("e_name", "ì´ë¦„ì€ í•œê¸€ ë˜ëŠ” ì˜ë¬¸ìœ¼ë¡œ ìµœì†Œ 2~6 ê¸€ìë¡œ ì…ë ¥ í•´ì£¼ì„¸ìš”.");
+			if( mVO.getNickname()==null || !mVO.getNickname().matches("[a-zA-Zã„±-ï¿½R0-9]{2,8}"))
+				errMsgs.put("e_nickname", "ë‹‰ë„¤ì„ì€ í•œê¸€,ì˜ë¬¸,ìˆ«ì ì¡°í•©ìœ¼ë¡œ 2~8 ê¸€ì ì´ì–´ì•¼ í•©ë‹ˆë‹¤.");
 			if( mVO.getBirth()==null || !mVO.getBirth().matches("[0-9]{6}"))
-				errMsgs.put("e_birth", "»ı³â¿ùÀÏÀº 6ÀÚ¸® ¼ıÀÚ·Î¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
+				errMsgs.put("e_birth", "ìƒë…„ì›”ì¼ì€ 6ìë¦¬ ìˆ«ìë¡œë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			if( mVO.getEmail()==null || !mVO.getEmail().matches("[a-zA-Z][a-zA-Z0-9!@#$%^&*()_+-=]{0,12}[@][a-zA-Z]{1,8}[.][a-zA-Z]{1,5}"))
-				errMsgs.put("e_email", "ÀÌ¸ŞÀÏÀº ¿µ¹®, ¼ıÀÚÀÇ Á¶ÇÕÀ¸·Î ¹İµå½Ã @¸¦ Æ÷ÇÔÇØ¾ß ÇÕ´Ï´Ù. ¿¹½Ã) matna@kosta.com");
+				errMsgs.put("e_email", "ì´ë©”ì¼ì€ ì˜ë¬¸, ìˆ«ìì˜ ì¡°í•©ìœ¼ë¡œ ë°˜ë“œì‹œ @ë¥¼ í¬í•¨í•´ì•¼ í•©ë‹ˆë‹¤. ì˜ˆì‹œ) matna@kosta.com");
 			if( mVO.getPhone()==null || !mVO.getPhone().matches("[0-9]{9,12}"))
-				errMsgs.put("e_phone", "¿¬¶ôÃ³´Â 9~12 ÀÚ¸®ÀÇ ¼ıÀÚ¸¸ ÀÔ·Â°¡´É ÇÕ´Ï´Ù. ¿¹½Ã)02-213-3535");
+				errMsgs.put("e_phone", "ì—°ë½ì²˜ëŠ” 9~12 ìë¦¬ì˜ ìˆ«ìë§Œ ì…ë ¥ê°€ëŠ¥ í•©ë‹ˆë‹¤. ì˜ˆì‹œ)02-213-3535");
 			if( mVO.getPost()==null || !mVO.getPost().matches("[0-9]{5}"))
-				errMsgs.put("e_post", "¿ìÆí¹øÈ£´Â ¼ıÀÚ 5ÀÚ¸®¸¸ ÀÔ·Â°¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(mVO.getAddr()) ) errMsgs.put("e_addr", "ÁÖ¼Ò¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+				errMsgs.put("e_post", "ìš°í¸ë²ˆí˜¸ëŠ” ìˆ«ì 5ìë¦¬ë§Œ ì…ë ¥ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(mVO.getAddr()) ) errMsgs.put("e_addr", "ì£¼ì†Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			break;
 		case "BoardVO" : // # BoardVO : title, content
 			BoardVO board = (BoardVO) vo;
-			if( isNullOrEmpty(board.getTitle()) ) errMsgs.put("e_title", "Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( hasSpecialLetters(board.getTitle()) ) errMsgs.put("e_title", "Æ¯¼ö¹®ÀÚ´Â »ç¿ëºÒ°¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(board.getContent()) ) errMsgs.put("e_content", "³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			if( isNullOrEmpty(board.getTitle()) ) errMsgs.put("e_title", "ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+//			if( hasSpecialLetters(board.getTitle()) ) errMsgs.put("e_title", "íŠ¹ìˆ˜ë¬¸ìëŠ” ì‚¬ìš©ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(board.getContent()) ) errMsgs.put("e_content", "ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			break;
 		
 		case "RecipeVO" : // # RecipeVO : ingredient, foodname, price, time, title, content
 			RecipeVO recipe = (RecipeVO) vo;
-			if( isNullOrEmpty(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "Àç·á¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( hasSpecialLetters(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "Æ¯¼ö¹®ÀÚ´Â »ç¿ëºÒ°¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(recipe.getFoodName()) ) errMsgs.put("e_foodName", "À½½Ä¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
-			if( hasSpecialLetters(recipe.getFoodName()) ) errMsgs.put("e_foodName", "Æ¯¼ö¹®ÀÚ´Â »ç¿ëºÒ°¡´ÉÇÕ´Ï´Ù.");
+			if( isNullOrEmpty(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "ì¬ë£Œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			if( hasSpecialLetters(recipe.getIngredient()) ) errMsgs.put("e_ingredient", "íŠ¹ìˆ˜ë¬¸ìëŠ” ì‚¬ìš©ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(recipe.getFoodName()) ) errMsgs.put("e_foodName", "ìŒì‹ëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			if( hasSpecialLetters(recipe.getFoodName()) ) errMsgs.put("e_foodName", "íŠ¹ìˆ˜ë¬¸ìëŠ” ì‚¬ìš©ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			if( isNullOrEmpty(recipe.getPrice()) || !recipe.getPrice().matches("[0-9]+") ) 
-				errMsgs.put("e_price", "°¡°İÀº ¼ıÀÚ¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.");
+				errMsgs.put("e_price", "ê°€ê²©ì€ ìˆ«ìë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			if( isNullOrEmpty(recipe.getTime()) || !recipe.getTime().matches("[0-9]+") ) 
-				errMsgs.put("e_time", "¿ä¸®½Ã°£Àº ¼ıÀÚ¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(recipe.getTitle()) ) errMsgs.put("e_title", "Á¦¸ñÀ» ÀÔ·Â ÇØÁÖ¼¼¿ä.");
-			if( hasSpecialLetters(recipe.getTitle()) ) errMsgs.put("e_title", "Æ¯¼ö¹®ÀÚ´Â »ç¿ëºÒ°¡´ÉÇÕ´Ï´Ù.");
-			if( isNullOrEmpty(recipe.getContent()) ) errMsgs.put("e_content", "³»¿ëÀ» ÀÔ·Â ÇØÁÖ¼¼¿ä.");
+				errMsgs.put("e_time", "ìš”ë¦¬ì‹œê°„ì€ ìˆ«ìë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(recipe.getTitle()) ) errMsgs.put("e_title", "ì œëª©ì„ ì…ë ¥ í•´ì£¼ì„¸ìš”.");
+//			if( hasSpecialLetters(recipe.getTitle()) ) errMsgs.put("e_title", "íŠ¹ìˆ˜ë¬¸ìëŠ” ì‚¬ìš©ë¶ˆê°€ëŠ¥í•©ë‹ˆë‹¤.");
+			if( isNullOrEmpty(recipe.getContent()) ) errMsgs.put("e_content", "ë‚´ìš©ì„ ì…ë ¥ í•´ì£¼ì„¸ìš”.");
 			break;
 		}
 		
-		// @ errMsgs ¸ÊÀÌ ºó°ªÀÌ ¾Æ´Ò‹š.. ( Áï À¯È¿¼º °Ë»ç¿¡ °É¸° °ªÀÌ ÀÖ´Ù¸é ) false ¸®ÅÏ.
+		// @ errMsgs ë§µì´ ë¹ˆê°’ì´ ì•„ë‹ï¿½ï¿½.. ( ì¦‰ ìœ íš¨ì„± ê²€ì‚¬ì— ê±¸ë¦° ê°’ì´ ìˆë‹¤ë©´ ) false ë¦¬í„´.
 		System.out.println("Validator_isEmpty  : "+errMsgs.isEmpty());
 		if ( !errMsgs.isEmpty() ) {
 			errMsgs.put("isValid", "invalid"); 
@@ -92,15 +92,15 @@ public class MatnaValidator {
 		}
 	}
 	
-	// # ³Î ¶Ç´Â ºó°ª Ã¼Å©ÇØÁÖ´Â ¸Ş¼Òµå
+	// # ë„ ë˜ëŠ” ë¹ˆê°’ ì²´í¬í•´ì£¼ëŠ” ë©”ì†Œë“œ
 	private static boolean isNullOrEmpty(String value){
 		if(value==null || value.trim().length()==0) return true;
 		return false;
 	}
 	
-	// # Æ¯¼ö¹®ÀÚÀÔ·Â ¹æÁöÇØÁÖ´Â ¸Ş¼Òµå
+	// # íŠ¹ìˆ˜ë¬¸ìì…ë ¥ ë°©ì§€í•´ì£¼ëŠ” ë©”ì†Œë“œ
 	private static boolean hasSpecialLetters(String value){
-		if( !value.matches("[a-zA-Z¤¡-¤¾°¡-ÆR0-9 ]+") ) return true;
+		if( !value.matches("[a-zA-Zã„±-ã…ê°€-ï¿½R0-9 ]+") ) return true;
 		else return false;
 	}
 	

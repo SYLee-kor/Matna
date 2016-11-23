@@ -29,7 +29,6 @@ var url = "/matna/communityReply";
 			}
 		})
 	}
-	
 	function listReply(no,replyPage) {
 		// # 수정폼을 기본으로 돌려놓은뒤 리스트 재로딩 ... ! (도중에 함께 삭제 방지)
 		hideReplyForm();

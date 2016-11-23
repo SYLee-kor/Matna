@@ -57,7 +57,6 @@ public class RecipeController {
 		};
 		
 		// # 외부 Injection 방지 - "<"를 "&lt;" 로 ">"를 "&gt;"로 변환!!
-		// # MatnaValidator 에서 1차로 방지하지만 댓글 또는 게시판 내용에 >_< 등과같은 이모티콘 활용을 위해 따로 제어.
 		RecipeVO obj = recipe;
 		obj.setTitle( obj.getTitle().replace("<", "&lt;") );
 		obj.setTitle( obj.getTitle().replace(">", "&gt;") );
@@ -113,6 +112,12 @@ public class RecipeController {
 			map.put("recipe", recipe );
 			return map;
 		};
+		
+		// # 외부 Injection 방지 - "<"를 "&lt;" 로 ">"를 "&gt;"로 변환!!
+				RecipeVO obj = recipe;
+				obj.setTitle( obj.getTitle().replace("<", "&lt;") );
+				obj.setTitle( obj.getTitle().replace(">", "&gt;") );
+				
 		try {
 			// # 사진 세팅
 			uploadPath = session.getServletContext().getRealPath("/resource/images/recipe");

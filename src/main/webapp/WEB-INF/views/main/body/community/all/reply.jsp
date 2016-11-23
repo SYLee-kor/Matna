@@ -5,7 +5,10 @@
 <c:forEach var="reply" items="${replyList }">
 <c:set var="bNo" value="${reply.bNo }"/>
 <font size="2">
-<b style="color: #01559a; font-size: medium;margin-left: 18%;">${reply.nickName }</b> &nbsp; 
+<b style="color: #01559a; font-size: medium;margin-left: 18%;">
+<c:if test="${type != 'noname' }">${reply.nickName }</c:if>
+<c:if test="${type eq 'noname' }">익명</c:if>
+</b> &nbsp; 
 
 <font size="2" style="color: gray">${reply.regDate }</font> &nbsp;
 </font> &nbsp;
